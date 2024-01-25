@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chakan Site</title>
+</head>
+
+<body>
+  <div id="Logo"><img src="./images/logo.png" style="object-fit: contain;" alt="logoimg" /></div>
+  <div id="root"></div>
+  <div id="bottombar">
+    <img id="locationbtn" src="./images/location.png" style="object-fit: contain;" />
+    <img id="scenebtn" src="./images/site_clicked.png" style="object-fit: contain;" />
+    <img id="vehiclesbtn" src="./images/vehicles.png" style="object-fit: contain;" />
+    <img id="arbtn" src="./images/ar.png" style="object-fit: contain;" />
+  </div>
+<!-- <div >
+  <img id="cbtn" src="./images/Close.png" alt="Close Button" />
+</div> -->
+  <div id="popup">
+   <img class="close" src="./images/Close.png"/>
+    <iframe id="popupiframe"></iframe>
+  </div>
+ 
+  <div id="popupdarkbg"></div>
+
+  <div id="dropdown">
+    <img id="sidebar" alt="Dropdown Button" src="./images/sidebar.png" />
+    <div class="dropdown-content" id="dropdown-content">
+      <div>
+        <h4>Building name</h4>
+        <p>B100(B100a+B100b)</p>
+
+      </div>
+      
+      <div>
+        <h4>Floor Area</h4>
+        <p> 2,92,552 sq ft(27,170sq m)</p>
+      </div>
+      <div>
+        <h4>Mezzanine Area</h4>
+        <p>5,382sq ft(27,640sq m)</p>
+      </div>
+      <div>
+        <h4>Total Buid-up Area</h4>
+        <p>2,97,837 sq ft(27,640sq m)</p>
+
+      </div>
+      <div>
+        <h4>Clear Height</h4>
+        <p>12 meter minimum</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  </div>
+
+
+  <script>
+    document.getElementById('arbtn').addEventListener('click', (e) => {
+      window.open('https://archiverseai.8thwall.app/indospace-afr/', '_blank')
+    })
+    document.getElementsByClassName('close')[0].addEventListener('click', (ev) => {
+      document.getElementById('popup').style.display = 'none'
+      document.getElementById('popupdarkbg').style.display = 'none'
+    })
+   
+  //document.getElementById('cbtn').addEventListener('click', () => { window.handleButtonClick() })
+  </script>
+  <script type="module" src="/src/main.jsx"></script>
+  <script>
+      // draw the FPS
+      ;;; (function () { var script = document.createElement('script'); script.onload = function () { var stats = new Stats(); document.body.appendChild(stats.dom); requestAnimationFrame(function loop() { stats.update(); requestAnimationFrame(loop) }); }; script.src = '//mrdoob.github.io/stats.js/build/stats.min.js'; document.head.appendChild(script); })()
+  </script>
+  <!-- <script>
+    //     window.onclick=function(event){
+    //       if (!event.target.matches('#dropbtn')){
+    //         var dropdowns = document.getElementsByClassName("dropdown-content");
+    //         var i;
+    //         for (i = 0; i < dropdowns.length; i++) {
+    //           var openDropdown = dropdowns[i];
+    //           if (openDropdown.style.display==="block") {
+    //             openDropdown.style.display = "none";
+    //     }
+    //   }
+    // }
+    //     }
+    let isOpen = false
+    document.getElementById('sidebar').addEventListener('click', (e) => {
+      if (isOpen == false) {
+        isOpen = true
+        document.getElementById('dropdown-content').style.display = 'block'
+      }
+      else {
+        isOpen = false
+        document.getElementById('dropdown-content').style.display = 'none'
+      }
+
+    })
+  </script> -->
+  <script>
+    let isOpen = false;
+    const dropdownContent = document.getElementById('dropdown-content');
+    const sidebarImage = document.getElementById('sidebar');
+
+    document.getElementById('sidebar').addEventListener('click', (e) => {
+      isOpen = !isOpen;
+      dropdownContent.style.display = isOpen ? 'block' : 'none';
+      
+      // Change the image source based on the dropdown state
+      sidebarImage.src = isOpen ? './images/Streetview02updated.png' : './images/sidebar.png';
+    });
+  </script>
+</body>
+
+</html>
