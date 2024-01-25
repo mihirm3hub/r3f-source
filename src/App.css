@@ -196,15 +196,15 @@ button:focus-visible {
   font-size: 16px;
   border: none;
   cursor: pointer;
-  left: 1vh;
-  position: absolute;
+  /* left: 1vh;
+  position: absolute; */
   
 }
 
 #dropdown {
   position: absolute;
   display: inline-block;
-  left: 10px;
+  left: 2vh;
   top: 8%;
 }
 

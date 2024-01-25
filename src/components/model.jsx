@@ -55,13 +55,13 @@ export function Model(props) {
     <>
     <mesh
 
-      position={[-2.1, 0.60, 1.9]}
-      rotation={[-0.698132, 0, 0]}
-       ref={modelRef}
+      position={[-8.2, 2.5, 8]}
+      rotation={[0, 0, 0]}
+      ref={modelRef}
       
       onPointerOver={() => setHovered2(true)} 
       onPointerOut={() => setHovered2(false)} 
-      scale={2}
+      scale={10}
     >
       <circleGeometry args={[0.07, 32]} />
       <meshBasicMaterial
@@ -72,15 +72,15 @@ export function Model(props) {
     </mesh>
     <mesh
 
-        position={[-0.5, 0.60, 2.1]}
-        rotation={[-0.698132, 0, 0]}
+        position={[-0.1, 2.5, 9.5]}
+        rotation={[0, 0, 0]}
         ref={modelRef}
 
 
 
         onPointerOver={() => setHovered1(true)} 
         onPointerOut={() => setHovered1(false)} 
-        scale={2}
+        scale={10}
         >
         <circleGeometry args={[0.07, 32]} />
         <meshBasicMaterial
@@ -91,15 +91,15 @@ export function Model(props) {
     </mesh>
     <mesh
 
-      position={[0.2, 0.40, 0.5]}
-      rotation={[-0.698132, 0, 0]}
+      position={[0.2, 2, 2.3]}
+      rotation={[0, 0, 0]}
       ref={modelRef}
 
 
 
       onPointerOver={() => setHovered3(true)} 
       onPointerOut={() => setHovered3(false)} 
-      scale={2}
+      scale={10}
       >
       <circleGeometry args={[0.07, 32]} />
       <meshBasicMaterial
@@ -111,15 +111,15 @@ export function Model(props) {
 
       <mesh
 
-        position={[0.3, 0.45, -1.5]}
-        rotation={[-0.698132, 0, 0]}
+        position={[0.3, 2, -4.7]}
+        rotation={[0, 0, 0]}
         ref={modelRef}
 
 
 
         onPointerOver={() => setHovered4(true)} 
         onPointerOut={() => setHovered4(false)} 
-        scale={2}
+        scale={10}
         >
         <circleGeometry args={[0.07, 32]} />
         <meshBasicMaterial
@@ -131,15 +131,15 @@ export function Model(props) {
 
         <mesh
 
-          position={[3.5, 0.60, 2]}
-          rotation={[-0.698132, 0, 0]}
+          position={[15, 2.5, 7]}
+          rotation={[0, 0, 0]}
           ref={modelRef}
 
 
 
           onPointerOver={() => setHovered5(true)} 
           onPointerOut={() => setHovered5(false)} 
-          scale={2}
+          scale={10}
           >
           <circleGeometry args={[0.07, 32]} />
           <meshBasicMaterial
@@ -151,15 +151,15 @@ export function Model(props) {
 
           <mesh
 
-          position={[-1.5, 0.30,3.2]}
-          rotation={[-0.698132, 0, 0]}
+          position={[-5.9, 1.2,13]}
+          rotation={[0, 0, 0]}
           onClick={() => (
             console.log('Clicked 360 view'),
             document.getElementById('popupdarkbg').style.display = 'block',
             document.getElementById('popup').style.display = 'block',
             document.getElementById('popupiframe').src = 'https://equanimoustech.com/Indospace/VR1/'
           )}
-          scale={2}
+          scale={10}
           >
           <circleGeometry args={[0.07, 32]} />
           <meshBasicMaterial
