@@ -13,7 +13,7 @@ export default function Experience()
         <Environment
         files={"./lilienstein_4k.hdr"} background 
         ></Environment>  
-        <OrbitControls makeDefault />
+        {/* <OrbitControls makeDefault /> */}
         
        
 

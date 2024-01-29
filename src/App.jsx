@@ -119,6 +119,7 @@ export default function App() {
   //   thickness: { value: 10, min: 0, max: 10 },
   //   ior: { value: 1.45, min: 0, max: 2 }
   // })
+  
 
   return (<>
     {/* <button onClick={handleButtonClick}>Change Camera Position</button> */}

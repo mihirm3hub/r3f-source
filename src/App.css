@@ -168,7 +168,7 @@ button:focus-visible {
 
 #cbtn {
   
- 
+ display: none;
   right: 6%;
   width: 3%;
   position: absolute;
