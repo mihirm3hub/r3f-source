@@ -10,7 +10,23 @@ import * as THREE from 'three'
 
 let meshname = 'Default'
 
+let isDragging = false;
+let startX
+let camTimeScale = 0
+let lastXvalue = 0
+let xdrag 
+let isOpen = false;
 
+const dropdownContent = document.getElementById('dropdown-content');
+const sidebarImage = document.getElementById('sidebar');
+
+document.getElementById('sidebar').addEventListener('click', (e) => {
+  console.log(isOpen)
+ isOpen = !isOpen;
+  dropdownContent.style.display =isOpen ? 'block' : 'none';
+  // Change the image source based on the dropdown state
+  sidebarImage.src =isOpen ? './images/sidebarU.png' : './images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png';
+});
 
 export function Model(props) {
   const modelRef = useRef()
@@ -57,122 +73,187 @@ export function Model(props) {
   //   mixer.timeScale = 0.5
 
   // },[]) 
-  let camPos =  new THREE.Vector3()
-  let camRot =  new THREE.Vector3()
 
-const setCameraPosRot = (hotspotname) =>{
-  switch(hotspotname){
-    case 'B100':
-      camPos.x = 12.437 
-      camPos.y = 4.9
-      camPos.z = 16.587
-      camRot.x = -0.439 
-      camRot.y = 0.715
-      camRot.z = 0.299
-      document.getElementById('bnametitle').innerText("Building name")
-      document.getElementById('bname').innerText("B100(B100a+B100b")
-      document.getElementById('fareatitle').innerText("Floor Area")
-      document.getElementById('farea').innerText("2,92,552 sq ft(27,170sq m)")
-      document.getElementById('mareatitle').innerText("Mezzanine Area)")
-      document.getElementById('marea').innerText("5,382sq ft(27,640sq m)")
-      document.getElementById('totbareatitle').innerText("Total Buid-up Area")
-      document.getElementById('totbarea').innerText("2,97,837 sq ft(27,640sq m)")
-      document.getElementById('clrhgttitle').innerText("Clear Height")
-      document.getElementById('clrhgt').innerText("12 meters minimum")
+  window.addEventListener('mousedown', startDrag);
+  window.addEventListener('mousemove', drag);
+  window.addEventListener('mouseup', stopDrag);
 
+  function startDrag(e) {
+    isDragging = true
+    startX = e.clientX ;
+    // startY = e.clientY;
+    console.log("a", startX)
 
-
-
-     
-    break;
-    case 'B200':
-      camPos.x = 6.601
-      camPos.y = 3.308
-      camPos.z = 15.383
-      camRot.x = -0.309 
-      camRot.y = -0.625
-      camRot.z = -0.184
-      document.getElementById('bnametitle').innerText("Building name")
-      document.getElementById('bname').innerText("B200(B200a+B200b")
-      document.getElementById('fareatitle').innerText("Floor Area")
-      document.getElementById('farea').innerText("3,05,157 sq ft(28,350 sq m)")
-      document.getElementById('mareatitle').innerText("Mezzanine Area)")
-      document.getElementById('marea').innerText("5,382sq ft(500 sq m)")
-      document.getElementById('totbareatitle').innerText("Total Buid-up Area")
-      document.getElementById('totbarea').innerText("3,10,539 sq ft(28,850 sq m)")
-      document.getElementById('clrhgttitle').innerText("Clear Height")
-      document.getElementById('clrhgt').innerText("12 meters minimum")
-      
-    break;
-    case 'B300':
-      camPos.x =-2.254
-      camPos.y = 4.107
-      camPos.z = -10.756
-      camRot.x = -2.787 
-      camRot.y =  0.413
-      camRot.z = 2.994
-      document.getElementById('bnametitle').innerText("Building name")
-      document.getElementById('bname').innerText("B300(B300a+B300b")
-      document.getElementById('fareatitle').innerText("Floor Area")
-      document.getElementById('farea').innerText("2,92,552 sq ft(27,170sq m)")
-      document.getElementById('mareatitle').innerText("Mezzanine Area)")
-      document.getElementById('marea').innerText("5,382sq ft(500 sq m)")
-      document.getElementById('totbareatitle').innerText("Total Buid-up Area")
-      document.getElementById('totbarea').innerText("4,13,377 sq ft(38,404 sq m)")
-      document.getElementById('clrhgttitle').innerText("Clear Height")
-      document.getElementById('clrhgt').innerText("12 meters minimum")
-      
-    break;
-    case 'B400':
-      camPos.x =-9.624
-      camPos.y = 3.417
-      camPos.z = -4.656
-      camRot.x = -2.567
-      camRot.y = -1.043
-      camRot.z = -2.632
-      document.getElementById('bnametitle').innerText("Building name")
-      document.getElementById('bname').innerText("B400(B400a+B400b")
-      document.getElementById('fareatitle').innerText("Floor Area")
-      document.getElementById('farea').innerText("2,92,552 sq ft(27,170sq m)")
-      document.getElementById('mareatitle').innerText("Mezzanine Area)")
-      document.getElementById('marea').innerText("5,382sq ft(500 sq m)")
-      document.getElementById('totbareatitle').innerText("Total Buid-up Area")
-      document.getElementById('totbarea').innerText("2,66,363 sq ft(24,746sq m)")
-      document.getElementById('clrhgttitle').innerText("Clear Height")
-      document.getElementById('clrhgt').innerText("12 meters minimum")
-
-     
-    break;
-    case 'B500':
-      camPos.x =-7.068
-      camPos.y = 5.436
-      camPos.z = 1.633
-      camRot.x = -0.595
-      camRot.y = -0.578
-      camRot.z = -0.354
-      document.getElementById('bnametitle').innerText("Building name")
-      document.getElementById('bname').innerText("B500(B500a+B500b")
-      document.getElementById('fareatitle').innerText("Floor Area")
-      document.getElementById('farea').innerText("2,92,552 sq ft(27,170sq m)")
-      document.getElementById('mareatitle').innerText("Mezzanine Area)")
-      document.getElementById('marea').innerText("5,382sq ft(500 sq m)")
-      document.getElementById('totbareatitle').innerText("Total Buid-up Area")
-      document.getElementById('totbarea').innerText("1,47,186 sq ft(13,674sq m)")
-      document.getElementById('clrhgttitle').innerText("Clear Height")
-      document.getElementById('clrhgt').innerText("12 meters minimum")
-
-     
-    break;
-    default:
-      camPos.x = 31.401 
-      camPos.y = 13.534 
-      camPos.z = 42.827
-      camRot.x = -0.32 
-      camRot.y = 0.604
-      camRot.z = 0.186
-      
   }
-}
+
+  function drag(e) {
+    xdrag = e.clientX - startX;
+    xdrag = xdrag + lastXvalue
+    // const y = e.clientY - startY;
+    if (isDragging) {
+      // console.log(x / 1000)
+      camTimeScale = xdrag / 1000
+    }
+    else {
+      // console.log("Not ")
+    }
+    if(xdrag >= 1000){
+      xdrag = 0
+    } 
+    if(xdrag < 0){
+      xdrag = 1000
+    } 
+  }
+
+  function stopDrag(e) {
+    lastXvalue = xdrag
+    
+    isDragging = false
+  }
+
+  let camPos = new THREE.Vector3()
+  let camRot = new THREE.Vector3()
+
+  const setCameraPosRot = (hotspotname) => {
+    switch (hotspotname) {
+      case 'B100':
+        camPos.x = 12.437;
+        camPos.y = 4.9;
+        camPos.z = 16.587;
+        camRot.x = -0.439;
+        camRot.y = 0.715;
+        camRot.z = 0.299;
+        document.getElementById('bnmtitle').innerText = "Building name"
+        document.getElementById('bname').innerText = "B100(B100a+B100b"
+        document.getElementById('fareatitle').innerText = "Floor Area"
+        document.getElementById('farea').innerText = "2,92,552 sq ft(27,170sq m)"
+        document.getElementById('mareatitle').innerText = "Mezzanine Area"
+        document.getElementById('marea').innerText = "5,382sq ft(27,640sq m)"
+        document.getElementById('totbareatitle').innerText = "Total Buid-up Area"
+        document.getElementById('totbarea').innerText = "2,97,837 sq ft(27,640sq m)"
+        document.getElementById('clrhgttitle').innerText = "Clear Height"
+        document.getElementById('clrhgt').innerText = "12 meters minimum"
+        document.getElementById('Usage').style.display = 'none'
+        document.getElementById('Usage-P').style.display = 'none'
+        break;
+      case 'B200':
+        camPos.x = 6.601
+        camPos.y = 3.308
+        camPos.z = 15.383
+        camRot.x = -0.309
+        camRot.y = -0.625
+        camRot.z = -0.184
+        document.getElementById('bnmtitle').innerText = "Building name"
+        document.getElementById('bname').innerText = "B200(B200a+B200b"
+        document.getElementById('fareatitle').innerText = "Floor Area"
+        document.getElementById('farea').innerText = "3,05,157 sq ft(28,350 sq m)"
+        document.getElementById('mareatitle').innerText = "Mezzanine Area"
+        document.getElementById('marea').innerText = "5,382sq ft(500 sq m)"
+        document.getElementById('totbareatitle').innerText = "Total Buid-up Area"
+        document.getElementById('totbarea').innerText = "3,10,539 sq ft(28,850 sq m)"
+        document.getElementById('clrhgttitle').innerText = "Clear Height"
+        document.getElementById('clrhgt').innerText = "12 meters minimum"
+        document.getElementById('Usage').style.display = 'none'
+        document.getElementById('Usage-P').style.display = 'none'
+
+        break;
+      case 'B300':
+        camPos.x = -2.254
+        camPos.y = 4.107
+        camPos.z = -10.756
+        camRot.x = -2.787
+        camRot.y = 0.413
+        camRot.z = 2.994
+        document.getElementById('bnmtitle').innerText = "Building name"
+        document.getElementById('bname').innerText = "B300(B300a+B300b"
+        document.getElementById('fareatitle').innerText = "Floor Area"
+        document.getElementById('farea').innerText = "2,92,552 sq ft(27,170sq m)"
+        document.getElementById('mareatitle').innerText = "Mezzanine Area"
+        document.getElementById('marea').innerText = "5,382sq ft(500 sq m)"
+        document.getElementById('totbareatitle').innerText = "Total Buid-up Area"
+        document.getElementById('totbarea').innerText = "4,13,377 sq ft(38,404 sq m)"
+        document.getElementById('clrhgttitle').innerText = "Clear Height"
+        document.getElementById('clrhgt').innerText = "12 meters minimum"
+        document.getElementById('Usage').style.display = 'none'
+        document.getElementById('Usage-P').style.display = 'none'
+
+        break;
+      case 'B400':
+        camPos.x = -9.624
+        camPos.y = 3.417
+        camPos.z = -4.656
+        camRot.x = -2.567
+        camRot.y = -1.043
+        camRot.z = -2.632
+        document.getElementById('bnmtitle').innerText = "Building name"
+        document.getElementById('bname').innerText = "B400(B400a+B400b"
+        document.getElementById('fareatitle').innerText = "Floor Area"
+        document.getElementById('farea').innerText = "2,92,552 sq ft(27,170sq m)"
+        document.getElementById('mareatitle').innerText = "Mezzanine Area"
+        document.getElementById('marea').innerText = "5,382sq ft(500 sq m)"
+        document.getElementById('totbareatitle').innerText = "Total Buid-up Area"
+        document.getElementById('totbarea').innerText = "2,66,363 sq ft(24,746sq m)"
+        document.getElementById('clrhgttitle').innerText = "Clear Height"
+        document.getElementById('clrhgt').innerText = "12 meters minimum"
+        document.getElementById('Usage').style.display = 'none'
+        document.getElementById('Usage-P').style.display = 'none'
+
+
+        break;
+      case 'B500':
+        camPos.x = -7.068
+        camPos.y = 5.436
+        camPos.z = 1.633
+        camRot.x = -0.595
+        camRot.y = -0.578
+        camRot.z = -0.354
+        document.getElementById('bnmtitle').innerText = "Building name"
+        document.getElementById('bname').innerText = "B500(B500a+B500b"
+        document.getElementById('fareatitle').innerText = "Floor Area"
+        document.getElementById('farea').innerText = "2,92,552 sq ft(27,170sq m)"
+        document.getElementById('mareatitle').innerText = "Mezzanine Area"
+        document.getElementById('marea').innerText = "5,382sq ft(500 sq m)"
+        document.getElementById('totbareatitle').innerText = "Total Buid-up Area"
+        document.getElementById('totbarea').innerText = "1,47,186 sq ft(13,674sq m)"
+        document.getElementById('clrhgttitle').innerText = "Clear Height"
+        document.getElementById('clrhgt').innerText = "12 meters minimum"
+        document.getElementById('Usage').style.display = 'none'
+        document.getElementById('Usage-P').style.display = 'none'
+
+
+        break;
+      case 'Default':
+        camPos.x = 31.401
+        camPos.y = 13.534
+        camPos.z = 42.827
+        camRot.x = -0.32
+        camRot.y = 0.604
+        camRot.z = 0.186
+
+        document.getElementById('bnmtitle').innerText = "Indospace Industrial"
+        document.getElementById('bname').innerText = "Warehousing and logistic Park"
+        document.getElementById('fareatitle').innerText = "Total Land Parcel"
+        document.getElementById('farea').innerText = "186 Acres"
+        document.getElementById('mareatitle').innerText = "Plot 1 Land Area"
+        document.getElementById('marea').innerText = "62 Acres"
+        document.getElementById('totbareatitle').innerText = "Total Chargebale Area"
+        document.getElementById('totbarea').innerText = "14,35,315 sq ft(1,33,344 sq m)"
+        document.getElementById('clrhgttitle').innerText = "Type Of Land"
+        document.getElementById('clrhgt').innerText = "Industrial"
+        document.getElementById('Usage').innerText = "Usage"
+        document.getElementById('Usage-P').innerText = "Industrial,warehousing and Logistic Park"
+        document.getElementById('Usage').style.display = 'block'
+        document.getElementById('Usage-P').style.display = 'block'
+      
+
+        break;
+      default:
+        // console.log("Default Case")
+    }
+    document.getElementById('dropdown-content').style.display = 'block'
+    document.getElementById('sidebar').src = './images/sidebarU.png'
+    isOpen = true;
+  }
 
   const closeBtn = document.getElementById('cbtn')
 
@@ -184,13 +265,20 @@ const setCameraPosRot = (hotspotname) =>{
   // const { get, set } = useThree(({ get, set }) => ({ get, set }));
 
   const [clicked, setClicked] = useState(false)
+  const [closed, setClose] = useState(false)
 
   closeBtn.addEventListener('click', () => {
     closeBtn.style.display = 'none'
-    setCameraPosRot('Default')
+    meshname = 'Default'
+    setCameraPosRot(meshname)
     setClicked(false)
+    setClose(true)
+    document.getElementById('dropdown-content').style.display = 'none'
+    document.getElementById('sidebar').src = './images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png'
+    isOpen = false;
   })
-
+ 
+  
   // useFrame(state => {
   //   if (clicked3) {
   //     state.camera.lookAt(-0.439, 0.715, 0.299)
@@ -210,17 +298,40 @@ const setCameraPosRot = (hotspotname) =>{
     console.log(meshname)
     if (clicked) {
       setCameraPosRot(meshname)
-      state.camera.lookAt(camRot.x , camRot.y , camRot.z)
-      state.camera.position.set(camPos.x , camPos.y , camPos.z)
+      state.camera.lookAt(camRot.x, camRot.y, camRot.z)
+      state.camera.position.set(camPos.x, camPos.y, camPos.z)
       state.camera.updateProjectionMatrix()
       closeBtn.style.display = 'block'
     }
     else if (!clicked) {
-      console.log(state.pointer.x)
-      actions["MainCameraAltActionClip"].time = THREE.MathUtils.lerp(actions["MainCameraAltActionClip"].time, actions["MainCameraAltActionClip"].getClip().duration * state.pointer.x, 0.05)
-      // state.camera.lookAt(-0.32, 0.604, 0.186)
-      // state.camera.position.set(31.401, 13.534, 42.827)
-      // state.camera.updateProjectionMatrix()
+      if (meshname == 'Default' && closed) {
+        console.log('Close false')
+        setClose(false)
+        // state.camera.lookAt(-0.32, 0.604, 0.186)
+        // state.camera.position.set(31.401, 13.534, 42.827)
+        // state.camera.updateProjectionMatrix()
+
+        // setTimeout(() => {
+        //   setClose(false)
+
+        // }, 3000);
+      }
+      else if (isDragging) {
+       console.log(camTimeScale)
+
+        actions["MainCameraAltActionClip"].time = THREE.MathUtils.lerp(actions["MainCameraAltActionClip"].time, actions["MainCameraAltActionClip"].getClip().duration * camTimeScale, 1)
+
+      }else{
+        camTimeScale += 0.001
+        if(camTimeScale >= 1){
+          camTimeScale = 0
+        } 
+        if(camTimeScale < 0){
+          camTimeScale = 1
+        } 
+        actions["MainCameraAltActionClip"].time = THREE.MathUtils.lerp(actions["MainCameraAltActionClip"].time, actions["MainCameraAltActionClip"].getClip().duration * camTimeScale, 1)
+      }
+
     }
     return null
   })
@@ -259,9 +370,9 @@ const setCameraPosRot = (hotspotname) =>{
           meshname = 'B100'
           setClicked(true)
         }}
-        onPointerOver={() => 
+        onPointerOver={() =>
           setHovered1(true)}
-        onPointerOut={() => 
+        onPointerOut={() =>
           setHovered1(false)}
         scale={7.5}
 
@@ -299,6 +410,7 @@ const setCameraPosRot = (hotspotname) =>{
         />
       </mesh>
 
+      {/* B400 */}
       <mesh
 
         position={[0.3, 2, -4.7]}
@@ -321,6 +433,9 @@ const setCameraPosRot = (hotspotname) =>{
 
         />
       </mesh>
+
+
+      {/* B500 */}
 
       <mesh
 
@@ -346,10 +461,10 @@ const setCameraPosRot = (hotspotname) =>{
 
         />
       </mesh>
-
+      {/* 360view 1*/}
       <mesh
 
-        position={[-5.9, 1.2, 13]}
+        position={[-5.1, 1.2, 13]}
         rotation={[0, 0, 0]}
         onClick={() => (
           console.log('Clicked 360 view'),
@@ -362,12 +477,63 @@ const setCameraPosRot = (hotspotname) =>{
         <circleGeometry args={[0.07, 32]} />
         <meshBasicMaterial
           map={viewtex}
-           toneMapped={false}
+          toneMapped={false}
           transparent={true}
           side={THREE.DoubleSide}
 
         />
       </mesh>
+
+
+      {/* 360view 2*/}
+      <mesh
+
+        position={[9.5, 1.1, 12.5]}
+        rotation={[0, 0, 0]}
+        onClick={() => (
+          console.log('Clicked 360 view'),
+          document.getElementById('popupdarkbg').style.display = 'block',
+          document.getElementById('popup').style.display = 'block',
+          document.getElementById('popupiframe').src = 'https://equanimoustech.com/Indospace/VR3/'
+        )}
+        scale={7.5}
+      >
+        <circleGeometry args={[0.07, 32]} />
+        <meshBasicMaterial
+          map={viewtex}
+          toneMapped={false}
+          transparent={true}
+          side={THREE.DoubleSide}
+
+        />
+      </mesh>
+
+      {/* 360view 3*/}
+      <mesh
+
+        position={[2,1.5,-2]}
+        rotation={[0, 0, 0]}
+        onClick={() => (
+          console.log('Clicked 360 view'),
+          document.getElementById('popupdarkbg').style.display = 'block',
+          document.getElementById('popup').style.display = 'block',
+          document.getElementById('popupiframe').src = 'https://equanimoustech.com/Indospace/VR2/'
+        )}
+        scale={7.5}
+      >
+        <circleGeometry args={[0.07, 32]} />
+        <meshBasicMaterial
+          map={viewtex}
+          toneMapped={false}
+          transparent={true}
+          side={THREE.DoubleSide}
+
+        />
+      </mesh>
+
+
+
+
       <group ref={group} {...props} dispose={null}>
 
         <group name="Scene">

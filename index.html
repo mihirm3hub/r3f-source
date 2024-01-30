@@ -54,8 +54,8 @@
         <p id="clrhgt">Industrial</p>
       </div>
       <div>
-        <h4 >Usage</h4>
-        <p >industrial,warehousing and Logistic Park</p>
+        <h4 id="Usage">Usage</h4>
+        <p id="Usage-P">Industrial,warehousing and Logistic Park</p>
       </div>
 
     </div>
@@ -108,17 +108,8 @@
     })
   </script> -->
   <script>
-    let isOpen = false;
-    const dropdownContent = document.getElementById('dropdown-content');
-    const sidebarImage = document.getElementById('sidebar');
-
-    document.getElementById('sidebar').addEventListener('click', (e) => {
-      isOpen = !isOpen;
-      dropdownContent.style.display = isOpen ? 'block' : 'none';
-      
-      // Change the image source based on the dropdown state
-      sidebarImage.src = isOpen ? './images/Streetview02updated.png' : './images/sidebar.png';
-    });
+    
+ 
   </script>
 </body>
 
