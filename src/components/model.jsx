@@ -46,7 +46,7 @@ export function Model(props) {
   const hotspottexHovered4 = useLoader(TextureLoader, img6);
   const viewtex = useLoader(TextureLoader, view);
 
-
+  useEffect(() => void (actions["MainCameraAltActionClip"].play().paused = true), [])
   //   const b100Camera = document.querySelector("#Cam_B100");
   // b100Camera.addEventListener("click", () => {
   //   animateToB100();
@@ -162,9 +162,11 @@ const setCameraPosRot = (hotspotname) =>{
       closeBtn.style.display = 'block'
     }
     else if (!clicked) {
-      state.camera.lookAt(-0.32, 0.604, 0.186)
-      state.camera.position.set(31.401, 13.534, 42.827)
-      state.camera.updateProjectionMatrix()
+      console.log(state.pointer.x)
+      actions["MainCameraAltActionClip"].time = THREE.MathUtils.lerp(actions["MainCameraAltActionClip"].time, actions["MainCameraAltActionClip"].getClip().duration * state.pointer.x, 0.05)
+      // state.camera.lookAt(-0.32, 0.604, 0.186)
+      // state.camera.position.set(31.401, 13.534, 42.827)
+      // state.camera.updateProjectionMatrix()
     }
     return null
   })
