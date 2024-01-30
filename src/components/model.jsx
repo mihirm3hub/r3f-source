@@ -69,6 +69,19 @@ const setCameraPosRot = (hotspotname) =>{
       camRot.x = -0.439 
       camRot.y = 0.715
       camRot.z = 0.299
+      document.getElementById('bnametitle').innerText("Building name")
+      document.getElementById('bname').innerText("B100(B100a+B100b")
+      document.getElementById('fareatitle').innerText("Floor Area")
+      document.getElementById('farea').innerText("2,92,552 sq ft(27,170sq m)")
+      document.getElementById('mareatitle').innerText("Mezzanine Area)")
+      document.getElementById('marea').innerText("5,382sq ft(27,640sq m)")
+      document.getElementById('totbareatitle').innerText("Total Buid-up Area")
+      document.getElementById('totbarea').innerText("2,97,837 sq ft(27,640sq m)")
+      document.getElementById('clrhgttitle').innerText("Clear Height")
+      document.getElementById('clrhgt').innerText("12 meters minimum")
+
+
+
 
      
     break;
@@ -79,6 +92,16 @@ const setCameraPosRot = (hotspotname) =>{
       camRot.x = -0.309 
       camRot.y = -0.625
       camRot.z = -0.184
+      document.getElementById('bnametitle').innerText("Building name")
+      document.getElementById('bname').innerText("B200(B200a+B200b")
+      document.getElementById('fareatitle').innerText("Floor Area")
+      document.getElementById('farea').innerText("3,05,157 sq ft(28,350 sq m)")
+      document.getElementById('mareatitle').innerText("Mezzanine Area)")
+      document.getElementById('marea').innerText("5,382sq ft(500 sq m)")
+      document.getElementById('totbareatitle').innerText("Total Buid-up Area")
+      document.getElementById('totbarea').innerText("3,10,539 sq ft(28,850 sq m)")
+      document.getElementById('clrhgttitle').innerText("Clear Height")
+      document.getElementById('clrhgt').innerText("12 meters minimum")
       
     break;
     case 'B300':
@@ -88,6 +111,16 @@ const setCameraPosRot = (hotspotname) =>{
       camRot.x = -2.787 
       camRot.y =  0.413
       camRot.z = 2.994
+      document.getElementById('bnametitle').innerText("Building name")
+      document.getElementById('bname').innerText("B300(B300a+B300b")
+      document.getElementById('fareatitle').innerText("Floor Area")
+      document.getElementById('farea').innerText("2,92,552 sq ft(27,170sq m)")
+      document.getElementById('mareatitle').innerText("Mezzanine Area)")
+      document.getElementById('marea').innerText("5,382sq ft(500 sq m)")
+      document.getElementById('totbareatitle').innerText("Total Buid-up Area")
+      document.getElementById('totbarea').innerText("4,13,377 sq ft(38,404 sq m)")
+      document.getElementById('clrhgttitle').innerText("Clear Height")
+      document.getElementById('clrhgt').innerText("12 meters minimum")
       
     break;
     case 'B400':
@@ -97,6 +130,16 @@ const setCameraPosRot = (hotspotname) =>{
       camRot.x = -2.567
       camRot.y = -1.043
       camRot.z = -2.632
+      document.getElementById('bnametitle').innerText("Building name")
+      document.getElementById('bname').innerText("B400(B400a+B400b")
+      document.getElementById('fareatitle').innerText("Floor Area")
+      document.getElementById('farea').innerText("2,92,552 sq ft(27,170sq m)")
+      document.getElementById('mareatitle').innerText("Mezzanine Area)")
+      document.getElementById('marea').innerText("5,382sq ft(500 sq m)")
+      document.getElementById('totbareatitle').innerText("Total Buid-up Area")
+      document.getElementById('totbarea').innerText("2,66,363 sq ft(24,746sq m)")
+      document.getElementById('clrhgttitle').innerText("Clear Height")
+      document.getElementById('clrhgt').innerText("12 meters minimum")
 
      
     break;
@@ -107,6 +150,17 @@ const setCameraPosRot = (hotspotname) =>{
       camRot.x = -0.595
       camRot.y = -0.578
       camRot.z = -0.354
+      document.getElementById('bnametitle').innerText("Building name")
+      document.getElementById('bname').innerText("B500(B500a+B500b")
+      document.getElementById('fareatitle').innerText("Floor Area")
+      document.getElementById('farea').innerText("2,92,552 sq ft(27,170sq m)")
+      document.getElementById('mareatitle').innerText("Mezzanine Area)")
+      document.getElementById('marea').innerText("5,382sq ft(500 sq m)")
+      document.getElementById('totbareatitle').innerText("Total Buid-up Area")
+      document.getElementById('totbarea').innerText("1,47,186 sq ft(13,674sq m)")
+      document.getElementById('clrhgttitle').innerText("Clear Height")
+      document.getElementById('clrhgt').innerText("12 meters minimum")
+
      
     break;
     default:

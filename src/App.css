@@ -206,6 +206,7 @@ button:focus-visible {
   display: inline-block;
   left: 2vh;
   top: 8%;
+  
 }
 
 .dropdown-content {
@@ -214,7 +215,7 @@ button:focus-visible {
   background-color: rgba(0, 0, 0, 0.3);
   padding: 25px;
   left: 6%;
-  top: 90%;
+  top: 87%;
   /* min-width: 160px; */
   z-index: 1;
   color: white;
@@ -222,7 +223,7 @@ button:focus-visible {
 }
 
 .dropdown-content div h4{
-    font-size: 11px;
+    font-size: 12px;
     text-align: center;
     font-family: Inter;
 }
