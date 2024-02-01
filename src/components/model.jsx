@@ -304,6 +304,7 @@ export function Model(props) {
       state.camera.position.set(camPos.x, camPos.y, camPos.z)
       state.camera.updateProjectionMatrix()
       closeBtn.style.display = 'block'
+      
     }
     else if (!clicked) {
       if (meshname == 'Default' && closed) {

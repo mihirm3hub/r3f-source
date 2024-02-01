@@ -29,7 +29,14 @@ document.getElementById('sidebar').addEventListener('click', (e) => {
 });
 
 export function Model(props) {
-  const modelRef = useRef();
+  const modelRef1 = useRef();
+  const modelRef2 = useRef();
+  const modelRef3 = useRef();
+  const modelRef4 = useRef();
+  const modelRef5 = useRef();
+  const modelRef6 = useRef();
+  const modelRef7 = useRef();
+  const modelRef8 = useRef();
 
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/FinalModel.glb");
@@ -310,6 +317,11 @@ export function Model(props) {
       state.camera.position.set(camPos.x, camPos.y, camPos.z)
       state.camera.updateProjectionMatrix()
       closeBtn.style.display = 'block'
+      if(isDragging){
+        state.camera.rotation.y = camRot.y +  state.pointer.x /10
+        // state.camera.rotation.z = camRot.z +  state.pointer.y /10
+      }
+      
     }
     else if (!clicked) {
       if (meshname == 'Default' && closed) {
@@ -339,8 +351,14 @@ export function Model(props) {
         } 
           
       actions["MainCameraAltActionClip"].time = THREE.MathUtils.lerp(actions["MainCameraAltActionClip"].time, actions["MainCameraAltActionClip"].getClip().duration * camTimeScale, 1)
-        modelRef.current.lookAt(state.camera.position)
-        
+        modelRef1.current.lookAt(state.camera.position)
+        modelRef2.current.lookAt(state.camera.position)
+        modelRef3.current.lookAt(state.camera.position)
+        modelRef4.current.lookAt(state.camera.position)
+        modelRef5.current.lookAt(state.camera.position)
+        modelRef6.current.lookAt(state.camera.position)
+        modelRef7.current.lookAt(state.camera.position)
+        modelRef8.current.lookAt(state.camera.position)
     }
 
 
@@ -356,7 +374,7 @@ export function Model(props) {
         name="hotspotClick1"
         position={[-9.8, 2.75, 4.2]}
         rotation={[0, 0, 0]}
-        ref={modelRef}
+        ref={modelRef1}
         
         onClick={() => {
           meshname = 'B500'
@@ -380,7 +398,7 @@ export function Model(props) {
 
         position={[1.2, 2.9,8.4]}
         rotation={[0, 0, 0]}
-        ref={modelRef}
+        ref={modelRef2}
         onClick={() => {
           meshname = 'B100'
           setClicked(true)
@@ -408,7 +426,7 @@ export function Model(props) {
       <mesh
         position={[1.6, 2.3, 1.5]}
         rotation={[0, 0, 0]}
-        ref={modelRef}
+        ref={modelRef3}
         onClick={() => {
           meshname = 'B400'
           setClicked(true)
@@ -432,7 +450,7 @@ export function Model(props) {
 
         position={[2.1, 2.5, -5.5]}
         rotation={[0, 0, 0]}
-        ref={modelRef}
+        ref={modelRef4}
         onClick={() => {
           meshname = 'B300'
           setClicked(true)
@@ -460,7 +478,7 @@ export function Model(props) {
 
         position={[14.6, 2.8,7]}
         rotation={[0, 0, 0]}
-        ref={modelRef}
+        ref={modelRef5}
 
         onClick={() => {
           meshname = 'B200'
@@ -483,7 +501,7 @@ export function Model(props) {
       </mesh>
       {/* 360view 1*/}
       <mesh
-
+        ref={modelRef6}
         position={[-4.7, 1.8, 12.5]}
         rotation={[0, 0, 0]}
         onClick={() => (
@@ -509,7 +527,7 @@ export function Model(props) {
 
       {/* 360view 2*/}
       <mesh
-
+        ref={modelRef7}
         position={[9.1, 1.8, 12.6]}
         rotation={[0, 0, 0]}
         onClick={() => (
@@ -539,7 +557,7 @@ export function Model(props) {
 
       {/* 360view 3*/}
       <mesh
-
+         ref={modelRef8}
         position={[0.9,1.7,-2]}
         rotation={[0, 0, 0]}
         onClick={() => (
