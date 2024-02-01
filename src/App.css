@@ -65,7 +65,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
@@ -78,15 +78,16 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */
 
 #Logo {
-  z-index: 2;
+  z-index: 12;
   position: absolute;
   top: 2vh;
   left: 2vw;
   height: 3.6vw;
   width: 20vw;
+  cursor: pointer;
 }
 
 #bottombar {
@@ -102,6 +103,7 @@ button:focus-visible {
   height: 2.5vw;
   padding: 2%;
   position: relative;
+  cursor: pointer;
   
  
   
@@ -115,6 +117,7 @@ button:focus-visible {
   width: 2.5vw;
   height: 2.5vw;
   padding: 2%;
+  cursor: pointer;
 }
 
 #vehiclesbtn {
@@ -123,6 +126,7 @@ button:focus-visible {
   width: 2.5vw;
   height: 2.5vw;
   padding: 2%;
+  cursor: pointer;
 }
 
 #arbtn {
@@ -131,17 +135,16 @@ button:focus-visible {
   width: 2.5vw;
   height: 2.5vw;
   padding: 2%;
+  cursor: pointer;
 }
 
 #popup {
   display: none;
-  position: fixed;
-  top: 5%;
-  left: 5%;
-  width: 90%;
-  height: 90%;
+  position: fixed;  
+  width: 100%;
+  height: 100%;
   /* background-color: white; */
-  z-index: 11;
+  z-index: 5;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
 }
@@ -156,7 +159,7 @@ button:focus-visible {
 
 #popupdarkbg {
   position: fixed;
-  z-index: 5;
+  z-index: 3;
   left: 0;
   top: 0;
   width: 100%;
@@ -196,8 +199,10 @@ button:focus-visible {
   font-size: 16px;
   border: none;
   cursor: pointer;
-  /* left: 1vh;
-  position: absolute; */
+  
+ 
+  
+  
   
 }
 
@@ -206,16 +211,17 @@ button:focus-visible {
   display: inline-block;
   left: 2vh;
   top: 8%;
+  z-index: 12;
   
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: rgba(3, 3, 3, 0.8);
+  background-color: rgba(0, 0, 0, 0.55);
   padding: 25px;
   left: 6%;
-  top: 87.6%;
+  top: 87.1%;
   /* min-width: 160px; */
   z-index: 1;
   color: white;
@@ -232,5 +238,43 @@ button:focus-visible {
   font-size: 13px;
   text-align: center;
   font-family: Inter;
+}
+/* mobile */
+@media only screen and (max-width: 640px) {
+ #dropdown{
+ left: -1vh;
+ top: 3%;
+ 
+ }
+  /* #sidebar{
+    width: 15vh;
+    top: 10%;
+  }
+ .dropdown-content{
+  width: 8.8vh;
+  left: 11.1%;
+  top: 80%;
+ } */
+ #logobtn {
+  width: 13vh;
+ } 
+ .dropdown-content div h4{
+  font-size: 7px;
+  text-align: center;
+ }
+ .dropdown-content div p{
+  font-size: 8px;
+  text-align: center;
+ }
+}
+/* tab */
+@media only screen and (max-width: 1024px) {
+  #dropdown{
+    left: 1%;
+    top: 5%;
+  }  
+  #logo{
+    top:2%;
+  }
 }
 

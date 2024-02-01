@@ -1,5 +1,4 @@
 import React from 'react';
-import { state } from '../store';
 import { AiFillCloseCircle } from 'react-icons/ai';
 
 

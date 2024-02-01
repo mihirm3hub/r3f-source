@@ -1,7 +1,9 @@
 import { OrbitControls } from '@react-three/drei'
 import Sitecontext from './Sitecontext'
 import { Environment } from '@react-three/drei'
-import { Model } from './model'
+//  import { Model } from './model'
+import Ammenities from './Ammenities'
+ import { Model } from './newmodel'
 
 
 export default function Experience()
@@ -13,7 +15,7 @@ export default function Experience()
         <Environment
         files={"./lilienstein_4k.hdr"} background 
         ></Environment>  
-        {/* <OrbitControls makeDefault /> */}
+        {/* <OrbitControls enabled={true} /> */}
         
        
 
@@ -26,6 +28,8 @@ export default function Experience()
         
            {/* <Sitecontext scale={0.0000001}  /> */}
            <Model/>
+           {/* <Ammenities/> */}
+           
           
     </>
 }

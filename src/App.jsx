@@ -126,11 +126,13 @@ export default function App() {
     <Canvas
       shadows
       camera={{
-        fov: 45,
+        fov: 22.895,
         near: 0.1,
-        far: 200,
-        position: [-15,25,25],
-        rotation: [-55, 35, 30]
+        far: 1000,
+        position: [31.401, 13.534, 42.827],
+        rotation: [-0.32, 0.604, 0.186]
+
+       
       }}
       // {...gestureBind()}
     >

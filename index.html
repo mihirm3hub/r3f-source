@@ -8,14 +8,16 @@
   <title>Chakan Site</title>
 </head>
 
+
+
 <body>
-  <div id="Logo"><img src="./images/logo.png" style="object-fit: contain;" alt="logoimg" /></div>
+  <div id="Logo"><img id="logobtn" src="./images/logo.png" style="object-fit: contain;" alt="logoimg" /></div>
   <div id="root"></div>
   <div id="bottombar">
-    <img id="locationbtn" src="./images/location.png" style="object-fit: contain;" />
-    <img id="scenebtn" src="./images/site_clicked.png" style="object-fit: contain;" />
-    <img id="vehiclesbtn" src="./images/vehicles.png" style="object-fit: contain;" />
-    <img id="arbtn" src="./images/ar.png" style="object-fit: contain;" />
+    <img id="locationbtn" class="bottombtn" src="./images/location.png" style="object-fit: contain;" />
+    <img id="scenebtn" class="bottombtn" src="./images/site_clicked.png" style="object-fit: contain;" />
+    <img id="vehiclesbtn" class="bottombtn "  src="./images/vehicles.png" style="object-fit: contain;" />
+    <img id="arbtn" class="bottombtn" src="./images/ar.png" style="object-fit: contain;" />
   </div>
 <div >
   <img id="cbtn" src="./images/Close.png" alt="Close Button" />
@@ -65,14 +67,21 @@
   </div>
 
 
+  
   <script>
     document.getElementById('arbtn').addEventListener('click', (e) => {
       window.open('https://archiverseai.8thwall.app/indospace-afr/', '_blank')
     })
     document.getElementsByClassName('close')[0].addEventListener('click', (ev) => {
       document.getElementById('popup').style.display = 'none'
+      document.getElementById('sidebar').src = './images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png'
+
       document.getElementById('popupdarkbg').style.display = 'none'
     })
+    document.getElementById('logobtn').addEventListener('click', (e) => {
+      window.open('https://www.indospace.in/', '_blank')
+    })
+   
    
   //document.getElementById('cbtn').addEventListener('click', () => { window.handleButtonClick() })
   </script>
