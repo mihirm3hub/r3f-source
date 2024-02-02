@@ -9,7 +9,7 @@ import { TextureLoader } from "three";
 import * as THREE from 'three'
 
 let meshname = 'Default'
-
+let runOnce = false
 let isDragging = false;
 let startX
 let camTimeScale = 0
@@ -118,7 +118,6 @@ export function Model(props) {
 
   function stopDrag(e) {
     lastXvalue = xdrag
-    
     isDragging = false
   }
 
@@ -292,7 +291,7 @@ export function Model(props) {
     document.getElementById('dropdown-content').style.display = 'none'
     document.getElementById('sidebar').src = './images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png'
     document.getElementById('bottombar').style.display='block'
-
+    runOnce = false
     // isOpen = false;
   })
  
@@ -315,14 +314,17 @@ export function Model(props) {
   useFrame(state => {
     console.log(meshname)
     if (clicked) {
-      setCameraPosRot(meshname)
-      state.camera.rotation.set(camRot.x, camRot.y, camRot.z)
-      state.camera.position.set(camPos.x, camPos.y, camPos.z)
-      state.camera.updateProjectionMatrix()
+      if(!runOnce){
+        setCameraPosRot(meshname)
+        state.camera.rotation.set(camRot.x, camRot.y, camRot.z)
+        state.camera.position.set(camPos.x, camPos.y, camPos.z)
+        state.camera.updateProjectionMatrix()
+        runOnce = true
+      }      
       closeBtn.style.display = 'block'
       if(isDragging){
         state.camera.rotation.y = camRot.y +  state.pointer.x /10
-        // state.camera.rotation.z = camRot.z +  state.pointer.y /10
+        // state.camera.position.x = camPos.x +  state.pointer.x *2
       }
       
     }
@@ -582,8 +584,7 @@ export function Model(props) {
           document.getElementById('popupiframe').src = 'https://equanimoustech.com/Indospace/VR3/',
           document.getElementById('dropdown-content').style.display = 'none',
           document.getElementById('sidebar').src = './images/2024.01.29_SURF_STREET.VIEW.02_WINDOW.OPEN-71.png'
-           )}
-        
+        )}
         scale={6}
       >
         <circleGeometry args={[0.07, 32]} />
