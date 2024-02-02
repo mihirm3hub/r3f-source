@@ -1,5 +1,5 @@
 import { OrbitControls } from '@react-three/drei'
-import Sitecontext from './Sitecontext'
+// import Sitecontext from './Sitecontext'
 import { Environment } from '@react-three/drei'
 //  import { Model } from './model'
 import Ammenities from './Ammenities'
