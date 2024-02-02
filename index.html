@@ -14,30 +14,46 @@
   <div id="Logo"><img id="logobtn" src="./images/logo.png" style="object-fit: contain;" alt="logoimg" /></div>
   <div id="root"></div>
   <div id="bottombar">
-    <img id="locationbtn" class="bottombtn" src="./images/location.png" style="object-fit: contain;" />
-    <img id="scenebtn" class="bottombtn" src="./images/site_clicked.png" style="object-fit: contain;" />
-    <img id="vehiclesbtn" class="bottombtn "  src="./images/vehicles.png" style="object-fit: contain;" />
-    <img id="arbtn" class="bottombtn" src="./images/ar.png" style="object-fit: contain;" />
+    <img id="locationbtn" class="bottombtn" src="./images/2024.01.29_ICON_MAP_BUTT.UNCLICKED-53.png"
+      onmouseover="this.src=`./images/MAP_BUTT.png`"
+      onmouseout="this.src=`./images/2024.01.29_ICON_MAP_BUTT.UNCLICKED-53.png`"
+      onclick="this.src=`./images/MAP_BUTT_SELECTED.png`"
+      style="object-fit: contain;" />
+    <img id="scenebtn" class="bottombtn" src="./images/2024.01.29_ICON_OVERALL.VIEW_BUTT.UNCLICKED-50.png"
+      onmouseover="this.src=`./images/DEFAULT_BUTT.png`"
+      onmouseout="this.src=`./images/2024.01.29_ICON_OVERALL.VIEW_BUTT.UNCLICKED-50.png`"
+      onclick="this.src=`./images/DEFAULT_BUTT_SELECTED.png`"
+      style="object-fit: contain;" />
+    <img id="vehiclesbtn" class="bottombtn " src="./images/2024.01.29_ICON_AMENITIES.VIEW_BUTT.UNCLICKED-51.png"
+      onmouseover="this.src=`./images/AMENITY_BUTT.png`"
+      onmouseout="this.src=`./images/2024.01.29_ICON_AMENITIES.VIEW_BUTT.UNCLICKED-51.png`"
+      onclick="this.src=`./images/AMENITY_BUTT_SELECTED.png`"
+      style="object-fit: contain;" />
+    <img id="arbtn" class="bottombtn" src="./images/2024.01.29_ICON_AR_BUTT.UNCLICKED-52.png"
+      onmouseover="this.src=`./images/AR_BUTT.png`"
+      onmouseout="this.src=`./images/2024.01.29_ICON_AR_BUTT.UNCLICKED-52.png`"
+      onclick="this.src=`./images/AR_BUTT_SELECTED.png`"
+      style="object-fit: contain;" />
   </div>
-<div >
-  <img id="cbtn" src="./images/Close.png" alt="Close Button" />
-</div>
+  <div>
+    <img id="cbtn" src="./images/Close.png" alt="Close Button" />
+  </div>
   <div id="popup">
-   <img class="close" src="./images/Close.png"/>
+    <img class="close" src="./images/Close.png" />
     <iframe id="popupiframe"></iframe>
   </div>
- 
+
   <div id="popupdarkbg"></div>
 
-  <div id="dropdown" >
+  <div id="dropdown">
     <img id="sidebar" alt="Dropdown Button" src="./images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png" />
     <div class="dropdown-content" id="dropdown-content">
       <div>
-        <h4 id="bnmtitle">Indospace Industrial</h4>
-        <p id="bname">Warehousing and logistic Park</p>
+        <h4 id="bnmtitle">IndoSpace Industrial<br>Warehousing & Logistics Park</h4>
+        <p id="bname"></p>
 
       </div>
-      
+
       <div>
         <h4 id="fareatitle">Total Land Parcel</h4>
         <p id="farea"> 186 Acres</p>
@@ -47,17 +63,20 @@
         <p id="marea">62 Acres</p>
       </div>
       <div>
-        <h4 id="totbareatitle">Total Chargebale Area</h4>
-        <p id="totbarea">14,35,315 sq ft(1,33,344 sq m)</p>
+        <h4 id="totbareatitle">Total Chargeable Area</h4>
+        <p id="totbarea">14,35,315 sq.ft.<br>(1,33,344 sq.m.)</p>
 
       </div>
-      <div>
+      <!-- <div>
         <h4 id="clrhgttitle">Type Of Land</h4>
         <p id="clrhgt">Industrial</p>
-      </div>
+      </div> -->
       <div>
         <h4 id="Usage">Usage</h4>
-        <p id="Usage-P">Industrial,warehousing and Logistic Park</p>
+        <p id="Usage-P">Industrial, Warehousing & Logistics park</p>
+      </div>
+      <div>
+        <h4> __________________________</h4>
       </div>
 
     </div>
@@ -65,10 +84,10 @@
   </div>
 
   </div>
- 
 
 
-  
+
+
   <script>
     document.getElementById('arbtn').addEventListener('click', (e) => {
       window.open('https://archiverseai.8thwall.app/indospace-afr/', '_blank')
@@ -82,9 +101,9 @@
     document.getElementById('logobtn').addEventListener('click', (e) => {
       window.open('https://www.indospace.in/', '_blank')
     })
-   
-   
-  //document.getElementById('cbtn').addEventListener('click', () => { window.handleButtonClick() })
+
+
+    //document.getElementById('cbtn').addEventListener('click', () => { window.handleButtonClick() })
   </script>
   <script type="module" src="/src/main.jsx"></script>
   <script>
@@ -118,8 +137,8 @@
     })
   </script> -->
   <script>
-    
- 
+
+
   </script>
 </body>
 

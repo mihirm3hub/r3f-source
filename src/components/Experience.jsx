@@ -28,7 +28,7 @@ export default function Experience()
         
            {/* <Sitecontext scale={0.0000001}  /> */}
            <Model/>
-           {/* <Ammenities/> */}
+           <Ammenities/>
            
           
     </>

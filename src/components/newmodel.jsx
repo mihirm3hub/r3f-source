@@ -42,14 +42,14 @@ export function Model(props) {
   const { nodes, materials, animations } = useGLTF("/FinalModel.glb");
   const { actions, mixer } = useAnimations(animations, group);
 
-  let img1 = './images/hotspot.png'
+  let img1 = './images/2024.01.29_ICON_HOTSPOT_BUTT.UNZOOM-43.png'
   let img2 = './images/B100.png'; // Change this to the path of your other texture
   let img3 = './images/B200.png'
   let img4 = "./images/B300.png"
   let img5 = "./images/B400.png"
   let img6 = "./images/B500.png"
-  let view = "./images/360view.png"
-
+  let view = "./images/2024.01.29_ICON_STREET.VIEW_BUTT-49.png"
+  let howeverdview = "./images/360_BUTT.png"
 
 
   const [hovered1, setHovered1] = useState(false);
@@ -57,6 +57,9 @@ export function Model(props) {
   const [hovered3, setHovered3] = useState(false);
   const [hovered4, setHovered4] = useState(false);
   const [hovered5, setHovered5] = useState(false);
+  const [hovered6, setHovered6] = useState(false);
+  const [hovered7, setHovered7] = useState(false);
+  const [hovered8, setHovered8] = useState(false);
 
 
 
@@ -68,6 +71,7 @@ export function Model(props) {
   const hotspottexHovered3 = useLoader(TextureLoader, img5);
   const hotspottexHovered4 = useLoader(TextureLoader, img6);
   const viewtex = useLoader(TextureLoader, view);
+  const howeverdviewtex = useLoader(TextureLoader, howeverdview);
 
  useEffect(() => void (actions["MainCameraAltActionClip"].play().paused = true), [])
   //   const b100Camera = document.querySelector("#Cam_B100");
@@ -97,9 +101,9 @@ export function Model(props) {
     xdrag = e.clientX - startX;
     xdrag = xdrag + lastXvalue
     // const y = e.clientY - startY;
-    if (isDragging && xdrag > 50) {
+    if (isDragging && xdrag > 10) {
       // console.log(x / 1000)
-      camTimeScale = xdrag / 1000
+      camTimeScale = xdrag / 2000
     }
     else {
       // console.log("Not ")
@@ -131,17 +135,17 @@ export function Model(props) {
         camRot.y = 0.715;
         camRot.z = 0.299;
         document.getElementById('bnmtitle').innerText = "Building name"
-        document.getElementById('bname').innerText = "B100(B100a+B100b"
+        document.getElementById('bname').innerText = "B100"
         document.getElementById('fareatitle').innerText = "Floor Area"
-        document.getElementById('farea').innerText = "2,92,552 sq ft(27,170sq m)"
+        document.getElementById('farea').innerText = "3,23,520 sq.ft. (30,056 sq.m.)"
         document.getElementById('mareatitle').innerText = "Mezzanine Area"
-        document.getElementById('marea').innerText = "5,382sq ft(27,640sq m)"
+        document.getElementById('marea').innerText = "5,382 sq.ft (500 sq.m)"
         document.getElementById('totbareatitle').innerText = "Total Buid-up Area"
-        document.getElementById('totbarea').innerText = "2,97,837 sq ft(27,640sq m)"
-        document.getElementById('clrhgttitle').innerText = "Clear Height"
-        document.getElementById('clrhgt').innerText = "12 meters minimum"
-        document.getElementById('Usage').style.display = 'none'
-        document.getElementById('Usage-P').style.display = 'none'
+        document.getElementById('totbarea').innerText = " 3,28,902 sq.ft (30,556 sq.m.)"
+        document.getElementById('Usage').innerText = "Clear Height"
+        document.getElementById('Usage-P').innerText = "12 meters minimum"
+        // document.getElementById('Usage').style.display = 'none'
+        // document.getElementById('Usage-P').style.display = 'none'
 
         break;
       case 'B200':
@@ -152,17 +156,17 @@ export function Model(props) {
         camRot.y = -0.625
         camRot.z = -0.184
         document.getElementById('bnmtitle').innerText = "Building name"
-        document.getElementById('bname').innerText = "B200(B200a+B200b"
+        document.getElementById('bname').innerText = "B200"
         document.getElementById('fareatitle').innerText = "Floor Area"
-        document.getElementById('farea').innerText = "3,05,157 sq ft(28,350 sq m)"
+        document.getElementById('farea').innerText = "3,05,157 sq.ft. (28,350 sq.m.)"
         document.getElementById('mareatitle').innerText = "Mezzanine Area"
-        document.getElementById('marea').innerText = "5,382sq ft(500 sq m)"
+        document.getElementById('marea').innerText = " 5,382 sq.ft (500 sq.m)"
         document.getElementById('totbareatitle').innerText = "Total Buid-up Area"
-        document.getElementById('totbarea').innerText = "3,10,539 sq ft(28,850 sq m)"
-        document.getElementById('clrhgttitle').innerText = "Clear Height"
-        document.getElementById('clrhgt').innerText = "12 meters minimum"
-        document.getElementById('Usage').style.display = 'none'
-        document.getElementById('Usage-P').style.display = 'none'
+        document.getElementById('totbarea').innerText = "3,10,539 sq.ft (28,850 sq.m.)"
+        document.getElementById('Usage').innerText = "Clear Height"
+        document.getElementById('Usage-P').innerText = "12 meters minimum"
+        // document.getElementById('Usage').style.display = 'none'
+        // document.getElementById('Usage-P').style.display = 'none'
 
         break;
       case 'B300':
@@ -173,38 +177,38 @@ export function Model(props) {
         camRot.y = 0.413
         camRot.z = 2.994
         document.getElementById('bnmtitle').innerText = "Building name"
-        document.getElementById('bname').innerText = "B300(B300a+B300b"
+        document.getElementById('bname').innerText = "B300"
         document.getElementById('fareatitle').innerText = "Floor Area"
-        document.getElementById('farea').innerText = "2,92,552 sq ft(27,170sq m)"
+        document.getElementById('farea').innerText = "4,07,995 sq.ft. (37,904 sq.m.)"
         document.getElementById('mareatitle').innerText = "Mezzanine Area"
-        document.getElementById('marea').innerText = "5,382sq ft(500 sq m)"
+        document.getElementById('marea').innerText = "5,382 sq.ft (500 sq.m)"
         document.getElementById('totbareatitle').innerText = "Total Buid-up Area"
-        document.getElementById('totbarea').innerText = "4,13,377 sq ft(38,404 sq m)"
-        document.getElementById('clrhgttitle').innerText = "Clear Height"
-        document.getElementById('clrhgt').innerText = "12 meters minimum"
-        document.getElementById('Usage').style.display = 'none'
-        document.getElementById('Usage-P').style.display = 'none'
+        document.getElementById('totbarea').innerText = "4,13,377 sq.ft (38,404 sq.m.)"
+        document.getElementById('Usage').innerText = "Clear Height"
+        document.getElementById('Usage-P').innerText = "12 meters minimum"
+        // document.getElementById('Usage').style.display = 'none'
+        // document.getElementById('Usage-P').style.display = 'none'
 
         break;
       case 'B400':
-        camPos.x = -9.624
-        camPos.y = 3.417
-        camPos.z = -4.656
-        camRot.x = -2.567
-        camRot.y = -1.043
-        camRot.z = -2.632
+        camPos.x = -8.113
+        camPos.y = 3.994
+        camPos.z = -6.434
+        camRot.x = -2.771
+        camRot.y = -0.715
+        camRot.z = -2.892
         document.getElementById('bnmtitle').innerText = "Building name"
-        document.getElementById('bname').innerText = "B400(B400a+B400b"
+        document.getElementById('bname').innerText = "B400"
         document.getElementById('fareatitle').innerText = "Floor Area"
-        document.getElementById('farea').innerText = "2,92,552 sq ft(27,170sq m)"
+        document.getElementById('farea').innerText = "2,60,982 sq.ft. (24,246 sq.m.)"
         document.getElementById('mareatitle').innerText = "Mezzanine Area"
-        document.getElementById('marea').innerText = "5,382sq ft(500 sq m)"
+        document.getElementById('marea').innerText = "5,382 sq.ft (500 sq.m)"
         document.getElementById('totbareatitle').innerText = "Total Buid-up Area"
-        document.getElementById('totbarea').innerText = "2,66,363 sq ft(24,746sq m)"
-        document.getElementById('clrhgttitle').innerText = "Clear Height"
-        document.getElementById('clrhgt').innerText = "12 meters minimum"
-        document.getElementById('Usage').style.display = 'none'
-        document.getElementById('Usage-P').style.display = 'none'
+        document.getElementById('totbarea').innerText = "2,66,363 sq.ft (24,746 sq.m.)"
+        document.getElementById('Usage').innerText = "Clear Height"
+        document.getElementById('Usage-P').innerText = "12 meters minimum"
+        // document.getElementById('Usage').style.display = 'none'
+        // document.getElementById('Usage-P').style.display = 'none'
 
 
         break;
@@ -216,17 +220,17 @@ export function Model(props) {
         camRot.y = -0.578
         camRot.z = -0.354
         document.getElementById('bnmtitle').innerText = "Building name"
-        document.getElementById('bname').innerText = "B500(B500a+B500b"
+        document.getElementById('bname').innerText = "B500"
         document.getElementById('fareatitle').innerText = "Floor Area"
-        document.getElementById('farea').innerText = "2,92,552 sq ft(27,170sq m)"
+        document.getElementById('farea').innerText = "1,41,804 sq.ft. (13,174 sq.m.)"
         document.getElementById('mareatitle').innerText = "Mezzanine Area"
-        document.getElementById('marea').innerText = "5,382sq ft(500 sq m)"
+        document.getElementById('marea').innerText = "5,382 sq.ft (500 sq.m)"
         document.getElementById('totbareatitle').innerText = "Total Buid-up Area"
-        document.getElementById('totbarea').innerText = "1,47,186 sq ft(13,674sq m)"
-        document.getElementById('clrhgttitle').innerText = "Clear Height"
-        document.getElementById('clrhgt').innerText = "12 meters minimum"
-        document.getElementById('Usage').style.display = 'none'
-        document.getElementById('Usage-P').style.display = 'none'
+        document.getElementById('totbarea').innerText = "1,47,186 sq.ft (13,674 sq.m.)"
+        document.getElementById('Usage').innerText = "Clear Height"
+        document.getElementById('Usage-P').innerText = "12 meters minimum"
+        // document.getElementById('Usage').style.display = 'none'
+        // document.getElementById('Usage-P').style.display = 'none'
 
         
 
@@ -240,18 +244,18 @@ export function Model(props) {
         camRot.y = 0.604
         camRot.z = 0.186
 
-        document.getElementById('bnmtitle').innerText = "Indospace Industrial"
-        document.getElementById('bname').innerText = "Warehousing and logistic Park"
+        document.getElementById('bnmtitle').innerHTML = "IndoSpace Industrial <br> Warehousing & Logistics Park"
+        document.getElementById('bname').innerText = ""
         document.getElementById('fareatitle').innerText = "Total Land Parcel"
         document.getElementById('farea').innerText = "186 Acres"
         document.getElementById('mareatitle').innerText = "Plot 1 Land Area"
         document.getElementById('marea').innerText = "62 Acres"
-        document.getElementById('totbareatitle').innerText = "Total Chargebale Area"
-        document.getElementById('totbarea').innerText = "14,35,315 sq ft(1,33,344 sq m)"
-        document.getElementById('clrhgttitle').innerText = "Type Of Land"
-        document.getElementById('clrhgt').innerText = "Industrial"
+        document.getElementById('totbareatitle').innerText = "Total Chargeable Area"
+        document.getElementById('totbarea').innerHTML = "14,35,315 sq.ft. <br> (1,33,344 sq.m.)"
+        // document.getElementById('clrhgttitle').innerText = "Type Of Land"
+        // document.getElementById('clrhgt').innerText = "Industrial"
         document.getElementById('Usage').innerText = "Usage"
-        document.getElementById('Usage-P').innerText = "Industrial,warehousing and Logistic Park"
+        document.getElementById('Usage-P').innerText = "Industrial, Warehousing & Logistics park"
         document.getElementById('Usage').style.display = 'block'
         document.getElementById('Usage-P').style.display = 'block'
       
@@ -342,7 +346,7 @@ export function Model(props) {
           actions["MainCameraAltActionClip"].time = THREE.MathUtils.lerp(actions["MainCameraAltActionClip"].time, actions["MainCameraAltActionClip"].getClip().duration * camTimeScale, 1)
         
       }else{
-        camTimeScale += 0.00025
+        camTimeScale += 0.00020
         if(camTimeScale >= 1){
           camTimeScale = 0
         } 
@@ -369,7 +373,7 @@ export function Model(props) {
 
   return (
     <>
-      {/* b500 */}
+      {/* b300 */}
       <mesh
         name="hotspotClick1"
         position={[-9.8, 2.75, 4.2]}
@@ -377,7 +381,7 @@ export function Model(props) {
         ref={modelRef1}
         
         onClick={() => {
-          meshname = 'B500'
+          meshname = 'B300'
           setClicked(true)
         }}
         
@@ -387,7 +391,7 @@ export function Model(props) {
       >
         <circleGeometry args={[0.07, 32]} />
         <meshBasicMaterial
-          map={hovered5 ? hotspottexHovered4 : hotspottex}
+          map={hovered5 ? hotspottexHovered2  : hotspottex}
           toneMapped={false}
           transparent={true}
           side={THREE.DoubleSide}
@@ -445,14 +449,14 @@ export function Model(props) {
         />
       </mesh>
 
-      {/* B300 */}
+      {/* B500 */}
       <mesh
 
         position={[2.1, 2.5, -5.5]}
         rotation={[0, 0, 0]}
         ref={modelRef4}
         onClick={() => {
-          meshname = 'B300'
+          meshname = 'B500'
           setClicked(true)
         }}
         onPointerOver={() => setHovered3(true)}
@@ -462,7 +466,7 @@ export function Model(props) {
       >
         <circleGeometry args={[0.07, 32]} />
         <meshBasicMaterial
-         map={hovered3 ? hotspottexHovered2 : hotspottex}
+         map={hovered3 ? hotspottexHovered4 : hotspottex}
 
           toneMapped={false}
           transparent={true}
@@ -504,6 +508,8 @@ export function Model(props) {
         ref={modelRef6}
         position={[-4.7, 1.8, 12.5]}
         rotation={[0, 0, 0]}
+        onPointerOver={() => setHovered6(true)}
+        onPointerOut={() => setHovered6(false)}
         onClick={() => (
           console.log('Clicked 360 view'),
           document.getElementById('popupdarkbg').style.display = 'block',
@@ -516,7 +522,7 @@ export function Model(props) {
       >
         <circleGeometry args={[0.07, 32]} />
         <meshBasicMaterial
-          map={viewtex}
+          map={hovered6 ? howeverdviewtex : viewtex}
           toneMapped={false}
           transparent={true}
           side={THREE.DoubleSide}
@@ -530,6 +536,8 @@ export function Model(props) {
         ref={modelRef7}
         position={[9.1, 1.8, 12.6]}
         rotation={[0, 0, 0]}
+        onPointerOver={() => setHovered7(true)}
+        onPointerOut={() => setHovered7(false)}
         onClick={() => (
           console.log('Clicked 360 view'),
           document.getElementById('popupdarkbg').style.display = 'block',
@@ -545,7 +553,7 @@ export function Model(props) {
       >
         <circleGeometry args={[0.07, 32]} />
         <meshBasicMaterial
-          map={viewtex}
+          map={hovered7 ? howeverdviewtex : viewtex}
           toneMapped={false}
           transparent={true}
           side={THREE.DoubleSide}
@@ -560,6 +568,8 @@ export function Model(props) {
          ref={modelRef8}
         position={[0.9,1.7,-2]}
         rotation={[0, 0, 0]}
+        onPointerOver={() => setHovered8(true)}
+        onPointerOut={() => setHovered8(false)}
         onClick={() => (
           console.log('Clicked 360 view'),
           document.getElementById('popupdarkbg').style.display = 'block',
@@ -573,7 +583,7 @@ export function Model(props) {
       >
         <circleGeometry args={[0.07, 32]} />
         <meshBasicMaterial
-          map={viewtex}
+          map={hovered8 ? howeverdviewtex : viewtex}
           toneMapped={false}
           transparent={true}
           side={THREE.DoubleSide}
