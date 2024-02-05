@@ -42,6 +42,8 @@ export function Model(props) {
   const { nodes, materials, animations } = useGLTF("/NewFinal.glb");
   const { actions, mixer } = useAnimations(animations, group);
 
+
+
   let img1 = './images/2024.01.29_ICON_HOTSPOT_BUTT.UNZOOM-43.png'
   let img2 = './images/B100.png'; // Change this to the path of your other texture
   let img3 = './images/B200.png'
@@ -49,7 +51,16 @@ export function Model(props) {
   let img5 = "./images/B400.png"
   let img6 = "./images/B500.png"
   let view = "./images/360viewnew.png"
-  let howeverdview = "./images/360BUTTHOVER.png"
+   let howeverdview = "./images/360BUTTHOVER.png"
+  
+  const hotspottex = useLoader(TextureLoader, img1);
+  const hotspottexHovered = useLoader(TextureLoader, img2);
+  const hotspottexHovered1 = useLoader(TextureLoader, img3);
+  const hotspottexHovered2 = useLoader(TextureLoader, img4);
+  const hotspottexHovered3 = useLoader(TextureLoader, img5);
+  const hotspottexHovered4 = useLoader(TextureLoader, img6);
+  const viewtex = useLoader(TextureLoader, view);
+  const howeverdviewtex = useLoader(TextureLoader, howeverdview);
 
 
   const [hovered1, setHovered1] = useState(false);
@@ -64,14 +75,7 @@ export function Model(props) {
 
 
 
-  const hotspottex = useLoader(TextureLoader, img1);
-  const hotspottexHovered = useLoader(TextureLoader, img2);
-  const hotspottexHovered1 = useLoader(TextureLoader, img3);
-  const hotspottexHovered2 = useLoader(TextureLoader, img4);
-  const hotspottexHovered3 = useLoader(TextureLoader, img5);
-  const hotspottexHovered4 = useLoader(TextureLoader, img6);
-  const viewtex = useLoader(TextureLoader, view);
-  const howeverdviewtex = useLoader(TextureLoader, howeverdview);
+
 
  useEffect(() => void (actions["MainCameraAltActionClip"].play().paused = true), [])
   //   const b100Camera = document.querySelector("#Cam_B100");
@@ -312,7 +316,7 @@ export function Model(props) {
   // })
 
   useFrame(state => {
-    console.log(meshname)
+    // console.log(meshname)
     if (clicked) {
       if(!runOnce){
         setCameraPosRot(meshname)
@@ -356,14 +360,14 @@ export function Model(props) {
         } 
           
       actions["MainCameraAltActionClip"].time = THREE.MathUtils.lerp(actions["MainCameraAltActionClip"].time, actions["MainCameraAltActionClip"].getClip().duration * camTimeScale, 1)
-        modelRef1.current.lookAt(state.camera.position)
-        modelRef2.current.lookAt(state.camera.position)
-        modelRef3.current.lookAt(state.camera.position)
-        modelRef4.current.lookAt(state.camera.position)
-        modelRef5.current.lookAt(state.camera.position)
-        modelRef6.current.lookAt(state.camera.position)
-        modelRef7.current.lookAt(state.camera.position)
-        modelRef8.current.lookAt(state.camera.position)
+        modelRef1?.current?.lookAt(state.camera.position)
+        modelRef2?.current?.lookAt(state.camera.position)
+        modelRef3?.current?.lookAt(state.camera.position)
+        modelRef4?.current?.lookAt(state.camera.position)
+        modelRef5?.current?.lookAt(state.camera.position)
+        modelRef6?.current?.lookAt(state.camera.position)
+        modelRef7?.current?.lookAt(state.camera.position)
+        modelRef8?.current?.lookAt(state.camera.position)
     }
 
 
@@ -543,12 +547,13 @@ export function Model(props) {
       onPointerOver={() => setHovered6(true)}
       onPointerOut={() => setHovered6(false)}
       onClick={() => (
+        meshname='360View-1',
         setHovered6(false),
-        setVisibility(false),
+        // setVisibility(false),
         console.log('Clicked 360 view'),
         document.getElementById('popupdarkbg').style.display = 'block',
         document.getElementById('popup').style.display = 'block',
-        document.getElementById('popupiframe').src = 'https://equanimoustech.com/Indospace/VR1/',
+        document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace/VR1/',
         document.getElementById('dropdown-content').style.display = 'none',
         document.getElementById('sidebar').src = './images/2024.01.29_SURF_STREET.VIEW.01_WINDOW.OPEN-70.png'
       )}
@@ -576,12 +581,13 @@ export function Model(props) {
         onPointerOver={() => setHovered7(true)}
         onPointerOut={() => setHovered7(false)}
         onClick={() => (
-          setVisibility(false),
+          meshname='360View-2',
+          // setVisibility(false),
           setHovered7(false),
           console.log('Clicked 360 view'),
           document.getElementById('popupdarkbg').style.display = 'block',
           document.getElementById('popup').style.display = 'block',
-          document.getElementById('popupiframe').src = 'https://equanimoustech.com/Indospace/VR3/',
+          document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace/VR3/',
           document.getElementById('dropdown-content').style.display = 'none',
           document.getElementById('sidebar').src = './images/2024.01.29_SURF_STREET.VIEW.02_WINDOW.OPEN-71.png'
         )}
@@ -612,12 +618,13 @@ export function Model(props) {
       onPointerOver={() => setHovered8(true)}
       onPointerOut={() => setHovered8(false)}
       onClick={() => (
-        setVisibility(false),
+        meshname='360View-3',
+        // setVisibility(false),
         setHovered8(false),
         console.log('Clicked 360 view'),
         document.getElementById('popupdarkbg').style.display = 'block',
         document.getElementById('popup').style.display = 'block',
-        document.getElementById('popupiframe').src = 'https://equanimoustech.com/Indospace/VR2/',
+        document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace/VR2/',
         document.getElementById('dropdown-content').style.display = 'none',
         document.getElementById('sidebar').src = './images/2024.01.29_SURF_STREET.VIEW.03_WINDOW.OPEN-72.png'
         

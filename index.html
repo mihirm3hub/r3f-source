@@ -40,7 +40,7 @@
   </div>
   <div id="popup">
     <img class="close" src="./images/Close.png" />
-    <iframe id="popupiframe"></iframe>
+    <iframe id="popupiframe"  allow="xr-spatial-tracking"></iframe>
   </div>
 
   <div id="popupdarkbg"></div>
@@ -106,10 +106,10 @@
     //document.getElementById('cbtn').addEventListener('click', () => { window.handleButtonClick() })
   </script>
   <script type="module" src="/src/main.jsx"></script>
-  <script>
+  <!-- <script>
       // draw the FPS
       ;;; (function () { var script = document.createElement('script'); script.onload = function () { var stats = new Stats(); document.body.appendChild(stats.dom); requestAnimationFrame(function loop() { stats.update(); requestAnimationFrame(loop) }); }; script.src = '//mrdoob.github.io/stats.js/build/stats.min.js'; document.head.appendChild(script); })()
-  </script>
+  </script> -->
   <!-- <script>
     //     window.onclick=function(event){
     //       if (!event.target.matches('#dropbtn')){

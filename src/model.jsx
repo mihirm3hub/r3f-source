@@ -3003,5 +3003,5 @@ export function Model(props) {
   );
 }
 
-useGLTF.preload("/Test.glb");
+ useGLTF.preload("/Test.glb");
 

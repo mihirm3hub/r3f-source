@@ -248,40 +248,101 @@ button:focus-visible {
 }
 /* mobile */
 @media only screen and (max-width: 640px) {
- #dropdown{
- left: -1vh;
- top: 3%;
- 
+
+
+  #dropdown {
+    top: 4vh;
+    left: -1vh;
+}
+ #logobtn{
+  width: 16vh;
  }
-  /* #sidebar{
-    width: 15vh;
+
+ #bottombar {
+  width: 46vh;
+  height: 7vh;
+}
+ #locationbtn {
+width: 4vh; 
+height: 4vh;
+left: 0vh;
+}
+#scenebtn {
+  width: 4vh; 
+  height: 4vh;
+  left: 17vh;
+}
+#vehiclesbtn {
+  width: 4vh; 
+  height: 4vh;
+}
+#arbtn{
+  width: 4vh; 
+  height: 4vh;
+} 
+
+  #sidebar{
+    width: 19vh;
     top: 10%;
   }
- .dropdown-content{
-  width: 8.8vh;
-  left: 11.1%;
-  top: 80%;
- } */
- #logobtn {
-  width: 13vh;
- } 
+  .dropdown-content {
+    width: 12.84vh;
+    left: 2vh;
+    top: 13vh;
+}
+ 
  .dropdown-content div h4{
-  font-size: 7px;
-  text-align: center;
- }
- .dropdown-content div p{
   font-size: 8px;
   text-align: center;
  }
+ .dropdown-content div p{
+  font-size: 9px;
+  text-align: center;
+ } 
 }
 /* tab */
 @media only screen and (max-width: 1024px) {
-  #dropdown{
-    left: 1%;
+  #dropdown {
+    left: 0vh;
     top: 5%;
-  }  
-  #logo{
-    top:2%;
+}
+  #logobtn{
+    width: 18vh;
   }
+  #sidebar{
+    width: 22vh;
+    
+  }
+  .dropdown-content {
+    width: 17vh;
+    left: 1.6vh;
+    top: 14vh;
+}
+.dropdown-content div h4{
+  font-size: 16px;
+  text-align: center;
+ }
+ .dropdown-content div p{
+  font-size: 18px;
+  text-align: center;
+ } 
+ #locationbtn {
+  width: 6vh; 
+  height: 6vh;
+  left: 0vh;
+  }
+  #scenebtn {
+    width: 6vh;
+    height: 6vh;
+    left: 27vh;
+}
+  #vehiclesbtn {
+    width: 6vh; 
+    height: 6vh;
+  }
+  #arbtn{
+    width: 6vh; 
+    height: 6vh;
+  } 
 }
 
