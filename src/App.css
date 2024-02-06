@@ -1,5 +1,5 @@
-@font-face{
-  font-family:Inter ;
+@font-face {
+  font-family: Inter;
   src: url('Inter-VariableFont_slnt,wght.ttf');
 }
 
@@ -105,9 +105,10 @@ button:focus-visible {
   padding: 2%;
   position: relative;
   cursor: pointer;
-  
+
 
 }
+
 /* locationbtn:hover{
   border-color: white;
 } */
@@ -139,6 +140,7 @@ button:focus-visible {
   cursor: pointer;
 
 }
+
 /* #arbtn:hover {
   
   box-shadow: 0 0 0 2px white;
@@ -146,7 +148,7 @@ button:focus-visible {
 
 #popup {
   display: none;
-  position: fixed;  
+  position: fixed;
   width: 100%;
   height: 100%;
   /* background-color: white; */
@@ -176,8 +178,8 @@ button:focus-visible {
 }
 
 #cbtn {
-  
- display: none;
+
+  display: none;
   right: 6%;
   width: 3%;
   position: absolute;
@@ -205,7 +207,7 @@ button:focus-visible {
   font-size: 16px;
   border: none;
   cursor: pointer;
-  }
+}
 
 
 
@@ -215,7 +217,7 @@ button:focus-visible {
   left: 2vh;
   top: 8%;
   z-index: 12;
-  
+
 }
 
 .dropdown-content {
@@ -246,103 +248,318 @@ button:focus-visible {
   font-family: Inter;
   margin: 2px;
 }
-/* mobile */
-@media only screen and (max-width: 640px) {
+#instructionPg {
+  display: block;
+  z-index: 98;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-image: url(./images/instructionPG.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+.logo {
+  z-index: 12;
+  position: absolute;
+  top: 2vh;
+  left: 2vw;
+  height: 3.6vw;
+  width: 20vw;
+  cursor: pointer;
+}
+#LoaderMain {
+  display: block;
+  z-index: 99;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-image: url(./images/LoaderBg.png);
+  background-repeat: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
+#loadingLogo {
+  top: 5%;
+  left: 5%;
+}
+
+#LoaderMain p {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  font-size: 27px;
+  width: 40vw;
+  font-family: Inter;
+  color: white;
+}
+
+#LoaderMain h3 {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  font-size: 50px;
+  width: 55vw;
+  font-family: Inter;
+  color: white;
+}
+
+#loaderBottomBar {
+  position: absolute;
+  height: 12.5vh;
+  width: 80vw;
+  top: 75vh;
+  left: 10vw;
+  background-color: #000000a1;
+  backdrop-filter: blur(2px);
+}
+
+#loaderBottomBar img {
+  object-fit: contain;
+  width: 15vw;
+}
+
+#loaderBottomBar p {
+  font-size: 20px;
+  left: 18vw;
+  width: 55vw;
+}
+
+.loader {
+  width: 70%;
+  height: 16px;
+  display: inline-block;
+  position: relative;
+  background: rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+  left: 2%;
+  top: -15%;
+}
+.loader::after {
+  content: '';  
+  box-sizing: border-box;
+  width: 0;
+  height: 16px;
+  background: #FFF;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: animFw 10s linear infinite;
+}
+
+@keyframes animFw {
+  0% {
+    width: 0;
+  }
+  50% {
+    width:100%;
+}
+}
+
+/* mobile */
+@media only screen and (max-width: 640px) and (orientation:portrait) {
 
   #dropdown {
     top: 4vh;
     left: -1vh;
-}
- #logobtn{
-  width: 16vh;
- }
+  }
 
- #bottombar {
-  width: 46vh;
-  height: 7vh;
-}
- #locationbtn {
-width: 4vh; 
-height: 4vh;
-left: 0vh;
-}
-#scenebtn {
-  width: 4vh; 
-  height: 4vh;
-  left: 17vh;
-}
-#vehiclesbtn {
-  width: 4vh; 
-  height: 4vh;
-}
-#arbtn{
-  width: 4vh; 
-  height: 4vh;
-} 
+  #logobtn {
+    width: 16vh;
+  }
 
-  #sidebar{
+  #bottombar {
+    width: 46vh;
+    height: 7vh;
+  }
+
+  #locationbtn {
+    width: 4vh;
+    height: 4vh;
+    left: 0vh;
+  }
+
+  #scenebtn {
+    width: 4vh;
+    height: 4vh;
+    left: 17vh;
+  }
+
+  #vehiclesbtn {
+    width: 4vh;
+    height: 4vh;
+  }
+
+  #arbtn {
+    width: 4vh;
+    height: 4vh;
+  }
+
+  #sidebar {
     width: 19vh;
     top: 10%;
   }
-  .dropdown-content {
+
+  #dropdown-content {
     width: 12.84vh;
     left: 2vh;
     top: 13vh;
-}
- 
- .dropdown-content div h4{
-  font-size: 8px;
-  text-align: center;
- }
- .dropdown-content div p{
-  font-size: 9px;
-  text-align: center;
- } 
-}
-/* tab */
-@media only screen and (max-width: 1024px) {
-  #dropdown {
-    left: 0vh;
-    top: 5%;
-}
-  #logobtn{
-    width: 18vh;
   }
-  #sidebar{
-    width: 22vh;
-    
+
+  .dropdown-content div h4 {
+    font-size: 8px;
+    text-align: center;
   }
-  .dropdown-content {
-    width: 17vh;
-    left: 1.6vh;
-    top: 14vh;
-}
-.dropdown-content div h4{
-  font-size: 16px;
-  text-align: center;
- }
- .dropdown-content div p{
-  font-size: 18px;
-  text-align: center;
- } 
- #locationbtn {
-  width: 6vh; 
-  height: 6vh;
-  left: 0vh;
+
+  .dropdown-content div p {
+    font-size: 9px;
+    text-align: center;
   }
-  #scenebtn {
-    width: 6vh;
-    height: 6vh;
-    left: 27vh;
-}
-  #vehiclesbtn {
-    width: 6vh; 
-    height: 6vh;
-  }
-  #arbtn{
-    width: 6vh; 
-    height: 6vh;
-  } 
 }
 
+/* Mobile Landscape */
+@media only screen and (max-width:1023px) and (orientation:landscape) {
+
+  #Logo {
+    top: 5vh;
+    left: 5vw;
+  }
+
+  #logobtn {
+    width: 15vw;
+  }
+  #bottombar {
+
+    height: 17vh;
+  }
+
+  #dropdown {
+    left: 0vh;
+  }
+
+  #locationbtn {
+    width: 10vh;
+    height: 10vh;
+    left: 0vh;
+  }
+
+  #scenebtn {
+    width: 10vh;
+    height: 10vh;
+    left: 89vh;
+  }
+
+  #vehiclesbtn {
+    width: 10vh;
+    height: 10vh;
+  }
+
+  #arbtn {
+    width: 10vh;
+    height: 10vh;
+  }
+}
+
+/* Tablet Potrait */
+@media only screen and (min-width: 768px) and (orientation:portrait) {
+  #logobtn {
+    width: 20vh;
+  }
+
+  #dropdown {
+    left: 0vh;
+    top: 6vh;
+  }
+
+  #sidebar {
+    width: 24vh;
+  }
+
+  #dropdown-content {
+    width: 19.2vh;
+    left: 1.5vh;
+
+  }
+
+  .dropdown-content div h4 {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .dropdown-content div p {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  #bottombar {
+    width: 80vh;
+    height: 9vh;
+  }
+
+  #locationbtn {
+    width: 5vh;
+    height: 5vh;
+    left: 0vh;
+
+  }
+
+  #scenebtn {
+    width: 5vh;
+    height: 5vh;
+    left: 26vh;
+
+  }
+
+  #vehiclesbtn {
+    width: 5vh;
+    height: 5vh;
+  }
+
+  #arbtn {
+    width: 5vh;
+    height: 5vh;
+  }
+  
+
+}
+
+/* tablet landscape mode */
+/* @media only screen and (min-width: 1024px) and (orientation:landscape) {
+  #logobtn {
+    width: 22vh
+  }
+
+  #dropdown {
+    left: 0vh;
+    top: 6vh;
+  }
+
+  #locationbtn {
+    width: 8vh;
+    height: 8vh;
+    left: 0vh;
+
+  }
+
+  #scenebtn {
+    width: 8vh;
+    height: 8vh;
+    left: 56vh;
+
+  }
+
+  #vehiclesbtn {
+    width: 8vh;
+    height: 8vh;
+  }
+
+  #arbtn {
+    width: 8vh;
+    height: 8vh;
+  }
+} */

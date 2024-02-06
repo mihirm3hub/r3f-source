@@ -79,11 +79,18 @@ function Effects() {
   )
 }
 
+function progressChecke(num) {
+  if (num > 0) {
+    document.getElementById('LoaderMain').style.display = 'block'
+    window.instructionPgVisible = true
+  }
+  if (num == 100) {
+    document.getElementById('LoaderMain').style.display = 'none'
+  }
+}
 function Loader() {
   const { progress } = useProgress()
- 
-
-  return <Html center>{progress} % loaded</Html>
+  return progressChecke(progress)
 }
 
 

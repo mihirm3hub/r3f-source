@@ -44,23 +44,25 @@ export function Model(props) {
 
 
 
-  let img1 = './images/2024.01.29_ICON_HOTSPOT_BUTT.UNZOOM-43.png'
-  let img2 = './images/B100.png'; // Change this to the path of your other texture
-  let img3 = './images/B200.png'
-  let img4 = "./images/B300.png"
-  let img5 = "./images/B400.png"
-  let img6 = "./images/B500.png"
-  let view = "./images/360viewnew.png"
-   let howeverdview = "./images/360BUTTHOVER.png"
+  // let img1 = './images/2024.01.29_ICON_HOTSPOT_BUTT.UNZOOM-43.png'
+  // let img2 = './images/B100.png'; // Change this to the path of your other texture
+  // let img3 = './images/B200.png'
+  // let img4 = "./images/B300.png"
+  // let img5 = "./images/B400.png"
+  // let img6 = "./images/B500.png"
+  // let view = "./images/360viewnew.png"
+  // let howeverdview = "./images/360BUTTHOVER.png"
   
-  const hotspottex = useLoader(TextureLoader, img1);
-  const hotspottexHovered = useLoader(TextureLoader, img2);
-  const hotspottexHovered1 = useLoader(TextureLoader, img3);
-  const hotspottexHovered2 = useLoader(TextureLoader, img4);
-  const hotspottexHovered3 = useLoader(TextureLoader, img5);
-  const hotspottexHovered4 = useLoader(TextureLoader, img6);
-  const viewtex = useLoader(TextureLoader, view);
-  const howeverdviewtex = useLoader(TextureLoader, howeverdview);
+  const hotspottex = useLoader(TextureLoader, './images/2024.01.29_ICON_HOTSPOT_BUTT.UNZOOM-43.png');
+  const hotspottexHovered = useLoader(TextureLoader,  './images/B100.png');
+  const hotspottexHovered1 = useLoader(TextureLoader, './images/B200.png');
+  const hotspottexHovered2 = useLoader(TextureLoader, "./images/B300.png");
+  const hotspottexHovered3 = useLoader(TextureLoader, "./images/B400.png");
+  const hotspottexHovered4 = useLoader(TextureLoader, "./images/B500.png");
+  const viewtex = useLoader(TextureLoader, "./images/360viewnew.png");
+  const howeverdviewtex = useLoader(TextureLoader,"./images/360BUTTHOVER.png");
+
+
 
 
   const [hovered1, setHovered1] = useState(false);
@@ -553,7 +555,7 @@ export function Model(props) {
         console.log('Clicked 360 view'),
         document.getElementById('popupdarkbg').style.display = 'block',
         document.getElementById('popup').style.display = 'block',
-        document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace/VR1/',
+        document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR1/',
         document.getElementById('dropdown-content').style.display = 'none',
         document.getElementById('sidebar').src = './images/2024.01.29_SURF_STREET.VIEW.01_WINDOW.OPEN-70.png'
       )}
@@ -587,7 +589,7 @@ export function Model(props) {
           console.log('Clicked 360 view'),
           document.getElementById('popupdarkbg').style.display = 'block',
           document.getElementById('popup').style.display = 'block',
-          document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace/VR3/',
+          document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR3/',
           document.getElementById('dropdown-content').style.display = 'none',
           document.getElementById('sidebar').src = './images/2024.01.29_SURF_STREET.VIEW.02_WINDOW.OPEN-71.png'
         )}
@@ -624,7 +626,7 @@ export function Model(props) {
         console.log('Clicked 360 view'),
         document.getElementById('popupdarkbg').style.display = 'block',
         document.getElementById('popup').style.display = 'block',
-        document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace/VR2/',
+        document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR2/',
         document.getElementById('dropdown-content').style.display = 'none',
         document.getElementById('sidebar').src = './images/2024.01.29_SURF_STREET.VIEW.03_WINDOW.OPEN-72.png'
         

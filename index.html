@@ -11,7 +11,26 @@
 
 
 <body>
-  <div id="Logo"><img id="logobtn" src="./images/logo.png" style="object-fit: contain;" alt="logoimg" /></div>
+  <div id="LoaderMain">
+    <div id="loadingLogo" class="logo" style="width: 30vw;">
+      <img src="./images/logo.png" style="object-fit: contain; " alt="logoimg" />
+    </div>
+    <p id="loadingTxt1">
+      Explore the future of your business,
+      in a whole new dimension with the
+    </p>
+    <h3>
+      Indospace Interactive
+      Park Tour
+    </h3>
+    <div id="loaderBottomBar">
+      <img src="./images/chakanLogo.png" alt="">
+      <p>Loading your <b>Indospace Interactive Park Tour</b> experience.</p>
+      <span class="loader"></span>
+    </div>
+  </div>
+<div id="instructionPg"></div>
+  <div id="Logo" class="logo"><img id="logobtn" src="./images/logo.png" style="object-fit: contain;" alt="logoimg" /></div>
   <div id="root"></div>
   <div id="bottombar">
     <img id="locationbtn" class="bottombtn" src="./images/2024.01.29_ICON_MAP_BUTT.UNCLICKED-53.png"
@@ -84,10 +103,7 @@
   </div>
 
   </div>
-
-
-
-
+ 
   <script>
     document.getElementById('arbtn').addEventListener('click', (e) => {
       window.open('https://archiverseai.8thwall.app/indospace-afr/', '_blank')
@@ -101,7 +117,13 @@
     document.getElementById('logobtn').addEventListener('click', (e) => {
       window.open('https://www.indospace.in/', '_blank')
     })
-
+    window.instructionPgVisible = false
+    window.addEventListener('wheel', () => {
+      if (window.instructionPgVisible) {
+        document.getElementById('instructionPg').style.display = 'none'
+        window.instructionPgVisible = false
+      }
+    })
 
     //document.getElementById('cbtn').addEventListener('click', () => { window.handleButtonClick() })
   </script>
