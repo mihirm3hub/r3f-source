@@ -39,30 +39,17 @@ export function Model(props) {
   const modelRef8 = useRef();
 
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF("/NewFinal.glb");
+  const { nodes, materials, animations } = useGLTF("/00_Chakan_V_Combined.glb");
   const { actions, mixer } = useAnimations(animations, group);
 
-
-
-  // let img1 = './images/2024.01.29_ICON_HOTSPOT_BUTT.UNZOOM-43.png'
-  // let img2 = './images/B100.png'; // Change this to the path of your other texture
-  // let img3 = './images/B200.png'
-  // let img4 = "./images/B300.png"
-  // let img5 = "./images/B400.png"
-  // let img6 = "./images/B500.png"
-  // let view = "./images/360viewnew.png"
-  // let howeverdview = "./images/360BUTTHOVER.png"
-  
-  const hotspottex = useLoader(TextureLoader, './images/2024.01.29_ICON_HOTSPOT_BUTT.UNZOOM-43.png');
-  const hotspottexHovered = useLoader(TextureLoader,  './images/B100.png');
-  const hotspottexHovered1 = useLoader(TextureLoader, './images/B200.png');
-  const hotspottexHovered2 = useLoader(TextureLoader, "./images/B300.png");
-  const hotspottexHovered3 = useLoader(TextureLoader, "./images/B400.png");
-  const hotspottexHovered4 = useLoader(TextureLoader, "./images/B500.png");
-  const viewtex = useLoader(TextureLoader, "./images/360viewnew.png");
-  const howeverdviewtex = useLoader(TextureLoader,"./images/360BUTTHOVER.png");
-
-
+  let img1 = './images/2024.01.29_ICON_HOTSPOT_BUTT.UNZOOM-43.png'
+  let img2 = './images/B100.png'; // Change this to the path of your other texture
+  let img3 = './images/B200.png'
+  let img4 = "./images/B300.png"
+  let img5 = "./images/B400.png"
+  let img6 = "./images/B500.png"
+  let view = "./images/360viewnew.png"
+  let howeverdview = "./images/360BUTTHOVER.png"
 
 
   const [hovered1, setHovered1] = useState(false);
@@ -77,7 +64,14 @@ export function Model(props) {
 
 
 
-
+  const hotspottex = useLoader(TextureLoader, img1);
+  const hotspottexHovered = useLoader(TextureLoader, img2);
+  const hotspottexHovered1 = useLoader(TextureLoader, img3);
+  const hotspottexHovered2 = useLoader(TextureLoader, img4);
+  const hotspottexHovered3 = useLoader(TextureLoader, img5);
+  const hotspottexHovered4 = useLoader(TextureLoader, img6);
+  const viewtex = useLoader(TextureLoader, view);
+  const howeverdviewtex = useLoader(TextureLoader, howeverdview);
 
  useEffect(() => void (actions["MainCameraAltActionClip"].play().paused = true), [])
   //   const b100Camera = document.querySelector("#Cam_B100");
@@ -129,6 +123,7 @@ export function Model(props) {
 
   let camPos = new THREE.Vector3()
   let camRot = new THREE.Vector3()
+  let targetPos = new THREE.Vector3()
 
   const setCameraPosRot = (hotspotname) => {
     switch (hotspotname) {
@@ -265,6 +260,7 @@ export function Model(props) {
       default:
         // console.log("Default Case")
     }
+    closeBtn.style.display = 'block'
     document.getElementById('dropdown-content').style.display = 'block'
     document.getElementById('sidebar').src = './images/sidebarU.png'
     document.getElementById('bottombar').style.display='none'
@@ -318,7 +314,7 @@ export function Model(props) {
   // })
 
   useFrame(state => {
-    // console.log(meshname)
+    console.log(meshname)
     if (clicked) {
       if(!runOnce){
         setCameraPosRot(meshname)
@@ -327,11 +323,13 @@ export function Model(props) {
         state.camera.updateProjectionMatrix()
         runOnce = true
       }      
-      closeBtn.style.display = 'block'
-      if(isDragging){
-        state.camera.rotation.y = camRot.y +  state.pointer.x /10
-        // state.camera.position.x = camPos.x +  state.pointer.x *2
-      }
+      //
+      // if(isDragging){
+      //   // state.camera.rotation.y = camRot.y +  state.pointer.x /10
+      //   // state.camera.rotation.x = camRot.x +  state.pointer.x /10
+      //   state.camera.position.x = camPos.x +  state.pointer.x *2
+      //   state.camera.position.y = camPos.y +  state.pointer.y *2
+      // }
       
     }
     else if (!clicked) {
@@ -362,14 +360,14 @@ export function Model(props) {
         } 
           
       actions["MainCameraAltActionClip"].time = THREE.MathUtils.lerp(actions["MainCameraAltActionClip"].time, actions["MainCameraAltActionClip"].getClip().duration * camTimeScale, 1)
-        modelRef1?.current?.lookAt(state.camera.position)
-        modelRef2?.current?.lookAt(state.camera.position)
-        modelRef3?.current?.lookAt(state.camera.position)
-        modelRef4?.current?.lookAt(state.camera.position)
-        modelRef5?.current?.lookAt(state.camera.position)
-        modelRef6?.current?.lookAt(state.camera.position)
-        modelRef7?.current?.lookAt(state.camera.position)
-        modelRef8?.current?.lookAt(state.camera.position)
+        modelRef1.current.lookAt(state.camera.position)
+        modelRef2.current.lookAt(state.camera.position)
+        modelRef3.current.lookAt(state.camera.position)
+        modelRef4.current.lookAt(state.camera.position)
+        modelRef5.current.lookAt(state.camera.position)
+        modelRef6.current.lookAt(state.camera.position)
+        modelRef7.current.lookAt(state.camera.position)
+        modelRef8.current.lookAt(state.camera.position)
     }
 
 
@@ -549,13 +547,12 @@ export function Model(props) {
       onPointerOver={() => setHovered6(true)}
       onPointerOut={() => setHovered6(false)}
       onClick={() => (
-        meshname='360View-1',
         setHovered6(false),
-        // setVisibility(false),
+        setVisibility(false),
         console.log('Clicked 360 view'),
         document.getElementById('popupdarkbg').style.display = 'block',
         document.getElementById('popup').style.display = 'block',
-        document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR1/',
+        document.getElementById('popupiframe').src = 'https://equanimoustech.com/Indospace/VR1/',
         document.getElementById('dropdown-content').style.display = 'none',
         document.getElementById('sidebar').src = './images/2024.01.29_SURF_STREET.VIEW.01_WINDOW.OPEN-70.png'
       )}
@@ -583,13 +580,12 @@ export function Model(props) {
         onPointerOver={() => setHovered7(true)}
         onPointerOut={() => setHovered7(false)}
         onClick={() => (
-          meshname='360View-2',
-          // setVisibility(false),
+          setVisibility(false),
           setHovered7(false),
           console.log('Clicked 360 view'),
           document.getElementById('popupdarkbg').style.display = 'block',
           document.getElementById('popup').style.display = 'block',
-          document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR3/',
+          document.getElementById('popupiframe').src = 'https://equanimoustech.com/Indospace/VR3/',
           document.getElementById('dropdown-content').style.display = 'none',
           document.getElementById('sidebar').src = './images/2024.01.29_SURF_STREET.VIEW.02_WINDOW.OPEN-71.png'
         )}
@@ -620,13 +616,12 @@ export function Model(props) {
       onPointerOver={() => setHovered8(true)}
       onPointerOut={() => setHovered8(false)}
       onClick={() => (
-        meshname='360View-3',
-        // setVisibility(false),
+        setVisibility(false),
         setHovered8(false),
         console.log('Clicked 360 view'),
         document.getElementById('popupdarkbg').style.display = 'block',
         document.getElementById('popup').style.display = 'block',
-        document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR2/',
+        document.getElementById('popupiframe').src = 'https://equanimoustech.com/Indospace/VR2/',
         document.getElementById('dropdown-content').style.display = 'none',
         document.getElementById('sidebar').src = './images/2024.01.29_SURF_STREET.VIEW.03_WINDOW.OPEN-72.png'
         
@@ -644,30 +639,18 @@ export function Model(props) {
     </mesh>
       )}
      
-      
+      <OrbitControls 
+      enabled={!ishotspotVisible} 
+      target={[0, 1.703, 11.305]} 
+      minAzimuthAngle={-Math.PI / 4}
+      maxAzimuthAngle={Math.PI / 4}
+      minPolarAngle={Math.PI / 6}
+      maxPolarAngle={Math.PI - Math.PI / 6} />
 
 
 
-
-     <group ref={group} {...props} dispose={null}>
+<group ref={group} {...props} dispose={null}>
       <group name="Scene">
-        <mesh
-          name="SM_L_Pond"
-          castShadow
-          receiveShadow
-          geometry={nodes.SM_L_Pond.geometry}
-          material={materials["WATER.001"]}
-          position={[-10.522, 1.107, -9.482]}
-        />
-        <mesh
-          name="Circle007"
-          castShadow
-          receiveShadow
-          geometry={nodes.Circle007.geometry}
-          material={materials["M_Ground.001"]}
-          position={[-10.591, 0.837, -9.428]}
-          scale={0.051}
-        />
         <mesh
           name="SM_L_Grasslawns"
           castShadow
@@ -676,14 +659,6 @@ export function Model(props) {
           material={materials.M_Site}
           position={[-6.687, 1.657, -3.811]}
           rotation={[0, -1.571, 0]}
-        />
-        <mesh
-          name="SM_L_Internal_Roads"
-          castShadow
-          receiveShadow
-          geometry={nodes.SM_L_Internal_Roads.geometry}
-          material={materials.M_Site}
-          position={[2.995, 1.374, 2.767]}
         />
         <mesh
           name="M_L_TempStructures"
@@ -801,13 +776,6 @@ export function Model(props) {
             geometry={nodes.Plane529_1.geometry}
             material={materials.M_Master_B500}
           />
-          <mesh
-            name="Plane529_2"
-            castShadow
-            receiveShadow
-            geometry={nodes.Plane529_2.geometry}
-            material={materials.M_B_400}
-          />
         </group>
         <group name="SM_Master_B100001" position={[-5.18, 1.703, 11.305]}>
           <mesh
@@ -839,7 +807,7 @@ export function Model(props) {
           geometry={nodes.SM_Master_B100009.geometry}
           material={materials.M_B_400}
           position={[-6.932, 2.259, 6.093]}
-          rotation={[-Math.PI, -Math.PI / 2, 0]}
+          rotation={[-Math.PI, -1.571, 0]}
         />
         <group
           name="SM_Master_B200"
@@ -859,13 +827,6 @@ export function Model(props) {
             receiveShadow
             geometry={nodes.Plane007_1.geometry}
             material={materials.M_Master_B200}
-          />
-          <mesh
-            name="Plane007_2"
-            castShadow
-            receiveShadow
-            geometry={nodes.Plane007_2.geometry}
-            material={materials.M_B_400}
           />
         </group>
         <group
@@ -893,13 +854,6 @@ export function Model(props) {
             receiveShadow
             geometry={nodes.Plane001_2.geometry}
             material={materials.M_Facade_Glass_Light}
-          />
-          <mesh
-            name="Plane001_3"
-            castShadow
-            receiveShadow
-            geometry={nodes.Plane001_3.geometry}
-            material={materials.M_B_400}
           />
         </group>
         <group
@@ -947,13 +901,39 @@ export function Model(props) {
           position={[7.494, 1.66, 12.911]}
         />
         <mesh
-          name="Plane"
+          name="SM_L_Internal_Roads"
           castShadow
           receiveShadow
-          geometry={nodes.Plane.geometry}
-          material={materials.M_L_Master_CompundWall}
-          position={[7.623, 1.769, 13.997]}
-          rotation={[0, -1.206, -Math.PI / 2]}
+          geometry={nodes.SM_L_Internal_Roads.geometry}
+          material={materials.M_Site}
+          position={[2.995, 1.373, 2.767]}
+          scale={0.051}
+        />
+        <mesh
+          name="SM_L_Pond"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_L_Pond.geometry}
+          material={materials["WATER.001"]}
+          position={[-10.522, 1.107, -9.482]}
+        />
+        <mesh
+          name="SM_L_Pond_Part"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_L_Pond_Part.geometry}
+          material={materials["M_Ground.001"]}
+          position={[-10.591, 0.837, -9.428]}
+          scale={0.051}
+        />
+        <mesh
+          name="North_Signage"
+          castShadow
+          receiveShadow
+          geometry={nodes.North_Signage.geometry}
+          material={nodes.North_Signage.material}
+          position={[20.595, 2.055, 13.799]}
+          scale={0.221}
         />
         <PerspectiveCamera
           name="MainCameraAlt"
@@ -1905,7 +1885,7 @@ export function Model(props) {
         </group>
         <group
           name="IM_Car_01010"
-          position={[0.007, 0.581, 13.484]}
+          position={[0.063, 0.581, 13.484]}
           rotation={[Math.PI, -1.571, 0]}
           scale={-0.051}
         >
@@ -1954,7 +1934,7 @@ export function Model(props) {
         </group>
         <group
           name="IM_Car_01011"
-          position={[0, 0.581, 0.051]}
+          position={[-0.029, 0.581, 0.051]}
           rotation={[Math.PI, -1.571, 0]}
           scale={-0.051}
         >
@@ -2010,7 +1990,7 @@ export function Model(props) {
         </group>
         <group
           name="IM_Car_01012"
-          position={[0, 0.578, 0]}
+          position={[-0.052, 0.578, 0.062]}
           rotation={[0, 1.571, 0]}
           scale={0.051}
         >
@@ -2115,7 +2095,7 @@ export function Model(props) {
         </group>
         <group
           name="IM_Car_01039"
-          position={[1.774, 0.565, 0.025]}
+          position={[1.966, 0.565, 0.047]}
           rotation={[-Math.PI, 0, -Math.PI]}
           scale={0.051}
         >
@@ -2164,7 +2144,7 @@ export function Model(props) {
         </group>
         <group
           name="IM_Car_01041"
-          position={[-13.594, 0.578, 4.376]}
+          position={[-13.477, 0.578, 4.311]}
           rotation={[Math.PI, -1.571, 0]}
           scale={-0.051}
         >
@@ -2213,7 +2193,7 @@ export function Model(props) {
         </group>
         <group
           name="IM_Car_01042"
-          position={[-13.451, 0.578, 4.376]}
+          position={[-13.42, 0.578, 4.327]}
           rotation={[Math.PI, -1.571, 0]}
           scale={-0.051}
         >
@@ -2269,7 +2249,7 @@ export function Model(props) {
         </group>
         <group
           name="IM_Car_01043"
-          position={[-13.594, 0.573, 2.911]}
+          position={[-13.594, 0.573, 2.804]}
           rotation={[0, 1.571, 0]}
           scale={0.051}
         >
@@ -2318,7 +2298,7 @@ export function Model(props) {
         </group>
         <group
           name="IM_Car_01044"
-          position={[-13.451, 0.573, 2.911]}
+          position={[-13.42, 0.573, 2.814]}
           rotation={[0, 1.571, 0]}
           scale={0.051}
         >
@@ -2374,7 +2354,7 @@ export function Model(props) {
         </group>
         <group
           name="IM_Car_01045"
-          position={[-2.786, 0.577, 4.674]}
+          position={[-2.786, 0.577, 4.644]}
           rotation={[Math.PI, 0, 0]}
           scale={-0.051}
         >
@@ -2423,7 +2403,7 @@ export function Model(props) {
         </group>
         <group
           name="IM_Car_01046"
-          position={[-2.786, 0.577, 4.674]}
+          position={[-2.786, 0.577, 4.693]}
           rotation={[Math.PI, 0, 0]}
           scale={-0.051}
         >
@@ -2479,7 +2459,7 @@ export function Model(props) {
         </group>
         <group
           name="IM_Car_01047"
-          position={[4.944, 0.581, 4.636]}
+          position={[4.944, 0.578, 4.644]}
           scale={0.051}
         >
           <mesh
@@ -2527,7 +2507,7 @@ export function Model(props) {
         </group>
         <group
           name="IM_Car_01048"
-          position={[4.944, 0.581, 4.636]}
+          position={[4.944, 0.581, 4.698]}
           scale={0.051}
         >
           <mesh
@@ -3150,6 +3130,399 @@ export function Model(props) {
             material={materials["Tires.001"]}
           />
         </group>
+        <mesh
+          name="SM_OuterSite008"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_OuterSite008.geometry}
+          material={materials["M_Road_Line.002"]}
+          position={[-122.51, 2.207, 15.411]}
+          scale={0.051}
+        />
+        <mesh
+          name="SM_OuterSite003"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_OuterSite003.geometry}
+          material={materials["M_Road_Line.002"]}
+          position={[-122.51, 2.207, 14.482]}
+          scale={0.051}
+        />
+        <group
+          name="SM_L_Grasslawns006"
+          position={[419.645, 11, -34.256]}
+          rotation={[0, -1.571, 0]}
+          scale={1.008}
+        />
+        <group name="Empty001" position={[0, 1.712, 0]} scale={0.051}>
+          <mesh
+            name="IM_Grass_Block018"
+            castShadow
+            receiveShadow
+            geometry={nodes.IM_Grass_Block018.geometry}
+            material={materials.M_Bush}
+            position={[182.599, 0.146, 224.248]}
+            rotation={[0, 1.571, 0]}
+            scale={0.991}
+          />
+          <mesh
+            name="IM_Grass_Block019"
+            castShadow
+            receiveShadow
+            geometry={nodes.IM_Grass_Block019.geometry}
+            material={materials.M_Bush}
+            position={[149.662, -0.655, 225.04]}
+          />
+          <mesh
+            name="IM_Grass_Block020"
+            castShadow
+            receiveShadow
+            geometry={nodes.IM_Grass_Block020.geometry}
+            material={materials.M_Bush}
+            position={[188.002, -0.652, 224.248]}
+            rotation={[0, 1.571, 0]}
+            scale={0.991}
+          />
+          <mesh
+            name="IM_Grass_Block021"
+            castShadow
+            receiveShadow
+            geometry={nodes.IM_Grass_Block021.geometry}
+            material={materials.M_Bush}
+            position={[146.535, -0.751, 225.096]}
+          />
+          <mesh
+            name="IM_Grass_Block022"
+            castShadow
+            receiveShadow
+            geometry={nodes.IM_Grass_Block022.geometry}
+            material={materials.M_Bush}
+            position={[177.951, 0.606, 218.586]}
+            rotation={[0, 1.571, 0]}
+            scale={0.546}
+          />
+          <group name="SM_Bush_02006" position={[177.967, 0.537, 218.784]}>
+            <mesh
+              name="BezierCurve001"
+              castShadow
+              receiveShadow
+              geometry={nodes.BezierCurve001.geometry}
+              material={materials["trunk-01"]}
+            />
+            <mesh
+              name="BezierCurve001_1"
+              castShadow
+              receiveShadow
+              geometry={nodes.BezierCurve001_1.geometry}
+              material={materials["branch-1-01"]}
+            />
+            <mesh
+              name="BezierCurve001_2"
+              castShadow
+              receiveShadow
+              geometry={nodes.BezierCurve001_2.geometry}
+              material={materials["branch-1-02"]}
+            />
+          </group>
+        </group>
+        <mesh
+          name="Plane"
+          castShadow
+          receiveShadow
+          geometry={nodes.Plane.geometry}
+          material={materials.Material}
+          position={[9.079, 2.133, 13.914]}
+        />
+        <mesh
+          name="SM_OuterSite006"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_OuterSite006.geometry}
+          material={materials.M_Truck_Parking}
+          position={[0, 2.043, 15.015]}
+          scale={[0.051, 0.051, 0.024]}
+        />
+        <mesh
+          name="SM_OuterSite007"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_OuterSite007.geometry}
+          material={materials.M_Truck_Parking}
+          position={[0, 2.043, 14.949]}
+          scale={[0.051, 0.051, 0.024]}
+        />
+        <mesh
+          name="SM_OuterSite002"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_OuterSite002.geometry}
+          material={materials.M_Truck_Parking}
+          position={[0, 2.043, 15.767]}
+          scale={[0.051, 0.051, 0.024]}
+        />
+        <mesh
+          name="SM_OuterSite001"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_OuterSite001.geometry}
+          material={materials.M_Truck_Parking}
+          position={[0, 2.043, 14.18]}
+          scale={[0.051, 0.051, 0.024]}
+        />
+        <mesh
+          name="SM_Signage_Board_SpeedLimit_04"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_Signage_Board_SpeedLimit_04.geometry}
+          material={materials.M_Signage_Board}
+          position={[6.788, 1.368, -7.443]}
+          scale={0.051}
+        />
+        <mesh
+          name="SM_Signage_Board_SpeedLimit_03"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_Signage_Board_SpeedLimit_03.geometry}
+          material={materials.M_Signage_Board}
+          position={[9.66, 1.659, 6.197]}
+          scale={0.051}
+        />
+        <mesh
+          name="SM_Signage_Board_SpeedLimit_02"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_Signage_Board_SpeedLimit_02.geometry}
+          material={materials.M_Signage_Board}
+          position={[8.224, 1.659, 13.022]}
+          scale={0.051}
+        />
+        <mesh
+          name="SM_Signage_Board_Right_U-Turn_Exit_04"
+          castShadow
+          receiveShadow
+          geometry={nodes["SM_Signage_Board_Right_U-Turn_Exit_04"].geometry}
+          material={materials.M_Signage_Board}
+          position={[-3.326, 1.091, -2.435]}
+          scale={0.051}
+        />
+        <mesh
+          name="SM_Signage_Board_Right_U-Turn_Exit_03"
+          castShadow
+          receiveShadow
+          geometry={nodes["SM_Signage_Board_Right_U-Turn_Exit_03"].geometry}
+          material={materials.M_Signage_Board}
+          position={[10.513, 1.655, 3.494]}
+          scale={0.051}
+        />
+        <mesh
+          name="SM_Signage_Board_Right_U-Turn_Exit_02"
+          castShadow
+          receiveShadow
+          geometry={nodes["SM_Signage_Board_Right_U-Turn_Exit_02"].geometry}
+          material={materials.M_Signage_Board}
+          position={[-6.04, 1.652, -4.558]}
+          scale={0.051}
+        />
+        <mesh
+          name="SM_Signage_Board_Right_U-Turn_Exit_01"
+          castShadow
+          receiveShadow
+          geometry={nodes["SM_Signage_Board_Right_U-Turn_Exit_01"].geometry}
+          material={materials.M_Signage_Board}
+          position={[5.704, 1.651, 12.105]}
+          scale={0.051}
+        />
+        <mesh
+          name="SM_Signage_Board_E1_04"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_Signage_Board_E1_04.geometry}
+          material={materials.M_Direction_Board}
+          position={[-4.056, 1.652, 12.8]}
+          scale={0.051}
+        />
+        <mesh
+          name="SM_Signage_Board_E1_03"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_Signage_Board_E1_03.geometry}
+          material={materials.M_Direction_Board}
+          position={[9.66, 1.659, 2.726]}
+          scale={0.051}
+        />
+        <mesh
+          name="SM_Signage_Board_E1_02"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_Signage_Board_E1_02.geometry}
+          material={materials.M_Direction_Board}
+          position={[9.66, 1.659, 7.968]}
+          scale={0.051}
+        />
+        <mesh
+          name="SM_Signage_Board_E1_01"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_Signage_Board_E1_01.geometry}
+          material={materials.M_Direction_Board}
+          position={[7.721, 1.659, 12.798]}
+          scale={0.051}
+        />
+        <mesh
+          name="SM_Signage_Board_Car_Parking_10"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_Signage_Board_Car_Parking_10.geometry}
+          material={materials.M_Signage_Board}
+          position={[-3.941, 1.652, 12.091]}
+          scale={0.051}
+        />
+        <mesh
+          name="SM_Signage_Board_Car_Parking_09"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_Signage_Board_Car_Parking_09.geometry}
+          material={materials.M_Signage_Board}
+          position={[-4.25, 1.091, -2.007]}
+          scale={0.051}
+        />
+        <mesh
+          name="SM_Signage_Board_Car_Parking_08"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_Signage_Board_Car_Parking_08.geometry}
+          material={materials.M_Signage_Board}
+          position={[-2.195, 1.104, -2.951]}
+          scale={0.051}
+        />
+        <mesh
+          name="SM_Signage_Board_Car_Parking_07"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_Signage_Board_Car_Parking_07.geometry}
+          material={materials.M_Signage_Board}
+          position={[10.513, 1.656, 2.252]}
+          scale={0.051}
+        />
+        <mesh
+          name="SM_Signage_Board_Car_Parking_06"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_Signage_Board_Car_Parking_06.geometry}
+          material={materials.M_Signage_Board}
+          position={[4.134, 1.104, -2.951]}
+          scale={0.051}
+        />
+        <mesh
+          name="SM_Signage_Board_Car_Parking_05"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_Signage_Board_Car_Parking_05.geometry}
+          material={materials.M_Signage_Board}
+          position={[7.664, 1.091, -2.031]}
+          scale={0.051}
+        />
+        <mesh
+          name="SM_Signage_Board_Car_Parking_04"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_Signage_Board_Car_Parking_04.geometry}
+          material={materials.M_Signage_Board}
+          position={[10.473, 1.652, 11.309]}
+          scale={0.051}
+        />
+        <mesh
+          name="SM_Signage_Board_Car_Parking_03"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_Signage_Board_Car_Parking_03.geometry}
+          material={materials.M_Signage_Board}
+          position={[-6.04, 1.652, -5.111]}
+          scale={0.051}
+        />
+        <mesh
+          name="SM_Signage_Board_Car_Parking_02"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_Signage_Board_Car_Parking_02.geometry}
+          material={materials.M_Signage_Board}
+          position={[-6.043, 1.652, 11.687]}
+          scale={0.051}
+        />
+        <mesh
+          name="SM_Signage_Board_Car_Parking_01"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_Signage_Board_Car_Parking_01.geometry}
+          material={materials.M_Signage_Board}
+          position={[6.539, 1.652, 12.105]}
+          scale={0.051}
+        />
+        <mesh
+          name="SM_Map_Board_02"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_Map_Board_02.geometry}
+          material={materials["M_Direction_Board.002"]}
+          position={[-3.657, 1.095, -7.464]}
+          scale={0.051}
+        />
+        <mesh
+          name="SM_Map_Board_01"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_Map_Board_01.geometry}
+          material={materials["M_Direction_Board.002"]}
+          position={[9.621, 1.659, 8.889]}
+          scale={0.051}
+        />
+        <mesh
+          name="Truck_Marking_05"
+          castShadow
+          receiveShadow
+          geometry={nodes.Truck_Marking_05.geometry}
+          material={materials["M_Truck_Parking.001"]}
+          position={[2.605, 1.661, 12.723]}
+          rotation={[0, 0, Math.PI]}
+          scale={-0.051}
+        />
+        <mesh
+          name="Truck_Marking_04"
+          castShadow
+          receiveShadow
+          geometry={nodes.Truck_Marking_04.geometry}
+          material={materials["M_Truck_Parking.001"]}
+          position={[-6.776, 1.659, -1.829]}
+          rotation={[0, -1.571, 0]}
+          scale={[0.051, 0.051, 0.043]}
+        />
+        <mesh
+          name="Truck_Marking_03"
+          castShadow
+          receiveShadow
+          geometry={nodes.Truck_Marking_03.geometry}
+          material={materials["M_Truck_Parking.001"]}
+          position={[-6.776, 1.659, 8.602]}
+          rotation={[Math.PI, 1.571, 0]}
+          scale={[-0.051, -0.051, -0.043]}
+        />
+        <mesh
+          name="Truck_Marking_02"
+          castShadow
+          receiveShadow
+          geometry={nodes.Truck_Marking_02.geometry}
+          material={materials["M_Truck_Parking.001"]}
+          position={[2.356, 1.091, -3.038]}
+          scale={0.051}
+        />
+        <mesh
+          name="Truck_Marking_01"
+          castShadow
+          receiveShadow
+          geometry={nodes.Truck_Marking_01.geometry}
+          material={materials["M_Truck_Parking.001"]}
+          position={[11.165, 1.659, 5.604]}
+        />
       </group>
     </group>
     </>
@@ -3157,5 +3530,5 @@ export function Model(props) {
   );
 }
 
-useGLTF.preload("/NewFinal.glb");
+useGLTF.preload("/00_Chakan_V_Combined.glb");
 
