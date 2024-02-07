@@ -27,7 +27,10 @@ export default function Experience()
         
         
            {/* <Sitecontext scale={0.0000001}  /> */}
-           <Model/>
+           <Model onScroll={(e) => {
+      scroll.current = e.target.scrollTop / (e.target.scrollHeight - window.innerHeight)
+      console.log(scroll.current)
+    }}/>
            <Ammenities/>
            
           
