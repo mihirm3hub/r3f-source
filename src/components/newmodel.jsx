@@ -95,8 +95,8 @@ export function Model(props) {
   window.addEventListener('mousedown', startDrag);
   window.addEventListener('mousemove', drag);
   window.addEventListener('mouseup', stopDrag);
-  window.addEventListener('touchstart', startDrag);
-  window.addEventListener('touchmove', drag);
+  window.addEventListener('touchstart', startPhoneDrag);
+  window.addEventListener('touchmove', phonedrag);
   window.addEventListener('touchend', stopDrag);
 
   function startDrag(e) {
@@ -107,7 +107,32 @@ export function Model(props) {
 
   }
 
-
+  function startPhoneDrag(e){
+    isDragging = true
+    startX = e.touches[0].clientX ;
+    // startY = e.clientY;
+    console.log("a", startX)
+  }
+  
+  function phonedrag(e) {
+    console.log("Clientx", e.touches[0].clientX)
+    xdrag = e.touches[0].clientX - startX;
+    xdrag = xdrag + lastXvalue
+    // const y = e.clientY - startY;
+    if (isDragging && xdrag > 5) {
+      console.log("X drag",xdrag)
+      camTimeScale =  xdrag / 450
+    }
+    else {
+      // console.log("Not ")
+    }
+    if(xdrag >= 450){
+      xdrag = 0
+    } 
+    if(xdrag < 0){
+      xdrag = 450
+    } 
+  }
   function drag(e) {
     console.log("Clientx", e.clientX)
     xdrag = e.clientX - startX;
