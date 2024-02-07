@@ -16,6 +16,7 @@ let camTimeScale = 0
 let lastXvalue = 0
 let xdrag 
 let isOpen = false;
+let isScrolling=false
 
 const dropdownContent = document.getElementById('dropdown-content');
 const sidebarImage = document.getElementById('sidebar');
@@ -42,14 +43,27 @@ export function Model(props) {
   const { nodes, materials, animations } = useGLTF("/00_Chakan_V_Combined.glb");
   const { actions, mixer } = useAnimations(animations, group);
 
-  let img1 = './images/2024.01.29_ICON_HOTSPOT_BUTT.UNZOOM-43.png'
-  let img2 = './images/B100.png'; // Change this to the path of your other texture
-  let img3 = './images/B200.png'
-  let img4 = "./images/B300.png"
-  let img5 = "./images/B400.png"
-  let img6 = "./images/B500.png"
-  let view = "./images/360viewnew.png"
-  let howeverdview = "./images/360BUTTHOVER.png"
+
+
+  // let img1 = './images/2024.01.29_ICON_HOTSPOT_BUTT.UNZOOM-43.png'
+  // let img2 = './images/B100.png'; // Change this to the path of your other texture
+  // let img3 = './images/B200.png'
+  // let img4 = "./images/B300.png"
+  // let img5 = "./images/B400.png"
+  // let img6 = "./images/B500.png"
+  // let view = "./images/360viewnew.png"
+  // let howeverdview = "./images/360BUTTHOVER.png"
+  
+  const hotspottex = useLoader(TextureLoader, './images/2024.01.29_ICON_HOTSPOT_BUTT.UNZOOM-43.png');
+  const hotspottexHovered = useLoader(TextureLoader,  './images/B100.png');
+  const hotspottexHovered1 = useLoader(TextureLoader, './images/B200.png');
+  const hotspottexHovered2 = useLoader(TextureLoader, "./images/B300.png");
+  const hotspottexHovered3 = useLoader(TextureLoader, "./images/B400.png");
+  const hotspottexHovered4 = useLoader(TextureLoader, "./images/B500.png");
+  const viewtex = useLoader(TextureLoader, "./images/360viewnew.png");
+  const howeverdviewtex = useLoader(TextureLoader,"./images/360BUTTHOVER.png");
+
+
 
 
   const [hovered1, setHovered1] = useState(false);
@@ -64,14 +78,7 @@ export function Model(props) {
 
 
 
-  const hotspottex = useLoader(TextureLoader, img1);
-  const hotspottexHovered = useLoader(TextureLoader, img2);
-  const hotspottexHovered1 = useLoader(TextureLoader, img3);
-  const hotspottexHovered2 = useLoader(TextureLoader, img4);
-  const hotspottexHovered3 = useLoader(TextureLoader, img5);
-  const hotspottexHovered4 = useLoader(TextureLoader, img6);
-  const viewtex = useLoader(TextureLoader, view);
-  const howeverdviewtex = useLoader(TextureLoader, howeverdview);
+
 
  useEffect(() => void (actions["MainCameraAltActionClip"].play().paused = true), [])
   //   const b100Camera = document.querySelector("#Cam_B100");
@@ -97,6 +104,7 @@ export function Model(props) {
 
   }
 
+
   function drag(e) {
     xdrag = e.clientX - startX;
     xdrag = xdrag + lastXvalue
@@ -120,11 +128,11 @@ export function Model(props) {
     lastXvalue = xdrag
     isDragging = false
   }
+  
 
   let camPos = new THREE.Vector3()
   let camRot = new THREE.Vector3()
-  let targetPos = new THREE.Vector3()
-
+  let targetPosition = new THREE.Vector3();
   const setCameraPosRot = (hotspotname) => {
     switch (hotspotname) {
       case 'B100':
@@ -134,6 +142,9 @@ export function Model(props) {
         camRot.x = -0.353;
         camRot.y = 0.376;
         camRot.z = 0.134;
+        targetPosition.x=6.877
+        targetPosition.y=2.377
+        targetPosition.z=11.081
         document.getElementById('bnmtitle').innerText = "Building name"
         document.getElementById('bname').innerText = "B100"
         document.getElementById('fareatitle').innerText = "Floor Area"
@@ -155,6 +166,9 @@ export function Model(props) {
         camRot.x = -0.449
         camRot.y = -0.966
         camRot.z =  -0.377
+        targetPosition.x=11.378
+        targetPosition.y=2.371
+        targetPosition.z=10.424
         document.getElementById('bnmtitle').innerText = "Building name"
         document.getElementById('bname').innerText = "B200"
         document.getElementById('fareatitle').innerText = "Floor Area"
@@ -176,6 +190,9 @@ export function Model(props) {
         camRot.x = -2.691
         camRot.y = 0.751
         camRot.z = 2.823
+        targetPosition.x=-7.007
+        targetPosition.y=2.379
+        targetPosition.z=-4.546
         document.getElementById('bnmtitle').innerText = "Building name"
         document.getElementById('bname').innerText = "B300"
         document.getElementById('fareatitle').innerText = "Floor Area"
@@ -197,6 +214,9 @@ export function Model(props) {
         camRot.x = -2.771
         camRot.y = -0.715
         camRot.z = -2.892
+        targetPosition.x=-3.772
+        targetPosition.y=1.814
+        targetPosition.z=-1.344
         document.getElementById('bnmtitle').innerText = "Building name"
         document.getElementById('bname').innerText = "B400"
         document.getElementById('fareatitle').innerText = "Floor Area"
@@ -219,6 +239,9 @@ export function Model(props) {
         camRot.x = -0.508
         camRot.y = -0.264
         camRot.z = -0.144
+        targetPosition.x=-2.962
+        targetPosition.y=1.823
+        targetPosition.z=-4.056
         document.getElementById('bnmtitle').innerText = "Building name"
         document.getElementById('bname').innerText = "B500"
         document.getElementById('fareatitle').innerText = "Floor Area"
@@ -240,6 +263,9 @@ export function Model(props) {
         camRot.x = -0.32
         camRot.y = 0.604
         camRot.z = 0.186
+        targetPosition.x=0
+        targetPosition.y=0
+        targetPosition.z=0
         document.getElementById('bnmtitle').innerHTML = "IndoSpace Industrial <br> Warehousing & Logistics Park"
         document.getElementById('bname').innerText = ""
         document.getElementById('fareatitle').innerText = "Total Land Parcel"
@@ -260,7 +286,6 @@ export function Model(props) {
       default:
         // console.log("Default Case")
     }
-    closeBtn.style.display = 'block'
     document.getElementById('dropdown-content').style.display = 'block'
     document.getElementById('sidebar').src = './images/sidebarU.png'
     document.getElementById('bottombar').style.display='none'
@@ -314,7 +339,7 @@ export function Model(props) {
   // })
 
   useFrame(state => {
-    console.log(meshname)
+    // console.log(meshname)
     if (clicked) {
       if(!runOnce){
         setCameraPosRot(meshname)
@@ -323,12 +348,10 @@ export function Model(props) {
         state.camera.updateProjectionMatrix()
         runOnce = true
       }      
-      //
+      closeBtn.style.display = 'block'
       // if(isDragging){
-      //   // state.camera.rotation.y = camRot.y +  state.pointer.x /10
-      //   // state.camera.rotation.x = camRot.x +  state.pointer.x /10
-      //   state.camera.position.x = camPos.x +  state.pointer.x *2
-      //   state.camera.position.y = camPos.y +  state.pointer.y *2
+      //   state.camera.rotation.y = camRot.y +  state.pointer.x /10
+      //   // state.camera.position.x = camPos.x +  state.pointer.x *2
       // }
       
     }
@@ -360,17 +383,31 @@ export function Model(props) {
         } 
           
       actions["MainCameraAltActionClip"].time = THREE.MathUtils.lerp(actions["MainCameraAltActionClip"].time, actions["MainCameraAltActionClip"].getClip().duration * camTimeScale, 1)
-        modelRef1.current.lookAt(state.camera.position)
-        modelRef2.current.lookAt(state.camera.position)
-        modelRef3.current.lookAt(state.camera.position)
-        modelRef4.current.lookAt(state.camera.position)
-        modelRef5.current.lookAt(state.camera.position)
-        modelRef6.current.lookAt(state.camera.position)
-        modelRef7.current.lookAt(state.camera.position)
-        modelRef8.current.lookAt(state.camera.position)
+        modelRef1?.current?.lookAt(state.camera.position)
+        modelRef2?.current?.lookAt(state.camera.position)
+        modelRef3?.current?.lookAt(state.camera.position)
+        modelRef4?.current?.lookAt(state.camera.position)
+        modelRef5?.current?.lookAt(state.camera.position)
+        modelRef6?.current?.lookAt(state.camera.position)
+        modelRef7?.current?.lookAt(state.camera.position)
+        modelRef8?.current?.lookAt(state.camera.position)
     }
 
+    // function scroll(e){
+    //   scroll.current = e.target.scrollTop / (e.target.scrollHeight - window.innerHeight)
+    //   caption.current.innerText = scroll.current.toFixed(2)
+    // }
 
+    // if(isScrolling){
+    //   actions["MainCameraAltActionClip"].time = THREE.MathUtils.lerp(actions["MainCameraAltActionClip"].time, actions["MainCameraAltActionClip"].getClip().duration * scroll.current, 1)
+    //   console.log(scroll.current);
+    // }
+    // else{
+    //   // actions["MainCameraAltActionClip"].time = THREE.MathUtils.lerp(actions["MainCameraAltActionClip"].time, actions["MainCameraAltActionClip"].getClip().duration * camTimeScale, 1)
+
+
+    // }
+    
 
     }
     return null
@@ -547,12 +584,13 @@ export function Model(props) {
       onPointerOver={() => setHovered6(true)}
       onPointerOut={() => setHovered6(false)}
       onClick={() => (
+        meshname='360View-1',
         setHovered6(false),
-        setVisibility(false),
+        // setVisibility(false),
         console.log('Clicked 360 view'),
         document.getElementById('popupdarkbg').style.display = 'block',
         document.getElementById('popup').style.display = 'block',
-        document.getElementById('popupiframe').src = 'https://equanimoustech.com/Indospace/VR1/',
+        document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR1/',
         document.getElementById('dropdown-content').style.display = 'none',
         document.getElementById('sidebar').src = './images/2024.01.29_SURF_STREET.VIEW.01_WINDOW.OPEN-70.png'
       )}
@@ -580,12 +618,13 @@ export function Model(props) {
         onPointerOver={() => setHovered7(true)}
         onPointerOut={() => setHovered7(false)}
         onClick={() => (
-          setVisibility(false),
+          meshname='360View-2',
+          // setVisibility(false),
           setHovered7(false),
           console.log('Clicked 360 view'),
           document.getElementById('popupdarkbg').style.display = 'block',
           document.getElementById('popup').style.display = 'block',
-          document.getElementById('popupiframe').src = 'https://equanimoustech.com/Indospace/VR3/',
+          document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR3/',
           document.getElementById('dropdown-content').style.display = 'none',
           document.getElementById('sidebar').src = './images/2024.01.29_SURF_STREET.VIEW.02_WINDOW.OPEN-71.png'
         )}
@@ -616,12 +655,13 @@ export function Model(props) {
       onPointerOver={() => setHovered8(true)}
       onPointerOut={() => setHovered8(false)}
       onClick={() => (
-        setVisibility(false),
+        meshname='360View-3',
+        // setVisibility(false),
         setHovered8(false),
         console.log('Clicked 360 view'),
         document.getElementById('popupdarkbg').style.display = 'block',
         document.getElementById('popup').style.display = 'block',
-        document.getElementById('popupiframe').src = 'https://equanimoustech.com/Indospace/VR2/',
+        document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR2/',
         document.getElementById('dropdown-content').style.display = 'none',
         document.getElementById('sidebar').src = './images/2024.01.29_SURF_STREET.VIEW.03_WINDOW.OPEN-72.png'
         
@@ -639,13 +679,14 @@ export function Model(props) {
     </mesh>
       )}
      
-      <OrbitControls 
+      
+     {/* <OrbitControls 
       enabled={!ishotspotVisible} 
-      target={[0, 1.703, 11.305]} 
+      target={[targetPosition.x,targetPosition.y,targetPosition.z]} 
       minAzimuthAngle={-Math.PI / 4}
       maxAzimuthAngle={Math.PI / 4}
       minPolarAngle={Math.PI / 6}
-      maxPolarAngle={Math.PI - Math.PI / 6} />
+      maxPolarAngle={Math.PI - Math.PI / 6} /> */}
 
 
 

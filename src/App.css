@@ -85,10 +85,10 @@ button:focus-visible {
 } */
 
 #Logo {
-  z-index: 12;
-  position: absolute;
-  top: 2vh;
-  left: 2vw;
+  z-index: 100;
+  position: fixed;
+  top: 5%;
+  left: 5%;
   height: 3.6vw;
   width: 20vw;
   cursor: pointer;
@@ -212,6 +212,7 @@ button:focus-visible {
   font-size: 16px;
   border: none;
   cursor: pointer;
+  width: 15.5vw;
 }
 
 
@@ -219,10 +220,9 @@ button:focus-visible {
 #dropdown {
   position: absolute;
   display: inline-block;
-  left: 2vh;
-  top: 8%;
+  left: 7vh;
+  top: 10vh;
   z-index: 12;
-
 }
 
 .dropdown-content {
@@ -268,13 +268,13 @@ button:focus-visible {
   background-size: cover;
 }
 
-#loadingLogo {
-  z-index: 100;
-  position: fixed;
-  top: 5%;
-  left: 5%;
-  height: 3.6vw;
-  width: 20vw;
+#LoaderGradient {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0%;
+  left: 0;
+  background: linear-gradient(0deg, #000000cf 30%, #ffffff17 70%);
 }
 
 #LoaderMain p {
@@ -302,7 +302,7 @@ button:focus-visible {
   height: 20vh;
   width: 80vw;
   top: 75vh;
-  left: 10vw;
+  left: 5vw;
   background-color: #000000a1;
   backdrop-filter: blur(2px);
 }
@@ -347,16 +347,25 @@ button:focus-visible {
   animation: animFw 10s linear infinite;
 } */
 
-/* @keyframes animFw {
+@keyframes opacityAnim {
   0% {
-    width: 0;
+    opacity: 0;
   }
 
-  50% {
-    width: 100%;
+  100% {
+    opacity: 1;
   }
-} */
+}
 
+@keyframes RevOpacityAnim {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
 #instructionMain {
   display: none;
   z-index: 99;
@@ -365,14 +374,13 @@ button:focus-visible {
   width: 100vw;
   top: 100vh;
   left: 0%;
-  background: linear-gradient(180deg, #000000cf 30%, #ffffff17 70%);
+  background: linear-gradient(180deg, #000000cf 30%, #ffffff00 70%);
   align-items: center;
   justify-content: center;
 }
 
 #instructionImg {
-  margin-top: 10vh;
-  width: 60vw;
+  width: 42vw;
 }
 
 #instructionChakanLogo {
@@ -381,6 +389,16 @@ button:focus-visible {
   object-fit: contain;
   top: 12vh;
   left: 5vw;
+}
+
+#fixedChakanLogo {
+  display: block;
+  z-index: 100;
+  position: fixed;
+  width: 15vw;
+  left: 5vw;
+  top: 12vh;
+  opacity: 0;
 }
 
 #blankPG {

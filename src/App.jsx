@@ -76,13 +76,14 @@ function Effects() {
 }
 
 function progressChecker(num) {
-  document.getElementById('loader').style.width = num + '%'
+  document.getElementById('loader').style.width = num + '%'  
   // if (num > 0) {
   //   document.getElementById('LoaderMain').style.display = 'block'
   //   window.instructionPgVisible = true
   // }
   if (num == 100) {
     document.getElementById('instructionMain').style.display = 'grid'
+    document.getElementById('loaderInfo').innerHTML = "Your <b>Indospace Interactive Park Tour<b> is ready ! Scroll down to continue."
   }
 }
 function Loader() {

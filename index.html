@@ -8,15 +8,15 @@
   <title>Chakan Site</title>
 </head>
 
-
-
 <body>
-  <div id="loadingLogo" style="width: 30vw;">
+  <div id="Logo" style="width: 30vw;">
     <img src="./images/logo.png" style="object-fit: contain; " alt="logoimg" />
   </div>
-  <div id="LoaderMain" style="background-image: url('./images/LoaderBg.jpg  ');">
+  <img id="fixedChakanLogo" src="./images/chakanLogo.png" alt="">
+  <div id="LoaderMain" style="background-image: url('./images/LoaderBg.png');">
+    <div id="LoaderGradient"></div>
     <p id="loadingTxt1">
-      Explore the future of your business,
+      Explore the future of your business,<br>
       in a whole new dimension with the
     </p>
     <h3>
@@ -24,8 +24,8 @@
       Park Tour
     </h3>
     <div id="loaderBottomBar">
-      <img src="./images/chakanLogo.png" alt="">
-      <p>Loading your <b>Indospace Interactive Park Tour</b> experience.</p>
+      <img id="loaderChakanLogo" src="./images/chakanLogo.png" alt="">
+      <p id="loaderInfo">Loading your <b>Indospace Interactive Park Tour</b> experience.</p>
       <span class="loader">
         <span id="loader" class="loader"></span>
       </span>
@@ -35,10 +35,11 @@
     <!-- <img id="instructionChakanLogo" src="./images/chakanLogo.png" alt=""> -->
     <img id="instructionImg" src="./images/TutorialImg.png" alt="">
   </div>
-  <div id="blankPG"></div>
+  <!-- <div id="blankPG"></div> -->
 
-  <div id="Logo" style="display: none;"><img id="logobtn" src="./images/logo.png" style="object-fit: contain;" alt="logoimg" />
-  </div>
+    <!-- <div id="Logo" style="display: block;"><img id="logobtn" src="./images/logo.png" style="object-fit: contain;"
+        alt="logoimg" />
+    </div> -->
   <div id="root"></div>
   <div id="bottombar">
     <img id="locationbtn" class="bottombtn" src="./images/2024.01.29_ICON_MAP_BUTT.UNCLICKED-53.png"
@@ -68,7 +69,7 @@
 
   <div id="popupdarkbg"></div>
 
-  <div id="dropdown" style="display: none;">
+  <div id="dropdown" style="display: block;">
     <img id="sidebar" alt="Dropdown Button" src="./images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png" />
     <div class="dropdown-content" id="dropdown-content">
       <div>
@@ -118,30 +119,57 @@
 
       document.getElementById('popupdarkbg').style.display = 'none'
     })
-    document.getElementById('logobtn').addEventListener('click', (e) => {
+    document.getElementById('Logo').addEventListener('click', (e) => {
       window.open('https://www.indospace.in/', '_blank')
     })
 
     let isInstruction = false
+    let instructionOpacity = 1
 
-    document.addEventListener('scroll', () => {
+    document.addEventListener('scroll', (e) => {
       const scroll = Math.floor(window.scrollY)
       console.log(scroll)
-      if (scroll == 695 && !isInstruction) {
-        document.getElementById('LoaderMain').style.display = 'none'
-        document.getElementById('instructionMain').style.top = '0%'
-        document.getElementById('blankPG').style.top = '100vh'
-        window.scrollTo(0,0)
+      // if (scroll == 695 && !isInstruction) {
+      //   document.getElementById('LoaderMain').style.display = 'none'
+      //   document.getElementById('instructionMain').style.top = '0%'
+      //   // document.getElementById('blankPG').style.top = '100vh'
+      //   // window.scrollTo(0,0)
+      // }
+      // else if(scroll == 695 && isInstruction) {
+      //   document.getElementById('loadingLogo').style.display = 'none'
+      //   document.getElementById('instructionMain').style.display = 'none'
+      //   // document.getElementById('blankPG').style.display = 'none'
+      //   document.getElementById('bottombar').style.display = 'block'
+      //   document.getElementById('dropdown').style.display = 'block'
+      //   document.getElementById('Logo').style.display = 'block'
+
+      // }
+      if (scroll >= 437) {
+        document.getElementById("loaderChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
+        document.getElementById("fixedChakanLogo").style.animation = 'opacityAnim .5s ease forwards'
         isInstruction = true
+
       }
-      else if(scroll == 695 && isInstruction) {
-        document.getElementById('loadingLogo').style.display = 'none'
-        document.getElementById('instructionMain').style.display = 'none'
-        document.getElementById('blankPG').style.display = 'none'
-        document.getElementById('bottombar').style.display = 'block'
-        document.getElementById('dropdown').style.display = 'block'
-        document.getElementById('Logo').style.display = 'block'
+      else if (scroll < 437 && isInstruction) {
+        console.log('else');
+        document.getElementById("loaderChakanLogo").style.animation = 'opacityAnim .5s ease forwards'
+        document.getElementById("fixedChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
+        document.getElementById("fixedChakanLogo").style.display = 'none'
       }
+      if (scroll > 655) {
+        window.addEventListener('wheel', (e) => {
+          instructionOpacity -= 0.1
+          document.getElementById('instructionMain').style.opacity = `${instructionOpacity}`
+          if (instructionOpacity <= 0) {
+            window.removeEventListener('wheel', () => { });
+            document.getElementById('LoaderMain').style.display = 'none'
+            document.getElementById('instructionMain').style.display = 'none'
+            document.getElementById('bottombar').style.display = 'block'
+            document.getElementById('dropdown').style.display = 'block'
+          }
+        })
+      }
+
     });
     //   //document.getElementById('cbtn').addEventListener('click', () => { window.handleButtonClick() })
     // </script>
