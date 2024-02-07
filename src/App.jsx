@@ -1,7 +1,3 @@
-
-
-
-
 import './App.css'
 import ReactDOM from 'react-dom/client'
 import * as React from 'react'
@@ -79,18 +75,19 @@ function Effects() {
   )
 }
 
-function progressChecke(num) {
-  if (num > 0) {
-    document.getElementById('LoaderMain').style.display = 'block'
-    window.instructionPgVisible = true
-  }
+function progressChecker(num) {
+  document.getElementById('loader').style.width = num + '%'
+  // if (num > 0) {
+  //   document.getElementById('LoaderMain').style.display = 'block'
+  //   window.instructionPgVisible = true
+  // }
   if (num == 100) {
-    document.getElementById('LoaderMain').style.display = 'none'
+    document.getElementById('instructionMain').style.display = 'grid'
   }
 }
 function Loader() {
   const { progress } = useProgress()
-  return progressChecke(progress)
+  return progressChecker(progress)
 }
 
 

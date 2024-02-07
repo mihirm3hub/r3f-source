@@ -4,17 +4,17 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <title>Chakan Site</title>
 </head>
 
 
 
 <body>
-  <div id="LoaderMain">
-    <div id="loadingLogo" class="logo" style="width: 30vw;">
-      <img src="./images/logo.png" style="object-fit: contain; " alt="logoimg" />
-    </div>
+  <div id="loadingLogo" style="width: 30vw;">
+    <img src="./images/logo.png" style="object-fit: contain; " alt="logoimg" />
+  </div>
+  <div id="LoaderMain" style="background-image: url('./images/LoaderBg.jpg  ');">
     <p id="loadingTxt1">
       Explore the future of your business,
       in a whole new dimension with the
@@ -26,45 +26,49 @@
     <div id="loaderBottomBar">
       <img src="./images/chakanLogo.png" alt="">
       <p>Loading your <b>Indospace Interactive Park Tour</b> experience.</p>
-      <span class="loader"></span>
-    </div>
-  </div>
-<div id="instructionPg"></div>
-  <div id="Logo" class="logo"><img id="logobtn" src="./images/logo.png" style="object-fit: contain;" alt="logoimg" /></div>
+      <span class="loader">
+        <span id="loader" class="loader"></span>
+      </span>
+    </div>
+  </div>
+  <div id="instructionMain">
+    <img id="instructionChakanLogo" src="./images/chakanLogo.png" alt="">
+    <img id="instructionImg" src="./images/TutorialImg.png" alt="">
+  </div>
+  <div id="blankPG"></div>
+
+  <div id="Logo" style="display: none;"><img id="logobtn" src="./images/logo.png" style="object-fit: contain;" alt="logoimg" />
+  </div>
   <div id="root"></div>
   <div id="bottombar">
     <img id="locationbtn" class="bottombtn" src="./images/2024.01.29_ICON_MAP_BUTT.UNCLICKED-53.png"
       onmouseover="this.src=`./images/MAP_BUTT.png`"
       onmouseout="this.src=`./images/2024.01.29_ICON_MAP_BUTT.UNCLICKED-53.png`"
-      onclick="this.src=`./images/MAP_BUTT_SELECTED.png`"
-      style="object-fit: contain;" />
+      onclick="this.src=`./images/MAP_BUTT_SELECTED.png`" style="object-fit: contain;" />
     <img id="scenebtn" class="bottombtn" src="./images/2024.01.29_ICON_OVERALL.VIEW_BUTT.UNCLICKED-50.png"
       onmouseover="this.src=`./images/DEFAULT_BUTT.png`"
       onmouseout="this.src=`./images/2024.01.29_ICON_OVERALL.VIEW_BUTT.UNCLICKED-50.png`"
-      onclick="this.src=`./images/DEFAULT_BUTT_SELECTED.png`"
-      style="object-fit: contain;" />
+      onclick="this.src=`./images/DEFAULT_BUTT_SELECTED.png`" style="object-fit: contain;" />
     <img id="vehiclesbtn" class="bottombtn " src="./images/2024.01.29_ICON_AMENITIES.VIEW_BUTT.UNCLICKED-51.png"
       onmouseover="this.src=`./images/AMENITY_BUTT.png`"
       onmouseout="this.src=`./images/2024.01.29_ICON_AMENITIES.VIEW_BUTT.UNCLICKED-51.png`"
-      onclick="this.src=`./images/AMENITY_BUTT_SELECTED.png`"
-      style="object-fit: contain;" />
+      onclick="this.src=`./images/AMENITY_BUTT_SELECTED.png`" style="object-fit: contain;" />
     <img id="arbtn" class="bottombtn" src="./images/2024.01.29_ICON_AR_BUTT.UNCLICKED-52.png"
       onmouseover="this.src=`./images/AR_BUTT.png`"
       onmouseout="this.src=`./images/2024.01.29_ICON_AR_BUTT.UNCLICKED-52.png`"
-      onclick="this.src=`./images/AR_BUTT_SELECTED.png`"
-      style="object-fit: contain;" />
+      onclick="this.src=`./images/AR_BUTT_SELECTED.png`" style="object-fit: contain;" />
   </div>
   <div>
     <img id="cbtn" src="./images/Close.png" alt="Close Button" />
   </div>
   <div id="popup">
     <img class="close" src="./images/Close.png" />
-    <iframe id="popupiframe"  allow="xr-spatial-tracking"></iframe>
+    <iframe id="popupiframe" allow="xr-spatial-tracking"></iframe>
   </div>
 
   <div id="popupdarkbg"></div>
 
-  <div id="dropdown">
+  <div id="dropdown" style="display: none;">
     <img id="sidebar" alt="Dropdown Button" src="./images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png" />
     <div class="dropdown-content" id="dropdown-content">
       <div>
@@ -103,7 +107,7 @@
   </div>
 
   </div>
- 
+
   <script>
     document.getElementById('arbtn').addEventListener('click', (e) => {
       window.open('https://archiverseai.8thwall.app/indospace-afr/', '_blank')
@@ -117,16 +121,30 @@
     document.getElementById('logobtn').addEventListener('click', (e) => {
       window.open('https://www.indospace.in/', '_blank')
     })
-    window.instructionPgVisible = false
-    window.addEventListener('wheel', () => {
-      if (window.instructionPgVisible) {
-        document.getElementById('instructionPg').style.display = 'none'
-        window.instructionPgVisible = false
-      }
-    })
 
-    //document.getElementById('cbtn').addEventListener('click', () => { window.handleButtonClick() })
-  </script>
+    let isInstruction = false
+
+    document.addEventListener('scroll', () => {
+      const scroll = Math.floor(window.scrollY)
+      console.log(scroll)
+      if (scroll == 695 && !isInstruction) {
+        document.getElementById('LoaderMain').style.display = 'none'
+        document.getElementById('instructionMain').style.top = '0%'
+        document.getElementById('blankPG').style.top = '100vh'
+        window.scrollTo(0,0)
+        isInstruction = true
+      }
+      else if(scroll == 695 && isInstruction) {
+        document.getElementById('loadingLogo').style.display = 'none'
+        document.getElementById('instructionMain').style.display = 'none'
+        document.getElementById('blankPG').style.display = 'none'
+        document.getElementById('bottombar').style.display = 'block'
+        document.getElementById('dropdown').style.display = 'block'
+        document.getElementById('Logo').style.display = 'block'
+      }
+    });
+    //   //document.getElementById('cbtn').addEventListener('click', () => { window.handleButtonClick() })
+    // </script>
   <script type="module" src="/src/main.jsx"></script>
   <!-- <script>
       // draw the FPS
