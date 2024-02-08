@@ -38,7 +38,7 @@ export function Model(props) {
   const modelRef6 = useRef();
   const modelRef7 = useRef();
   const modelRef8 = useRef();
-
+  const orbitcontrols = useRef();
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/00_Chakan_V_Combined.glb");
   const { actions, mixer } = useAnimations(animations, group);
@@ -95,6 +95,9 @@ export function Model(props) {
   window.addEventListener('mousedown', startDrag);
   window.addEventListener('mousemove', drag);
   window.addEventListener('mouseup', stopDrag);
+  window.addEventListener('touchstart', startPhoneDrag);
+  window.addEventListener('touchmove', phonedrag);
+  window.addEventListener('touchend', stopDrag);
 
   function startDrag(e) {
     isDragging = true
@@ -104,23 +107,49 @@ export function Model(props) {
 
   }
 
-
-  function drag(e) {
-    xdrag = e.clientX - startX;
+  function startPhoneDrag(e){
+    isDragging = true
+    startX = e.touches[0].clientX ;
+    // startY = e.clientY;
+    console.log("a", startX)
+  }
+  
+  function phonedrag(e) {
+    console.log("Clientx", e.touches[0].clientX)
+    xdrag = e.touches[0].clientX - startX;
     xdrag = xdrag + lastXvalue
     // const y = e.clientY - startY;
-    if (isDragging && xdrag > 10) {
-      // console.log(x / 1000)
-      camTimeScale = xdrag / 2000
+    if (isDragging && xdrag > 5) {
+      console.log("X drag",xdrag)
+      camTimeScale =  xdrag / 450
     }
     else {
       // console.log("Not ")
     }
-    if(xdrag >= 1000){
+    if(xdrag >= 450){
       xdrag = 0
     } 
     if(xdrag < 0){
-      xdrag = 1000
+      xdrag = 450
+    } 
+  }
+  function drag(e) {
+    console.log("Clientx", e.clientX)
+    xdrag = e.clientX - startX;
+    xdrag = xdrag + lastXvalue
+    // const y = e.clientY - startY;
+    if (isDragging && xdrag > 10) {
+      console.log("X drag",xdrag)
+      camTimeScale =  xdrag / 3200
+    }
+    else {
+      // console.log("Not ")
+    }
+    if(xdrag >= 3200){
+      xdrag = 0
+    } 
+    if(xdrag < 0){
+      xdrag = 3200
     } 
   }
 
@@ -286,6 +315,11 @@ export function Model(props) {
       default:
         // console.log("Default Case")
     }
+      if (orbitcontrols.current) {
+        orbitcontrols.current.target.set(targetPosition.x, targetPosition.y, targetPosition.z);
+        orbitcontrols.current.update();
+      }
+  
     document.getElementById('dropdown-content').style.display = 'block'
     document.getElementById('sidebar').src = './images/sidebarU.png'
     document.getElementById('bottombar').style.display='none'
@@ -396,19 +430,9 @@ export function Model(props) {
     // function scroll(e){
     //   scroll.current = e.target.scrollTop / (e.target.scrollHeight - window.innerHeight)
     //   caption.current.innerText = scroll.current.toFixed(2)
-    // }
-
-    // if(isScrolling){
     //   actions["MainCameraAltActionClip"].time = THREE.MathUtils.lerp(actions["MainCameraAltActionClip"].time, actions["MainCameraAltActionClip"].getClip().duration * scroll.current, 1)
     //   console.log(scroll.current);
     // }
-    // else{
-    //   // actions["MainCameraAltActionClip"].time = THREE.MathUtils.lerp(actions["MainCameraAltActionClip"].time, actions["MainCameraAltActionClip"].getClip().duration * camTimeScale, 1)
-
-
-    // }
-    
-
     }
     return null
   })
@@ -680,17 +704,15 @@ export function Model(props) {
       )}
      
       
-     {/* <OrbitControls 
+     <OrbitControls 
       enabled={!ishotspotVisible} 
-      target={[targetPosition.x,targetPosition.y,targetPosition.z]} 
+      ref={orbitcontrols}
       minAzimuthAngle={-Math.PI / 4}
       maxAzimuthAngle={Math.PI / 4}
-      minPolarAngle={Math.PI / 6}
-      maxPolarAngle={Math.PI - Math.PI / 6} /> */}
+      minPolarAngle={Math.PI / 4}
+      maxPolarAngle={Math.PI - Math.PI / 2} />
 
-
-
-<group ref={group} {...props} dispose={null}>
+<group ref={group} {...props} dispose={null} >
       <group name="Scene">
         <mesh
           name="SM_L_Grasslawns"
