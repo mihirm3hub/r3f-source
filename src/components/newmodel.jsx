@@ -401,6 +401,8 @@ export function Model(props) {
         //   setClose(false)
 
         // }, 3000);
+        closeBtn.style.display = 'none'
+
       }
       else if (isDragging) {
        console.log(camTimeScale)

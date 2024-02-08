@@ -1,4 +1,4 @@
-import './App.css'
+
 import ReactDOM from 'react-dom/client'
 import * as React from 'react'
 import { Canvas, extend, useThree } from '@react-three/fiber'
@@ -75,23 +75,6 @@ function Effects() {
   )
 }
 
-function progressChecker(num) {
-  document.getElementById('loader').style.width = num + '%'  
-  // if (num > 0) {
-  //   document.getElementById('LoaderMain').style.display = 'block'
-  //   window.instructionPgVisible = true
-  // }
-  if (num == 100) {
-    document.getElementById('instructionMain').style.display = 'grid'
-    document.getElementById('loaderInfo').innerHTML = "Your <b>Indospace Interactive Park Tour<b> is ready ! Scroll down to continue."
-  }
-}
-function Loader() {
-  const { progress } = useProgress()
-  return progressChecker(progress)
-}
-
-
 
 export default function App() {
   // const props = useControls({
@@ -165,11 +148,10 @@ export default function App() {
 
 
 
-      <Suspense fallback={<Loader />}>
 
         <Experience />
 
-      </Suspense>
+      
 
 
     </Canvas>

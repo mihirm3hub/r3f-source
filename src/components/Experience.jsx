@@ -4,6 +4,27 @@ import { Environment } from '@react-three/drei'
 //  import { Model } from './model'
 import Ammenities from './Ammenities'
  import { Model } from './newmodel'
+ import { Suspense, useRef, useState } from 'react'
+ import { Html, useProgress, ContactShadows } from '@react-three/drei'
+
+
+
+ function progressChecker(num) {
+  document.getElementById('loader').style.width = num + '%'  
+  // if (num > 0) {
+  //   document.getElementById('LoaderMain').style.display = 'block'
+  //   window.instructionPgVisible = true
+  // }
+  if (num == 100) {
+    document.getElementById('instructionMain').style.display = 'grid'
+    document.getElementById('loaderInfo').innerHTML = "Your <b>Indospace Interactive Park Tour</b> is ready ! Scroll down to continue."
+  }
+}
+function Loader() {
+  const { progress } = useProgress()
+  return progressChecker(progress)
+}
+
 
 
 export default function Experience()
@@ -25,12 +46,11 @@ export default function Experience()
 
         <ambientLight  color="#fffceb" intensity={ 0.25 }  />
         
-        
+        <Suspense fallback={<Loader />}>
+
            {/* <Sitecontext scale={0.0000001}  /> */}
-           <Model onScroll={(e) => {
-      scroll.current = e.target.scrollTop / (e.target.scrollHeight - window.innerHeight)
-      console.log(scroll.current)
-    }}/>
+           <Model/>
+           </Suspense>
            <Ammenities/>
            
           

@@ -39,10 +39,12 @@ body {
   min-width: 320px;
   min-height: 100vh;
   padding: 0;
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
   overflow-x: hidden;
 }
-
+::-webkit-scrollbar{
+  display: none;
+}
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -88,7 +90,7 @@ button:focus-visible {
   z-index: 100;
   position: fixed;
   top: 5%;
-  left: 5%;
+  left: 3%;
   height: 3.6vw;
   width: 20vw;
   cursor: pointer;
@@ -212,7 +214,7 @@ button:focus-visible {
   font-size: 16px;
   border: none;
   cursor: pointer;
-  width: 15.5vw;
+  width: 17vw;
 }
 
 
@@ -220,8 +222,8 @@ button:focus-visible {
 #dropdown {
   position: absolute;
   display: inline-block;
-  left: 7vh;
-  top: 10vh;
+  left: 2.5vh;
+  top: 8.5vh;
   z-index: 12;
 }
 
@@ -232,11 +234,11 @@ button:focus-visible {
   backdrop-filter: blur(3px);
   padding: 25px;
   left: 6%;
-  top: 87.1%;
+  top: 86.1%;
   /* min-width: 160px; */
   z-index: 1;
   color: white;
-  width: 69%;
+  width: 68%;
 }
 
 .dropdown-content div h4 {
@@ -318,6 +320,7 @@ button:focus-visible {
   width: 55vw;
   position: absolute;
   top: 0;
+  color: white;
 }
 
 .loader {
@@ -433,8 +436,8 @@ button:focus-visible {
   }
 
   #dropdown {
-    top: 4vh;
-    left: -1vh;
+    top: 8vh;
+    left: 0vh;
   }
 
   #logobtn {
@@ -444,28 +447,29 @@ button:focus-visible {
   #bottombar {
     width: 46vh;
     height: 7vh;
+    position: fixed;
   }
 
   #locationbtn {
-    width: 4vh;
-    height: 4vh;
+    width: 6vh;
+    height: 5vh;
     left: 0vh;
   }
 
   #scenebtn {
-    width: 4vh;
-    height: 4vh;
+    width: 6vh;
+    height: 5vh;
     left: 17vh;
   }
 
   #vehiclesbtn {
-    width: 4vh;
-    height: 4vh;
+    width: 6vh;
+    height: 5vh;
   }
 
   #arbtn {
-    width: 4vh;
-    height: 4vh;
+    width: 6vh;
+    height: 5vh;
   }
 
   #sidebar {
@@ -474,8 +478,8 @@ button:focus-visible {
   }
 
   #dropdown-content {
-    width: 12.84vh;
-    left: 2vh;
+    width: 12.5vh;
+    left: 2.1vh;
     top: 13vh;
   }
 

@@ -6,6 +6,7 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <title>Chakan Site</title>
+ <link rel="stylesheet" href='./index.css'/>
 </head>
 
 <body>
@@ -19,10 +20,10 @@
       Explore the future of your business,<br>
       in a whole new dimension with the
     </p>
-    <h3>
-      Indospace Interactive
+    <p id="LoaderMainHeader">
+      Indospace Interactive <br>
       Park Tour
-    </h3>
+    </p>
     <div id="loaderBottomBar">
       <img id="loaderChakanLogo" src="./images/chakanLogo.png" alt="">
       <p id="loaderInfo">Loading your <b>Indospace Interactive Park Tour</b> experience.</p>
@@ -100,7 +101,7 @@
         <p id="Usage-P">Industrial, Warehousing & Logistics park</p>
       </div>
       <div>
-        <h4> __________________________</h4>
+        <h4 style="letter-spacing: normal;"> __________________________</h4>
       </div>
 
     </div>
@@ -127,7 +128,7 @@
     let instructionOpacity = 1
 
     function instructionFade() {
-      instructionOpacity -= 0.1
+      instructionOpacity -= 0.25
       document.getElementById('instructionMain').style.opacity = `${instructionOpacity}`
       if (instructionOpacity <= 0) {
         window.removeEventListener('wheel', () => { });
