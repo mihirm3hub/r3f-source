@@ -37,7 +37,7 @@
   </div>
   <!-- <div id="blankPG"></div> -->
 
-    <!-- <div id="Logo" style="display: block;"><img id="logobtn" src="./images/logo.png" style="object-fit: contain;"
+  <!-- <div id="Logo" style="display: block;"><img id="logobtn" src="./images/logo.png" style="object-fit: contain;"
         alt="logoimg" />
     </div> -->
   <div id="root"></div>
@@ -126,6 +126,18 @@
     let isInstruction = false
     let instructionOpacity = 1
 
+    function instructionFade() {
+      instructionOpacity -= 0.1
+      document.getElementById('instructionMain').style.opacity = `${instructionOpacity}`
+      if (instructionOpacity <= 0) {
+        window.removeEventListener('wheel', () => { });
+        document.getElementById('LoaderMain').style.display = 'none'
+        document.getElementById('instructionMain').style.display = 'none'
+        document.getElementById('bottombar').style.display = 'block'
+        document.getElementById('dropdown').style.display = 'block'
+      }
+    }
+
     document.addEventListener('scroll', (e) => {
       const scroll = Math.floor(window.scrollY)
       console.log(scroll)
@@ -158,15 +170,11 @@
       }
       if (scroll > 655) {
         window.addEventListener('wheel', (e) => {
-          instructionOpacity -= 0.1
-          document.getElementById('instructionMain').style.opacity = `${instructionOpacity}`
-          if (instructionOpacity <= 0) {
-            window.removeEventListener('wheel', () => { });
-            document.getElementById('LoaderMain').style.display = 'none'
-            document.getElementById('instructionMain').style.display = 'none'
-            document.getElementById('bottombar').style.display = 'block'
-            document.getElementById('dropdown').style.display = 'block'
-          }
+          instructionFade()
+        })
+
+        window.addEventListener('touchmove', (e) => {
+          instructionFade()
         })
       }
 

@@ -277,7 +277,7 @@ button:focus-visible {
   background: linear-gradient(0deg, #000000cf 30%, #ffffff17 70%);
 }
 
-#LoaderMain p {
+#loadingTxt1 {
   position: absolute;
   top: 10%;
   left: 5%;
@@ -366,6 +366,7 @@ button:focus-visible {
     opacity: 0;
   }
 }
+
 #instructionMain {
   display: none;
   z-index: 99;
@@ -414,6 +415,20 @@ button:focus-visible {
 
 /* mobile */
 @media only screen and (max-width: 640px) and (orientation:portrait) {
+  #loadingTxt1 {
+    font-size: 14px;
+    width: 60vw;
+  }
+
+  #LoaderMain h3 {
+    position: absolute;
+    top: 16%;
+    left: 5%;
+    font-size: 30px;
+    width: 70vw;
+    font-family: Inter;
+    color: white;
+  }
 
   #dropdown {
     top: 4vh;
