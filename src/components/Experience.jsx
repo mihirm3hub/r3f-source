@@ -8,7 +8,7 @@ import Ammenities from './Ammenities'
  import { Html, useProgress, ContactShadows } from '@react-three/drei'
 
 
-
+let isAmenties = false
  function progressChecker(num) {
   document.getElementById('loader').style.width = num + '%'  
   // if (num > 0) {
@@ -40,10 +40,7 @@ export default function Experience()
         
        
 
-        <directionalLight castShadow color={'#fffaed'} position={[3, 45, 5]} shadow-mapSize={[1024, 1024]}  shadow-normalBias={-0.95} shadow-bias={-0.00050}>
-   <orthographicCamera attach="shadow-camera" args={[-20, 20, 20, -20]} />
- </directionalLight>
-
+      
         <ambientLight  color="#fffceb" intensity={ 0.25 }  />
         
         <Suspense fallback={<Loader />}>

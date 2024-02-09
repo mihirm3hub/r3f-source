@@ -204,7 +204,22 @@ button:focus-visible {
   top: 5%;
   /* margin-right: 10px; */
 }
-
+.prebtn {
+  position: fixed;
+  z-index: 12;
+  right: 97vw;
+  top: 45%;
+  cursor: pointer;
+  /* margin-right: 10px; */
+}
+.nextbtn {
+  position: fixed;
+  z-index: 12;
+  right: 1vw;
+  top: 45%;
+  cursor: pointer;
+  /* margin-right: 10px; */
+}
 .close:hover,
 .close:focus {
   color: #000;
@@ -295,12 +310,12 @@ button:focus-visible {
 
 #LoaderMainHeader {
   position: absolute;
-  top: 15%;
+  top: 12%;
   left: 3%;
   font-size: 60px;
   width: 55vw;
   letter-spacing: 2%;
-  font-family: 'cairo-Regular';
+  font-family: cairo-Regular;
   color: white;
   line-height: 75px;
   font-weight: bolder;
@@ -308,10 +323,10 @@ button:focus-visible {
 
 #loaderBottomBar {
   position: absolute;
-  height: 20vh;
-  width: 80vw;
+  height: 16vh;
+  width: 92vw;
   top: 75vh;
-  left: 5vw;
+  left: 3vw;
   background-color: #000000a1;
   backdrop-filter: blur(2px);
 }
@@ -332,14 +347,14 @@ button:focus-visible {
 }
 
 .loader {
-  width: 70%;
+  width: 77%;
   height: 16px;
   display: inline-block;
   position: relative;
   background: rgba(95, 95, 95, 0.26);
   overflow: hidden;
   left: 3%;
-  top: -8%;
+  top: -16%;
 }
 
 #loader {

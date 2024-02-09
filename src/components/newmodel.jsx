@@ -103,7 +103,7 @@ export function Model(props) {
     isDragging = true
     startX = e.clientX ;
     // startY = e.clientY;
-    console.log("a", startX)
+    // console.log("a", startX)
 
   }
 
@@ -111,16 +111,16 @@ export function Model(props) {
     isDragging = true
     startX = e.touches[0].clientX ;
     // startY = e.clientY;
-    console.log("a", startX)
+    // console.log("a", startX)
   }
   
   function phonedrag(e) {
-    console.log("Clientx", e.touches[0].clientX)
+    // console.log("Clientx", e.touches[0].clientX)
     xdrag = e.touches[0].clientX - startX;
     xdrag = xdrag + lastXvalue
     // const y = e.clientY - startY;
     if (isDragging && xdrag > 5) {
-      console.log("X drag",xdrag)
+      // console.log("X drag",xdrag)
       camTimeScale =  xdrag / 450
     }
     else {
@@ -134,12 +134,12 @@ export function Model(props) {
     } 
   }
   function drag(e) {
-    console.log("Clientx", e.clientX)
+    // console.log("Clientx", e.clientX)
     xdrag = e.clientX - startX;
     xdrag = xdrag + lastXvalue
     // const y = e.clientY - startY;
     if (isDragging && xdrag > 10) {
-      console.log("X drag",xdrag)
+      // console.log("X drag",xdrag)
       camTimeScale =  xdrag / 3200
     }
     else {
@@ -241,7 +241,7 @@ export function Model(props) {
         camPos.y = 3.994
         camPos.z = -6.434
         camRot.x = -2.771
-        camRot.y = -0.715
+        camRot.y = 0.715
         camRot.z = -2.892
         targetPosition.x=-3.772
         targetPosition.y=1.814
@@ -256,6 +256,7 @@ export function Model(props) {
         document.getElementById('totbarea').innerText = "2,66,363 sq.ft (24,746 sq.m.)"
         document.getElementById('Usage').innerText = "Clear Height"
         document.getElementById('Usage-P').innerText = "12 meters minimum"
+        console.log("Inside B400 switch case")
         // document.getElementById('Usage').style.display = 'none'
         // document.getElementById('Usage-P').style.display = 'none'
 
@@ -281,6 +282,7 @@ export function Model(props) {
         document.getElementById('totbarea').innerText = "1,47,186 sq.ft (13,674 sq.m.)"
         document.getElementById('Usage').innerText = "Clear Height"
         document.getElementById('Usage-P').innerText = "12 meters minimum"
+        console.log("Inside B500 switch case")
         // document.getElementById('Usage').style.display = 'none'
         // document.getElementById('Usage-P').style.display = 'none'
        
@@ -330,18 +332,50 @@ export function Model(props) {
   
 
   const closeBtn = document.getElementById('cbtn')
+  const preBtn = document.querySelector('.prebtn')
+  // const nextBtn = document.getElementById('nextbtn')
 
+  const popupIframe = document.getElementById("popupiframe");
+  let picno;
+  const nextBtn = document.querySelector('.nextbtn');
+  nextBtn.addEventListener("click", event => {
+   // alert("Next click");
+     picno += 1;
+     if(picno == 4)
+     {
+       picno = 1;
+     }
+     popupIframe.src = `https://equanimoustech.com/Sagar/IndoSpace1/VR${picno}/`
+     document.getElementById('sidebar').src = `./images/StreetView-0${picno}.png`
+
+
+  });
+  
+  preBtn.addEventListener("click", event => {
+     picno -= 1;
+     if(picno == 0)
+     {
+       picno = 3;
+     }
+     popupIframe.src = `https://equanimoustech.com/Sagar/IndoSpace1/VR${picno}/`
+     document.getElementById('sidebar').src = `./images/StreetView-0${picno}.png`
+  });   
+  
   const perspectiveCam = useRef();
   const maincam1 = useRef()
 
   // let defaultCam = false
 
   // const { get, set } = useThree(({ get, set }) => ({ get, set }));
-
+  const toggleVisibility = () => {
+    console.log('amneties visibility', isVisible)
+    setIsVisible(!ishotspotVisible);
+  // isOpen = false;
+  };
   const [clicked, setClicked] = useState(false)
   const [closed, setClose] = useState(false)
   const [ishotspotVisible, setVisibility] = useState(true)
-
+  document.getElementById('vehiclesbtn').addEventListener('click',toggleVisibility)
   closeBtn.addEventListener('click', () => {
     closeBtn.style.display = 'none'
     meshname = 'Default'
@@ -356,26 +390,12 @@ export function Model(props) {
     // isOpen = false;
   })
  
-  
-  // useFrame(state => {
-  //   if (clicked3) {
-  //     state.camera.lookAt(-0.439, 0.715, 0.299)
-  //     state.camera.position.set(12.437, 4.9, 16.587)
-  //     state.camera.updateProjectionMatrix()
-  //     closeBtn.style.display = 'block'
-  //   }
-  //   else if (!clicked3) {
-  //     state.camera.lookAt(-0.32, 0.604, 0.186)
-  //     state.camera.position.set(31.401, 13.534, 42.827)
-  //     state.camera.updateProjectionMatrix()
-  //   }
-  //   return null
-  // })
-
+ 
   useFrame(state => {
     // console.log(meshname)
     if (clicked) {
       if(!runOnce){
+        isDragging = false
         setCameraPosRot(meshname)
         state.camera.rotation.set(camRot.x, camRot.y, camRot.z)
         state.camera.position.set(camPos.x, camPos.y, camPos.z)
@@ -393,14 +413,6 @@ export function Model(props) {
       if (meshname == 'Default' && closed) {
         console.log('Close false')
         setClose(false)
-        // state.camera.lookAt(-0.32, 0.604, 0.186)
-        // state.camera.position.set(31.401, 13.534, 42.827)
-        // state.camera.updateProjectionMatrix()
-
-        // setTimeout(() => {
-        //   setClose(false)
-
-        // }, 3000);
         closeBtn.style.display = 'none'
 
       }
@@ -516,6 +528,7 @@ export function Model(props) {
         setClicked(true)
         setVisibility(false)
         setHovered4(false)
+        console.log(meshname);
       }}
       onPointerOver={() => setHovered4(true)}
       onPointerOut={() => setHovered4(false)}
@@ -618,7 +631,8 @@ export function Model(props) {
         document.getElementById('popup').style.display = 'block',
         document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR1/',
         document.getElementById('dropdown-content').style.display = 'none',
-        document.getElementById('sidebar').src = './images/2024.01.29_SURF_STREET.VIEW.01_WINDOW.OPEN-70.png'
+        document.getElementById('sidebar').src = './images/StreetView-01.png',
+        picno=1
       )}
       scale={6}
     >
@@ -650,9 +664,10 @@ export function Model(props) {
           console.log('Clicked 360 view'),
           document.getElementById('popupdarkbg').style.display = 'block',
           document.getElementById('popup').style.display = 'block',
-          document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR3/',
+          document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR2/',
           document.getElementById('dropdown-content').style.display = 'none',
-          document.getElementById('sidebar').src = './images/2024.01.29_SURF_STREET.VIEW.02_WINDOW.OPEN-71.png'
+          document.getElementById('sidebar').src = './images/StreetView-02.png',
+          picno=2
         )}
         scale={6}
       >
@@ -687,9 +702,10 @@ export function Model(props) {
         console.log('Clicked 360 view'),
         document.getElementById('popupdarkbg').style.display = 'block',
         document.getElementById('popup').style.display = 'block',
-        document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR2/',
+        document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR3/',
         document.getElementById('dropdown-content').style.display = 'none',
-        document.getElementById('sidebar').src = './images/2024.01.29_SURF_STREET.VIEW.03_WINDOW.OPEN-72.png'
+        document.getElementById('sidebar').src = './images/StreetView-03.png',
+        picno=3
         
       )}
       scale={6}
@@ -710,9 +726,11 @@ export function Model(props) {
       enabled={!ishotspotVisible} 
       ref={orbitcontrols}
       minAzimuthAngle={-Math.PI / 4}
-      maxAzimuthAngle={Math.PI / 4}
-      minPolarAngle={Math.PI / 4}
-      maxPolarAngle={Math.PI - Math.PI / 2} />
+      maxAzimuthAngle={Math.PI / 2}
+      minPolarAngle={Math.PI / 3}
+      maxPolarAngle={Math.PI / 2.5}
+      maxDistance={7}
+      minDistance={3}/>
 
 <group ref={group} {...props} dispose={null} >
       <group name="Scene">
