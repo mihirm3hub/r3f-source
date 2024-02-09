@@ -368,8 +368,7 @@ export function Model(props) {
 
   // const { get, set } = useThree(({ get, set }) => ({ get, set }));
   const toggleVisibility = () => {
-    console.log('amneties visibility', isVisible)
-    setIsVisible(!ishotspotVisible);
+    setVisibility(!ishotspotVisible);
   // isOpen = false;
   };
   const [clicked, setClicked] = useState(false)
