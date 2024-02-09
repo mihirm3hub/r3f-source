@@ -7,6 +7,9 @@
   src:url('/cairo-2-cufonfonts/Cairo-Regular.ttf')
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
 
 #root {
   position: fixed;
@@ -35,7 +38,9 @@ a {
 a:hover {
   color: #535bf2;
 }
-
+html{
+  scroll-behavior: smooth;
+}
 body {
   margin: 0;
   display: flex;
@@ -43,7 +48,6 @@ body {
   min-width: 320px;
   min-height: 100vh;
   padding: 0;
-  scroll-behavior: auto;
   overflow-x: hidden;
 }
 
@@ -106,6 +110,9 @@ button:focus-visible {
   bottom: 0%;
 }
 
+.bottombtn {
+  user-select: none;
+}
 
 #locationbtn {
   left: 2vh;

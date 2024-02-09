@@ -6,7 +6,7 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <title>Chakan Site</title>
- <link rel="stylesheet" href='./index.css'/>
+  <link rel="stylesheet" href='./index.css' />
 </head>
 
 <body>
@@ -68,7 +68,7 @@
     <img class="prebtn" src="./images/PREVIOUS_BUTT.png" />
     <img class="nextbtn" src="./images/NEXT_BUTT.png" />
 
-    
+
 
     <iframe id="popupiframe" allow="xr-spatial-tracking"></iframe>
   </div>
@@ -106,7 +106,7 @@
         <p id="Usage-P">Industrial, Warehousing & Logistics park</p>
       </div>
       <div>
-        <h4 > __________________________</h4>
+        <h4> __________________________</h4>
       </div>
 
     </div>
@@ -130,43 +130,39 @@
     })
 
     let isInstruction = false
-    let instructionOpacity = 1
 
     function instructionFade() {
-      instructionOpacity -= 0.25
-      document.getElementById('instructionMain').style.opacity = `${instructionOpacity}`
-      if (instructionOpacity <= 0) {
-        window.removeEventListener('wheel', () => { });
-        document.getElementById('LoaderMain').style.display = 'none'
-        document.getElementById('instructionMain').style.display = 'none'
-        document.getElementById('bottombar').style.display = 'block'
-        document.getElementById('dropdown').style.display = 'block'
-      }
+      document.getElementById('instructionMain').style.animation = 'opacityAnim .7s ease forwards'
+      window.removeEventListener('wheel', () => { });
+      window.removeEventListener('touchmove', () => { });
+      // window.removeEventListener('click', () => { });
+      document.getElementById('LoaderMain').style.display = 'none'
+      document.getElementById('instructionMain').style.display = 'none'
+      document.getElementById('bottombar').style.display = 'block'
+      document.getElementById('dropdown').style.display = 'block'
     }
 
+    let isScrolled = false
     document.addEventListener('scroll', (e) => {
       const scroll = Math.floor(window.scrollY)
-      console.log(scroll)
-      // if (scroll == 695 && !isInstruction) {
-      //   document.getElementById('LoaderMain').style.display = 'none'
-      //   document.getElementById('instructionMain').style.top = '0%'
-      //   // document.getElementById('blankPG').style.top = '100vh'
-      //   // window.scrollTo(0,0)
-      // }
-      // else if(scroll == 695 && isInstruction) {
-      //   document.getElementById('loadingLogo').style.display = 'none'
-      //   document.getElementById('instructionMain').style.display = 'none'
-      //   // document.getElementById('blankPG').style.display = 'none'
-      //   document.getElementById('bottombar').style.display = 'block'
-      //   document.getElementById('dropdown').style.display = 'block'
-      //   document.getElementById('Logo').style.display = 'block'
+      console.log('scroll', scroll)
+      if (scroll > 5) {
+        if (!isScrolled) {
+          // window.scrollTo(0, 1000)
+          window.scroll({
+            top: 1000,
+            left: 0,
+            behavior: 'smooth'
+          });
+          console.log('scrolling....');
+          isScrolled = true
+        }
 
-      // }
+      }
       if (scroll >= 437) {
         document.getElementById("loaderChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
         document.getElementById("fixedChakanLogo").style.animation = 'opacityAnim .5s ease forwards'
         isInstruction = true
-
       }
       else if (scroll < 437 && isInstruction) {
         console.log('else');
@@ -175,6 +171,7 @@
         document.getElementById("fixedChakanLogo").style.display = 'none'
       }
       if (scroll > 655) {
+        window.addEventListener('click', instructionFade)
         window.addEventListener('wheel', (e) => {
           instructionFade()
         })
