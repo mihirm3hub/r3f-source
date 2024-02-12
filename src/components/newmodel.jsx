@@ -102,7 +102,10 @@ export function Model(props) {
   window.addEventListener('touchstart', startPhoneDrag);
   window.addEventListener('touchmove', phonedrag);
   window.addEventListener('touchend', stopDrag);
-
+  // window.addEventListener('scroll', (e) => {
+  //   const scroll = Math.floor(window.scrollY)
+  //   console.log("Scroll", scroll)
+  // })
   function startDrag(e) {
     startX = e.clientX;
     // startY = e.clientY;
