@@ -170,6 +170,8 @@ export function Model(props) {
   let camPos = new THREE.Vector3()
   let camRot = new THREE.Vector3()
   let targetPosition = new THREE.Vector3();
+  let minaAngle
+  let maxaAngle
   const setCameraPosRot = (hotspotname) => {
     switch (hotspotname) {
       case 'B100':
@@ -182,6 +184,8 @@ export function Model(props) {
         targetPosition.x = 6.877
         targetPosition.y = 2.377
         targetPosition.z = 11.081
+        minaAngle=-0.785398
+        maxaAngle=1.65806
         document.getElementById('bnmtitle').innerText = "Building name"
         document.getElementById('bname').innerText = "B100"
         document.getElementById('fareatitle').innerText = "Floor Area"
@@ -206,6 +210,8 @@ export function Model(props) {
         targetPosition.x = 11.378
         targetPosition.y = 2.371
         targetPosition.z = 10.424
+        minaAngle=-1.0472
+        maxaAngle=0.523599
         document.getElementById('bnmtitle').innerText = "Building name"
         document.getElementById('bname').innerText = "B200"
         document.getElementById('fareatitle').innerText = "Floor Area"
@@ -230,6 +236,8 @@ export function Model(props) {
         targetPosition.x = -7.007
         targetPosition.y = 2.379
         targetPosition.z = -4.546
+        minaAngle=0
+        maxaAngle=3.14159
         document.getElementById('bnmtitle').innerText = "Building name"
         document.getElementById('bname').innerText = "B300"
         document.getElementById('fareatitle').innerText = "Floor Area"
@@ -254,6 +262,8 @@ export function Model(props) {
         targetPosition.x = -3.772
         targetPosition.y = 1.814
         targetPosition.z = -1.344
+        minaAngle=-0.785398
+        maxaAngle=3.14159
         document.getElementById('bnmtitle').innerText = "Building name"
         document.getElementById('bname').innerText = "B400"
         document.getElementById('fareatitle').innerText = "Floor Area"
@@ -280,6 +290,8 @@ export function Model(props) {
         targetPosition.x = -2.962
         targetPosition.y = 1.823
         targetPosition.z = -4.056
+        minaAngle=-1.0472
+        maxaAngle=1.0472
         document.getElementById('bnmtitle').innerText = "Building name"
         document.getElementById('bname').innerText = "B500"
         document.getElementById('fareatitle').innerText = "Floor Area"
@@ -327,6 +339,10 @@ export function Model(props) {
     }
     if (orbitcontrols.current) {
       orbitcontrols.current.target.set(targetPosition.x, targetPosition.y, targetPosition.z);
+      orbitcontrols.current.maxAzimuthAngle = Math.PI / 4;
+
+      orbitcontrols.current.minAzimuthAngle = Math.PI / 2;
+
       orbitcontrols.current.update();
     }
 

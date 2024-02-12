@@ -18,6 +18,11 @@ let isAmenties = false
   if (num == 100) {
     document.getElementById('instructionMain').style.display = 'grid'
     document.getElementById('loaderInfo').innerHTML = "Your <b>Indospace Interactive Park Tour</b> is ready ! Scroll down to continue."
+    document.getElementById('loader').style.removeProperty('background')
+    document.getElementById('loader').style.backgroundImage='url(./images/swipeToContinue.png)'
+    document.getElementById('loader').style.backgroundPosition='center'
+    document.getElementById('loader').style.backgroundRepeat='no-repeat'
+    document.getElementById('loader').style.backgroundSize='contain'
   }
 }
 function Loader() {

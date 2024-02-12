@@ -27,7 +27,7 @@ export default function Ammenities()
         toggleVisibility();
         turnOffVisibility();
     }, []);
-    const ammenities = useGLTF("./04_Ammenities_Overlay.glb");
+    const ammenities = useGLTF("./04_Ammenities_Overlay_R1.glb");
     document.getElementById('vehiclesbtn').addEventListener('click',toggleVisibility)
     document.getElementById('scenebtn').addEventListener('click',turnOffVisibility)
     return <>
