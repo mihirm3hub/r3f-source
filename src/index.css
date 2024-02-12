@@ -302,13 +302,12 @@ input:checked+.slider:before {
 }
 
 #sidebar {
+  width: 100%;
   /* padding: 16px; */
   /* font-size: 16px; */
-  object-fit: cover;
+  object-fit: contain;
   border: none;
   cursor: pointer;
-  width: 15vw;
-  height: 9.27vw;
   /* top: 6px; */
   /* opacity: 75%; */
   /* left: 8px; */
@@ -317,13 +316,18 @@ input:checked+.slider:before {
 hr.solid {
   border-top: 1px solid #bbb;
 }
-
+#streetview {
+  display: none;
+  margin-top: -2%;
+  object-fit: cover;
+  width: 100%;
+}
 #dropdown {
-  position: absolute;
+  position: fixed;
   display: inline-block;
-  width: 15vw;
-  left: 3vw;
-  top: 10vh;
+  width: 200px;
+  left: 58.04px;
+  top: 90px;
   z-index: 12;
   object-fit: contain;
 }
@@ -340,7 +344,7 @@ hr.solid {
   /* min-width: 160px; */
   z-index: 1;
   color: white;
-  width: 11.9vw;
+  /* width: 11.9vw; */
   /* opacity: 55%; */
 }
 .dropdown-content div h4 {
@@ -379,7 +383,7 @@ hr.solid {
   width: 100%;
   top: 0%;
   left: 0;
-  background: linear-gradient(0deg, #000000cf 25%, #ffffff17 75%);
+  background: linear-gradient(0deg, #000000cf 20%, #ffffff17 80%);
 }
 
 #loadingTxt1 {
@@ -390,7 +394,7 @@ hr.solid {
   width: 531px;
   font-family: cairo-Regular;
   color: white;
-  line-height: 40px;
+  line-height: 35px;
 }
 #LoaderMainHeader {
   position: absolute;
@@ -401,7 +405,7 @@ hr.solid {
   letter-spacing: 2%;
   font-family: cairo-Regular;
   color: white;
-  line-height: 77px;
+  line-height: 80px;
   font-weight: bolder;
   height: 174px;
 }
@@ -418,7 +422,8 @@ hr.solid {
 
 #loaderChakanLogo {
   object-fit: contain;
-  width: 15vw;
+  width: 13vw;
+  height: 9vw;
 }
 
 #loaderBottomBar p {
@@ -488,7 +493,7 @@ hr.solid {
   width: 100vw;
   top: 100vh;
   left: 0%;
-  background: linear-gradient(180deg, #000000cf 25%, #ffffff00 75%);
+  background: linear-gradient(180deg, #000000cf 20%, #ffffff00 80%);
   align-items: center;
   justify-content: center;
 }
@@ -509,8 +514,8 @@ hr.solid {
   display: block;
   z-index: 100;
   position: fixed;
-  width: 15vw;
-  height: 9.27vw;
+  width: 13vw;
+  height: 8vw;
   left: 3vw;
   top: 10vh;
   opacity: 0;
@@ -702,7 +707,7 @@ hr.solid {
 
     height: 0.5vh;
   }
-
+/* 
   #dropdown {
     left: 0vh;
   }
@@ -720,7 +725,7 @@ hr.solid {
   .dropdown-content div p {
     font-size: 9px;
     text-align: center;
-  } 
+  }  */
   
 }
 

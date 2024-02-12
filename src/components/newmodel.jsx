@@ -372,7 +372,7 @@ export function Model(props) {
       picno = 1;
     }
     popupIframe.src = `https://equanimoustech.com/Sagar/IndoSpace1/VR${picno}/`
-    document.getElementById('sidebar').src = `./images/StreetView-0${picno}.png`
+    document.getElementById('streetview').src = `./images/StreetView-0${picno}.png`
 
   });
 
@@ -383,7 +383,7 @@ export function Model(props) {
       picno = 3;
     }
     popupIframe.src = `https://equanimoustech.com/Sagar/IndoSpace1/VR${picno}/`
-    document.getElementById('sidebar').src = `./images/StreetView-0${picno}.png`
+    document.getElementById('streetview').src = `./images/StreetView-0${picno}.png`
   });
 
   const perspectiveCam = useRef();
@@ -417,6 +417,8 @@ export function Model(props) {
 
 
   useFrame(state => {
+    const scroll = Math.floor(window.scrollY)
+    console.log("Scroll", scroll)
     // console.log(meshname)
     if (clicked) {
       if (!runOnce) {
@@ -674,7 +676,8 @@ export function Model(props) {
             document.getElementById('popup').style.display = 'block',
             document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR1/',
             document.getElementById('dropdown-content').style.display = 'none',
-            document.getElementById('sidebar').src = './images/StreetView-01.png',
+            document.getElementById('streetview').src = './images/StreetView-01.png',
+            document.getElementById('streetview').style.display = 'block',
             picno = 1
           )}
           scale={6}
@@ -709,7 +712,8 @@ export function Model(props) {
             document.getElementById('popup').style.display = 'block',
             document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR2/',
             document.getElementById('dropdown-content').style.display = 'none',
-            document.getElementById('sidebar').src = './images/StreetView-02.png',
+            document.getElementById('streetview').style.display = 'block',
+            document.getElementById('streetview').src = './images/StreetView-02.png',
             picno = 2
           )}
           scale={6}
@@ -747,7 +751,8 @@ export function Model(props) {
             document.getElementById('popup').style.display = 'block',
             document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR3/',
             document.getElementById('dropdown-content').style.display = 'none',
-            document.getElementById('sidebar').src = './images/StreetView-03.png',
+            document.getElementById('streetview').style.display = 'block',
+            document.getElementById('streetview').src = './images/StreetView-03.png',
             picno = 3
 
           )}
