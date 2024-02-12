@@ -160,7 +160,7 @@ button:focus-visible {
   left: -1vw;
   bottom: 0.5vh;
   /* background-color: white; */
-  background-image: url(./images/DEFAULT_BUTT.png);
+  background-image: url(./../images/DEFAULT_BUTT.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -177,7 +177,7 @@ input:checked+.slider:before {
   -webkit-transform: translateX(3vw);
   -ms-transform: translateX(3vw);
   transform: translateX(3vw);
-  background-image: url(./images/AMENITY_BUTT.png);
+  background-image: url(./../images/AMENITY_BUTT.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
