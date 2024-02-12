@@ -396,7 +396,8 @@ export function Model(props) {
   const [clicked, setClicked] = useState(false)
   const [closed, setClose] = useState(false)
   const [ishotspotVisible, setVisibility] = useState(true)
-  document.getElementById('vehiclesbtn').addEventListener('click', toggleVisibility)
+  // document.getElementById('vehiclesbtn').addEventListener('click', toggleVisibility)
+  document.getElementById('amenitySwitch').addEventListener('click', toggleVisibility)
   closeBtn.addEventListener('click', () => {
     closeBtn.style.display = 'none'
     meshname = 'Default'
@@ -406,7 +407,7 @@ export function Model(props) {
     setVisibility(true)
     document.getElementById('dropdown-content').style.display = 'none'
     document.getElementById('sidebar').src = './images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png'
-    document.getElementById('bottombar').style.display = 'block'
+    document.getElementById('bottombar').style.display = 'flex'
     runOnce = false
     // isOpen = false;
   })

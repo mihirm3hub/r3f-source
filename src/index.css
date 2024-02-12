@@ -104,6 +104,7 @@ button:focus-visible {
 
 #bottombar {
   display: none;
+  justify-content: space-between;
   position: absolute;
   background: none;
   width: 100vw;
@@ -119,10 +120,76 @@ button:focus-visible {
   width: 2.5vw;
   height: 2.5vw;
   padding: 2%;
-  position: relative;
+  /* position: relative; */
   cursor: pointer;
 
 
+}
+
+.switch {
+  margin-top: 2%;
+  position: relative;
+  display: inline-block;
+  width: 6vw;
+  height: 6vh;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(83, 81, 81, 0.574);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 5vh;
+  width: 5vw;
+  left: -1vw;
+  bottom: 0.5vh;
+  /* background-color: white; */
+  background-image: url(./images/DEFAULT_BUTT.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background: linear-gradient(98.38deg, #004C9C 0%, #00867D 48%, #00953F 100%);
+
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(3vw);
+  -ms-transform: translateX(3vw);
+  transform: translateX(3vw);
+  background-image: url(./images/AMENITY_BUTT.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
 
 /* locationbtn:hover{
@@ -130,7 +197,7 @@ button:focus-visible {
 } */
 
 #scenebtn {
-  position: fixed;
+  /* position: fixed; */
   left: 45%;
   width: 2.5vw;
   height: 2.5vw;
@@ -139,7 +206,7 @@ button:focus-visible {
 }
 
 #vehiclesbtn {
-  position: fixed;
+  /* position: fixed; */
   left: 50%;
   width: 2.5vw;
   height: 2.5vw;
@@ -148,7 +215,7 @@ button:focus-visible {
 }
 
 #arbtn {
-  position: fixed;
+  /* position: fixed; */
   right: 2%;
   width: 2.5vw;
   height: 2.5vw;
@@ -239,10 +306,12 @@ button:focus-visible {
   font-size: 16px;
   border: none;
   cursor: pointer;
-  width: 233px;
+  /* width: 233px; */
+  width: 15vw;
   position: absolute;
   /* left: 55px; */
-  height: 144px;
+  /* height: 144px; */
+  height: 9.27vw;
   top: 6px;
   /* opacity: 75%; */
   left: 8px;
@@ -346,7 +415,7 @@ button:focus-visible {
   backdrop-filter: blur(2px);
 }
 
-#loaderBottomBar img {
+#loaderChakanLogo {
   object-fit: contain;
   width: 15vw;
 }
@@ -458,6 +527,21 @@ button:focus-visible {
 }
 #phonelndscap {
   display: none;
+}
+#swipetocon {
+  position: absolute;
+  width: 1061px;
+  top: 9vh;
+  left: 298px;
+  display: none;
+  
+}
+#scrolltocon {
+  position: absolute;
+  display: none;
+  top: 6vw;
+  left: 27vh;
+  width: 85vh;
 }
 
 /* mobile */
@@ -601,6 +685,8 @@ button:focus-visible {
 #fixedChakanLogo {
   width:189px;
 }
+
+
 /* #loader{
   background-image: url(./images/swipeToContinue.png);
    background-position: center;
