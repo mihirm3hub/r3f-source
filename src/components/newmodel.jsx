@@ -19,7 +19,7 @@ let lastYvalue = 0
 let xdrag
 let ydrag
 let isOpen = false;
-let isScrolling = false
+let isClosed = true
 
 const dropdownContent = document.getElementById('dropdown-content');
 const sidebarImage = document.getElementById('sidebar');
@@ -65,9 +65,6 @@ export function Model(props) {
   const hotspottexHovered4 = useLoader(TextureLoader, "./images/B500.png");
   const viewtex = useLoader(TextureLoader, "./images/360viewnew.png");
   const howeverdviewtex = useLoader(TextureLoader, "./images/360BUTTHOVER.png");
-
-
-
 
   const [hovered1, setHovered1] = useState(false);
   const [hovered2, setHovered2] = useState(false);
@@ -139,7 +136,7 @@ export function Model(props) {
     if (isDragging && xdrag > 5) {
       // console.log("X drag",xdrag)
       camTimeScale = xdrag / 450
-    } else if(isDragging && ydrag > 5){
+    } else if (isDragging && ydrag > 5) {
       camTimeScale = ydrag / 700
     }
     else {
@@ -199,8 +196,8 @@ export function Model(props) {
         targetPosition.x = 6.877
         targetPosition.y = 2.377
         targetPosition.z = 11.081
-        minaAngle=-0.785398
-        maxaAngle=1.65806
+        minaAngle = -0.785398
+        maxaAngle = 1.65806
         document.getElementById('bnmtitle').innerText = "Building name"
         document.getElementById('bname').innerText = "B100"
         document.getElementById('fareatitle').innerText = "Floor Area"
@@ -225,8 +222,8 @@ export function Model(props) {
         targetPosition.x = 11.378
         targetPosition.y = 2.371
         targetPosition.z = 10.424
-        minaAngle=-1.0472
-        maxaAngle=0.523599
+        minaAngle = -1.0472
+        maxaAngle = 0.523599
         document.getElementById('bnmtitle').innerText = "Building name"
         document.getElementById('bname').innerText = "B200"
         document.getElementById('fareatitle').innerText = "Floor Area"
@@ -251,8 +248,8 @@ export function Model(props) {
         targetPosition.x = -7.007
         targetPosition.y = 2.379
         targetPosition.z = -4.546
-        minaAngle=0
-        maxaAngle=3.14159
+        minaAngle = 0
+        maxaAngle = 3.14159
         document.getElementById('bnmtitle').innerText = "Building name"
         document.getElementById('bname').innerText = "B300"
         document.getElementById('fareatitle').innerText = "Floor Area"
@@ -277,8 +274,8 @@ export function Model(props) {
         targetPosition.x = -3.772
         targetPosition.y = 1.814
         targetPosition.z = -1.344
-        minaAngle=-0.785398
-        maxaAngle=3.14159
+        minaAngle = -0.785398
+        maxaAngle = 3.14159
         document.getElementById('bnmtitle').innerText = "Building name"
         document.getElementById('bname').innerText = "B400"
         document.getElementById('fareatitle').innerText = "Floor Area"
@@ -305,8 +302,8 @@ export function Model(props) {
         targetPosition.x = -2.962
         targetPosition.y = 1.823
         targetPosition.z = -4.056
-        minaAngle=-1.0472
-        maxaAngle=1.0472
+        minaAngle = -1.0472
+        maxaAngle = 1.0472
         document.getElementById('bnmtitle').innerText = "Building name"
         document.getElementById('bname').innerText = "B500"
         document.getElementById('fareatitle').innerText = "Floor Area"
@@ -350,7 +347,7 @@ export function Model(props) {
 
         break;
       default:
-      // console.log("Default Case")
+        console.log("Default Case")
     }
     if (orbitcontrols.current) {
       orbitcontrols.current.target.set(targetPosition.x, targetPosition.y, targetPosition.z);
@@ -364,8 +361,6 @@ export function Model(props) {
     document.getElementById('dropdown-content').style.display = 'block'
     document.getElementById('sidebar').src = './images/sidebarU.png'
     document.getElementById('bottombar').style.display = 'none'
-
-
     // isOpen = true;
   }
 
@@ -409,51 +404,58 @@ export function Model(props) {
     // isOpen = false;
   };
   const [clicked, setClicked] = useState(false)
-  const [closed, setClose] = useState(false)
   const [ishotspotVisible, setVisibility] = useState(true)
+
   // document.getElementById('vehiclesbtn').addEventListener('click', toggleVisibility)
   document.getElementById('amenitySwitch').addEventListener('click', toggleVisibility)
   closeBtn.addEventListener('click', () => {
     closeBtn.style.display = 'none'
+    runOnce = false
     meshname = 'Default'
-    setCameraPosRot(meshname)
     setClicked(false)
-    setClose(true)
+    isClosed = true
     setVisibility(true)
+    setCameraPosRot(meshname)
     document.getElementById('dropdown-content').style.display = 'none'
     document.getElementById('sidebar').src = './images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png'
     document.getElementById('bottombar').style.display = 'flex'
-    runOnce = false
+    console.log('CloseBtn RunOne', runOnce);
     // isOpen = false;
   })
 
 
   useFrame(state => {
-    // console.log(meshname)
-    if (clicked) {
-      if (!runOnce) {
-        actions["MainCameraAltActionClip"].timeScale = 0
-        setCameraPosRot(meshname)
-        state.camera.rotation.set(camRot.x, camRot.y, camRot.z)
-        state.camera.position.set(camPos.x, camPos.y, camPos.z)
-        state.camera.updateProjectionMatrix()
-        runOnce = true
-        console.log("RUN ONCE");
-      }
-      closeBtn.style.display = 'block'
-      // if(isDragging){
-      //   state.camera.rotation.y = camRot.y +  state.pointer.x /10
-      //   // state.camera.position.x = camPos.x +  state.pointer.x *2
-      // }
-
+    console.log('RunOnce - ', runOnce, 'isClosed - ', isClosed, 'isClicked', clicked, 'isDragging', isDragging);
+    if (runOnce == true && isClosed == false && clicked == false) {
+      runOnce = false
+      document.getElementById('dropdown-content').style.display = 'none'
+      document.getElementById('bottombar').style.display = 'flex'
+      closeBtn.style.display = 'none'
+      console.warn('Force');
     }
+    if (clicked && !runOnce) {
+      actions["MainCameraAltActionClip"].timeScale = 0
+      setCameraPosRot(meshname)
+      state.camera.rotation.set(camRot.x, camRot.y, camRot.z)
+      state.camera.position.set(camPos.x, camPos.y, camPos.z)
+      state.camera.updateProjectionMatrix()
+      runOnce = true
+      isClosed = false
+      closeBtn.style.display = 'block'
+      console.log("RUN ONCE", runOnce);
+      isDragging = false
+    }
+    // if(isDragging){
+    //   state.camera.rotation.y = camRot.y +  state.pointer.x /10
+    //   // state.camera.position.x = camPos.x +  state.pointer.x *2
+    // }
     else if (!clicked) {
-      if (meshname == 'Default' && closed) {
-        console.log('Close false')
-        setClose(false)
-        closeBtn.style.display = 'none'
-      }
-      else if (isDragging) {
+      // if (meshname == 'Default' && isClosed) {
+      //   console.log('Close false')
+      //   isClosed = false
+      //   closeBtn.style.display = 'none'
+      // }
+      if (isDragging) {
         console.log('isDragging CamTimeScale', camTimeScale);
         if (camTimeScale < 0.5 && camTimeScale >= 0) {
           camTimeScale += camTimeScale
@@ -462,8 +464,7 @@ export function Model(props) {
         // actions["MainCameraAltActionClip"].time = THREE.MathUtils.lerp(actions["MainCameraAltActionClip"].time, actions["MainCameraAltActionClip"].getClip().duration * camTimeScale, 1)
         // console.log('camTimeScale', camTimeScale)
 
-      }else {
-        // console.log('use Frame else state');
+      } else {
         if (camTimeScale < 0.45) {
           camTimeScale += 0.005
         }
@@ -476,7 +477,7 @@ export function Model(props) {
         else {
           camTimeScale = 0.5
         }
-        console.log('Cam Time Scale Else', camTimeScale);
+        // console.log('Cam Time Scale Else', camTimeScale);
         // if (camTimeScale >= 1) {
         //   camTimeScale = 0
         // }
@@ -501,6 +502,9 @@ export function Model(props) {
       //   actions["MainCameraAltActionClip"].time = THREE.MathUtils.lerp(actions["MainCameraAltActionClip"].time, actions["MainCameraAltActionClip"].getClip().duration * scroll.current, 1)
       //   console.log(scroll.current);
       // }
+    }
+    else {
+      // console.warn('USE FRAME ELSE STATE');
     }
     return null
 
@@ -583,7 +587,6 @@ export function Model(props) {
             setClicked(true)
             setVisibility(false)
             setHovered4(false)
-            console.log(meshname);
           }}
           onPointerOver={() => setHovered4(true)}
           onPointerOut={() => setHovered4(false)}

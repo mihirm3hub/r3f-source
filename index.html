@@ -11,8 +11,8 @@
 
 <body>
   <img id="phonelndscap" src="./images/MobilePotraitOrientationMsg.png"></img>
-  <div id="Logo" >
-    <img  id="logobtn"   src="./images/logo.png" style="object-fit: contain; " alt="logoimg" />
+  <div id="Logo">
+    <img id="logobtn" src="./images/logo.png" style="object-fit: contain; " alt="logoimg" />
   </div>
   <img id="fixedChakanLogo" src="./images/chakanLogo.png" alt="">
   <div id="LoaderMain" style="background-image: url('./images/Intro_render_height_03_G.png');">
@@ -31,9 +31,9 @@
       <span class="loader" id="loaderRoot">
         <span id="loader" class="loader">
         </span>
-     </span>
-     <img id="swipetocon" src="./images/swipeToContinue.png" alt="" />
-     <img id="scrolltocon" src="./images/ScrollDownToContinue.png" alt="" />
+      </span>
+      <img id="swipetocon" src="./images/swipeToContinue.png" alt="" />
+      <img id="scrolltocon" src="./images/ScrollDownToContinue.png" alt="" />
 
     </div>
   </div>
@@ -52,7 +52,7 @@
       onmouseover="this.src=`./images/MAP_BUTT.png`"
       onmouseout="this.src=`./images/2024.01.29_ICON_MAP_BUTT.UNCLICKED-53.png`"
       onclick="this.src=`./images/MAP_BUTT_SELECTED.png`" style="object-fit: contain;" />
-        <!-- <img id="scenebtn" class="bottombtn" src="./images/2024.01.29_ICON_OVERALL.VIEW_BUTT.UNCLICKED-50.png"
+    <!-- <img id="scenebtn" class="bottombtn" src="./images/2024.01.29_ICON_OVERALL.VIEW_BUTT.UNCLICKED-50.png"
       onmouseover="this.src=`./images/DEFAULT_BUTT.png`"
       onmouseout="this.src=`./images/2024.01.29_ICON_OVERALL.VIEW_BUTT.UNCLICKED-50.png`"
       onclick="this.src=`./images/DEFAULT_BUTT_SELECTED.png`" style="object-fit: contain;" />
@@ -60,10 +60,10 @@
       onmouseover="this.src=`./images/AMENITY_BUTT.png`"
       onmouseout="this.src=`./images/2024.01.29_ICON_AMENITIES.VIEW_BUTT.UNCLICKED-51.png`"
       onclick="this.src=`./images/AMENITY_BUTT_SELECTED.png`" style="object-fit: contain;" /> -->
-      <label class="switch">
-        <input id="amenitySwitch" type="checkbox">
-        <span class="slider round"></span>
-      </label>
+    <label class="switch">
+      <input id="amenitySwitch" type="checkbox">
+      <span class="slider round"></span>
+    </label>
     <img id="arbtn" class="bottombtn" src="./images/2024.01.29_ICON_AR_BUTT.UNCLICKED-52.png"
       onmouseover="this.src=`./images/AR_BUTT.png`"
       onmouseout="this.src=`./images/2024.01.29_ICON_AR_BUTT.UNCLICKED-52.png`"
@@ -138,18 +138,22 @@
     })
 
     let isInstruction = false
-
+    let isInstructionCall = false
     function instructionFade() {
-      document.getElementById('instructionMain').style.animation = 'opacityAnim .7s ease forwards'
-      window.removeEventListener('wheel', () => { });
-      window.removeEventListener('touchmove', () => { });
-      // window.removeEventListener('click', () => { });
-      document.getElementById('LoaderMain').style.display = 'none'
-      document.getElementById('instructionMain').style.display = 'none'
-      document.getElementById('bottombar').style.display = 'flex'
-      document.getElementById('dropdown').style.display = 'block'
+      if (isInstructionCall) {
+        document.getElementById('instructionMain').style.animation = 'opacityAnim .7s ease forwards'
+        window.removeEventListener('wheel', () => { });
+        window.removeEventListener('touchmove', () => { });
+        window.removeEventListener('scroll', () => { });
+        // window.removeEventListener('click', () => { });
+        document.getElementById('LoaderMain').style.display = 'none'
+        document.getElementById('instructionMain').style.display = 'none'
+        document.getElementById('bottombar').style.display = 'flex'
+        document.getElementById('dropdown').style.display = 'block'
+        console.warn('Fade FUnction');
+        isInstructionCall = false
+      }
     }
-
     let isScrolled = false
     document.addEventListener('scroll', (e) => {
       const scroll = Math.floor(window.scrollY)
@@ -179,6 +183,7 @@
         document.getElementById("fixedChakanLogo").style.display = 'none'
       }
       if (scroll > 655) {
+        isInstructionCall = true
         window.addEventListener('click', instructionFade)
         window.addEventListener('wheel', (e) => {
           instructionFade()
