@@ -16,7 +16,7 @@ let startY
 let camTimeScale = 0
 let lastXvalue = 0
 let lastYvalue = 0
-let xdrag
+let xdrag = 1000
 let ydrag
 let isOpen = false;
 let isClosed = true
@@ -346,10 +346,9 @@ export function Model(props) {
         document.getElementById('Usage').style.display = 'block'
         document.getElementById('Usage-P').style.display = 'block'
 
-
         break;
       default:
-        console.log("Default Case")
+      // console.log("Default Case")
     }
     if (orbitcontrols.current) {
       orbitcontrols.current.target.set(targetPosition.x, targetPosition.y, targetPosition.z);
@@ -401,13 +400,13 @@ export function Model(props) {
   // let defaultCam = false
 
   // const { get, set } = useThree(({ get, set }) => ({ get, set }));
+
+  const [clicked, setClicked] = useState(false)
+  const [ishotspotVisible, setVisibility] = useState(true)
   const toggleVisibility = () => {
     setVisibility(!ishotspotVisible);
     // isOpen = false;
   };
-  const [clicked, setClicked] = useState(false)
-  const [ishotspotVisible, setVisibility] = useState(true)
-
   // document.getElementById('vehiclesbtn').addEventListener('click', toggleVisibility)
   document.getElementById('amenitySwitch').addEventListener('click', toggleVisibility)
   closeBtn.addEventListener('click', () => {
@@ -428,6 +427,7 @@ export function Model(props) {
 
   useFrame(state => {
     // console.log('RunOnce - ', runOnce, 'isClosed - ', isClosed, 'isClicked', clicked, 'isDragging', isDragging);
+
     if (runOnce == true && isClosed == false && clicked == false) {
       runOnce = false
       document.getElementById('dropdown-content').style.display = 'none'
@@ -458,7 +458,17 @@ export function Model(props) {
       //   closeBtn.style.display = 'none'
       // }
       if (isDragging) {
-        console.log('isDragging CamTimeScale', camTimeScale);
+        console.log('isDragging CamTimeScale', xdrag, '---', camTimeScale);
+        if (isNaN(xdrag)) {
+          console.warn('NAN XDRAG')
+          xdrag = 1000
+          window.removeEventListener('mousedown', startDrag);
+          window.removeEventListener('mousemove', drag);
+          window.removeEventListener('mouseup', stopDrag);
+          window.addEventListener('mousedown', startDrag);
+          window.addEventListener('mousemove', drag);
+          window.addEventListener('mouseup', stopDrag);
+        }
         if (camTimeScale < 0.5 && camTimeScale >= 0) {
           camTimeScale += camTimeScale
         }
@@ -479,7 +489,7 @@ export function Model(props) {
         else {
           camTimeScale = 0.5
         }
-        console.log('Cam Time Scale Else', camTimeScale);
+        // console.log('Cam Time Scale Else', camTimeScale);
         // if (camTimeScale >= 1) {
         //   camTimeScale = 0
         // }
