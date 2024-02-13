@@ -20,6 +20,7 @@ let xdrag
 let ydrag
 let isOpen = false;
 let isClosed = true
+let scrollValue
 
 const dropdownContent = document.getElementById('dropdown-content');
 const sidebarImage = document.getElementById('sidebar');
@@ -102,9 +103,10 @@ export function Model(props) {
   window.addEventListener('touchstart', startPhoneDrag);
   window.addEventListener('touchmove', phonedrag);
   window.addEventListener('touchend', stopDrag);
-  document.addEventListener('scroll', (e) => {
-    const scroll = Math.floor(window.scrollY)
-    console.log('scroll', scroll)
+  document.addEventListener('wheel', (e) => {
+    scrollValue = e.deltaY / 1000
+    // console.log('scroll Value', scroll)
+    camTimeScale += scrollValue
   })
   // window.addEventListener('scroll', (e) => {
   //   const scroll = Math.floor(window.scrollY)
@@ -425,7 +427,7 @@ export function Model(props) {
 
 
   useFrame(state => {
-    console.log('RunOnce - ', runOnce, 'isClosed - ', isClosed, 'isClicked', clicked, 'isDragging', isDragging);
+    // console.log('RunOnce - ', runOnce, 'isClosed - ', isClosed, 'isClicked', clicked, 'isDragging', isDragging);
     if (runOnce == true && isClosed == false && clicked == false) {
       runOnce = false
       document.getElementById('dropdown-content').style.display = 'none'
@@ -477,7 +479,7 @@ export function Model(props) {
         else {
           camTimeScale = 0.5
         }
-        // console.log('Cam Time Scale Else', camTimeScale);
+        console.log('Cam Time Scale Else', camTimeScale);
         // if (camTimeScale >= 1) {
         //   camTimeScale = 0
         // }
