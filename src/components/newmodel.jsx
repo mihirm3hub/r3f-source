@@ -24,6 +24,10 @@ let scrollValue
 
 const dropdownContent = document.getElementById('dropdown-content');
 const sidebarImage = document.getElementById('sidebar');
+const streetView = document.getElementById('streetview')
+// document.getElementById('swipetocon').src = './images/swipeToContinue.png'
+// document.getElementById('scrolltocon').src = './images/ScrollDownToContinue.png'
+
 
 document.getElementById('sidebar').addEventListener('click', (e) => {
   console.log(isOpen)
@@ -346,6 +350,7 @@ export function Model(props) {
         document.getElementById('Usage').style.display = 'block'
         document.getElementById('Usage-P').style.display = 'block'
 
+
         break;
       default:
       // console.log("Default Case")
@@ -409,6 +414,8 @@ export function Model(props) {
   };
   // document.getElementById('vehiclesbtn').addEventListener('click', toggleVisibility)
   document.getElementById('amenitySwitch').addEventListener('click', toggleVisibility)
+
+  let isHelp = false
   closeBtn.addEventListener('click', () => {
     closeBtn.style.display = 'none'
     runOnce = false
@@ -424,10 +431,30 @@ export function Model(props) {
     // isOpen = false;
   })
 
+  const helpBtn = document.getElementById('helpBtn')
+  helpBtn.addEventListener('click', () => {
+    if (!isHelp) {
+      helpBtn.src = './images/Close.png';
+      helpBtn.setAttribute('onmouseover', '')
+      helpBtn.setAttribute('onmouseout', '')
+      document.getElementById('instructionMain').style.display = 'grid'
+      document.getElementById('instructionMain').style.top = '0'
+      document.getElementById('instructionMain').style.removeProperty('background')
+      document.getElementById('instructionMain').style.removeProperty('animation')
+      isHelp = true
+    }
+    else {
+      isHelp = false
+      helpBtn.src = './images/HELP_BUTT.png'
+      helpBtn.setAttribute('onmouseover', 'this.src=`./images/HELP_BUTT_Hover.png`')
+      helpBtn.setAttribute('onmouseout', 'this.src=`./images/HELP_BUTT.png`')
+      document.getElementById('instructionMain').style.display = 'none'
+    }
+  })
+
 
   useFrame(state => {
     // console.log('RunOnce - ', runOnce, 'isClosed - ', isClosed, 'isClicked', clicked, 'isDragging', isDragging);
-
     if (runOnce == true && isClosed == false && clicked == false) {
       runOnce = false
       document.getElementById('dropdown-content').style.display = 'none'

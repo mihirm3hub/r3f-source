@@ -95,11 +95,18 @@ button:focus-visible {
 #Logo {
   z-index: 100;
   position: fixed;
-  top: 55px;
-  left: 58.04px;
+  top: 5vh;
+  left: 3.4vw;
   cursor: pointer;
-  width: 182.32px;
-  height: 21px;
+  width: 2vw;
+  height: 2vh;
+}
+#helpBtn {
+  z-index: 100;
+  position: fixed;
+  width: 2.5vw;
+  left: 95vw;
+  top: 5vh;
 }
 
 #bottombar {
@@ -323,13 +330,13 @@ hr.solid {
   width: 100%;
 }
 #dropdown {
-  position: fixed;
-  display: inline-block;
-  width: 200px;
-  left: 58.04px;
-  top: 90px;
-  z-index: 12;
-  object-fit: contain;
+    position: fixed;
+    display: inline-block;
+    width: 13vw;
+    left: 4vw;
+    top: 10vh;
+    z-index: 12;
+    object-fit: contain;
 }
 
 .dropdown-content {
@@ -388,31 +395,32 @@ hr.solid {
 
 #loadingTxt1 {
   position: absolute;
-  top: 63px;
-  left: 55px;
-  font-size: 27px;
-  width: 531px;
+  top: 8vh;
+  left: 3.4vw;
+  font-size: 156%;
+  width: 59vw;
+  height: 2vh;
   font-family: cairo-Regular;
   color: white;
-  line-height: 35px;
+  line-height: 136%;
 }
 #LoaderMainHeader {
   position: absolute;
-  top: 92px;
-  left: 55px;
-  font-size: 68px;
-  width: 869px;
+  top: 10.5vh;
+  left: 3.4vw;
+  font-size: 412%;
+  width: 59vw;
   letter-spacing: 2%;
   font-family: cairo-Regular;
   color: white;
-  line-height: 80px;
+  line-height: 112%;
   font-weight: bolder;
-  height: 174px;
+  height: 2vh;
 }
 
 #loaderBottomBar {
   position: absolute;
-  height: 16vh;
+  height: 9vw;
   width: 92vw;
   top: 75vh;
   left: 3vw;
@@ -428,7 +436,7 @@ hr.solid {
 
 #loaderBottomBar p {
   font-size: 20px;
-  left: 18vw;
+  left: 17vw;
   width: 55vw;
   position: absolute;
   top: 0;
@@ -436,18 +444,18 @@ hr.solid {
   font-family: cairo-Regular;
 }
 .loader {
-  width: 77%;
-  height: 16px;
+  width: 70vw;
+  height: 1.7vh;
   display: inline-block;
   position: relative;
   background: rgba(95, 95, 95, 0.26);
   overflow: hidden;
-  left: 3%;
-  bottom: 40%;
+  left: 3.8vw;
+  bottom: 5.5vh;
 }
 #loader {
   width: 0;
-  height: 100%;
+  height: 15vh;
   left: 0;
   background: linear-gradient(90deg, #004C9C 0%, #00867D 31%, #00867D 62%, #00953F 100%);
    
@@ -493,7 +501,6 @@ hr.solid {
   width: 100vw;
   top: 100vh;
   left: 0%;
-  background: linear-gradient(180deg, #000000cf 20%, #ffffff00 80%);
   align-items: center;
   justify-content: center;
 }
@@ -534,96 +541,27 @@ hr.solid {
   display: none;
 }
 #swipetocon {
-  position: absolute;
-  width: 1061px;
-  top: 9vh;
-  left: 298px;
+
   display: none;
+  object-fit: contain;
   
 }
 #scrolltocon {
   position: absolute;
   display: none;
-  top: 6vw;
-  left: 27vh;
-  width: 85vh;
+  /* top: 4.8vw; */
+  left: 15vw;
+  width: 70vw;
+  height: 3.5vw;
+  bottom: 1.5vh;
+  object-fit: contain;
+}
+#instructionMobileImg{
+  display: none;
 }
 
 /* mobile */
 @media only screen and (max-width: 640px) and (orientation:portrait) {
-  /* #loadingTxt1 {
-    font-size: 14px;
-    width: 60vw;
-  }
-
-  #LoaderMain h3 {
-    position: absolute;
-    top: 16%;
-    left: 5%;
-    font-size: 30px;
-    width: 70vw;
-    font-family: Inter;
-    color: white;
-  }
-
-  #dropdown {
-    top: 10vh;
-    left: -1vh;
-  }
-
-  #logobtn {
-    width: 16vh;
-  }
-
-  #bottombar {
-   position: fixed;
-  }
-
-  #locationbtn {
-    width: 5vh;
-    height: 5vh;
-    left: 0vh;
-  }
-
-  #scenebtn {
-    width: 5vh;
-    height: 5vh;
-    left: 17vh;
-  }
-
-  #vehiclesbtn {
-    width: 5vh;
-    height: 5vh;
-  }
-
-  #arbtn {
-    width: 5vh;
-    height: 5vh;
-  }
-
-  #sidebar {
-    width: 19vh;
-    top: 10%;
-  }
-
-  #dropdown-content {
-    width: 12.4vh;
-    left: 2.1vh;
-    top: 13vh;
-  }
-  #cbtn{
-    width: 4vh;
-  }
-
-  .dropdown-content div h4 {
-    font-size: 8px;
-    text-align: center;
-  }
-
-  .dropdown-content div p {
-    font-size: 9px;
-    text-align: center;
-  } */
   #phonelndscap {
     z-index: 999;
     position: absolute;
@@ -636,7 +574,8 @@ hr.solid {
 }
 
 /* Mobile Landscape */
-@media only screen and (max-width:1023px) and (orientation:landscape) {
+@media only screen  and (min-width: 480px) and (max-width:1023px)
+ and (orientation:landscape) {
 
   #phonelndscap {
     display: none;
@@ -670,62 +609,53 @@ hr.solid {
 #loaderBottomBar {
   top: 58vh;
   left: 2vw;
-  height: 84px;
-  position: absolute;
+ 
 
 }
 #loaderBottomBar p {
   font-size: 13px;
-  left: 193px;
-  position: absolute;
-
+  left: 20.5vw;
+  margin-top: 1%;
 }
+#scrolltocon {
+  content: url('./images/swipeToContinue.png');
+  left: 20.5vw;
+  bottom: 2.5vh;
+  width: 58vw;
+}
+/* #swipetocon{
+ display: block;
+} */
+
+
 .loader {
-  height: 14px;
-  left: -4px;
-  /* top: -11px; */
-  width: 527px;
-  
+  height: 4vh;
+  left: 3.5vw;
+  bottom: 4vh; 
+  width: 65vw;
 }
 #fixedChakanLogo {
-  width:189px;
+  width:17vw;
+  left: 2vw;
+
 }
 
 
-/* #loader{
-  background-image: url(./images/swipeToContinue.png);
-   background-position: center;
-   background-repeat: no-repeat;
-   background-size: contain;
-
-} */
-#loaderBottomBar img {
-  width: 189px;
-  height: 84px;
-}
   #bottombar {
 
     height: 0.5vh;
   }
-/* 
+  #instructionImg {
+    content: url('./images/tutorialOverlayMobile.png');
+  }
+  #loaderChakanLogo {
+    width: 17vw;
+  }
   #dropdown {
-    left: 0vh;
-  }
-  #dropdown-content {
-    width: 8.7vw;
-    left: 4.5vh;
-    top: 25vh;
-
-  }
-  .dropdown-content div h4 {
-    font-size: 8px;
-    text-align: center;
-  }
-
-  .dropdown-content div p {
-    font-size: 9px;
-    text-align: center;
-  }  */
+    width: 17vw;
+    /* top: 12vh;
+    left: 2vw; */
+}
   
 }
 

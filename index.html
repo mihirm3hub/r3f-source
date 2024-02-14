@@ -15,7 +15,11 @@
     <img id="logobtn" src="./images/logo.png" style="object-fit: contain; " alt="logoimg" />
   </div>
   <img id="fixedChakanLogo" src="./images/chakanLogo.png" alt="">
-  <div id="LoaderMain" style="background-image: url('./images/Intro_render_height_03_G.png');">
+  <img id="helpBtn" src="./images/HELP_BUTT.png" 
+      onmouseover="this.src=`./images/HELP_BUTT_Hover.png`"
+      onmouseout="this.src=`./images/HELP_BUTT.png`"
+  style="object-fit: contain;" />
+  <div id="LoaderMain" style="background-image:url('./images/Intro_render_height_03_G.png');">
     <div id="LoaderGradient"></div>
     <p id="loadingTxt1">
       Explore the future of your business,<br>
@@ -37,15 +41,13 @@
 
     </div>
   </div>
-  <div id="instructionMain">
+  <div id="instructionMain" style="background: linear-gradient(180deg, #000000cf 20%, #ffffff00 80%);">
     <!-- <img id="instructionChakanLogo" src="./images/chakanLogo.png" alt=""> -->
     <img id="instructionImg" src="./images/TutorialImg.png" alt="">
-  </div>
-  <!-- <div id="blankPG"></div> -->
+    <img id="instructionMobileImg" src="./images/tutorialOverlayMobile.png" alt="">
 
-  <!-- <div id="Logo" style="display: block;"><img id="logobtn" src="./images/logo.png" style="object-fit: contain;"
-        alt="logoimg" />
-    </div> -->
+  </div>
+
   <div id="root"></div>
   <div id="bottombar">
     <img id="locationbtn" class="bottombtn" src="./images/2024.01.29_ICON_MAP_BUTT.UNCLICKED-53.png"
@@ -73,9 +75,11 @@
     <img id="cbtn" src="./images/Close.png" alt="Close Button" />
   </div>
   <div id="popup">
-    <img class="close" src="./images/Close.png" />
-    <img class="prebtn" src="./images/PREVIOUS_BUTT.png" />
-    <img class="nextbtn" src="./images/NEXT_BUTT.png" />
+    <img class="close" src="./images/Close.png"/>
+    <img class="prebtn" src="./images/PREVIOUS_BUTT.png" 
+    onclick="this.src=`./images/PreviousHoverBtn.png`" style="object-fit: contain;"/>
+    <img class="nextbtn" src="./images/NEXT_BUTT.png" 
+    onclick="this.src=`./images/NextHoverBtn.png`" style="object-fit: contain;"/>
 
 
 
@@ -124,6 +128,7 @@
   </div>
 
   <script>
+    
     document.getElementById('arbtn').addEventListener('click', (e) => {
       window.open('https://archiverseai.8thwall.app/indospace-afr/', '_blank')
     })

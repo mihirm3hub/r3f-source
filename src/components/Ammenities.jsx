@@ -77,7 +77,7 @@ export default function Ammenities(props) {
 
   return <>
     <directionalLight castShadow intensity={isVisible ? 0 : 1} color={'#fffaed'} position={[3, 45, 5]} shadow-mapSize={[1024, 1024]} shadow-normalBias={-0.95} shadow-bias={-0.00050}>
-      {/* <orthographicCamera attach="shadow-camera" args={[-20, 20, 20, -20]} /> */}
+      <orthographicCamera attach="shadow-camera" args={[-20, 20, 20, -20]} />
     </directionalLight>
 
 
