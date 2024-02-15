@@ -137,6 +137,9 @@
       document.getElementById('sidebar').src = './images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png'
       document.getElementById('streetview').style.display = 'none'
       document.getElementById('popupdarkbg').style.display = 'none'
+      document.getElementById('helpBtn').style.display = 'block'
+
+
     })
     document.getElementById('Logo').addEventListener('click', (e) => {
       window.open('https://www.indospace.in/', '_blank')
@@ -162,7 +165,7 @@
     let isScrolled = false
     document.addEventListener('scroll', (e) => {
       const scroll = Math.floor(window.scrollY)
-      // console.log('scroll', scroll)
+      console.log('scroll', scroll)
       if (scroll > 5) {
         if (!isScrolled) {
           // window.scrollTo(0, 1000)
@@ -187,7 +190,7 @@
         document.getElementById("fixedChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
         document.getElementById("fixedChakanLogo").style.display = 'none'
       }
-      if (scroll > 655) {
+      if (scroll > 625 || (scroll > 500 && isInstruction)) {
         isInstructionCall = true
         window.addEventListener('click', instructionFade)
         window.addEventListener('wheel', (e) => {

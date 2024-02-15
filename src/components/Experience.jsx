@@ -48,8 +48,6 @@ export default function Experience()
         <ambientLight  color="#fffceb" intensity={ 0.25 }  />
         
         <Suspense fallback={<Loader />}>
-
-           {/* <Sitecontext scale={0.0000001}  /> */}
            <Model/>
            </Suspense>
            <Ammenities/>
