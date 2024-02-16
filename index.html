@@ -21,10 +21,8 @@
     <img id="logobtn" src="./images/logo.png" style="object-fit: contain; " alt="logoimg" />
   </div>
   <img id="fixedChakanLogo" src="./images/chakanLogo.png" alt="">
-  <img id="helpBtn" src="./images/HELP_BUTT.png" 
-      onmouseover="this.src=`./images/HELP_BUTT_Hover.png`"
-      onmouseout="this.src=`./images/HELP_BUTT.png`"
-  style="object-fit: contain;" />
+  <img id="helpBtn" src="./images/HELP_BUTT.png" onmouseover="this.src=`./images/HELP_BUTT_Hover.png`"
+    onmouseout="this.src=`./images/HELP_BUTT.png`" style="object-fit: contain;" />
   <div id="LoaderMain" style="background-image:url('./images/Intro_render_height_03_G.png');">
     <div id="LoaderGradient"></div>
     <p id="loadingTxt1">
@@ -81,11 +79,11 @@
     <img id="cbtn" src="./images/Close.png" alt="Close Button" />
   </div>
   <div id="popup">
-    <img class="close" src="./images/Close.png"/>
-    <img class="prebtn" src="./images/PREVIOUS_BUTT.png" 
-    onclick="this.src=`./images/PreviousHoverBtn.png`" style="object-fit: contain;"/>
-    <img class="nextbtn" src="./images/NEXT_BUTT.png" 
-    onclick="this.src=`./images/NextHoverBtn.png`" style="object-fit: contain;"/>
+    <img class="close" src="./images/Close.png" />
+    <img class="prebtn" src="./images/PREVIOUS_BUTT.png" onclick="this.src=`./images/PreviousHoverBtn.png`"
+      style="object-fit: contain;" />
+    <img class="nextbtn" src="./images/NEXT_BUTT.png" onclick="this.src=`./images/NextHoverBtn.png`"
+      style="object-fit: contain;" />
 
 
 
@@ -142,7 +140,7 @@
 		></script>
 
   <script>
-    
+
     document.getElementById('arbtn').addEventListener('click', (e) => {
       window.open('https://archiverseai.8thwall.app/indospace-afr/', '_blank')
     })
@@ -232,13 +230,19 @@
         window.addEventListener('wheel', (e) => {
           instructionFade()
         })
-
-        window.addEventListener('touchmove', (e) => {
-          instructionFade()
-        })
       }
       
 
+      if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i)
+        || navigator.userAgent.match(/iPhone/i)
+        || navigator.userAgent.match(/iPad/i)
+        || navigator.userAgent.match(/iPod/i) && scroll > 300) {
+        console.log('MOBILE BROWSER');
+        window.addEventListener('touchmove', (e) => {
+          instructionFade()
+          console.log('touch');
+        })
+      }
     });
     
 
