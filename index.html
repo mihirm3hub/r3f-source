@@ -7,9 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <title>Chakan Site</title>
   <link rel="stylesheet" href='./index.css' />
+  <style>
+    html{
+      scroll-behavior: smooth;
+    }
+  </style>
 </head>
 
 <body>
+  <div class="scroll-control"></div>
   <img id="phonelndscap" src="./images/MobilePotraitOrientationMsg.png"></img>
   <div id="Logo">
     <img id="logobtn" src="./images/logo.png" style="object-fit: contain; " alt="logoimg" />
@@ -127,20 +133,28 @@
 
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/scrollify/1.0.21/jquery.scrollify.min.js"
+			integrity="sha512-UyX8JsMsNRW1cYl8BoxpcamonpwU2y7mSTsN0Z52plp7oKo1u92Xqfpv6lOlTyH3yiMXK+gU1jw0DVCsPTfKew=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
+
   <script>
     
     document.getElementById('arbtn').addEventListener('click', (e) => {
       window.open('https://archiverseai.8thwall.app/indospace-afr/', '_blank')
     })
-    document.getElementsByClassName('close')[0].addEventListener('click', (ev) => {
-      document.getElementById('popup').style.display = 'none'
-      document.getElementById('sidebar').src = './images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png'
-      document.getElementById('streetview').style.display = 'none'
-      document.getElementById('popupdarkbg').style.display = 'none'
-      document.getElementById('helpBtn').style.display = 'block'
+    // document.getElementsByClassName('close')[0].addEventListener('click', (ev) => {
+    //   document.getElementById('popup').style.display = 'none'
+    //   document.getElementById('sidebar').src = './images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png'
+    //   document.getElementById('streetview').style.display = 'none'
+    //   document.getElementById('popupdarkbg').style.display = 'none'
+    //   document.getElementById('helpBtn').style.display = 'block'
+    //   window.streetviewUI = false
 
-
-    })
+    // })
     document.getElementById('Logo').addEventListener('click', (e) => {
       window.open('https://www.indospace.in/', '_blank')
     })
@@ -164,33 +178,55 @@
     }
     let isScrolled = false
     document.addEventListener('scroll', (e) => {
+      //CHAT GPT Code
       const scroll = Math.floor(window.scrollY)
       console.log('scroll', scroll)
       if (scroll > 5) {
         if (!isScrolled) {
-          // window.scrollTo(0, 1000)
-          window.scroll({
-            top: 1000,
-            left: 0,
-            behavior: 'smooth'
-          });
-          console.log('scrolling....');
-          isScrolled = true
+            let destinationScrollPosition;
+            // Adjust destination scroll position based on screen size
+            if (window.innerWidth < 768) {
+                destinationScrollPosition = 500; // For smaller screens
+            } else {
+                destinationScrollPosition = 1000; // For larger screens
+            }
+            // Smooth scroll to the destination position
+            window.scroll({
+                top: destinationScrollPosition,
+                left: 0,
+                behavior: 'smooth'
+            });
+            console.log('scrolling....');
+            isScrolled = true;
         }
+    }
 
-      }
-      if (scroll >= 437) {
+      
+      // if (scroll > 5) {
+      //   if (!isScrolled) {
+      //     // window.scrollTo(0, 1000)
+      //     window.scroll({
+      //       top: 1000,
+      //       left: 0,
+      //       behavior: 'smooth'
+      //     });
+      //     console.log('scrolling....');
+      //     isScrolled = true
+      //   }
+
+      // }
+      if (scroll >= window.innerHeight/4) {
         document.getElementById("loaderChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
         document.getElementById("fixedChakanLogo").style.animation = 'opacityAnim .5s ease forwards'
         isInstruction = true
       }
-      else if (scroll < 437 && isInstruction) {
+      else if (scroll < window.innerHeight/2 && isInstruction) {
         console.log('else');
         document.getElementById("loaderChakanLogo").style.animation = 'opacityAnim .5s ease forwards'
         document.getElementById("fixedChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
         document.getElementById("fixedChakanLogo").style.display = 'none'
       }
-      if (scroll > 625 || (scroll > 500 && isInstruction)) {
+      if (scroll > window.innerHeight/4 && isInstruction) {
         isInstructionCall = true
         window.addEventListener('click', instructionFade)
         window.addEventListener('wheel', (e) => {
@@ -201,9 +237,60 @@
           instructionFade()
         })
       }
+      
 
     });
+    
 
+    // function applyScroll() {
+		// 		$.scrollify({
+		// 			section: '.scroll',
+		// 			sectionName: 'section-name',
+		// 			//standardScrollElements: 'section',
+		// 			easing: 'easeOutExpo',
+		// 			scrollSpeed: 1100,
+		// 			offset: 0,
+		// 			scrollbars: true,
+		// 			setHeights: true,
+		// 			overflowScroll: true,
+		// 			// updateHash: false,
+		// 			touchScroll: true,
+		// 		});
+		// 	}
+      // function screenCheck() {
+			// 	var deviceAgent = navigator.userAgent.toLowerCase();
+			// 	var agentID = deviceAgent.match(/(iphone|ipod|ipad)/);
+			// 	if (agentID || $(window).width() <= 1024) {
+			// 		// its mobile screen
+			// 		$.scrollify.destroy();
+			// 		$('section').removeClass('scroll').removeAttr('style');
+			// 		$.scrollify.disable();
+      //      isInstruction = true
+      //      document.getElementById("loaderChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
+      //     document.getElementById("fixedChakanLogo").style.animation = 'opacityAnim .5s ease forwards'
+      //     window.addEventListener('click', instructionFade)
+      //     window.addEventListener('wheel', (e) => {
+      //     instructionFade()
+      //   })
+      //     window.addEventListener('touchmove', (e) => {
+      //     instructionFade()
+      //   })
+
+      //     isInstructionCall=true
+			// 	} else {
+			// 		// its desktop
+			// 		// $('section').addClass('scroll');
+			// 		// applyScroll();
+			// 		// $.scrollify.enable();
+      //     document.getElementById("loaderChakanLogo").style.animation = 'opacityAnim .5s ease forwards'
+      //   document.getElementById("fixedChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
+      //   document.getElementById("fixedChakanLogo").style.display = 'none'
+          
+          
+             
+			// 	}
+			// }
+      
   </script>
   <script type="module" src="/src/main.jsx"></script>
   <!-- <script>

@@ -11,6 +11,7 @@ import * as THREE from 'three'
 let meshname = 'Default'
 let runOnce = false
 let isDragging = false;
+let streetviewUI = false;
 let startX
 let startY
 let camTimeScale = 0
@@ -30,12 +31,18 @@ const streetView = document.getElementById('streetview')
 
 
 document.getElementById('sidebar').addEventListener('click', (e) => {
-  console.log(isOpen)
-  isOpen = !isOpen;
+sidebarImage.src = isOpen ? './images/sidebarU.png' : './images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png';
+ if(streetviewUI == false){
   dropdownContent.style.display = isOpen ? 'block' : 'none';
+  // streetView.style.display = isOpen ? 'block' : 'none';
   // Change the image source based on the dropdown state
-  sidebarImage.src = isOpen ? './images/sidebarU.png' : './images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png';
+ }else{
+  streetView.style.display = isOpen ? 'none' : 'block';
+ }
+ console.log(isOpen)
+ isOpen = !isOpen;
 });
+
 
 export function Model(props) {
   const modelRef1 = useRef();
@@ -84,7 +91,15 @@ export function Model(props) {
 
   // let camAnimation = actions["MainCameraAltActionClip"].getClip()
   let cameraSpeed = 0.5
-
+  document.getElementsByClassName('close')[0].addEventListener('click', (ev) => {
+    document.getElementById('popup').style.display = 'none'
+    // document.getElementById('sidebar').src = './images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png'
+    document.getElementById('streetview').style.display = 'none'
+    document.getElementById('popupdarkbg').style.display = 'none'
+    document.getElementById('helpBtn').style.display = 'block'
+    streetviewUI = false
+    isOpen = false
+  })
 
   useEffect(() => void (
     actions["MainCameraAltActionClip"].play(),
@@ -141,18 +156,24 @@ export function Model(props) {
     // const y = e.clientY - startY;
     if (isDragging && xdrag > 5) {
       // console.log("X drag",xdrag)
-      camTimeScale = xdrag / 450
+      camTimeScale = xdrag / 350
     } else if (isDragging && ydrag > 5) {
-      camTimeScale = ydrag / 700
+      camTimeScale = ydrag / 500
     }
     else {
       // console.log("Not ")
     }
-    if (xdrag >= 450) {
+    if (xdrag >= 350) {
       xdrag = 0
     }
     if (xdrag < 0) {
-      xdrag = 450
+      xdrag = 350
+    }
+    if (ydrag >= 500) {
+      ydrag = 0
+    }
+    if (ydrag < 0) {
+      ydrag = 500
     }
   }
   function drag(e) {
@@ -207,16 +228,16 @@ export function Model(props) {
         document.getElementById('bnmtitle').innerText = "Building name"
         document.getElementById('bname').innerText = "B100"
         document.getElementById('fareatitle').innerText = "Floor Area"
-        document.getElementById('farea').innerText = "3,23,520 sq.ft. (30,056 sq.m.)"
+        document.getElementById('farea').innerText = "3,23,520 sq.ft (30,056 sq.m.)"
         document.getElementById('mareatitle').innerText = "Mezzanine Area"
         document.getElementById('marea').innerText = "5,382 sq.ft (500 sq.m)"
         document.getElementById('totbareatitle').innerText = "Total Buid-up Area"
         document.getElementById('totbarea').innerText = " 3,28,902 sq.ft (30,556 sq.m.)"
         document.getElementById('Usage').innerText = "Clear Height"
         document.getElementById('Usage-P').innerText = "12 meters minimum"
-        // document.getElementById('Usage').style.display = 'none'
-        // document.getElementById('Usage-P').style.display = 'none'
-
+        document.getElementById('dropdown-content').style.display = 'block'
+        document.getElementById('sidebar').src = './images/sidebarU.png'
+        isOpen= true
         break;
       case 'B200':
         camPos.x = 5.421
@@ -233,15 +254,16 @@ export function Model(props) {
         document.getElementById('bnmtitle').innerText = "Building name"
         document.getElementById('bname').innerText = "B200"
         document.getElementById('fareatitle').innerText = "Floor Area"
-        document.getElementById('farea').innerText = "3,05,157 sq.ft. (28,350 sq.m.)"
+        document.getElementById('farea').innerText = "3,05,157 sq.ft (28,350 sq.m.)"
         document.getElementById('mareatitle').innerText = "Mezzanine Area"
         document.getElementById('marea').innerText = " 5,382 sq.ft (500 sq.m)"
         document.getElementById('totbareatitle').innerText = "Total Buid-up Area"
         document.getElementById('totbarea').innerText = "3,10,539 sq.ft (28,850 sq.m.)"
         document.getElementById('Usage').innerText = "Clear Height"
         document.getElementById('Usage-P').innerText = "12 meters minimum"
-        // document.getElementById('Usage').style.display = 'none'
-        // document.getElementById('Usage-P').style.display = 'none'
+        document.getElementById('dropdown-content').style.display = 'block'
+        document.getElementById('sidebar').src = './images/sidebarU.png'
+        isOpen= true
 
         break;
       case 'B300':
@@ -259,15 +281,16 @@ export function Model(props) {
         document.getElementById('bnmtitle').innerText = "Building name"
         document.getElementById('bname').innerText = "B300"
         document.getElementById('fareatitle').innerText = "Floor Area"
-        document.getElementById('farea').innerText = "4,07,995 sq.ft. (37,904 sq.m.)"
+        document.getElementById('farea').innerText = "4,07,995 sq.ft (37,904 sq.m.)"
         document.getElementById('mareatitle').innerText = "Mezzanine Area"
         document.getElementById('marea').innerText = "5,382 sq.ft (500 sq.m)"
         document.getElementById('totbareatitle').innerText = "Total Buid-up Area"
         document.getElementById('totbarea').innerText = "4,13,377 sq.ft (38,404 sq.m.)"
         document.getElementById('Usage').innerText = "Clear Height"
         document.getElementById('Usage-P').innerText = "12 meters minimum"
-        // document.getElementById('Usage').style.display = 'none'
-        // document.getElementById('Usage-P').style.display = 'none'
+        document.getElementById('dropdown-content').style.display = 'block'
+        document.getElementById('sidebar').src = './images/sidebarU.png'
+        isOpen= true
 
         break;
       case 'B400':
@@ -285,7 +308,7 @@ export function Model(props) {
         document.getElementById('bnmtitle').innerText = "Building name"
         document.getElementById('bname').innerText = "B400"
         document.getElementById('fareatitle').innerText = "Floor Area"
-        document.getElementById('farea').innerText = "2,60,982 sq.ft. (24,246 sq.m.)"
+        document.getElementById('farea').innerText = "2,60,982 sq.ft (24,246 sq.m.)"
         document.getElementById('mareatitle').innerText = "Mezzanine Area"
         document.getElementById('marea').innerText = "5,382 sq.ft (500 sq.m)"
         document.getElementById('totbareatitle').innerText = "Total Buid-up Area"
@@ -293,8 +316,9 @@ export function Model(props) {
         document.getElementById('Usage').innerText = "Clear Height"
         document.getElementById('Usage-P').innerText = "12 meters minimum"
         console.log("Inside B400 switch case")
-        // document.getElementById('Usage').style.display = 'none'
-        // document.getElementById('Usage-P').style.display = 'none'
+        document.getElementById('dropdown-content').style.display = 'block'
+        document.getElementById('sidebar').src = './images/sidebarU.png'
+        isOpen= true
 
 
         break;
@@ -313,7 +337,7 @@ export function Model(props) {
         document.getElementById('bnmtitle').innerText = "Building name"
         document.getElementById('bname').innerText = "B500"
         document.getElementById('fareatitle').innerText = "Floor Area"
-        document.getElementById('farea').innerText = "1,41,804 sq.ft. (13,174 sq.m.)"
+        document.getElementById('farea').innerText = "1,41,804 sq.ft (13,174 sq.m.)"
         document.getElementById('mareatitle').innerText = "Mezzanine Area"
         document.getElementById('marea').innerText = "5,382 sq.ft (500 sq.m)"
         document.getElementById('totbareatitle').innerText = "Total Buid-up Area"
@@ -321,8 +345,9 @@ export function Model(props) {
         document.getElementById('Usage').innerText = "Clear Height"
         document.getElementById('Usage-P').innerText = "12 meters minimum"
         console.log("Inside B500 switch case")
-        // document.getElementById('Usage').style.display = 'none'
-        // document.getElementById('Usage-P').style.display = 'none'
+        document.getElementById('dropdown-content').style.display = 'block'
+        document.getElementById('sidebar').src = './images/sidebarU.png'
+        isOpen= true
 
         break;
       case 'Default':
@@ -349,7 +374,9 @@ export function Model(props) {
         document.getElementById('Usage-P').innerText = "Industrial, Warehousing & Logistics park"
         document.getElementById('Usage').style.display = 'block'
         document.getElementById('Usage-P').style.display = 'block'
-
+        // document.getElementById('dropdown-content').style.display = 'block'
+        // document.getElementById('sidebar').src = './images/sidebarU.png'
+        // isOpen= true
 
         break;
       default:
@@ -364,8 +391,7 @@ export function Model(props) {
       orbitcontrols.current.update();
     }
 
-    document.getElementById('dropdown-content').style.display = 'block'
-    document.getElementById('sidebar').src = './images/sidebarU.png'
+  
     document.getElementById('bottombar').style.display = 'none'
     // isOpen = true;
   }
@@ -740,6 +766,8 @@ export function Model(props) {
             document.getElementById('streetview').src = './images/StreetView-01.png',
             document.getElementById('streetview').style.display = 'block',
             helpBtn.style.display='none',
+            streetviewUI = true,
+            isOpen = true,
             picno = 1
           )}
           scale={6}
@@ -777,7 +805,8 @@ export function Model(props) {
             document.getElementById('streetview').style.display = 'block',
             document.getElementById('streetview').src = './images/StreetView-02.png',
             helpBtn.style.display='none',
-
+            streetviewUI = true,
+            isOpen = true,
             picno = 2
           )}
           scale={6}
@@ -818,7 +847,8 @@ export function Model(props) {
             document.getElementById('streetview').style.display = 'block',
             document.getElementById('streetview').src = './images/StreetView-03.png',
             helpBtn.style.display='none',
-
+            streetviewUI = true,
+            isOpen = true,
             picno = 3
 
           )}
