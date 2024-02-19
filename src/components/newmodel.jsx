@@ -98,7 +98,7 @@ export function Model(props) {
     document.getElementById('popupdarkbg').style.display = 'none'
     document.getElementById('helpBtn').style.display = 'block'
     streetviewUI = false
-    isOpen = false
+    isOpen=false
   })
 
   useEffect(() => void (
@@ -123,7 +123,7 @@ export function Model(props) {
   window.addEventListener('touchmove', phonedrag);
   window.addEventListener('touchend', stopDrag);
   document.addEventListener('wheel', (e) => {
-    scrollValue = e.deltaY / 1000
+    scrollValue = e.deltaY / 1024
     // console.log('scroll Value', scroll)
     camTimeScale += scrollValue
   })
@@ -184,15 +184,15 @@ export function Model(props) {
     // const y = e.clientY - startY;
     if (isDragging) {
       // console.log("X drag",xdrag)
-      camTimeScale = xdrag / 2048
+      camTimeScale = xdrag / 1024
     }
     else {
       // console.log("Not ")
     }
-    if (xdrag >= 2048) {
+    if (xdrag >= 1024) {
       xdrag = 0
     }
-    if (xdrag < -2048) {
+    if (xdrag < -1024) {
       xdrag = 0
       console.log('negative xdrag');
     }
@@ -531,7 +531,7 @@ export function Model(props) {
           window.addEventListener('mousemove', drag);
           window.addEventListener('mouseup', stopDrag);
         }
-        if (camTimeScale < 0.5 && camTimeScale >= 0) {
+        if (camTimeScale < 0.2 && camTimeScale >= 0) {
           camTimeScale += camTimeScale
         }
         actions["MainCameraAltActionClip"].timeScale = THREE.MathUtils.lerp(actions["MainCameraAltActionClip"].timeScale, camTimeScale, 1)
@@ -539,17 +539,17 @@ export function Model(props) {
         // console.log('camTimeScale', camTimeScale)
 
       } else {
-        if (camTimeScale < 0.45) {
+        if (camTimeScale < 0.15) {
           camTimeScale += 0.005
         }
-        else if (camTimeScale > 0.55) {
+        else if (camTimeScale > 0.25) {
           camTimeScale -= 0.005
         }
-        else if (camTimeScale < 0.55 && camTimeScale > 0.45) {
-          camTimeScale = 0.5
+        else if (camTimeScale < 0.25 && camTimeScale > 0.15) {
+          camTimeScale = 0.2
         }
         else {
-          camTimeScale = 0.5
+          camTimeScale = 0.2
         }
         // console.log('Cam Time Scale Else', camTimeScale);
         // if (camTimeScale >= 1) {
