@@ -153,6 +153,7 @@
         window.removeEventListener('scroll', () => { });
         document.getElementById("fixedChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
         document.getElementById("fixedChakanLogo").style.display = 'none'
+        document.getElementById('LoaderSection').style.display = 'none'
         document.getElementById('InstructionSection').style.display = 'none'
         document.getElementById('bottombar').style.display = 'flex'
         document.getElementById('dropdown').style.display = 'block'
@@ -172,7 +173,6 @@
         instructionFade()
     }
     else if (scroll > viewportHeight && scroll < viewportHeight * 2){
-        // document.getElementById('LoaderSection').style.display = 'none'
 
         document.getElementById("loaderChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
         document.getElementById("fixedChakanLogo").style.animation = 'opacityAnim .5s ease forwards'
