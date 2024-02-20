@@ -125,7 +125,9 @@ export function Model(props) {
   document.addEventListener('wheel', (e) => {
     scrollValue = e.deltaY / 1024
     // console.log('scroll Value', scroll)
-    camTimeScale += scrollValue
+    if(camTimeScale < 3 && camTimeScale > -3){
+      camTimeScale += scrollValue
+    }
   })
   // window.addEventListener('scroll', (e) => {
   //   const scroll = Math.floor(window.scrollY)
@@ -154,10 +156,10 @@ export function Model(props) {
     ydrag = e.touches[0].clientY - startY;
     ydrag = ydrag + lastYvalue
     // const y = e.clientY - startY;
-    if (isDragging && xdrag > 5) {
+    if (isDragging && (xdrag > 5 || xdrag <-5) ) {
       // console.log("X drag",xdrag)
       camTimeScale = xdrag / 350
-    } else if (isDragging && ydrag > 5) {
+    } else if (isDragging &&  (ydrag > 5 || ydrag <-5)) {
       camTimeScale = ydrag / 500
     }
     else {
@@ -166,13 +168,13 @@ export function Model(props) {
     if (xdrag >= 350) {
       xdrag = 0
     }
-    if (xdrag < 0) {
+    if (xdrag <= -350) {
       xdrag = 350
     }
     if (ydrag >= 500) {
       ydrag = 0
     }
-    if (ydrag < 0) {
+    if (ydrag < -500) {
       ydrag = 500
     }
   }
@@ -526,7 +528,7 @@ export function Model(props) {
           window.addEventListener('mousemove', drag);
           window.addEventListener('mouseup', stopDrag);
         }
-        if (camTimeScale < 0.2 && camTimeScale >= 0) {
+        if (camTimeScale < 0 && camTimeScale >= 0.2) {
           camTimeScale += camTimeScale
         }
         actions["MainCameraAltActionClip"].timeScale = THREE.MathUtils.lerp(actions["MainCameraAltActionClip"].timeScale, camTimeScale, 1)
@@ -535,10 +537,10 @@ export function Model(props) {
 
       } else {
         if (camTimeScale < 0.15) {
-          camTimeScale += 0.005
+          camTimeScale += 0.01
         }
         else if (camTimeScale > 0.25) {
-          camTimeScale -= 0.005
+          camTimeScale -= 0.01
         }
         else if (camTimeScale < 0.25 && camTimeScale > 0.15) {
           camTimeScale = 0.2
