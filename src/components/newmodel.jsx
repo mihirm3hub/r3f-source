@@ -466,21 +466,16 @@ export function Model(props) {
       helpBtn.src = './images/Close.png';
       helpBtn.setAttribute('onmouseover', '')
       helpBtn.setAttribute('onmouseout', '')
-      document.getElementById('instructionMain').style.display = 'grid'
-      document.getElementById('instructionMain').style.top = '0'
-      document.getElementById('instructionMain').style.removeProperty('background')
-      document.getElementById('instructionMain').style.removeProperty('animation')
-      
-
+      document.getElementById('instructionOverlay').style.display = 'flex'
       isHelp = true
     }
     else {
       isHelp = false
-      helpBtn.style.zIndex='99';
+      helpBtn.style.zIndex='100';
       helpBtn.src = './images/HELP_BUTT.png'
       helpBtn.setAttribute('onmouseover', 'this.src=`./images/HELP_BUTT_Hover.png`')
       helpBtn.setAttribute('onmouseout', 'this.src=`./images/HELP_BUTT.png`')
-      document.getElementById('instructionMain').style.display = 'none'
+      document.getElementById('instructionOverlay').style.display = 'none'
     }
   })
 

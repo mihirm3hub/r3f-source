@@ -11,6 +11,7 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
 /* Section Overlay */
 html,
 body,
@@ -18,7 +19,8 @@ section {
   block-size: 100%;
 }
 
-main, html {
+main,
+html {
   scroll-snap-type: y mandatory;
 }
 
@@ -29,8 +31,8 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  width:100%;
-  height:100vh;
+  width: 100%;
+  height: 100vh;
 }
 
 #root {
@@ -230,6 +232,23 @@ input:checked+.slider:before {
 /* locationbtn:hover{
   border-color: white;
 } */
+
+#instructionOverlay {
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+}
+
+#instructionOverlay img{
+  width: 50%;
+}
 
 #scenebtn {
   /* position: fixed; */
@@ -814,14 +833,20 @@ hr.solid {
   }
 
   .slider:before {
-    width: 5vw;
-    top: -0.2vh;
-    left: 0.4vw;
+    width: 4vw;
+    top: 0vh;
+    left: 0.8vw;
   }
 
   .slider {
-    width: 9vw;
-    height: 6.2vw;
+    width: 10vw;
+    height: 5vw;
+  }
+
+  input:checked+.slider:before {
+    -webkit-transform: translateX(4vw);
+    -ms-transform: translateX(4vw);
+    transform: translateX(4vw);
   }
 
   #locationbtn {
