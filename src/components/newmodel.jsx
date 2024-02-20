@@ -598,7 +598,7 @@ export function Model(props) {
 
           onPointerOver={() => setHovered5(true)}
           onPointerOut={() => setHovered5(false)}
-          scale={6}
+          scale={7.5}
         >
           <circleGeometry args={[0.07, 32]} />
           <meshBasicMaterial
@@ -627,7 +627,7 @@ export function Model(props) {
             setHovered1(true)}
           onPointerOut={() =>
             setHovered1(false)}
-          scale={6}
+          scale={7.5}
 
         >
 
@@ -659,7 +659,7 @@ export function Model(props) {
           }}
           onPointerOver={() => setHovered4(true)}
           onPointerOut={() => setHovered4(false)}
-          scale={6}
+          scale={7.5}
         >
           <circleGeometry args={[0.07, 32]} />
           <meshBasicMaterial
@@ -691,7 +691,7 @@ export function Model(props) {
           onPointerOver={() => setHovered3(true)}
           onPointerOut={() => setHovered3(false)}
 
-          scale={6}
+          scale={7.5}
         >
           <circleGeometry args={[0.07, 32]} />
           <meshBasicMaterial
@@ -725,7 +725,7 @@ export function Model(props) {
           onPointerOver={() => setHovered2(true)}
           onPointerOut={() => setHovered2(false)}
 
-          scale={6}
+          scale={7.5}
         >
           <circleGeometry args={[0.07, 32]} />
           <meshBasicMaterial
@@ -765,7 +765,7 @@ export function Model(props) {
             isOpen = true,
             picno = 1
           )}
-          scale={6}
+          scale={7.5}
         >
           <circleGeometry args={[0.07, 32]} />
           <meshBasicMaterial
@@ -804,7 +804,7 @@ export function Model(props) {
             isOpen = true,
             picno = 2
           )}
-          scale={6}
+          scale={7.5}
         >
           <circleGeometry args={[0.07, 32]} />
           <meshBasicMaterial
@@ -847,7 +847,7 @@ export function Model(props) {
             picno = 3
 
           )}
-          scale={6}
+          scale={7.5}
         >
           <circleGeometry args={[0.07, 32]} />
           <meshBasicMaterial

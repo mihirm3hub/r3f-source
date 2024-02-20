@@ -14,15 +14,7 @@
   </style>
 </head>
 
-<body>
-  <!-- <section id="InstructionSection">
-    <img id="fixedChakanLogo" src="./images/chakanLogo.png" alt="">
-   <div id="instructionMain" style="background: linear-gradient(180deg, #000000cf 20%, #ffffff00 80%);">
-     <img id="instructionChakanLogo" src="./images/chakanLogo.png" alt=""> 
-     <img id="instructionImg" src="./images/TutorialImg.png" alt="">
-     <img id="instructionMobileImg" src="./images/tutorialOverlayMobile.png" alt="">
-   </div>  
- </section> -->
+<body style="margin:0;padding:0;">
  <div id="Logo">
   <img id="logobtn" src="./images/logo.png" style="object-fit: contain; " alt="logoimg" />
 </div>
@@ -156,7 +148,7 @@
         window.removeEventListener('scroll', () => { });
         document.getElementById("fixedChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
         document.getElementById("fixedChakanLogo").style.display = 'none'
-        document.getElementById('LoaderSection').style.display = 'none'
+        
         document.getElementById('InstructionSection').style.display = 'none'
         document.getElementById('bottombar').style.display = 'flex'
         document.getElementById('dropdown').style.display = 'block'
@@ -169,148 +161,31 @@
     const viewportHeight = window.innerHeight
     const scroll = Math.floor(window.scrollY);
     console.log(scroll)
-    
-    if(scroll >= viewportHeight*2){
-        console.log(true)
+    if(scroll === viewportHeight){
+      console.log("Exec")
+      if(document.getElementById('LoaderSection').style.display === 'none'){
+        // document.getElementById('InstructionSection').style.display = 'none'
+        document.getElementById('rootUI').style.top = '0%'
         isInstructionCall = true
         instructionFade()
+      }else{
+        document.getElementById('LoaderSection').style.display = 'none'
+        document.getElementById('instructionMain').style.top = '0%'
+        document.getElementById("loaderChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
+      document.getElementById("fixedChakanLogo").style.animation = 'opacityAnim .5s ease forwards'    
+      }
+     
     }
     else if (scroll > viewportHeight && scroll < viewportHeight * 2){
-
-        document.getElementById("loaderChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
-        document.getElementById("fixedChakanLogo").style.animation = 'opacityAnim .5s ease forwards'
+      console.log("Log for viewport 2 section3")
+      document.getElementById('InstructionSection').style.display = 'none'
+      document.getElementById('rootUI').style.top = '0%'
+     
     }
     else{
         console.log(false)
     }
     });
-
-    // let isScrolled = false
-    // document.addEventListener('scroll', (e) => {
-    //   //CHAT GPT Code
-    //   const scroll = Math.floor(window.scrollY)
-    //   console.log('scroll', scroll)
-    //   if (scroll >= window.innerHeight) {
-    //     console.log("2 scrolled")
-    //     instructionFade()
-        // if (!isScrolled) {
-        //     let destinationScrollPosition;
-        //     // Adjust destination scroll position based on screen size
-        //     if (window.innerWidth < 768) {
-        //         destinationScrollPosition = 500; // For smaller screens
-        //     } else {
-        //         destinationScrollPosition = 1000; // For larger screens
-        //     }
-        //     console.log(destinationScrollPosition);
-        //     // Smooth scroll to the destination position
-        //     window.scrollTo({
-        //         top: destinationScrollPosition,
-        //         left: 0,
-        //         behavior: 'smooth'
-        //     });
-        //     console.log('scrolling....');
-        //     isScrolled = true;
-        // }
-    // }
-
-      
-      // if (scroll > 5) {
-      //   if (!isScrolled) {
-      //     // window.scrollTo(0, 1000)
-      //     window.scroll({
-      //       top: 1000,
-      //       left: 0,
-      //       behavior: 'smooth'
-      //     });
-      //     console.log('scrolling....');
-      //     isScrolled = true
-      //   }
-
-      // }
-      // console.log(window.innerHeight);
-      // if (scroll >= window.innerHeight/2) {
-      //   document.getElementById("loaderChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
-      //   document.getElementById("fixedChakanLogo").style.animation = 'opacityAnim .5s ease forwards'
-      //   isInstruction = true
-      // }
-      // // else if (scroll < window.innerHeight/2 && isInstruction) {
-      // //   document.getElementById("loaderChakanLogo").style.animation = 'opacityAnim .5s ease forwards'
-      // //   document.getElementById("fixedChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
-      // //   document.getElementById("fixedChakanLogo").style.display = 'none'
-      // // }
-      // if (scroll > window.innerHeight/2 && isInstruction) {
-      //   isInstructionCall = true
-      //   window.addEventListener('click', instructionFade)
-      //   window.addEventListener('wheel', (e) => {
-      //     instructionFade()
-      //   })
-      //   window.addEventListener('touchmove', () => {
-      //     instructionFade()
-      //   })
-      // }
-      
-
-      // if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i)
-      //   || navigator.userAgent.match(/iPhone/i)
-      //   || navigator.userAgent.match(/iPad/i)
-      //   || navigator.userAgent.match(/iPod/i) && scroll > 300) {
-      //   console.log('MOBILE BROWSER');
-      //   window.addEventListener('touchmove', (e) => {
-      //     instructionFade()
-      //     console.log('touch');
-      //   })
-      // }
-    // });
-    
-
-    // function applyScroll() {
-		// 		$.scrollify({
-		// 			section: '.scroll',
-		// 			sectionName: 'section-name',
-		// 			//standardScrollElements: 'section',
-		// 			easing: 'easeOutExpo',
-		// 			scrollSpeed: 1100,
-		// 			offset: 0,
-		// 			scrollbars: true,
-		// 			setHeights: true,
-		// 			overflowScroll: true,
-		// 			// updateHash: false,
-		// 			touchScroll: true,
-		// 		});
-		// 	}
-      // function screenCheck() {
-			// 	var deviceAgent = navigator.userAgent.toLowerCase();
-			// 	var agentID = deviceAgent.match(/(iphone|ipod|ipad)/);
-			// 	if (agentID || $(window).width() <= 1024) {
-			// 		// its mobile screen
-			// 		$.scrollify.destroy();
-			// 		$('section').removeClass('scroll').removeAttr('style');
-			// 		$.scrollify.disable();
-      //      isInstruction = true
-      //      document.getElementById("loaderChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
-      //     document.getElementById("fixedChakanLogo").style.animation = 'opacityAnim .5s ease forwards'
-      //     window.addEventListener('click', instructionFade)
-      //     window.addEventListener('wheel', (e) => {
-      //     instructionFade()
-      //   })
-      //     window.addEventListener('touchmove', (e) => {
-      //     instructionFade()
-      //   })
-
-      //     isInstructionCall=true
-			// 	} else {
-			// 		// its desktop
-			// 		// $('section').addClass('scroll');
-			// 		// applyScroll();
-			// 		// $.scrollify.enable();
-      //     document.getElementById("loaderChakanLogo").style.animation = 'opacityAnim .5s ease forwards'
-      //   document.getElementById("fixedChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
-      //   document.getElementById("fixedChakanLogo").style.display = 'none'
-          
-          
-             
-			// 	}
-			// }
       
   </script>
   <script type="module" src="/src/main.jsx"></script>
