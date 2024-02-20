@@ -23,6 +23,9 @@
      <img id="instructionMobileImg" src="./images/tutorialOverlayMobile.png" alt="">
    </div>  
  </section> -->
+ <div id="Logo">
+  <img id="logobtn" src="./images/logo.png" style="object-fit: contain; " alt="logoimg" />
+</div>
 
   <section id="LoaderSection">
     <div id="LoaderMain" style="background-image:url('./images/Intro_render_height_03_G.png');">
@@ -49,7 +52,7 @@
     </div>
   </section>
   
-  <section id="RootSection">
+  <section id="InstructionSection">
     <!-- <img id="fixedChakanLogo" src="./images/chakanLogo.png" alt=""> -->
     <div id="instructionMain" style="background: linear-gradient(180deg, #000000cf 20%, #ffffff00 80%);">
       <!-- <img id="instructionChakanLogo" src="./images/chakanLogo.png" alt="">  -->
@@ -57,84 +60,74 @@
       <img id="instructionMobileImg" src="./images/tutorialOverlayMobile.png" alt="">
     </div>  
     <div id="root"></div>
-    <div id="Logo">
-      <img id="logobtn" src="./images/logo.png" style="object-fit: contain; " alt="logoimg" />
-    </div>
    
-    <img id="helpBtn" src="./images/HELP_BUTT.png" onmouseover="this.src=`./images/HELP_BUTT_Hover.png`"
-    onmouseout="this.src=`./images/HELP_BUTT.png`" style="object-fit: contain;" />
-  <div id="bottombar">
-    <img id="locationbtn" class="bottombtn" src="./images/2024.01.29_ICON_MAP_BUTT.UNCLICKED-53.png"
-      onmouseover="this.src=`./images/MAP_BUTT.png`"
-      onmouseout="this.src=`./images/2024.01.29_ICON_MAP_BUTT.UNCLICKED-53.png`"
-      onclick="this.src=`./images/MAP_BUTT_SELECTED.png`" style="object-fit: contain;" />
-    <label class="switch">
-      <input id="amenitySwitch" type="checkbox">
-      <span class="slider round"></span>
-    </label>
-    <img id="arbtn" class="bottombtn" src="./images/2024.01.29_ICON_AR_BUTT.UNCLICKED-52.png"
-      onmouseover="this.src=`./images/AR_BUTT.png`"
-      onmouseout="this.src=`./images/2024.01.29_ICON_AR_BUTT.UNCLICKED-52.png`"
-      onclick="this.src=`./images/AR_BUTT_SELECTED.png`" style="object-fit: contain;" />
-  </div>
-  <div>
-    <img id="cbtn" src="./images/Close.png" alt="Close Button" />
-  </div>
+  </section>
+   <section id="rootUI">
+      <img id="helpBtn" src="./images/HELP_BUTT.png" onmouseover="this.src=`./images/HELP_BUTT_Hover.png`"
+      onmouseout="this.src=`./images/HELP_BUTT.png`" style="object-fit: contain;" />
+    <div id="bottombar">
+      <img id="locationbtn" class="bottombtn" src="./images/2024.01.29_ICON_MAP_BUTT.UNCLICKED-53.png"
+        onmouseover="this.src=`./images/MAP_BUTT.png`"
+        onmouseout="this.src=`./images/2024.01.29_ICON_MAP_BUTT.UNCLICKED-53.png`"
+        onclick="this.src=`./images/MAP_BUTT_SELECTED.png`" style="object-fit: contain;" />
+      <label class="switch">
+        <input id="amenitySwitch" type="checkbox">
+        <span class="slider round"></span>
+      </label>
+      <img id="arbtn" class="bottombtn" src="./images/2024.01.29_ICON_AR_BUTT.UNCLICKED-52.png"
+        onmouseover="this.src=`./images/AR_BUTT.png`"
+        onmouseout="this.src=`./images/2024.01.29_ICON_AR_BUTT.UNCLICKED-52.png`"
+        onclick="this.src=`./images/AR_BUTT_SELECTED.png`" style="object-fit: contain;" />
+    </div>
+    <div>
+      <img id="cbtn" src="./images/Close.png" alt="Close Button" />
+    </div>
+    <div id="dropdown" style="display: block;">
+      <img id="sidebar" alt="Dropdown Button" src="./images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png" />
+      <img id="streetview" alt="streetviewnum">
+      <div class="dropdown-content" id="dropdown-content">
+        <div>
+          <h4 id="bnmtitle">IndoSpace Industrial<br>Warehousing & Logistics Park</h4>
+          <p id="bname"></p>
+  
+        </div>
+  
+        <div>
+          <h4 id="fareatitle">Total Land Parcel</h4>
+          <p id="farea"> 186 Acres</p>
+        </div>
+        <div>
+          <h4 id="mareatitle">Plot 1 Land Area</h4>
+          <p id="marea">62 Acres</p>
+        </div>
+        <div>
+          <h4 id="totbareatitle">Total Chargeable Area</h4>
+          <p id="totbarea">14,35,315 sq.ft.<br>(1,33,344 sq.m.)</p>
+  
+        </div>
+        <div>
+          <h4 id="Usage">Usage</h4>
+          <p id="Usage-P">Industrial, Warehousing & Logistics park</p>
+        </div>
+        <div>
+          <hr class="solid">
+        </div>
+  
+      </div>
+  
+    </div>
+  </section>
+ 
+
   <div id="popup">
     <img class="close" src="./images/Close.png" />
     <img class="prebtn" src="./images/PREVIOUS_BUTT.png" onclick="this.src=`./images/PreviousHoverBtn.png`"
       style="object-fit: contain;" />
     <img class="nextbtn" src="./images/NEXT_BUTT.png" onclick="this.src=`./images/NextHoverBtn.png`"
       style="object-fit: contain;" />
-
-
-
     <iframe id="popupiframe" allow="xr-spatial-tracking"></iframe>
   </div>
-
   <div id="popupdarkbg"></div>
-
-  <div id="dropdown" style="display: block;">
-    <img id="sidebar" alt="Dropdown Button" src="./images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png" />
-    <img id="streetview" alt="streetviewnum">
-    <div class="dropdown-content" id="dropdown-content">
-      <div>
-        <h4 id="bnmtitle">IndoSpace Industrial<br>Warehousing & Logistics Park</h4>
-        <p id="bname"></p>
-
-      </div>
-
-      <div>
-        <h4 id="fareatitle">Total Land Parcel</h4>
-        <p id="farea"> 186 Acres</p>
-      </div>
-      <div>
-        <h4 id="mareatitle">Plot 1 Land Area</h4>
-        <p id="marea">62 Acres</p>
-      </div>
-      <div>
-        <h4 id="totbareatitle">Total Chargeable Area</h4>
-        <p id="totbarea">14,35,315 sq.ft.<br>(1,33,344 sq.m.)</p>
-
-      </div>
-      <!-- <div>
-        <h4 id="clrhgttitle">Type Of Land</h4>
-        <p id="clrhgt">Industrial</p>
-      </div> -->
-      <div>
-        <h4 id="Usage">Usage</h4>
-        <p id="Usage-P">Industrial, Warehousing & Logistics park</p>
-      </div>
-      <div>
-        <hr class="solid">
-      </div>
-
-    </div>
-
-  </div>
-
-  </section>
-
   
   <!-- <div class="scroll-control"></div> -->
   <img id="phonelndscap" src="./images/MobilePotraitOrientationMsg.png"></img>
@@ -157,12 +150,13 @@
         window.removeEventListener('wheel', () => { });
         window.removeEventListener('touchmove', () => { });
         window.removeEventListener('scroll', () => { });
-        document.getElementById("fixedChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
-        document.getElementById("fixedChakanLogo").style.display = 'none'
-        document.getElementById('LoaderMain').style.display = 'none'
-        document.getElementById('instructionMain').style.display = 'none'
+        // document.getElementById("fixedChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
+        // document.getElementById("fixedChakanLogo").style.display = 'none'
+        document.getElementById('LoaderSection').style.display = 'none'
+        document.getElementById('InstructionSection').style.display = 'none'
         document.getElementById('bottombar').style.display = 'flex'
         document.getElementById('dropdown').style.display = 'block'
+        document.getElementById('rootUI').style.display = 'block'
         console.warn('Fade FUnction');
         isInstructionCall = false
       }
@@ -171,8 +165,9 @@
     const viewportHeight = window.innerHeight
     const scroll = Math.floor(window.scrollY);
     console.log(scroll)
-    if(scroll >= viewportHeight){
+    if(scroll >= viewportHeight*2){
         console.log(true)
+        isInstructionCall = true
         instructionFade()
     }else{
         console.log(false)
