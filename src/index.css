@@ -693,7 +693,7 @@ hr.solid {
   }
 
   #loaderBottomBar {
-    top: 60vh;
+    top: 65vh;
     left: 2vw;
 }
 
@@ -740,8 +740,13 @@ hr.solid {
   }
 
   #bottombar{
-    height: 15%;
+    /* height: 20%; */
     /* height: 0.5vh; */
+    bottom: 1vh;
+    
+      /* top: 60vh; */
+      
+  
   }
 
   
@@ -792,12 +797,12 @@ hr.solid {
   .slider:before {
     height: 4vw;
     width: 10vw;
-    left: -2.5vw;
-    top: 1vh;
+    left: -2.3vw;
+    top: 0.5vh;
   }
 
   .slider {
-    width: 8vw;
+    width: 7.5vw;
     height: 4.5vw;
   }
 
@@ -836,6 +841,12 @@ hr.solid {
     left: 21vw;
     font-size: 17px;
   }
+  #LoaderMain {
+    height: 100vh;
+  }
+  #LoaderGradient {
+    height: 100vh;
+  }
 
   #scrolltocon {
     bottom: 0.5vh;
@@ -844,7 +855,7 @@ hr.solid {
 
   .slider:before {
     width: 4vw;
-    top: 0vh;
+    top: 1%;
     left: 0.8vw;
   }
 

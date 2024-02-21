@@ -160,29 +160,25 @@
     window.addEventListener("scroll", (e) => {
       const viewportHeight = window.innerHeight
       const scroll = Math.floor(window.scrollY);
-      console.log(scroll)
+      console.log('Scroll value',scroll)
       console.log('view port height ', viewportHeight);
-      if (scroll === viewportHeight) {
+      if (scroll >= viewportHeight) {
         console.log("Exec")
         if (document.getElementById('LoaderSection').style.display === 'none') {
-          console.log('Loader None ----');
+          console.log('Instruction None ----');
           // document.getElementById('InstructionSection').style.display = 'none'
-          document.getElementById('rootUI').style.top = '0%'
+          document.getElementById('rootUI').style.top = '0vh'
           isInstructionCall = true
           instructionFade()
+
         } else {
-          console.log('instruction none  ----');
+          console.log('Loader none  ----');
           document.getElementById('LoaderSection').style.display = 'none'
           document.getElementById('instructionMain').style.top = '0%'
           document.getElementById("loaderChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
           document.getElementById("fixedChakanLogo").style.animation = 'opacityAnim .5s ease forwards'
         }
 
-      }
-      else if (scroll > viewportHeight && scroll < viewportHeight * 2) {
-        console.log("Log for viewport 2 section3")
-        document.getElementById('InstructionSection').style.display = 'none'
-        document.getElementById('rootUI').style.top = '0%'
       }
       else {
         console.log(false)

@@ -125,7 +125,7 @@ export function Model(props) {
   document.addEventListener('wheel', (e) => {
     scrollValue = e.deltaY / 1024
     // console.log('scroll Value', scroll)
-    if(camTimeScale < 3 && camTimeScale > -3){
+    if(camTimeScale < 2 && camTimeScale > -2){
       camTimeScale += scrollValue
     }
   })
@@ -164,7 +164,7 @@ export function Model(props) {
       camTimeScale = ydrag / 500
     }
     else {
-      // console.log("Not ")
+       console.log("Not ")
     }
     if (xdrag >= 350) {
       xdrag = 0
@@ -189,6 +189,8 @@ export function Model(props) {
       // console.log("X drag",xdrag)
     
       camTimeScale = xdrag / 1024
+      
+
     }
     else {
       // console.log("Not ")
@@ -519,7 +521,7 @@ export function Model(props) {
       // }
 
       if (isDragging) {
-        console.log('isDragging CamTimeScale', xdrag, '---', camTimeScale);
+        // console.log('isDragging CamTimeScale', xdrag, '---', camTimeScale);
         if (isNaN(xdrag)) {
           console.warn('NAN XDRAG')
           xdrag = 1000
@@ -530,7 +532,7 @@ export function Model(props) {
           window.addEventListener('mousemove', drag);
           window.addEventListener('mouseup', stopDrag);
         }
-        if (camTimeScale < 0 && camTimeScale >= 0.2) {
+        if (camTimeScale < -2 && camTimeScale >= 2) {
           camTimeScale += camTimeScale
         }
         actions["MainCameraAltActionClip"].timeScale = THREE.MathUtils.lerp(actions["MainCameraAltActionClip"].timeScale, camTimeScale, 1)
