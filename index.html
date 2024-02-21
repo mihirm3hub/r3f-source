@@ -6,18 +6,18 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <title>Chakan Site</title>
-  <link rel="stylesheet" href='./index.css' />
+  <!-- <link rel="stylesheet" href='./index.css' /> -->
   <style>
-    html{
+    html {
       scroll-behavior: smooth;
     }
   </style>
 </head>
 
 <body style="margin:0;padding:0;">
- <div id="Logo">
-  <img id="logobtn" src="./images/logo.png" style="object-fit: contain; " alt="logoimg" />
-</div>
+  <div id="Logo">
+    <img id="logobtn" src="./images/logo.png" style="object-fit: contain; " alt="logoimg" />
+  </div>
 
   <section id="LoaderSection">
     <div id="LoaderMain" style="background-image:url('./images/Intro_render_height_03_G.png');">
@@ -39,24 +39,24 @@
         </span>
         <img id="swipetocon" src="./images/swipeToContinue.png" alt="" />
         <img id="scrolltocon" src="./images/ScrollDownToContinue.png" alt="" />
-  
+
       </div>
     </div>
   </section>
-  
+
   <section id="InstructionSection" style="display: none;">
     <img id="fixedChakanLogo" src="./images/chakanLogo.png" alt="">
     <div id="instructionMain" style="background: linear-gradient(180deg, #000000cf 20%, #ffffff00 80%);">
       <!-- <img id="instructionChakanLogo" src="./images/chakanLogo.png" alt="">  -->
       <img id="instructionImg" src="./images/TutorialImg.png" alt="">
       <img id="instructionMobileImg" src="./images/tutorialOverlayMobile.png" alt="">
-    </div>     
+    </div>
   </section>
-  
+
   <div id="root"></div>
 
-   <section id="rootUI" style="display: none;">
-      <img id="helpBtn" src="./images/HELP_BUTT.png" onmouseover="this.src=`./images/HELP_BUTT_Hover.png`"
+  <section id="rootUI" style="display: none;">
+    <img id="helpBtn" src="./images/HELP_BUTT.png" onmouseover="this.src=`./images/HELP_BUTT_Hover.png`"
       onmouseout="this.src=`./images/HELP_BUTT.png`" style="object-fit: contain;" />
     <div id="bottombar">
       <img id="locationbtn" class="bottombtn" src="./images/2024.01.29_ICON_MAP_BUTT.UNCLICKED-53.png"
@@ -82,9 +82,9 @@
         <div>
           <h4 id="bnmtitle">IndoSpace Industrial<br>Warehousing & Logistics Park</h4>
           <p id="bname"></p>
-  
+
         </div>
-  
+
         <div>
           <h4 id="fareatitle">Total Land Parcel</h4>
           <p id="farea"> 186 Acres</p>
@@ -96,7 +96,7 @@
         <div>
           <h4 id="totbareatitle">Total Chargeable Area</h4>
           <p id="totbarea">14,35,315 sq.ft.<br>(1,33,344 sq.m.)</p>
-  
+
         </div>
         <div>
           <h4 id="Usage">Usage</h4>
@@ -105,15 +105,15 @@
         <div>
           <hr class="solid">
         </div>
-  
+
       </div>
-  
+
     </div>
 
     <div id="instructionOverlay">
       <img src="./images/TutorialImg.png" alt="">
   </section>
- 
+
 
   <div id="popup">
     <img class="close" src="./images/Close.png" />
@@ -124,7 +124,7 @@
     <iframe id="popupiframe" allow="xr-spatial-tracking"></iframe>
   </div>
   <div id="popupdarkbg"></div>
-  
+
   <!-- <div class="scroll-control"></div> -->
   <img id="phonelndscap" src="./images/MobilePotraitOrientationMsg.png"></img>
 
@@ -148,7 +148,7 @@
         window.removeEventListener('scroll', () => { });
         document.getElementById("fixedChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
         document.getElementById("fixedChakanLogo").style.display = 'none'
-        
+
         document.getElementById('InstructionSection').style.display = 'none'
         document.getElementById('bottombar').style.display = 'flex'
         document.getElementById('dropdown').style.display = 'block'
@@ -158,35 +158,37 @@
       }
     }
     window.addEventListener("scroll", (e) => {
-    const viewportHeight = window.innerHeight
-    const scroll = Math.floor(window.scrollY);
-    console.log(scroll)
-    if(scroll === viewportHeight){
-      console.log("Exec")
-      if(document.getElementById('LoaderSection').style.display === 'none'){
-        // document.getElementById('InstructionSection').style.display = 'none'
-        document.getElementById('rootUI').style.top = '0%'
-        isInstructionCall = true
-        instructionFade()
-      }else{
-        document.getElementById('LoaderSection').style.display = 'none'
-        document.getElementById('instructionMain').style.top = '0%'
-        document.getElementById("loaderChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
-      document.getElementById("fixedChakanLogo").style.animation = 'opacityAnim .5s ease forwards'    
+      const viewportHeight = window.innerHeight
+      const scroll = Math.floor(window.scrollY);
+      console.log(scroll)
+      console.log('view port height ', viewportHeight);
+      if (scroll === viewportHeight) {
+        console.log("Exec")
+        if (document.getElementById('LoaderSection').style.display === 'none') {
+          console.log('Loader None ----');
+          // document.getElementById('InstructionSection').style.display = 'none'
+          document.getElementById('rootUI').style.top = '0%'
+          isInstructionCall = true
+          instructionFade()
+        } else {
+          console.log('instruction none  ----');
+          document.getElementById('LoaderSection').style.display = 'none'
+          document.getElementById('instructionMain').style.top = '0%'
+          document.getElementById("loaderChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
+          document.getElementById("fixedChakanLogo").style.animation = 'opacityAnim .5s ease forwards'
+        }
+
       }
-     
-    }
-    else if (scroll > viewportHeight && scroll < viewportHeight * 2){
-      console.log("Log for viewport 2 section3")
-      document.getElementById('InstructionSection').style.display = 'none'
-      document.getElementById('rootUI').style.top = '0%'
-     
-    }
-    else{
+      else if (scroll > viewportHeight && scroll < viewportHeight * 2) {
+        console.log("Log for viewport 2 section3")
+        document.getElementById('InstructionSection').style.display = 'none'
+        document.getElementById('rootUI').style.top = '0%'
+      }
+      else {
         console.log(false)
-    }
+      }
     });
-      
+
   </script>
   <script type="module" src="/src/main.jsx"></script>
   <!-- <script>

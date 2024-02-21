@@ -157,9 +157,10 @@ export function Model(props) {
     ydrag = ydrag + lastYvalue
     // const y = e.clientY - startY;
     if (isDragging && (xdrag > 5 || xdrag <-5) ) {
-      // console.log("X drag",xdrag)
+      console.log("X drag",xdrag)
       camTimeScale = xdrag / 350
     } else if (isDragging &&  (ydrag > 5 || ydrag <-5)) {
+      console.log("Y drag",ydrag)
       camTimeScale = ydrag / 500
     }
     else {
@@ -186,6 +187,7 @@ export function Model(props) {
     // const y = e.clientY - startY;
     if (isDragging) {
       // console.log("X drag",xdrag)
+    
       camTimeScale = xdrag / 1024
     }
     else {
@@ -233,7 +235,7 @@ export function Model(props) {
         document.getElementById('farea').innerText = "3,23,520 sq.ft (30,056 sq.m.)"
         document.getElementById('mareatitle').innerText = "Mezzanine Area"
         document.getElementById('marea').innerText = "5,382 sq.ft (500 sq.m)"
-        document.getElementById('totbareatitle').innerText = "Total Buid-up Area"
+        document.getElementById('totbareatitle').innerText = "Total Built-up Area"
         document.getElementById('totbarea').innerText = " 3,28,902 sq.ft (30,556 sq.m.)"
         document.getElementById('Usage').innerText = "Clear Height"
         document.getElementById('Usage-P').innerText = "12 meters minimum"
@@ -259,7 +261,7 @@ export function Model(props) {
         document.getElementById('farea').innerText = "3,05,157 sq.ft (28,350 sq.m.)"
         document.getElementById('mareatitle').innerText = "Mezzanine Area"
         document.getElementById('marea').innerText = " 5,382 sq.ft (500 sq.m)"
-        document.getElementById('totbareatitle').innerText = "Total Buid-up Area"
+        document.getElementById('totbareatitle').innerText = "Total Built-up Area"
         document.getElementById('totbarea').innerText = "3,10,539 sq.ft (28,850 sq.m.)"
         document.getElementById('Usage').innerText = "Clear Height"
         document.getElementById('Usage-P').innerText = "12 meters minimum"
@@ -286,7 +288,7 @@ export function Model(props) {
         document.getElementById('farea').innerText = "4,07,995 sq.ft (37,904 sq.m.)"
         document.getElementById('mareatitle').innerText = "Mezzanine Area"
         document.getElementById('marea').innerText = "5,382 sq.ft (500 sq.m)"
-        document.getElementById('totbareatitle').innerText = "Total Buid-up Area"
+        document.getElementById('totbareatitle').innerText = "Total Built-up Area"
         document.getElementById('totbarea').innerText = "4,13,377 sq.ft (38,404 sq.m.)"
         document.getElementById('Usage').innerText = "Clear Height"
         document.getElementById('Usage-P').innerText = "12 meters minimum"
@@ -313,7 +315,7 @@ export function Model(props) {
         document.getElementById('farea').innerText = "2,60,982 sq.ft (24,246 sq.m.)"
         document.getElementById('mareatitle').innerText = "Mezzanine Area"
         document.getElementById('marea').innerText = "5,382 sq.ft (500 sq.m)"
-        document.getElementById('totbareatitle').innerText = "Total Buid-up Area"
+        document.getElementById('totbareatitle').innerText = "Total Built-up Area"
         document.getElementById('totbarea').innerText = "2,66,363 sq.ft (24,746 sq.m.)"
         document.getElementById('Usage').innerText = "Clear Height"
         document.getElementById('Usage-P').innerText = "12 meters minimum"
@@ -342,7 +344,7 @@ export function Model(props) {
         document.getElementById('farea').innerText = "1,41,804 sq.ft (13,174 sq.m.)"
         document.getElementById('mareatitle').innerText = "Mezzanine Area"
         document.getElementById('marea').innerText = "5,382 sq.ft (500 sq.m)"
-        document.getElementById('totbareatitle').innerText = "Total Buid-up Area"
+        document.getElementById('totbareatitle').innerText = "Total Built-up Area"
         document.getElementById('totbarea').innerText = "1,47,186 sq.ft (13,674 sq.m.)"
         document.getElementById('Usage').innerText = "Clear Height"
         document.getElementById('Usage-P').innerText = "12 meters minimum"
@@ -1001,29 +1003,6 @@ export function Model(props) {
             material={materials.M_Master_B500}
           />
         </group>
-        <group name="SM_Master_B100001" position={[-5.18, 1.703, 11.305]}>
-          <mesh
-            name="Plane004"
-            castShadow
-            receiveShadow
-            geometry={nodes.Plane004.geometry}
-            material={materials.M_Master_B100}
-          />
-          <mesh
-            name="Plane004_1"
-            castShadow
-            receiveShadow
-            geometry={nodes.Plane004_1.geometry}
-            material={materials.M_Facade_Glass_Light}
-          />
-          <mesh
-            name="Plane004_2"
-            castShadow
-            receiveShadow
-            geometry={nodes.Plane004_2.geometry}
-            material={materials.M_B_400}
-          />
-        </group>
         <mesh
           name="SM_Master_B100009"
           castShadow
@@ -1053,7 +1032,11 @@ export function Model(props) {
             material={materials.M_Master_B200}
           />
         </group>
-        <group name="SM_Master_B300" position={[-6.78, 1.703, 12.935]}>
+        <group
+          name="SM_Master_B300"
+          position={[-6.78, 1.703, 12.935]}
+          rotation={[Math.PI, 0, Math.PI]}
+        >
           <mesh
             name="Plane001"
             castShadow
@@ -1101,7 +1084,7 @@ export function Model(props) {
           castShadow
           receiveShadow
           geometry={nodes.SM_OuterSite.geometry}
-          material={materials.M_OuterSite_01}
+          material={materials["M_OuterSite_01.001"]}
           position={[0, 1.721, 0]}
         />
         <mesh
@@ -1138,15 +1121,26 @@ export function Model(props) {
           position={[20.595, 2.055, 13.799]}
           scale={0.221}
         />
-        <mesh
+        <group
           name="SM_Service_Building002"
-          castShadow
-          receiveShadow
-          geometry={nodes.SM_Service_Building002.geometry}
-          material={materials["M_Service_Building.001"]}
           position={[7.494, 1.651, 12.911]}
           scale={0.051}
-        />
+        >
+          <mesh
+            name="Cube009"
+            castShadow
+            receiveShadow
+            geometry={nodes.Cube009.geometry}
+            material={materials["M_Service_Building.001"]}
+          />
+          <mesh
+            name="Cube009_1"
+            castShadow
+            receiveShadow
+            geometry={nodes.Cube009_1.geometry}
+            material={materials["M_Service_Building.002"]}
+          />
+        </group>
         <PerspectiveCamera
           name="MainCameraAlt"
           makeDefault={true}
@@ -2096,683 +2090,6 @@ export function Model(props) {
           />
         </group>
         <group
-          name="IM_Car_01010"
-          position={[0.063, 0.581, 13.484]}
-          rotation={[Math.PI, -1.571, 0]}
-          scale={-0.051}
-        >
-          <mesh
-            name="Mesh011"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh011.geometry}
-            material={materials["74body.001"]}
-          />
-          <mesh
-            name="Mesh011_1"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh011_1.geometry}
-            material={materials["74basic.001"]}
-          />
-          <mesh
-            name="Mesh011_2"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh011_2.geometry}
-            material={materials["74FABRIC.001"]}
-          />
-          <mesh
-            name="Mesh011_3"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh011_3.geometry}
-            material={materials["74REK.001"]}
-          />
-          <mesh
-            name="Mesh011_4"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh011_4.geometry}
-            material={materials["74tyre.001"]}
-          />
-          <mesh
-            name="Mesh011_5"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh011_5.geometry}
-            material={materials["74tyresf.001"]}
-          />
-        </group>
-        <group
-          name="IM_Car_01011"
-          position={[-0.029, 0.581, 0.051]}
-          rotation={[Math.PI, -1.571, 0]}
-          scale={-0.051}
-        >
-          <mesh
-            name="Mesh012"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh012.geometry}
-            material={materials["73body.001"]}
-          />
-          <mesh
-            name="Mesh012_1"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh012_1.geometry}
-            material={materials["73basic.001"]}
-          />
-          <mesh
-            name="Mesh012_2"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh012_2.geometry}
-            material={materials["73fabric.001"]}
-          />
-          <mesh
-            name="Mesh012_3"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh012_3.geometry}
-            material={materials["73rek.001"]}
-          />
-          <mesh
-            name="Mesh012_4"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh012_4.geometry}
-            material={materials["73tyresf.003"]}
-          />
-          <mesh
-            name="Mesh012_5"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh012_5.geometry}
-            material={materials["73tyresf.004"]}
-          />
-          <mesh
-            name="Mesh012_6"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh012_6.geometry}
-            material={materials["73tyresf.005"]}
-          />
-        </group>
-        <group
-          name="IM_Car_01012"
-          position={[-0.052, 0.578, 0.062]}
-          rotation={[0, 1.571, 0]}
-          scale={0.051}
-        >
-          <mesh
-            name="Mesh011"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh011.geometry}
-            material={materials["74body.001"]}
-          />
-          <mesh
-            name="Mesh011_1"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh011_1.geometry}
-            material={materials["74basic.001"]}
-          />
-          <mesh
-            name="Mesh011_2"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh011_2.geometry}
-            material={materials["74FABRIC.001"]}
-          />
-          <mesh
-            name="Mesh011_3"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh011_3.geometry}
-            material={materials["74REK.001"]}
-          />
-          <mesh
-            name="Mesh011_4"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh011_4.geometry}
-            material={materials["74tyre.001"]}
-          />
-          <mesh
-            name="Mesh011_5"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh011_5.geometry}
-            material={materials["74tyresf.001"]}
-          />
-        </group>
-        <group
-          name="IM_Car_01036"
-          position={[-0.453, 0.564, 1.077]}
-          rotation={[0, 0, -Math.PI]}
-          scale={-0.051}
-        >
-          <mesh
-            name="Mesh019"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh019.geometry}
-            material={materials["73body.001"]}
-          />
-          <mesh
-            name="Mesh019_1"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh019_1.geometry}
-            material={materials["73basic.001"]}
-          />
-          <mesh
-            name="Mesh019_2"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh019_2.geometry}
-            material={materials["73fabric.001"]}
-          />
-          <mesh
-            name="Mesh019_3"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh019_3.geometry}
-            material={materials["73rek.001"]}
-          />
-          <mesh
-            name="Mesh019_4"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh019_4.geometry}
-            material={materials["73tyresf.003"]}
-          />
-          <mesh
-            name="Mesh019_5"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh019_5.geometry}
-            material={materials["73tyresf.004"]}
-          />
-          <mesh
-            name="Mesh019_6"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh019_6.geometry}
-            material={materials["73tyresf.005"]}
-          />
-        </group>
-        <group
-          name="IM_Car_01039"
-          position={[1.966, 0.565, 0.047]}
-          rotation={[-Math.PI, 0, -Math.PI]}
-          scale={0.051}
-        >
-          <mesh
-            name="Mesh018"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh018.geometry}
-            material={materials["74body.001"]}
-          />
-          <mesh
-            name="Mesh018_1"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh018_1.geometry}
-            material={materials["74basic.001"]}
-          />
-          <mesh
-            name="Mesh018_2"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh018_2.geometry}
-            material={materials["74FABRIC.001"]}
-          />
-          <mesh
-            name="Mesh018_3"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh018_3.geometry}
-            material={materials["74REK.001"]}
-          />
-          <mesh
-            name="Mesh018_4"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh018_4.geometry}
-            material={materials["74tyre.001"]}
-          />
-          <mesh
-            name="Mesh018_5"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh018_5.geometry}
-            material={materials["74tyresf.001"]}
-          />
-        </group>
-        <group
-          name="IM_Car_01041"
-          position={[-13.477, 0.578, 4.311]}
-          rotation={[Math.PI, -1.571, 0]}
-          scale={-0.051}
-        >
-          <mesh
-            name="Mesh020"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh020.geometry}
-            material={materials["74body.001"]}
-          />
-          <mesh
-            name="Mesh020_1"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh020_1.geometry}
-            material={materials["74basic.001"]}
-          />
-          <mesh
-            name="Mesh020_2"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh020_2.geometry}
-            material={materials["74FABRIC.001"]}
-          />
-          <mesh
-            name="Mesh020_3"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh020_3.geometry}
-            material={materials["74REK.001"]}
-          />
-          <mesh
-            name="Mesh020_4"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh020_4.geometry}
-            material={materials["74tyre.001"]}
-          />
-          <mesh
-            name="Mesh020_5"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh020_5.geometry}
-            material={materials["74tyresf.001"]}
-          />
-        </group>
-        <group
-          name="IM_Car_01042"
-          position={[-13.42, 0.578, 4.327]}
-          rotation={[Math.PI, -1.571, 0]}
-          scale={-0.051}
-        >
-          <mesh
-            name="Mesh021"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021.geometry}
-            material={materials["73body.001"]}
-          />
-          <mesh
-            name="Mesh021_1"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021_1.geometry}
-            material={materials["73basic.001"]}
-          />
-          <mesh
-            name="Mesh021_2"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021_2.geometry}
-            material={materials["73fabric.001"]}
-          />
-          <mesh
-            name="Mesh021_3"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021_3.geometry}
-            material={materials["73rek.001"]}
-          />
-          <mesh
-            name="Mesh021_4"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021_4.geometry}
-            material={materials["73tyresf.003"]}
-          />
-          <mesh
-            name="Mesh021_5"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021_5.geometry}
-            material={materials["73tyresf.004"]}
-          />
-          <mesh
-            name="Mesh021_6"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021_6.geometry}
-            material={materials["73tyresf.005"]}
-          />
-        </group>
-        <group
-          name="IM_Car_01043"
-          position={[-13.594, 0.573, 2.804]}
-          rotation={[0, 1.571, 0]}
-          scale={0.051}
-        >
-          <mesh
-            name="Mesh020"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh020.geometry}
-            material={materials["74body.001"]}
-          />
-          <mesh
-            name="Mesh020_1"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh020_1.geometry}
-            material={materials["74basic.001"]}
-          />
-          <mesh
-            name="Mesh020_2"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh020_2.geometry}
-            material={materials["74FABRIC.001"]}
-          />
-          <mesh
-            name="Mesh020_3"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh020_3.geometry}
-            material={materials["74REK.001"]}
-          />
-          <mesh
-            name="Mesh020_4"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh020_4.geometry}
-            material={materials["74tyre.001"]}
-          />
-          <mesh
-            name="Mesh020_5"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh020_5.geometry}
-            material={materials["74tyresf.001"]}
-          />
-        </group>
-        <group
-          name="IM_Car_01044"
-          position={[-13.42, 0.573, 2.814]}
-          rotation={[0, 1.571, 0]}
-          scale={0.051}
-        >
-          <mesh
-            name="Mesh021"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021.geometry}
-            material={materials["73body.001"]}
-          />
-          <mesh
-            name="Mesh021_1"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021_1.geometry}
-            material={materials["73basic.001"]}
-          />
-          <mesh
-            name="Mesh021_2"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021_2.geometry}
-            material={materials["73fabric.001"]}
-          />
-          <mesh
-            name="Mesh021_3"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021_3.geometry}
-            material={materials["73rek.001"]}
-          />
-          <mesh
-            name="Mesh021_4"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021_4.geometry}
-            material={materials["73tyresf.003"]}
-          />
-          <mesh
-            name="Mesh021_5"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021_5.geometry}
-            material={materials["73tyresf.004"]}
-          />
-          <mesh
-            name="Mesh021_6"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021_6.geometry}
-            material={materials["73tyresf.005"]}
-          />
-        </group>
-        <group
-          name="IM_Car_01045"
-          position={[-2.786, 0.577, 4.644]}
-          rotation={[Math.PI, 0, 0]}
-          scale={-0.051}
-        >
-          <mesh
-            name="Mesh020"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh020.geometry}
-            material={materials["74body.001"]}
-          />
-          <mesh
-            name="Mesh020_1"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh020_1.geometry}
-            material={materials["74basic.001"]}
-          />
-          <mesh
-            name="Mesh020_2"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh020_2.geometry}
-            material={materials["74FABRIC.001"]}
-          />
-          <mesh
-            name="Mesh020_3"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh020_3.geometry}
-            material={materials["74REK.001"]}
-          />
-          <mesh
-            name="Mesh020_4"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh020_4.geometry}
-            material={materials["74tyre.001"]}
-          />
-          <mesh
-            name="Mesh020_5"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh020_5.geometry}
-            material={materials["74tyresf.001"]}
-          />
-        </group>
-        <group
-          name="IM_Car_01046"
-          position={[-2.786, 0.577, 4.693]}
-          rotation={[Math.PI, 0, 0]}
-          scale={-0.051}
-        >
-          <mesh
-            name="Mesh021"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021.geometry}
-            material={materials["73body.001"]}
-          />
-          <mesh
-            name="Mesh021_1"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021_1.geometry}
-            material={materials["73basic.001"]}
-          />
-          <mesh
-            name="Mesh021_2"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021_2.geometry}
-            material={materials["73fabric.001"]}
-          />
-          <mesh
-            name="Mesh021_3"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021_3.geometry}
-            material={materials["73rek.001"]}
-          />
-          <mesh
-            name="Mesh021_4"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021_4.geometry}
-            material={materials["73tyresf.003"]}
-          />
-          <mesh
-            name="Mesh021_5"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021_5.geometry}
-            material={materials["73tyresf.004"]}
-          />
-          <mesh
-            name="Mesh021_6"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021_6.geometry}
-            material={materials["73tyresf.005"]}
-          />
-        </group>
-        <group
-          name="IM_Car_01047"
-          position={[4.944, 0.578, 4.644]}
-          scale={0.051}
-        >
-          <mesh
-            name="Mesh020"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh020.geometry}
-            material={materials["74body.001"]}
-          />
-          <mesh
-            name="Mesh020_1"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh020_1.geometry}
-            material={materials["74basic.001"]}
-          />
-          <mesh
-            name="Mesh020_2"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh020_2.geometry}
-            material={materials["74FABRIC.001"]}
-          />
-          <mesh
-            name="Mesh020_3"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh020_3.geometry}
-            material={materials["74REK.001"]}
-          />
-          <mesh
-            name="Mesh020_4"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh020_4.geometry}
-            material={materials["74tyre.001"]}
-          />
-          <mesh
-            name="Mesh020_5"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh020_5.geometry}
-            material={materials["74tyresf.001"]}
-          />
-        </group>
-        <group
-          name="IM_Car_01048"
-          position={[4.944, 0.581, 4.698]}
-          scale={0.051}
-        >
-          <mesh
-            name="Mesh021"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021.geometry}
-            material={materials["73body.001"]}
-          />
-          <mesh
-            name="Mesh021_1"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021_1.geometry}
-            material={materials["73basic.001"]}
-          />
-          <mesh
-            name="Mesh021_2"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021_2.geometry}
-            material={materials["73fabric.001"]}
-          />
-          <mesh
-            name="Mesh021_3"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021_3.geometry}
-            material={materials["73rek.001"]}
-          />
-          <mesh
-            name="Mesh021_4"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021_4.geometry}
-            material={materials["73tyresf.003"]}
-          />
-          <mesh
-            name="Mesh021_5"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021_5.geometry}
-            material={materials["73tyresf.004"]}
-          />
-          <mesh
-            name="Mesh021_6"
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021_6.geometry}
-            material={materials["73tyresf.005"]}
-          />
-        </group>
-        <group
           name="IM_Truck010"
           position={[5.867, 0.69, 4.152]}
           rotation={[-Math.PI, 0, 0]}
@@ -3424,8 +2741,40 @@ export function Model(props) {
           castShadow
           receiveShadow
           geometry={nodes.Plane.geometry}
-          material={materials.Material}
+          material={materials["Material.001"]}
           position={[9.079, 2.133, 13.914]}
+        />
+        <mesh
+          name="SM_OuterSite006"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_OuterSite006.geometry}
+          material={materials.M_Truck_Parking}
+          position={[0, 2.07, 15.015]}
+        />
+        <mesh
+          name="SM_OuterSite007"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_OuterSite007.geometry}
+          material={materials.M_Truck_Parking}
+          position={[0, 2.07, 14.949]}
+        />
+        <mesh
+          name="SM_OuterSite002"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_OuterSite002.geometry}
+          material={materials.M_Truck_Parking}
+          position={[0, 2.07, 15.767]}
+        />
+        <mesh
+          name="SM_OuterSite001"
+          castShadow
+          receiveShadow
+          geometry={nodes.SM_OuterSite001.geometry}
+          material={materials.M_Truck_Parking}
+          position={[0, 2.07, 14.18]}
         />
         <mesh
           name="SM_Signage_Board_SpeedLimit_04"
@@ -3634,6 +2983,678 @@ export function Model(props) {
           position={[9.621, 1.659, 8.889]}
           scale={0.051}
         />
+        <mesh
+          name="Truck_Marking_05"
+          castShadow
+          receiveShadow
+          geometry={nodes.Truck_Marking_05.geometry}
+          material={materials["M_Truck_Parking.001"]}
+          position={[2.605, 1.661, 12.723]}
+          rotation={[0, 0, Math.PI]}
+          scale={-0.051}
+        />
+        <mesh
+          name="Truck_Marking_04"
+          castShadow
+          receiveShadow
+          geometry={nodes.Truck_Marking_04.geometry}
+          material={materials["M_Truck_Parking.001"]}
+          position={[-6.776, 1.659, -1.829]}
+          rotation={[0, -1.571, 0]}
+          scale={[0.051, 0.051, 0.043]}
+        />
+        <mesh
+          name="Truck_Marking_03"
+          castShadow
+          receiveShadow
+          geometry={nodes.Truck_Marking_03.geometry}
+          material={materials["M_Truck_Parking.001"]}
+          position={[-6.776, 1.659, 8.602]}
+          rotation={[Math.PI, 1.571, 0]}
+          scale={[-0.051, -0.051, -0.043]}
+        />
+        <mesh
+          name="Truck_Marking_02"
+          castShadow
+          receiveShadow
+          geometry={nodes.Truck_Marking_02.geometry}
+          material={materials["M_Truck_Parking.001"]}
+          position={[2.356, 1.091, -3.038]}
+          scale={0.051}
+        />
+        <mesh
+          name="Truck_Marking_01"
+          castShadow
+          receiveShadow
+          geometry={nodes.Truck_Marking_01.geometry}
+          material={materials["M_Truck_Parking.001"]}
+          position={[11.165, 1.659, 5.604]}
+        />
+        <group
+          name="SM_Bush_02001"
+          position={[9.1, 1.733, 10.701]}
+          rotation={[0, -0.899, 0]}
+          scale={0.06}
+        >
+          <mesh
+            name="BezierCurve004"
+            castShadow
+            receiveShadow
+            geometry={nodes.BezierCurve004.geometry}
+            material={materials["trunk-01.004"]}
+          />
+          <mesh
+            name="BezierCurve004_1"
+            castShadow
+            receiveShadow
+            geometry={nodes.BezierCurve004_1.geometry}
+            material={materials["branch-1-01.004"]}
+          />
+          <mesh
+            name="BezierCurve004_2"
+            castShadow
+            receiveShadow
+            geometry={nodes.BezierCurve004_2.geometry}
+            material={materials["branch-1-02.004"]}
+          />
+        </group>
+        <group
+          name="SM_Bush_02004"
+          position={[9.036, 1.646, 13.235]}
+          rotation={[0, -0.899, 0]}
+          scale={0.051}
+        >
+          <mesh
+            name="BezierCurve003"
+            castShadow
+            receiveShadow
+            geometry={nodes.BezierCurve003.geometry}
+            material={materials["trunk-01.004"]}
+          />
+          <mesh
+            name="BezierCurve003_1"
+            castShadow
+            receiveShadow
+            geometry={nodes.BezierCurve003_1.geometry}
+            material={materials["branch-1-01.004"]}
+          />
+          <mesh
+            name="BezierCurve003_2"
+            castShadow
+            receiveShadow
+            geometry={nodes.BezierCurve003_2.geometry}
+            material={materials["branch-1-02.004"]}
+          />
+        </group>
+        <group
+          name="SM_Bush_02003"
+          position={[47.262, 1.655, 13.273]}
+          rotation={[0, -0.899, 0]}
+          scale={0.051}
+        >
+          <mesh
+            name="BezierCurve003"
+            castShadow
+            receiveShadow
+            geometry={nodes.BezierCurve003.geometry}
+            material={materials["trunk-01.004"]}
+          />
+          <mesh
+            name="BezierCurve003_1"
+            castShadow
+            receiveShadow
+            geometry={nodes.BezierCurve003_1.geometry}
+            material={materials["branch-1-01.004"]}
+          />
+          <mesh
+            name="BezierCurve003_2"
+            castShadow
+            receiveShadow
+            geometry={nodes.BezierCurve003_2.geometry}
+            material={materials["branch-1-02.004"]}
+          />
+        </group>
+        <group
+          name="SM_Bush_02002"
+          position={[9.137, 1.646, 13.229]}
+          rotation={[0, -0.899, 0]}
+          scale={0.051}
+        >
+          <mesh
+            name="BezierCurve003"
+            castShadow
+            receiveShadow
+            geometry={nodes.BezierCurve003.geometry}
+            material={materials["trunk-01.004"]}
+          />
+          <mesh
+            name="BezierCurve003_1"
+            castShadow
+            receiveShadow
+            geometry={nodes.BezierCurve003_1.geometry}
+            material={materials["branch-1-01.004"]}
+          />
+          <mesh
+            name="BezierCurve003_2"
+            castShadow
+            receiveShadow
+            geometry={nodes.BezierCurve003_2.geometry}
+            material={materials["branch-1-02.004"]}
+          />
+        </group>
+        <group
+          name="SM_Bush_02005"
+          position={[9.131, 1.646, 13.322]}
+          rotation={[0, -0.899, 0]}
+          scale={0.051}
+        >
+          <mesh
+            name="BezierCurve003"
+            castShadow
+            receiveShadow
+            geometry={nodes.BezierCurve003.geometry}
+            material={materials["trunk-01.004"]}
+          />
+          <mesh
+            name="BezierCurve003_1"
+            castShadow
+            receiveShadow
+            geometry={nodes.BezierCurve003_1.geometry}
+            material={materials["branch-1-01.004"]}
+          />
+          <mesh
+            name="BezierCurve003_2"
+            castShadow
+            receiveShadow
+            geometry={nodes.BezierCurve003_2.geometry}
+            material={materials["branch-1-02.004"]}
+          />
+        </group>
+        <group
+          name="SM_Bush_02"
+          position={[9.036, 1.646, 13.331]}
+          rotation={[0, -0.899, 0]}
+          scale={0.051}
+        >
+          <mesh
+            name="BezierCurve003"
+            castShadow
+            receiveShadow
+            geometry={nodes.BezierCurve003.geometry}
+            material={materials["trunk-01.004"]}
+          />
+          <mesh
+            name="BezierCurve003_1"
+            castShadow
+            receiveShadow
+            geometry={nodes.BezierCurve003_1.geometry}
+            material={materials["branch-1-01.004"]}
+          />
+          <mesh
+            name="BezierCurve003_2"
+            castShadow
+            receiveShadow
+            geometry={nodes.BezierCurve003_2.geometry}
+            material={materials["branch-1-02.004"]}
+          />
+        </group>
+        <group
+          name="SM_Bush_01"
+          position={[8.964, 1.646, 13.735]}
+          rotation={[0, 0, Math.PI]}
+          scale={-0.076}
+        >
+          <mesh
+            name="BezierCurve005"
+            castShadow
+            receiveShadow
+            geometry={nodes.BezierCurve005.geometry}
+            material={materials["trunk-01.004"]}
+          />
+          <mesh
+            name="BezierCurve005_1"
+            castShadow
+            receiveShadow
+            geometry={nodes.BezierCurve005_1.geometry}
+            material={materials["branch-1-01.004"]}
+          />
+          <mesh
+            name="BezierCurve005_2"
+            castShadow
+            receiveShadow
+            geometry={nodes.BezierCurve005_2.geometry}
+            material={materials["branch-1-02.004"]}
+          />
+        </group>
+        <group name="SM_Master_B100001" position={[-5.18, 1.703, 11.305]}>
+          <mesh
+            name="Plane003"
+            castShadow
+            receiveShadow
+            geometry={nodes.Plane003.geometry}
+            material={materials["M_Master_B100.001"]}
+          />
+          <mesh
+            name="Plane003_1"
+            castShadow
+            receiveShadow
+            geometry={nodes.Plane003_1.geometry}
+            material={materials["M_Facade_Glass_Light.001"]}
+          />
+          <mesh
+            name="Plane003_2"
+            castShadow
+            receiveShadow
+            geometry={nodes.Plane003_2.geometry}
+            material={materials["M_B_400.001"]}
+          />
+        </group>
+        <mesh
+          name="Cylinder"
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder.geometry}
+          material={materials.M_Ladder}
+          position={[12.1, 2.194, 12.165]}
+        />
+        <group
+          name="IM_Car_01047"
+          position={[4.944, 0.578, 4.644]}
+          scale={0.051}
+        >
+          <mesh
+            name="Mesh001"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh001.geometry}
+            material={materials["74body.002"]}
+          />
+          <mesh
+            name="Mesh001_1"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh001_1.geometry}
+            material={materials["74basic.002"]}
+          />
+          <mesh
+            name="Mesh001_2"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh001_2.geometry}
+            material={materials["74FABRIC.002"]}
+          />
+          <mesh
+            name="Mesh001_3"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh001_3.geometry}
+            material={materials["74REK.002"]}
+          />
+          <mesh
+            name="Mesh001_4"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh001_4.geometry}
+            material={materials["74tyre.002"]}
+          />
+          <mesh
+            name="Mesh001_5"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh001_5.geometry}
+            material={materials["74tyresf.002"]}
+          />
+        </group>
+        <group
+          name="IM_Car_01045"
+          position={[-2.786, 0.577, 4.644]}
+          rotation={[Math.PI, 0, 0]}
+          scale={-0.051}
+        >
+          <mesh
+            name="Mesh001"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh001.geometry}
+            material={materials["74body.002"]}
+          />
+          <mesh
+            name="Mesh001_1"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh001_1.geometry}
+            material={materials["74basic.002"]}
+          />
+          <mesh
+            name="Mesh001_2"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh001_2.geometry}
+            material={materials["74FABRIC.002"]}
+          />
+          <mesh
+            name="Mesh001_3"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh001_3.geometry}
+            material={materials["74REK.002"]}
+          />
+          <mesh
+            name="Mesh001_4"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh001_4.geometry}
+            material={materials["74tyre.002"]}
+          />
+          <mesh
+            name="Mesh001_5"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh001_5.geometry}
+            material={materials["74tyresf.002"]}
+          />
+        </group>
+        <group
+          name="IM_Car_01043"
+          position={[-13.594, 0.573, 2.804]}
+          rotation={[0, 1.571, 0]}
+          scale={0.051}
+        >
+          <mesh
+            name="Mesh001"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh001.geometry}
+            material={materials["74body.002"]}
+          />
+          <mesh
+            name="Mesh001_1"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh001_1.geometry}
+            material={materials["74basic.002"]}
+          />
+          <mesh
+            name="Mesh001_2"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh001_2.geometry}
+            material={materials["74FABRIC.002"]}
+          />
+          <mesh
+            name="Mesh001_3"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh001_3.geometry}
+            material={materials["74REK.002"]}
+          />
+          <mesh
+            name="Mesh001_4"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh001_4.geometry}
+            material={materials["74tyre.002"]}
+          />
+          <mesh
+            name="Mesh001_5"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh001_5.geometry}
+            material={materials["74tyresf.002"]}
+          />
+        </group>
+        <group
+          name="IM_Car_01041"
+          position={[-13.477, 0.578, 4.311]}
+          rotation={[Math.PI, -1.571, 0]}
+          scale={-0.051}
+        >
+          <mesh
+            name="Mesh001"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh001.geometry}
+            material={materials["74body.002"]}
+          />
+          <mesh
+            name="Mesh001_1"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh001_1.geometry}
+            material={materials["74basic.002"]}
+          />
+          <mesh
+            name="Mesh001_2"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh001_2.geometry}
+            material={materials["74FABRIC.002"]}
+          />
+          <mesh
+            name="Mesh001_3"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh001_3.geometry}
+            material={materials["74REK.002"]}
+          />
+          <mesh
+            name="Mesh001_4"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh001_4.geometry}
+            material={materials["74tyre.002"]}
+          />
+          <mesh
+            name="Mesh001_5"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh001_5.geometry}
+            material={materials["74tyresf.002"]}
+          />
+        </group>
+        <group
+          name="IM_Car_01039"
+          position={[1.966, 0.565, 0.047]}
+          rotation={[-Math.PI, 0, -Math.PI]}
+          scale={0.051}
+        >
+          <mesh
+            name="Mesh018"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh018.geometry}
+            material={materials["74body.002"]}
+          />
+          <mesh
+            name="Mesh018_1"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh018_1.geometry}
+            material={materials["74basic.002"]}
+          />
+          <mesh
+            name="Mesh018_2"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh018_2.geometry}
+            material={materials["74FABRIC.002"]}
+          />
+          <mesh
+            name="Mesh018_3"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh018_3.geometry}
+            material={materials["74REK.002"]}
+          />
+          <mesh
+            name="Mesh018_4"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh018_4.geometry}
+            material={materials["74tyre.002"]}
+          />
+          <mesh
+            name="Mesh018_5"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh018_5.geometry}
+            material={materials["74tyresf.002"]}
+          />
+        </group>
+        <group
+          name="IM_Car_01012"
+          position={[-0.052, 0.578, 0.062]}
+          rotation={[0, 1.571, 0]}
+          scale={0.051}
+        >
+          <mesh
+            name="Mesh011"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh011.geometry}
+            material={materials["74body.002"]}
+          />
+          <mesh
+            name="Mesh011_1"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh011_1.geometry}
+            material={materials["74basic.002"]}
+          />
+          <mesh
+            name="Mesh011_2"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh011_2.geometry}
+            material={materials["74FABRIC.002"]}
+          />
+          <mesh
+            name="Mesh011_3"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh011_3.geometry}
+            material={materials["74REK.002"]}
+          />
+          <mesh
+            name="Mesh011_4"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh011_4.geometry}
+            material={materials["74tyre.002"]}
+          />
+          <mesh
+            name="Mesh011_5"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh011_5.geometry}
+            material={materials["74tyresf.002"]}
+          />
+        </group>
+        <group
+          name="IM_Car_01010"
+          position={[0.063, 0.581, 13.484]}
+          rotation={[Math.PI, -1.571, 0]}
+          scale={-0.051}
+        >
+          <mesh
+            name="Mesh011"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh011.geometry}
+            material={materials["74body.002"]}
+          />
+          <mesh
+            name="Mesh011_1"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh011_1.geometry}
+            material={materials["74basic.002"]}
+          />
+          <mesh
+            name="Mesh011_2"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh011_2.geometry}
+            material={materials["74FABRIC.002"]}
+          />
+          <mesh
+            name="Mesh011_3"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh011_3.geometry}
+            material={materials["74REK.002"]}
+          />
+          <mesh
+            name="Mesh011_4"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh011_4.geometry}
+            material={materials["74tyre.002"]}
+          />
+          <mesh
+            name="Mesh011_5"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh011_5.geometry}
+            material={materials["74tyresf.002"]}
+          />
+        </group>
+        <group
+          name="IM_Car_01046"
+          position={[-2.786, 0.577, 4.693]}
+          rotation={[Math.PI, 0, 0]}
+          scale={-0.051}
+        >
+          <mesh
+            name="Mesh005"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh005.geometry}
+            material={materials["73body.002"]}
+          />
+          <mesh
+            name="Mesh005_1"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh005_1.geometry}
+            material={materials["73basic.002"]}
+          />
+          <mesh
+            name="Mesh005_2"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh005_2.geometry}
+            material={materials["73fabric.002"]}
+          />
+          <mesh
+            name="Mesh005_3"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh005_3.geometry}
+            material={materials["73rek.002"]}
+          />
+          <mesh
+            name="Mesh005_4"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh005_4.geometry}
+            material={materials["73tyresf.001"]}
+          />
+          <mesh
+            name="Mesh005_5"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh005_5.geometry}
+            material={materials["73tyresf.002"]}
+          />
+          <mesh
+            name="Mesh005_6"
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh005_6.geometry}
+            material={materials["73tyresf.006"]}
+          />
+        </group>
       </group>
     </group>
     </>

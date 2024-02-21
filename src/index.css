@@ -740,7 +740,8 @@ hr.solid {
   }
 
   #bottombar{
-    height: 0.5vh;
+    height: 15%;
+    /* height: 0.5vh; */
   }
 
   
@@ -827,7 +828,7 @@ hr.solid {
   }
 
   #loaderBottomBar {
-    top: 80vh;
+    top: 89vh;
   }
 
   #loaderBottomBar p {
@@ -880,6 +881,7 @@ hr.solid {
   #fixedChakanLogo {
     width: 25vw;
     height: 15vw;
+    top: 9vh;
   }
 
   #dropdown {
@@ -890,6 +892,7 @@ hr.solid {
   #helpBtn {
     width: 4vw;
     top: 5vh;
+    left: 94vw;
   }
 
   #cbtn {
