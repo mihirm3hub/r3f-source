@@ -138,6 +138,13 @@
       window.open('https://www.indospace.in/', '_blank')
     })
 
+    const iphone = () => {
+      if (typeof window === `undefined` || typeof navigator === `undefined`) return false;
+
+      return /iPhone/i.test(navigator.userAgent || navigator.vendor || (window.opera && opera.toString() === `[object Opera]`));
+    };
+    const isIos = iphone()
+
     let isInstruction = false
     let isInstructionCall = false
     const instructionFade = () => {
@@ -157,33 +164,54 @@
         isInstructionCall = false
       }
     }
-    window.addEventListener("scroll", (e) => {
-      const viewportHeight = window.innerHeight
-      const scroll = Math.floor(window.scrollY);
-      console.log('Scroll value',scroll)
-      console.log('view port height ', viewportHeight);
-      if (scroll >= viewportHeight) {
-        console.log("Exec")
-        if (document.getElementById('LoaderSection').style.display === 'none') {
-          console.log('Instruction None ----');
-          // document.getElementById('InstructionSection').style.display = 'none'
-          document.getElementById('rootUI').style.top = '0vh'
-          isInstructionCall = true
-          instructionFade()
-
-        } else {
-          console.log('Loader none  ----');
+    if (isIos) {
+      // alert('IOS')
+      document.addEventListener('click', () => {
+        // alert('CLICK')
+        if (!isInstruction) {
           document.getElementById('LoaderSection').style.display = 'none'
           document.getElementById('instructionMain').style.top = '0%'
           document.getElementById("loaderChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
           document.getElementById("fixedChakanLogo").style.animation = 'opacityAnim .5s ease forwards'
+          isInstruction = true;
         }
+        else {
+          document.getElementById('rootUI').style.top = '0vh'
+          isInstructionCall = true
+          instructionFade()
+        }
+      })
+    }
+    else {
+      // alert('NOT IOS')
+      window.addEventListener("scroll", (e) => {
+        const viewportHeight = window.innerHeight
+        const scroll = Math.floor(window.scrollY);
+        console.log('Scroll value', scroll)
+        console.log('view port height ', viewportHeight);
+        if (scroll >= viewportHeight) {
+          console.log("Exec")
+          if (document.getElementById('LoaderSection').style.display === 'none') {
+            console.log('Instruction None ----');
+            // document.getElementById('InstructionSection').style.display = 'none'
+            document.getElementById('rootUI').style.top = '0vh'
+            isInstructionCall = true
+            instructionFade()
 
-      }
-      else {
-        console.log(false)
-      }
-    });
+          } else {
+            console.log('Loader none  ----');
+            document.getElementById('LoaderSection').style.display = 'none'
+            document.getElementById('instructionMain').style.top = '0%'
+            document.getElementById("loaderChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
+            document.getElementById("fixedChakanLogo").style.animation = 'opacityAnim .5s ease forwards'
+          }
+
+        }
+        else {
+          console.log(false)
+        }
+      });
+    }
 
   </script>
   <script type="module" src="/src/main.jsx"></script>
