@@ -141,8 +141,9 @@
     const iphone = () => {
       if (typeof window === `undefined` || typeof navigator === `undefined`) return false;
 
-      return /iPhone/i.test(navigator.userAgent || navigator.vendor || (window.opera && opera.toString() === `[object Opera]`));
+      return /iPhone|iPad|iPod/i.test(navigator.userAgent || navigator.vendor || navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 0) || navigator.platform === 'iPad';
     };
+    
     const isIos = iphone()
 
     let isInstruction = false
@@ -166,8 +167,10 @@
     }
     if (isIos) {
       // alert('IOS')
+      document.getElementById('scrolltocon').classList.add('ios')
+      document.getElementById('bottombar').style='top:83%;'
       document.addEventListener('click', () => {
-        // alert('CLICK')
+        alert('CLICK')
         if (!isInstruction) {
           document.getElementById('LoaderSection').style.display = 'none'
           document.getElementById('instructionMain').style.top = '0%'

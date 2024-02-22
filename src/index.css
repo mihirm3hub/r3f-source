@@ -380,6 +380,7 @@ hr.solid {
   margin-top: -2%;
   object-fit: cover;
   width: 100%;
+  opacity: 0.5;
 }
 
 #dropdown {
@@ -710,6 +711,12 @@ hr.solid {
     width: 58vw;
   }
 
+  #scrolltocon.ios {
+    content: url('../../images/Click_To_Continue.png');
+    left: 20.5vw;
+    bottom: 2.5vh;
+    width: 58vw;
+  }
   /* #swipetocon{
  display: block;
 } */
@@ -741,8 +748,8 @@ hr.solid {
 
   #bottombar{
     /* height: 20%; */
-    /* height: 0.5vh; */
-    bottom: 1vh;
+    height: 0.5vh;
+    /* bottom: 0.1vh; */
     
       /* top: 60vh; */
       
@@ -795,10 +802,10 @@ hr.solid {
   height: 4vw;
 } */
   .slider:before {
-    height: 4vw;
+    height: 4.1vw;
     width: 10vw;
     left: -2.3vw;
-    top: 0.5vh;
+    top: 0.7vh;
   }
 
   .slider {
@@ -813,11 +820,11 @@ hr.solid {
 
   .prebtn {
     left: 0vw;
-    top: 77vh;
+    top: 67vh;
   }
 
   .nextbtn {
-    top: 77vh;
+    top: 67vh;
   }
 }
 
