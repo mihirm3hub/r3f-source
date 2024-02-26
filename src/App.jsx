@@ -15,6 +15,7 @@ import { useControls } from 'leva'
 
 
 
+
 function Effects() {
   const [velocityDepthNormalPass, setVelocityDepthNormalPass] = React.useState(
     null
@@ -77,40 +78,8 @@ function Effects() {
 
 
 export default function App() {
-  // const props = useControls({
-  //   temporalResolve: true,
-  //   STRETCH_MISSED_RAYS: true,
-  //   USE_MRT: true,
-  //   USE_NORMALMAP: true,
-  //   USE_ROUGHNESSMAP: true,
-  //   ENABLE_JITTERING: true,
-  //   ENABLE_BLUR: true,
-  //   temporalResolveMix: { value: 0.9, min: 0, max: 1 },
-  //   temporalResolveCorrectionMix: { value: 0.25, min: 0, max: 1 },
-  //   maxSamples: { value: 0, min: 0, max: 1 },
-  //   resolutionScale: { value: 1, min: 0, max: 1 },
-  //   blurMix: { value: 0.5, min: 0, max: 1 },
-  //   blurKernelSize: { value: 8, min: 0, max: 8 },
-  //   blurSharpness: { value: 0.5, min: 0, max: 1 },
-  //   rayStep: { value: 0.3, min: 0, max: 1 },
-  //   intensity: { value: 1, min: 0, max: 5 },
-  //   maxRoughness: { value: 0.1, min: 0, max: 1 },
-  //   jitter: { value: 0.7, min: 0, max: 5 },
-  //   jitterSpread: { value: 0.45, min: 0, max: 1 },
-  //   jitterRough: { value: 0.1, min: 0, max: 1 },
-  //   roughnessFadeOut: { value: 1, min: 0, max: 1 },
-  //   rayFadeOut: { value: 0, min: 0, max: 1 },
-  //   MAX_STEPS: { value: 20, min: 0, max: 20 },
-  //   NUM_BINARY_SEARCH_STEPS: { value: 5, min: 0, max: 10 },
-  //   maxDepthDifference: { value: 3, min: 0, max: 10 },
-  //   maxDepth: { value: 1, min: 0, max: 1 },
-  //   thickness: { value: 10, min: 0, max: 10 },
-  //   ior: { value: 1.45, min: 0, max: 2 }
-  // })
-  
 
   return (<>
-    {/* <button onClick={handleButtonClick}>Change Camera Position</button> */}
     <Canvas
       shadows
       camera={{
@@ -122,27 +91,24 @@ export default function App() {
 
        
       }}
-      // {...gestureBind()}
     >
 
 
       <EffectComposer>
         <SSAO    
-        samples={11} // amount of samples per pixel (shouldn't be a multiple of the ring count)
-        Falloff={1} // occlusion range falloff. min: 0, max: 1
-        intensity={0.2} // how much the luminance of the scene influences the ambient occlusion
-        radius={1} // occlusion sampling radius
-        bias={0.001} // occlusion bias
+        samples={11} 
+        Falloff={1} 
+        intensity={0.2} 
+        radius={1} 
+        bias={0.001} 
       />
 
-        {/* <SSR  /> */}
 
 
 
       </EffectComposer>
       <ContactShadows intensity={5} scale={0.} radius={0.015} position={[0, 5, 0]} />
 
-      {/* <Effects /> */}
 
 
 

@@ -6,7 +6,6 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <title>Chakan Site</title>
-  <!-- <link rel="stylesheet" href='./index.css' /> -->
   <style>
     html {
       scroll-behavior: smooth;
@@ -27,12 +26,12 @@
         in a whole new dimension with the
       </p>
       <p id="LoaderMainHeader">
-        Indospace Interactive <br>
+        IndoSpace Interactive <br>
         Park Tour
       </p>
       <div id="loaderBottomBar">
         <img id="loaderChakanLogo" src="./images/chakanLogo.png" alt="">
-        <p id="loaderInfo">Loading your <b>Indospace Interactive Park Tour</b> experience.</p>
+        <p id="loaderInfo">Loading your <b>IndoSpace Interactive Park Tour</b> experience.</p>
         <span class="loader" id="loaderRoot">
           <span id="loader" class="loader">
           </span>
@@ -47,7 +46,6 @@
   <section id="InstructionSection" style="display: none;">
     <img id="fixedChakanLogo" src="./images/chakanLogo.png" alt="">
     <div id="instructionMain" style="background: linear-gradient(180deg, #000000cf 20%, #ffffff00 80%);">
-      <!-- <img id="instructionChakanLogo" src="./images/chakanLogo.png" alt="">  -->
       <img id="instructionImg" src="./images/TutorialImg.png" alt="">
       <img id="instructionMobileImg" src="./images/tutorialOverlayMobile.png" alt="">
     </div>
@@ -125,7 +123,6 @@
   </div>
   <div id="popupdarkbg"></div>
 
-  <!-- <div class="scroll-control"></div> -->
   <img id="phonelndscap" src="./images/MobilePotraitOrientationMsg.png"></img>
 
 
@@ -161,16 +158,13 @@
         document.getElementById('bottombar').style.display = 'flex'
         document.getElementById('dropdown').style.display = 'block'
         document.getElementById('rootUI').style.display = 'block'
-        console.warn('Fade FUnction');
         isInstructionCall = false
       }
     }
     if (isIos) {
-      // alert('IOS')
       document.getElementById('scrolltocon').classList.add('ios')
       document.getElementById('bottombar').style='top:83%;'
       document.addEventListener('click', () => {
-        alert('CLICK')
         if (!isInstruction) {
           document.getElementById('LoaderSection').style.display = 'none'
           document.getElementById('instructionMain').style.top = '0%'
@@ -186,23 +180,16 @@
       })
     }
     else {
-      // alert('NOT IOS')
       window.addEventListener("scroll", (e) => {
         const viewportHeight = window.innerHeight
         const scroll = Math.floor(window.scrollY);
-        console.log('Scroll value', scroll)
-        console.log('view port height ', viewportHeight);
         if (scroll >= viewportHeight) {
-          console.log("Exec")
           if (document.getElementById('LoaderSection').style.display === 'none') {
-            console.log('Instruction None ----');
-            // document.getElementById('InstructionSection').style.display = 'none'
             document.getElementById('rootUI').style.top = '0vh'
             isInstructionCall = true
             instructionFade()
 
           } else {
-            console.log('Loader none  ----');
             document.getElementById('LoaderSection').style.display = 'none'
             document.getElementById('instructionMain').style.top = '0%'
             document.getElementById("loaderChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
@@ -211,17 +198,12 @@
 
         }
         else {
-          console.log(false)
         }
       });
     }
 
   </script>
   <script type="module" src="/src/main.jsx"></script>
-  <!-- <script>
-      // draw the FPS
-      ;;; (function () { var script = document.createElement('script'); script.onload = function () { var stats = new Stats(); document.body.appendChild(stats.dom); requestAnimationFrame(function loop() { stats.update(); requestAnimationFrame(loop) }); }; script.src = '//mrdoob.github.io/stats.js/build/stats.min.js'; document.head.appendChild(script); })()
-  </script> -->
   <script>
 
 
