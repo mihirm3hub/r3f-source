@@ -206,10 +206,11 @@ input:checked+.slider:before {
   align-self: center;
 }
 
-#instructionOverlay img{
+#instructionOverlay img {
   width: 50%;
+  background: #80808029;
+  backdrop-filter: blur(8px);
 }
-
 #scenebtn {
   left: 45%;
   width: 2.5vw;
@@ -664,7 +665,8 @@ hr.solid {
   }
 
   #bottombar{
-    height: 0.5vh;
+    bottom: 0%;
+    position: fixed;  
   }
 
   
@@ -676,7 +678,7 @@ hr.solid {
 
   .dropdown-content div h4 {
     font-size: 7px;
-    margin-top: -2.5%;
+    margin-top: -3%;
   }
 
   #cbtn {

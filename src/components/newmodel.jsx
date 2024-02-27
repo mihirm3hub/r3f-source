@@ -76,7 +76,6 @@ export function Model(props) {
     document.getElementById('popupdarkbg').style.display = 'none'
     document.getElementById('helpBtn').style.display = 'block'
     document.getElementById('locationbtn').style.display = 'block'
-
     streetviewUI = false
     isOpen=false
   })
@@ -374,8 +373,8 @@ export function Model(props) {
   };
   document.getElementById('amenitySwitch').addEventListener('click', toggleVisibility)
 
-  let isHelp = false
   let islocation=false
+  let isHelp = false
   closeBtn.addEventListener('click', () => {
     closeBtn.style.display = 'none'
     runOnce = false
@@ -411,28 +410,28 @@ export function Model(props) {
       document.getElementById('instructionOverlay').style.display = 'none'
     }
   })
-  
 
   const locationbtn = document.getElementById('locationbtn')
-  locationbtn.addEventListener('click', () => {
-    if (!islocation) {
-      locationbtn.style.zIndex='100';
-      locationbtn.src = './images/Close.png';
-      locationbtn.setAttribute('onmouseover', '')
-      locationbtn.setAttribute('onmouseout', '')
-      document.getElementById('instructionOverlay').style.display = 'flex'
-      islocation = true
-    }
-    else {
-      islocation = false
-      locationbtn.style.zIndex='100';
-      locationbtn.src = './images/2024.01.29_ICON_MAP_BUTT.UNCLICKED-53.png'
-      locationbtn.setAttribute('onmouseover', 'this.src=`./images/MAP_BUTT.png`')
-      locationbtn.setAttribute('onmouseout', 'this.src=`./images/2024.01.29_ICON_MAP_BUTT.UNCLICKED-53.png`')
-      document.getElementById('instructionOverlay').style.display = 'none'
-    }
-  })
-
+  const bottombar= document.getElementById('bottombar')
+   locationbtn.addEventListener('click', () => {
+     if (!islocation) {
+       bottombar.style.zIndex='100';
+       locationbtn.src = './images/Close.png';
+       locationbtn.setAttribute('onmouseover', '')
+       locationbtn.setAttribute('onmouseout', '')
+       document.getElementById('instructionOverlay').style.display = 'flex'
+       islocation = true
+     }
+     else {
+       islocation = false
+       bottombar.style.zIndex='3';
+       locationbtn.src = './images/2024.01.29_ICON_MAP_BUTT.UNCLICKED-53.png'
+       locationbtn.setAttribute('onmouseover', 'this.src=`./images/MAP_BUTT.png`')
+       locationbtn.setAttribute('onmouseout', 'this.src=`./images/2024.01.29_ICON_MAP_BUTT.UNCLICKED-53.png`')
+       document.getElementById('instructionOverlay').style.display = 'none'
+     }
+   })
+ 
   useFrame(state => {
     if (runOnce == true && isClosed == false && clicked == false) {
       runOnce = false
@@ -452,7 +451,6 @@ export function Model(props) {
       isDragging = false
       helpBtn.style.display = 'none'
       locationbtn.style.display = 'none'
-
 
     }
    
