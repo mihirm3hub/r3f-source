@@ -210,6 +210,7 @@ input:checked+.slider:before {
   width: 50%;
   background: #80808029;
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 #scenebtn {
   left: 45%;
@@ -341,6 +342,7 @@ hr.solid {
   margin-top: -3%;
   background-color: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
   padding: 10.5%;
   left: 1.69vh;
   top: 17.5vh;
@@ -420,6 +422,7 @@ hr.solid {
   left: 3vw;
   background-color: #000000a1;
   backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
 
 #loaderChakanLogo {
