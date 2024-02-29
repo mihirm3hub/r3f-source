@@ -138,10 +138,12 @@
     const iphone = () => {
       if (typeof window === `undefined` || typeof navigator === `undefined`) return false;
 
-      return /iPhone|iPad|iPod/i.test(navigator.userAgent || navigator.vendor || navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 0) || navigator.platform === 'iPad';
+      return /iPhone|iPad|iPod/i.test(navigator.userAgent || navigator.vendor || navigator.platform == "MacIntel") || navigator.platform === 'MacIntel';
     };
     
     const isIos = iphone()
+    navigator.platform = "MacIntel"
+    console.log(navigator.platform)
 
     let isInstruction = false
     let isInstructionCall = false
@@ -161,9 +163,12 @@
         isInstructionCall = false
       }
     }
-    if (isIos) {
+    if (isIos || navigator.platform == 'MacIntel') {
+      console.log('inside ios');
       document.getElementById('scrolltocon').classList.add('ios')
-      document.getElementById('bottombar').style='top:83%;'
+      document.querySelector('body').classList.add('ios')
+
+      // document.getElementById('bottombar').style='top:83%;' 
       document.addEventListener('click', () => {
         if (!isInstruction) {
           document.getElementById('LoaderSection').style.display = 'none'
@@ -183,17 +188,20 @@
       window.addEventListener("scroll", (e) => {
         const viewportHeight = window.innerHeight
         const scroll = Math.floor(window.scrollY);
+        console.log('scrolling',scroll);
+        console.log('Viewport height',viewportHeight);
         if (scroll >= viewportHeight) {
           if (document.getElementById('LoaderSection').style.display === 'none') {
             document.getElementById('rootUI').style.top = '0vh'
             isInstructionCall = true
             instructionFade()
-
+            console.log('instructionSection None')
           } else {
             document.getElementById('LoaderSection').style.display = 'none'
             document.getElementById('instructionMain').style.top = '0%'
             document.getElementById("loaderChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
             document.getElementById("fixedChakanLogo").style.animation = 'opacityAnim .5s ease forwards'
+            console.log('LoaderSection None')
           }
 
         }

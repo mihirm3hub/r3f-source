@@ -93,6 +93,7 @@ export function Model(props) {
   window.addEventListener('touchend', stopDrag);
   document.addEventListener('wheel', (e) => {
     scrollValue = e.deltaY / 1024
+    // console.log('scroll value',scroll);
     if (camTimeScale < 2 && camTimeScale > -2) {
       camTimeScale += scrollValue
     }
@@ -436,6 +437,7 @@ export function Model(props) {
   })
 
   useFrame(state => {
+        // console.log('RunOnce - ', runOnce, 'isClosed - ', isClosed, 'isClicked', clicked, 'isDragging', isDragging);
     if (runOnce == true && isClosed == false && clicked == false) {
       runOnce = false
       document.getElementById('dropdown-content').style.display = 'none'
