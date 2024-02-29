@@ -855,5 +855,7 @@ hr.solid {
     top: 0;
     left: 0;
     display: block;
+    content: url('../../images/Tablet-Portrait.png');
+
   }
 }
