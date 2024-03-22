@@ -8,6 +8,9 @@ let meshname = 'Default'
 let runOnce = false
 let isDragging = false;
 let streetviewUI = false;
+let islocation=false;
+let isbuilding=false
+let isview=false
 let startX
 let startY
 let camTimeScale = 0
@@ -15,24 +18,188 @@ let lastXvalue = 0
 let lastYvalue = 0
 let xdrag = 1000
 let ydrag
+let isOverview=false
 let isOpen = false;
 let isClosed = true
 let scrollValue
 
-const dropdownContent = document.getElementById('dropdown-content');
+const overlay = document.getElementById('overlay')
+const viewin3dS=document.getElementById('viewin3dS')
+const dropdownContent = document.getElementById('overview-con');
 const sidebarImage = document.getElementById('sidebar');
 const streetView = document.getElementById('streetview')
+ const locationbtn = document.getElementById('locationbtn')
+  const infoCon = document.getElementById('info-Con')
+  const closeB = document.getElementById('closeB')
+  const street = document.getElementById('street')
+  const locationPre = document.getElementById('locationpre')
+  const buildingpre1 = document.getElementById('buildingpre1')
+  const prBtn=document.getElementById('prbtn')
+  const nxtBtn=document.getElementById('nxtbtn')
+  const buildpre=document.getElementById('buildpre')
 
-document.getElementById('sidebar').addEventListener('click', (e) => {
-  sidebarImage.src = isOpen ? './images/sidebarU.png' : './images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png';
-  if (streetviewUI == false) {
-    dropdownContent.style.display = isOpen ? 'block' : 'none';
-  } else {
-    streetView.style.display = isOpen ? 'none' : 'block';
+
+  // const b100 = document.getElementById('b100')
+
+  //  const intrusctrion=document.getElementById('instructionOverlay')
+  buildpre.style.display='none'
+  prBtn.style.display='none'
+  nxtBtn.style.display='none'
+   buildingpre1.style.display = 'none'
+  street.style.display='none'
+  infoCon.style.display = 'none';
+  viewin3dS.style.display='none'
+  overlay.style.display='none'
+ 
+  // b100.style.display='none'
+  dropdownContent.style.display = 'none';
+  locationPre.style.display='none'
+
+  const tabnone=()=>{
+    dropdownContent.style.display='none'
+    street.style.display='none'
+    buildpre.style.display='none'
+  buildingpre1.style.display='none'
+  prBtn.style.display='none'
+  nxtBtn.style.display='none'
+  locationPre.style.display='none'
+  viewin3dS.style.display='none'
+  overlay.style.display='none'
   }
-  isOpen = !isOpen;
-});
 
+document.getElementById('Overview').addEventListener('click', (e) => {
+  tabnone()
+  isOverview=!isOverview
+  dropdownContent.style.display = isOverview ? 'block' : 'none';
+  
+  console.log(isOverview);
+  
+  // closeB.style.display='block'
+
+  // sidebarImage.src = isOpen ? './images/sidebarU.png' : './images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png';
+  // if (streetviewUI == false) {
+  //   dropdownContent.style.display = isOpen ? 'block' : 'none';
+  // } else {
+  //   streetView.style.display = isOpen ? 'none' : 'block';
+   
+  // }
+  // isOpen = !isOpen;
+});
+// document.getElementById('closeB').addEventListener('click', (e) => {
+//   // document.getElementById('Overview').style.display='none'
+//   // street.style.display='none'
+//   dropdownContent.style.display = 'none';
+//   closeB.style.display='none'
+//   locationPre.style.display='none'
+//   buildingpre1.style.display = 'none'
+
+
+
+//   // intrusctrion.style.display = 'none'
+
+// })
+document.getElementById('clsB').addEventListener('click', (e) => {
+  infoCon.style.display = 'none';
+  prBtn.style.display='none'
+  nxtBtn.style.display='none'
+  isOpen=false
+  buildpre.style.display='none'
+  viewin3dS.style.display='none'
+  document.getElementById('bottombar').style.display = 'flex'
+  isbuilding=false
+  streetviewUI=false
+
+
+  tabnone()
+  
+
+})
+
+
+
+
+document.getElementById('locationbtn').addEventListener('click', (e) => {
+ 
+  dropdownContent.style.display='block'
+
+  infoCon.style.display = !isOpen ? 'block' : 'none';
+  isOpen = !isOpen;
+})
+
+document.getElementById('streetView').addEventListener('click', (e) => {
+  // street.style.display= "flex"
+  tabnone()
+  streetviewUI = !streetviewUI;
+  street.style.display = streetviewUI ? 'flex' : 'none';
+  // viewin3dS.style.display='none'
+
+ 
+  
+
+  
+})
+
+document.getElementById('help_B').addEventListener('click',(e)=>{
+  tabnone()
+  overlay.style.display='block'
+  
+})
+
+document.getElementById('viewin3d1').addEventListener('click', (e) => {
+  document.getElementById('popupdarkbg').style.display = 'block',
+  document.getElementById('popup').style.display = 'block',
+  document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR1/'
+  
+})
+
+document.getElementById('viewin3d2').addEventListener('click', (e) => {
+  document.getElementById('popupdarkbg').style.display = 'block',
+  document.getElementById('popup').style.display = 'block',
+  document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR2/'
+  
+})
+document.getElementById('viewin3d3').addEventListener('click', (e) => {
+  document.getElementById('popupdarkbg').style.display = 'block',
+  document.getElementById('popup').style.display = 'block',
+  document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR3/'
+  
+})
+document.getElementById('location').addEventListener('click', (e) => {
+  tabnone()
+  islocation = !islocation;
+  locationPre.style.display = islocation ? 'block' : 'none';
+  viewin3dS.style.display='none'
+
+ 
+
+})
+document.getElementById('building').addEventListener('click', (e) => {
+  tabnone()
+  meshname='B100'
+  
+  buildpre.style.display = !isbuilding ? 'block' : 'none';
+  isbuilding = !isbuilding;
+
+  buildingpre1.style.display = 'block';
+
+  viewin3dS.style.display='block'
+
+  prBtn.style.display='block'
+  nxtBtn.style.display='block'
+  // buildingpre1.style.display = 'block'
+  // dropdownContent.style.display='block'
+})
+
+
+
+
+
+
+
+// function opentab(e){
+
+
+// }
 
 export function Model(props) {
   const modelRef1 = useRef();
@@ -74,7 +241,7 @@ export function Model(props) {
     document.getElementById('popup').style.display = 'none'
     document.getElementById('streetview').style.display = 'none'
     document.getElementById('popupdarkbg').style.display = 'none'
-    document.getElementById('helpBtn').style.display = 'block'
+    // document.getElementById('helpBtn').style.display = 'block'
     document.getElementById('locationbtn').style.display = 'block'
     streetviewUI = false
     isOpen = false
@@ -158,7 +325,16 @@ export function Model(props) {
     isDragging = false
   }
 
-
+const btitle= document.getElementById('btitle')
+const Bname=document.getElementById('Bname')
+const ftitle=document.getElementById('ftitle')
+const Farea=document.getElementById('Farea')
+const mtitle =   document.getElementById('mtitle')
+const Marea = document.getElementById('Marea')
+const totbtitle = document.getElementById('totbtitle')
+const Tbarea = document.getElementById('Tbarea')
+const usage = document.getElementById('usage')
+const UsageP = document.getElementById('Usage-P')
   let camPos = new THREE.Vector3()
   let camRot = new THREE.Vector3()
   let targetPosition = new THREE.Vector3();
@@ -178,18 +354,18 @@ export function Model(props) {
         targetPosition.z = 11.081
         minaAngle = -0.785398
         maxaAngle = 1.65806
-        document.getElementById('bnmtitle').innerText = "Building name"
-        document.getElementById('bname').innerText = "B100"
-        document.getElementById('fareatitle').innerText = "Floor Area"
-        document.getElementById('farea').innerText = "3,23,520 sq.ft (30,056 sq.m.)"
-        document.getElementById('mareatitle').innerText = "Mezzanine Area"
-        document.getElementById('marea').innerText = "5,382 sq.ft (500 sq.m)"
-        document.getElementById('totbareatitle').innerText = "Total Built-up Area"
-        document.getElementById('totbarea').innerText = " 3,28,902 sq.ft (30,556 sq.m.)"
-        document.getElementById('Usage').innerText = "Clear Height"
-        document.getElementById('Usage-P').innerText = "12 meters minimum"
-        document.getElementById('dropdown-content').style.display = 'block'
-        document.getElementById('sidebar').src = './images/sidebarU.png'
+        btitle.innerText = "Building name"
+        Bname.innerText = "B100"
+        ftitle.innerText = "Floor Area"
+        Farea.innerText = "3,23,520 sq.ft (30,056 sq.m.)"
+        mtitle.innerText = "Mezzanine Area"
+        Marea.innerText = "5,382 sq.ft (500 sq.m)"
+        totbtitle.innerText = "Total Built-up Area"
+        Tbarea.innerText = " 3,28,902 sq.ft (30,556 sq.m.)"
+        usage.innerText = "Clear Height"
+        UsageP.innerText = "12 meters minimum"
+        // document.getElementById('popup-sidebar').style.display = 'block'
+        document.getElementById('buildingpre1').src = './images/preB100.png'
         isOpen = true
         break;
       case 'B200':
@@ -204,18 +380,18 @@ export function Model(props) {
         targetPosition.z = 10.424
         minaAngle = -1.0472
         maxaAngle = 0.523599
-        document.getElementById('bnmtitle').innerText = "Building name"
-        document.getElementById('bname').innerText = "B200"
-        document.getElementById('fareatitle').innerText = "Floor Area"
-        document.getElementById('farea').innerText = "3,05,157 sq.ft (28,350 sq.m.)"
-        document.getElementById('mareatitle').innerText = "Mezzanine Area"
-        document.getElementById('marea').innerText = " 5,382 sq.ft (500 sq.m)"
-        document.getElementById('totbareatitle').innerText = "Total Built-up Area"
-        document.getElementById('totbarea').innerText = "3,10,539 sq.ft (28,850 sq.m.)"
-        document.getElementById('Usage').innerText = "Clear Height"
-        document.getElementById('Usage-P').innerText = "12 meters minimum"
-        document.getElementById('dropdown-content').style.display = 'block'
-        document.getElementById('sidebar').src = './images/sidebarU.png'
+        btitle.innerText = "Building name"
+        Bname.innerText = "B200"
+        ftitle.innerText = "Floor Area"
+        Farea.innerText = "3,05,157 sq.ft (28,350 sq.m.)"
+        mtitle.innerText = "Mezzanine Area"
+        Marea.innerText = " 5,382 sq.ft (500 sq.m)"
+        totbtitle.innerText = "Total Built-up Area"
+        Tbarea.innerText = "3,10,539 sq.ft (28,850 sq.m.)"
+        usage.innerText = "Clear Height"
+        UsageP.innerText = "12 meters minimum"
+        // document.getElementById('popup-sidebar').style.display = 'block'
+        document.getElementById('buildingpre1').src = './images/preB200.png'
         isOpen = true
 
         break;
@@ -231,18 +407,18 @@ export function Model(props) {
         targetPosition.z = -4.546
         minaAngle = 0
         maxaAngle = 3.14159
-        document.getElementById('bnmtitle').innerText = "Building name"
-        document.getElementById('bname').innerText = "B300"
-        document.getElementById('fareatitle').innerText = "Floor Area"
-        document.getElementById('farea').innerText = "4,07,995 sq.ft (37,904 sq.m.)"
-        document.getElementById('mareatitle').innerText = "Mezzanine Area"
-        document.getElementById('marea').innerText = "5,382 sq.ft (500 sq.m)"
-        document.getElementById('totbareatitle').innerText = "Total Built-up Area"
-        document.getElementById('totbarea').innerText = "4,13,377 sq.ft (38,404 sq.m.)"
-        document.getElementById('Usage').innerText = "Clear Height"
-        document.getElementById('Usage-P').innerText = "12 meters minimum"
-        document.getElementById('dropdown-content').style.display = 'block'
-        document.getElementById('sidebar').src = './images/sidebarU.png'
+        btitle.innerText = "Building name"
+        Bname.innerText = "B300"
+        ftitle.innerText = "Floor Area"
+        Farea.innerText = "4,07,995 sq.ft (37,904 sq.m.)"
+        mtitle.innerText = "Mezzanine Area"
+        Marea.innerText = "5,382 sq.ft (500 sq.m)"
+        totbtitle.innerText = "Total Built-up Area"
+        Tbarea.innerText = "4,13,377 sq.ft (38,404 sq.m.)"
+        usage.innerText = "Clear Height"
+        UsageP.innerText = "12 meters minimum"
+        // document.getElementById('popup-sidebar').style.display = 'block'
+        document.getElementById('buildingpre1').src = './images/preB300.png'
         isOpen = true
 
         break;
@@ -258,18 +434,18 @@ export function Model(props) {
         targetPosition.z = -1.344
         minaAngle = -0.785398
         maxaAngle = 3.14159
-        document.getElementById('bnmtitle').innerText = "Building name"
-        document.getElementById('bname').innerText = "B400"
-        document.getElementById('fareatitle').innerText = "Floor Area"
-        document.getElementById('farea').innerText = "2,60,982 sq.ft (24,246 sq.m.)"
-        document.getElementById('mareatitle').innerText = "Mezzanine Area"
-        document.getElementById('marea').innerText = "5,382 sq.ft (500 sq.m)"
-        document.getElementById('totbareatitle').innerText = "Total Built-up Area"
-        document.getElementById('totbarea').innerText = "2,66,363 sq.ft (24,746 sq.m.)"
-        document.getElementById('Usage').innerText = "Clear Height"
-        document.getElementById('Usage-P').innerText = "12 meters minimum"
-        document.getElementById('dropdown-content').style.display = 'block'
-        document.getElementById('sidebar').src = './images/sidebarU.png'
+        btitle.innerText = "Building name"
+        Bname.innerText = "B400"
+        ftitle.innerText = "Floor Area"
+        Farea.innerText = "2,60,982 sq.ft (24,246 sq.m.)"
+        mtitle.innerText = "Mezzanine Area"
+        Marea.innerText = "5,382 sq.ft (500 sq.m)"
+        totbtitle.innerText = "Total Built-up Area"
+        Tbarea.innerText = "2,66,363 sq.ft (24,746 sq.m.)"
+        usage.innerText = "Clear Height"
+        UsageP.innerText = "12 meters minimum"
+        // document.getElementById('popup-sidebar').style.display = 'block'
+        document.getElementById('buildingpre1').src = './images/preB400.png'
         isOpen = true
 
 
@@ -286,18 +462,18 @@ export function Model(props) {
         targetPosition.z = -4.056
         minaAngle = -1.0472
         maxaAngle = 1.0472
-        document.getElementById('bnmtitle').innerText = "Building name"
-        document.getElementById('bname').innerText = "B500"
-        document.getElementById('fareatitle').innerText = "Floor Area"
-        document.getElementById('farea').innerText = "1,41,804 sq.ft (13,174 sq.m.)"
-        document.getElementById('mareatitle').innerText = "Mezzanine Area"
-        document.getElementById('marea').innerText = "5,382 sq.ft (500 sq.m)"
-        document.getElementById('totbareatitle').innerText = "Total Built-up Area"
-        document.getElementById('totbarea').innerText = "1,47,186 sq.ft (13,674 sq.m.)"
-        document.getElementById('Usage').innerText = "Clear Height"
-        document.getElementById('Usage-P').innerText = "12 meters minimum"
-        document.getElementById('dropdown-content').style.display = 'block'
-        document.getElementById('sidebar').src = './images/sidebarU.png'
+        btitle.innerText = "Building name"
+        Bname.innerText = "B500"
+        ftitle.innerText = "Floor Area"
+        Farea.innerText = "1,41,804 sq.ft (13,174 sq.m.)"
+        mtitle.innerText = "Mezzanine Area"
+        Marea.innerText = "5,382 sq.ft (500 sq.m)"
+        totbtitle.innerText = "Total Built-up Area"
+        Tbarea.innerText = "1,47,186 sq.ft (13,674 sq.m.)"
+        usage.innerText = "Clear Height"
+        UsageP.innerText = "12 meters minimum"
+        // document.getElementById('popup-sidebar').style.display = 'block'
+        document.getElementById('buildingpre1').src = './images/preB500.png'
         isOpen = true
 
         break;
@@ -311,18 +487,18 @@ export function Model(props) {
         targetPosition.x = 0
         targetPosition.y = 0
         targetPosition.z = 0
-        document.getElementById('bnmtitle').innerHTML = "IndoSpace Industrial <br> Warehousing & Logistics Park"
-        document.getElementById('bname').innerText = ""
-        document.getElementById('fareatitle').innerText = "Total Land Parcel"
-        document.getElementById('farea').innerText = "186 Acres"
-        document.getElementById('mareatitle').innerText = "Plot 1 Land Area"
-        document.getElementById('marea').innerText = "62 Acres"
-        document.getElementById('totbareatitle').innerText = "Total Chargeable Area"
-        document.getElementById('totbarea').innerHTML = "14,35,315 sq.ft. <br> (1,33,344 sq.m.)"
-        document.getElementById('Usage').innerText = "Usage"
-        document.getElementById('Usage-P').innerText = "Industrial, Warehousing & Logistics park"
-        document.getElementById('Usage').style.display = 'block'
-        document.getElementById('Usage-P').style.display = 'block'
+        // btitle.innerHTML = "IndoSpace Industrial <br> Warehousing & Logistics Park"
+        // Bname.innerText = ""
+        // ftitle.innerText = "Total Land Parcel"
+        // Farea.innerText = "186 Acres"
+        // mtitle.innerText = "Plot 1 Land Area"
+        // Marea.innerText = "62 Acres"
+        // totbtitle.innerText = "Total Chargeable Area"
+        // Tbarea.innerHTML = "14,35,315 sq.ft. <br> (1,33,344 sq.m.)"
+        // usage.innerText = "Usage"
+        // UsageP.innerText = "Industrial, Warehousing & Logistics park"
+        // usage.style.display = 'block'
+        // UsageP.style.display = 'block'
 
         break;
       default:
@@ -334,12 +510,42 @@ export function Model(props) {
       orbitcontrols.current.minAzimuthAngle = Math.PI / 2;
 
       orbitcontrols.current.update();
+      
     }
 
 
     document.getElementById('bottombar').style.display = 'none'
   }
+ 
+  
+  let cno=1;
+  const pBtn = document.querySelector('#prbtn');
+   pBtn.addEventListener("click", () => {
+    cno -= 1;
+    if (cno == 0) {
+      cno = 5;
+    }
+    meshname=`B${cno}00`
+    setCameraPosRot(meshname)
 
+  });
+
+  const nBtn = document.querySelector('#nxtbtn');
+ 
+  nBtn.addEventListener("click", () => {
+    cno += 1
+    if (cno == 6){
+      cno = 1
+    }
+    meshname=`B${cno}00`
+    setCameraPosRot(meshname)
+  });
+ 
+ 
+      
+ 
+
+  document.getElementById('bottombar').style.display = 'flex'
 
   const closeBtn = document.getElementById('cbtn')
   const preBtn = document.querySelector('.prebtn')
@@ -375,75 +581,96 @@ export function Model(props) {
   document.getElementById('amenitySwitch').addEventListener('click', toggleVisibility)
 
 
+  document.getElementById('viewin3dS').addEventListener('click',(e) =>{
+    setClicked(true)
+    setVisibility(false)
+    console.log(meshname);
+    infoCon.style.display='none'
+    viewin3dS.style.display='none'
+    buildpre.style.display='none'
+    
+    document.getElementById('bottombar').style.display = 'none'
 
+    // console.log('click');
+  
+  
+  })
   let islocation = false
-  let isHelp = false
+  // let isHelp = false
   closeBtn.addEventListener('click', () => {
-    document.getElementById('helpBtn').style.display = 'block'
+    // document.getElementById('helpBtn').style.display = 'block'
     closeBtn.style.display = 'none'
+    infoCon.style.display='block'
+    viewin3dS.style.display='block'
+    buildpre.style.display='block'
     runOnce = false
     meshname = 'Default'
     setClicked(false)
     isClosed = true
     setVisibility(true)
     setCameraPosRot(meshname)
-    document.getElementById('dropdown-content').style.display = 'none'
-    document.getElementById('sidebar').src = './images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png'
-    document.getElementById('bottombar').style.display = 'flex'
-    locationbtn.style.display = 'block'
+    // document.getElementById('dropdown-content').style.display = 'none'
+    // document.getElementById('sidebar').src = './images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png'
+    // document.getElementById('bottombar').style.display = 'flex'
+
+    // locationbtn.style.display = 'block'
+    prBtn.style.display='block'
+    nxtBtn.style.display='block'
+    
 
   })
-  
-  const helpBtn = document.getElementById('helpBtn')
 
-  helpBtn.addEventListener('click', () => {
-    if (!isHelp) {
-      helpBtn.style.zIndex = '100';
-      helpBtn.src = './images/Close.png';
-      helpBtn.setAttribute('onmouseover', '')
-      helpBtn.setAttribute('onmouseout', '')
-      document.getElementById('instructionOverlay').style.display = 'flex'
-      isHelp = true
-    }
-    else {
-      isHelp = false
-      helpBtn.style.zIndex = '100';
-      helpBtn.src = './images/HELP_BUTT.png'
-      helpBtn.setAttribute('onmouseover', 'this.src=`./images/HELP_BUTT_Hover.png`')
-      helpBtn.setAttribute('onmouseout', 'this.src=`./images/HELP_BUTT.png`')
-      document.getElementById('instructionOverlay').style.display = 'none'
-    }
-  })
+  // helpBtn.addEventListener('click', () => {
+  //   if (!isHelp) {
+  //     helpBtn.style.zIndex = '100';
+  //     helpBtn.src = './images/Close.png';
+  //     helpBtn.setAttribute('onmouseover', '')
+  //     helpBtn.setAttribute('onmouseout', '')
+  //     document.getElementById('instructionOverlay').style.display = 'flex'
+  //     isHelp = true
+  //   }
+  //   else {
+  //     isHelp = false
+  //     helpBtn.style.zIndex = '100';
+  //     helpBtn.src = './images/HELP_BUTT.png'
+  //     helpBtn.setAttribute('onmouseover', 'this.src=`./images/HELP_BUTT_Hover.png`')
+  //     helpBtn.setAttribute('onmouseout', 'this.src=`./images/HELP_BUTT.png`')
+  //     document.getElementById('instructionOverlay').style.display = 'none'
+  //   }
+  // })
 
-  const locationbtn = document.getElementById('locationbtn')
-  const bottombar = document.getElementById('bottombar')
-  locationbtn.addEventListener('click', () => {
-    if (!islocation) {
-      bottombar.style.zIndex = '100';
-      locationbtn.src = './images/Close.png';
-      locationbtn.setAttribute('onmouseover', '')
-      locationbtn.setAttribute('onmouseout', '')
-      document.getElementById('instructionOverlay').style.display = 'flex'
-      islocation = true
-    }
-    else {
-      islocation = false
-      bottombar.style.zIndex = '3';
-      locationbtn.src = './images/2024.01.29_ICON_MAP_BUTT.UNCLICKED-53.png'
-      locationbtn.setAttribute('onmouseover', 'this.src=`./images/MAP_BUTT.png`')
-      locationbtn.setAttribute('onmouseout', 'this.src=`./images/2024.01.29_ICON_MAP_BUTT.UNCLICKED-53.png`')
-      document.getElementById('instructionOverlay').style.display = 'none'
-    }
-  })
+  // const locationbtn = document.getElementById('locationbtn')
+  // const infoCon = document.getElementById('info-Con')
+  // locationbtn.addEventListener('click', () => {
+  //   if (!islocation) {
+  //     infoCon.style.zIndex = '9';
+  //     // locationbtn.src = './images/Close.png';
+  //     // locationbtn.setAttribute('onmouseover', '')
+  //     // locationbtn.setAttribute('onmouseout', '')
+  //     document.getElementById('instructionOverlay').style.display = 'flex'
+  //     islocation = true
+  //   }
+  //   else {
+  //     islocation = false
+  //     bottombar.style.zIndex = '3';
+  //     // locationbtn.src = '/images/HELP_BUTT.png'
+  //     // locationbtn.setAttribute('onmouseover', 'this.src=`./images/HELP_BUTT_Hover.png`')
+  //     // locationbtn.setAttribute('onmouseout', 'this.src=`./images/HELP_BUTT.png`')
+  //     document.getElementById('instructionOverlay').style.display = 'none'
+  //   }
+  // })
 
   useFrame(state => {
         // console.log('RunOnce - ', runOnce, 'isClosed - ', isClosed, 'isClicked', clicked, 'isDragging', isDragging);
     if (runOnce == true && isClosed == false && clicked == false) {
       runOnce = false
-      document.getElementById('dropdown-content').style.display = 'none'
+      document.getElementById('overview-con').style.display = 'none'
       document.getElementById('bottombar').style.display = 'flex'
       closeBtn.style.display = 'none'
-      helpBtn.style.display = 'block'     
+      prBtn.style.display='none'
+      nxtBtn.style.display='none'
+
+          
     }
     if (clicked && !runOnce) {
       actions["MainCameraAltActionClip"].timeScale = 0
@@ -455,7 +682,8 @@ export function Model(props) {
       isClosed = false
       closeBtn.style.display = 'block'
       isDragging = false
-      helpBtn.style.display = 'none'
+      prBtn.style.display='block'
+      nxtBtn.style.display='block'
     }
 
     else if (!clicked) {
@@ -525,6 +753,7 @@ export function Model(props) {
             setClicked(true);
             setVisibility(false);
             setHovered5(false)
+            cno=3
           }}
 
           onPointerOver={() => setHovered5(true)}
@@ -553,6 +782,7 @@ export function Model(props) {
             setClicked(true)
             setVisibility(false)
             setHovered1(false)
+            cno=1
           }}
           onPointerOver={() =>
             setHovered1(true)}
@@ -587,6 +817,7 @@ export function Model(props) {
             setClicked(true)
             setVisibility(false)
             setHovered4(false)
+            cno=4
           }}
           onPointerOver={() => setHovered4(true)}
           onPointerOut={() => setHovered4(false)}
@@ -618,6 +849,7 @@ export function Model(props) {
             setClicked(true)
             setVisibility(false)
             setHovered3(false)
+            cno=5
           }}
           onPointerOver={() => setHovered3(true)}
           onPointerOut={() => setHovered3(false)}
@@ -652,6 +884,7 @@ export function Model(props) {
             setClicked(true)
             setVisibility(false)
             setHovered2(false)
+            cno=2
           }}
           onPointerOver={() => setHovered2(true)}
           onPointerOut={() => setHovered2(false)}
@@ -686,11 +919,12 @@ export function Model(props) {
             document.getElementById('popupdarkbg').style.display = 'block',
             document.getElementById('popup').style.display = 'block',
             document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR1/',
-            document.getElementById('dropdown-content').style.display = 'none',
+            // document.getElementById('dropdown-content').style.display = 'none',
             document.getElementById('streetview').src = './images/StreetView-01.png',
             document.getElementById('streetview').style.display = 'block',
-            helpBtn.style.display = 'none',
             locationbtn.style.display = 'none',
+            prBtn.style.direction='none',
+            nxtBtn.style.direction='none',
             streetviewUI = true,
             isOpen = true,
             picno = 1
@@ -725,11 +959,13 @@ export function Model(props) {
             document.getElementById('popupdarkbg').style.display = 'block',
             document.getElementById('popup').style.display = 'block',
             document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR2/',
-            document.getElementById('dropdown-content').style.display = 'none',
+            // document.getElementById('dropdown-content').style.display = 'none',
             document.getElementById('streetview').style.display = 'block',
             document.getElementById('streetview').src = './images/StreetView-02.png',
-            helpBtn.style.display = 'none',
+            // helpBtn.style.display = 'none',
             locationbtn.style.display = 'none',
+            prBtn.style.direction='none',
+            nxtBtn.style.direction='none',
             streetviewUI = true,
             isOpen = true,
             picno = 2
@@ -766,11 +1002,13 @@ export function Model(props) {
             document.getElementById('popupdarkbg').style.display = 'block',
             document.getElementById('popup').style.display = 'block',
             document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR3/',
-            document.getElementById('dropdown-content').style.display = 'none',
+            // document.getElementById('dropdown-content').style.display = 'none',
             document.getElementById('streetview').style.display = 'block',
             document.getElementById('streetview').src = './images/StreetView-03.png',
-            helpBtn.style.display = 'none',
+            // helpBtn.style.display = 'none',
             locationbtn.style.display = 'none',
+            prBtn.style.direction='none',
+            nxtBtn.style.direction='none',
             streetviewUI = true,
             isOpen = true,
             picno = 3

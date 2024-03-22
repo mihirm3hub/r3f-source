@@ -101,13 +101,174 @@ button:focus-visible {
   height: 2vh;
 }
 
-#helpBtn {
+/* #helpBtn {
   z-index: 99;
   position: relative;
   width: 2.5vw;
   left: 95vw;
   top: 5vh;
   cursor: pointer;
+} */
+
+#popup-sidebar {
+  display: none;
+  /* width: 93vw; */
+  /* height: 40vw; */
+  position: relative;
+  /* z-index: -1; */
+  /* background-color: rgba(0, 0, 0, 0.35); */
+  bottom: 12.5vh;
+  left: 21vw;
+  color: white;
+  /* backdrop-filter: blur(2px); */
+}
+#clsB {
+  position: absolute;
+  right: 2vw;
+  z-index: 9;
+}
+#info-Con {
+  background: #80808029;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  /* right: 13vw; */
+  /* top: 15vh; */
+}
+.tablinks{
+  /* height: 2vh; */
+    border: 1px solid #000;
+    margin-left: 1px;
+
+}
+
+.tab {
+  overflow: hidden;
+  background: #0606066b;
+  /* backdrop-filter: blur(20px); */
+  position: relative;
+  top: 95vh;
+  left: 45.25vw;
+  width: 34.9vw;
+  height: 5vh;
+  z-index: 9;
+}
+.tab img {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 16px 20.9px;
+  transition: 0.3s;
+}
+.tab img:hover {
+  background-color: #ddd;
+}
+.tab img.active {
+  background-color: #ccc;
+}
+#viewin3d1 {
+  position: absolute;
+  left: 12vh;
+  top: 38vh;
+}
+#viewin3d2 {
+  position: absolute;
+  left: 12vh;
+  top: 38vh;
+}
+#viewin3d3 {
+  position: absolute;
+  left: 12vh;
+  top: 38vh;
+}
+#b100{
+  position: absolute;
+}
+#street {
+  top: 14vh;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.streets{
+  background: #0e0d0d29;
+  backdrop-filter: blur(20px);
+  height: 38vh;
+  border: 2px solid #000;
+}
+/* #street1 {
+  background: #0e0d0d29;
+  backdrop-filter: blur(20px);
+  height: 38vh;
+  position: absolute;
+  left: -14vw;
+  border: 2px solid #000;
+}
+#street2 {
+  background: #0e0d0d29;
+  backdrop-filter: blur(20px);
+  height: 38vh;
+  left: 15vw;
+  position: absolute;
+  border: 2px solid #000;
+
+}
+#street3 {
+  background: #0e0d0d29;
+  backdrop-filter: blur(20px);
+  position: absolute;
+  height: 38vh;
+  left: 42vw;
+  border: 2px solid #000;
+
+} */
+#s1 {
+  /* background: #0e0d0d29; */
+  /* backdrop-filter: blur(20px); */
+  width: 23vw;
+  top: 1vh;
+}
+#s2 {
+  /* background: #0e0d0d29; */
+  /* backdrop-filter: blur(20px); */
+  width: 23vw;
+  top: 1vh;
+}
+#s3 {
+  /* background: #0e0d0d29; */
+  /* backdrop-filter: blur(20px); */
+  width: 23vw;
+  top: 1vh;
+}
+#buildingpre1 {
+    position: absolute;
+    width: 100%;
+
+    top: 0vh;
+}
+
+
+/* #closeB {
+  position: absolute;
+  left: 82vw;
+  top: 11vh;
+} */
+#locationpre {
+  position: absolute;
+  left: 0vw;
+  top: 0vh;
+  width: 100%;
+  height: 65vh;
 }
 
 #bottombar {
@@ -115,8 +276,11 @@ button:focus-visible {
   justify-content: space-between;
   position: absolute;
   background: none;
-  width: 100vw;
-  bottom: 0%;
+  width: 7vw;
+  height: 97vh;
+  bottom: 1%;
+  right: 0vw;
+  flex-direction: column;
 }
 
 .bottombtn {
@@ -129,7 +293,7 @@ button:focus-visible {
   height: 2.5vw;
   padding: 2%;
   cursor: pointer;
-  z-index: 99;
+  /* z-index: 99; */
 }
 
 .switch {
@@ -156,6 +320,9 @@ button:focus-visible {
   background: rgba(83, 81, 81, 0.574);
   -webkit-transition: .4s;
   transition: .4s;
+    height: 8vh;
+    width: 2.7vw;
+
 }
 
 .slider:before {
@@ -164,7 +331,7 @@ button:focus-visible {
   height: 4vh;
   width: 4vh;
   left: 0.25vw;
-  bottom: 0.25vh;
+  bottom: 3.5vh;
   background-image: url(../../images/DEFAULT_BUTT.png);
   background-size: contain;
   background-position: center;
@@ -181,7 +348,7 @@ input:checked+.slider {
 input:checked+.slider:before {
   -webkit-transform: translateX(2vw);
   -ms-transform: translateX(2vw);
-  transform: translateX(2vw);
+  transform: translateY(2vw);
   background-image: url(../../images/AMENITY_BUTT.png);
   background-size: contain;
   background-position: center;
@@ -291,12 +458,20 @@ body.ios {
   right: 5vw;
   top: 5%;
 }
+#prbtn{
+  position: fixed;
+  z-index: 12;
+  right: 97vw;
+  top: 45%;
+  cursor: pointer;
+  display: none;
+}
 
 .prebtn {
   position: fixed;
   z-index: 12;
   right: 97vw;
-  top: 45%;
+  top: 40vh;
   cursor: pointer;
 }
 
@@ -307,6 +482,14 @@ body.ios {
   top: 45%;
   cursor: pointer;
 }
+#nxtbtn {
+  position: fixed;
+  z-index: 12;
+  right: 1vw;
+  top: 37vh;
+  cursor: pointer;
+  display: none;
+}
 
 .close:hover,
 .close:focus {
@@ -316,7 +499,6 @@ body.ios {
 }
 
 #sidebar {
-  width: 100%;
   object-fit: contain;
   border: none;
   cursor: pointer;
@@ -338,15 +520,15 @@ hr.solid {
   position: fixed;
   display: inline-block;
   width: 13vw;
-  left: 3vw;
-  top: 10vh;
+  left: 1vw;
+  bottom: 1vh;
   z-index: 12;
   object-fit: contain;
 }
 
-.dropdown-content {
+/* .pop-dropdown-content {
   display: none;
-  margin-top: -3%;
+  margin-top: 16%;
   background-color: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
@@ -355,22 +537,31 @@ hr.solid {
   top: 17.5vh;
   z-index: 1;
   color: white;
-}
+} */
 
-.dropdown-content div h4 {
-  font-size: 11px;
-  text-align: center;
+.pop-dropdown-content div h4 {
+  font-size: 18px;
   font-family: cairo-Bold;
-  letter-spacing: 2%;
-  margin-bottom: 3px;
-  margin-top: 20px;
+ 
+  
 }
 
-.dropdown-content div p {
-  font-size: 12px;
-  text-align: center;
+.pop-dropdown-content div p {
+  font-size: 15px;
   font-family: cairo-Regular;
-  margin: 2px;
+ 
+  
+
+}
+.Title {
+  font-size: 14px;
+  font-family: cairo-Bold;
+  margin: 0;
+  line-height: 0%;
+}
+.content {
+  font-size: 12px;
+  font-family: cairo-Regular;
 }
 
 #LoaderMain {
@@ -486,7 +677,23 @@ hr.solid {
     opacity: 0;
   }
 }
-
+#overview-con {
+  position: absolute;
+  left: 18vw;
+  top: 26vh;
+  color: white;
+}
+#buildpre {
+  position: absolute;
+  color: white;
+  left: 11vw;
+  /* line-height: 0%; */
+  top: 44vh;
+}
+/* #btitle
+{
+ 
+} */
 #instructionMain {
   display: block;
   z-index: 99;
@@ -516,10 +723,10 @@ hr.solid {
   display: block;
   z-index: 100;
   position: fixed;
-  width: 13vw;
-  height: 8vw;
-  left: 3vw;
-  top: 10vh;
+  /* width: 12vw; */
+  /* height: 8vw; */
+  left: 1vw;
+  bottom: 1.3vh;
   opacity: 0;
 }
 
@@ -577,7 +784,9 @@ hr.solid {
   transform: translateX(-50%);
   z-index: 999;
 }
-
+#infodivRoot{
+  top: 1vh;
+}
 @media all and (max-width: 1023px) {
   .scroll-control {
     display: none;
@@ -630,7 +839,30 @@ hr.solid {
     line-height: 20px;
     position: absolute;
   }
-
+  #buildpre {
+    position: absolute;
+    color: white;
+    left: 11vw;
+    /* line-height: 0%; */
+    top: 17vh;
+}
+.Title {
+  font-size: 14px;
+  font-family: cairo-Bold;
+  margin: 0;
+  line-height: 0%;
+}
+.content {
+  font-size: 12px;
+  font-family: cairo-Regular;
+}
+#btitle{
+  font-size: 18px;
+}
+#Bname {
+  font-size: 18px;
+  margin-top: 5px;
+}
   #LoaderMainHeader {
     top: 12vh;
     width: 364px;
@@ -651,7 +883,20 @@ hr.solid {
     left: 20.5vw;
     margin-top: 1%;
   }
-
+  #viewin3dS{
+    
+      position: absolute;
+      left: 46vw;
+      top: 63vh;
+  
+  }
+  #overlay {
+    position: absolute;
+    object-fit: contain;
+    width: 50vw;
+    left: 24vw;
+    top: 10vh;
+}
   #scrolltocon {
     content: url('../../images/swipeToContinue.png');
     left: 20.5vw;
@@ -674,10 +919,8 @@ hr.solid {
   }
 
   #fixedChakanLogo {
-    width: 18vw;
-    left: 2vw;
-    height: 11vw;
-    top: 12vh;
+    left: 1vw;
+    bottom: 4vh;
 
   }
 
@@ -685,28 +928,118 @@ hr.solid {
     width: 18vw;
     left: 2vw;
   }
-
-  #dropdown {
-    width: 18vw;
-    left: 2vw;
-    top: 12vh;
-  }
-
-  #bottombar {
-    bottom: 0%;
+  .tab {
+    display: flex;
+    width: 80vw;
+    left: 18vw;
+    top: 86%;
+    height: 13.5vh;
     position: fixed;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-around;
+    align-items: center;
+}
+.tab.ios {
+  display: flex;
+  width: 80vw;
+  left: 18vw;
+  top: 86%;
+  height: 13.5vh;
+  position: fixed;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.tablinks{
+  
+  margin-left:1px;
+}
+#locationpre {
+  /* width: 44vw; */
+  height: 60vh;
+  top: 11.5vh;
+}
+#buildingpre1 {
+  width: 100%;
+  top: 7vh;
+  object-fit: contain;
+}
+#buildingpre1.ios {
+  width: 100%;
+  top: 11vh;
+  object-fit: contain;
+}
+#info-Con {
+  top: 1vh;
+  height: 117%;
+}
+#viewin3d1{
+  left: 3vw;
+}
+#viewin3d2{
+  left: 3vw;
+}
+#viewin3d3{
+  left: 3vw;
+}
+#street1 {
+  top: 1vh;
+  height: 59vh;
+}
+#street2 {
+  top: 1vh;
+  left: 20.5vw;
+  height: 59vh;
+}
+#street3 {
+  top: 1vh;
+  height: 59vh;
+  left: 47vw;
+}
+#s1 {
+  width: 24vw;
+}
+#s2 {
+  width: 24vw;
+}
+#s3 {
+  width: 24vw;
+}
+#closeB {
+  top: 3vh;
+  left: 81vw;
+}
+#dropdown {
+  /* width: 18vw; */
+  left: 1vw;
+  bottom: 3vh;
+ 
+}
+#prbtn {
+  left: 0vw;
+}
+  #bottombar {
+    bottom: 1%;
+    position: fixed;
+    right: 3vw;
+    height: 95%;
   }
   #instructionImg {
     content: url('../../images/tutorialOverlayMobile.png');
   }
 
-  #instructionOverlay img {
+  /* #instructionOverlay img {
     content: url('../../images/tutorialOverlayMobile.png');
     width: 30%;
-  }
+  } */
 
-  .dropdown-content div h4 {
-    font-size: 7px;
+  .pop-dropdown-content div h4 {
+    font-size: 8px;
     margin-top: -3%;
   }
 
@@ -714,8 +1047,8 @@ hr.solid {
     width: 5vw;
   }
 
-  .dropdown-content div p {
-    font-size: 8px;
+  .pop-dropdown-content div p {
+    font-size: 6px;
     margin-top: -6%;
     line-height: 16px;
   }
@@ -723,25 +1056,27 @@ hr.solid {
   #locationbtn {
     width: 10vw;
     height: 4vw;
-    margin-left: -3%;
+    margin-left: -37%;
   }
 
   #arbtn {
     width: 10vw;
     height: 4vw;
+    margin-left: -37%;
+
   }
 
   .slider:before {
     height: 4.1vw;
     width: 10vw;
-    left: -2.3vw;
-    top: 0.7vh;
-  }
+    left: -2.5vw;
+    bottom: 5.8vh;
+}
 
   .slider {
-    width: 7.5vw;
-    height: 4.5vw;
-  }
+    width: 5vw;
+    height: 17vh;
+}
 
   #helpBtn {
     width: 4vw;

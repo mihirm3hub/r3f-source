@@ -20,6 +20,7 @@ function progressChecker(num) {
       document.getElementById('scrolltocon').style.display = 'block'
     }, 2000)
   }
+
 }
 function Loader() {
   const { progress } = useProgress()

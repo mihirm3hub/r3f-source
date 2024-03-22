@@ -44,7 +44,7 @@
   </section>
 
   <section id="InstructionSection" style="display: none;">
-    <img id="fixedChakanLogo" src="./images/chakanLogo.png" alt="">
+    <img id="fixedChakanLogo" src="./images/F_Chakan.png" alt="">
     <div id="instructionMain" style="background: linear-gradient(180deg, #000000cf 20%, #ffffff00 80%);">
       <img id="instructionImg" src="./images/TutorialImg.png" alt="">
       <img id="instructionMobileImg" src="./images/tutorialOverlayMobile.png" alt="">
@@ -54,13 +54,13 @@
   <div id="root"></div>
 
   <section id="rootUI" style="display: none;">
-    <img id="helpBtn" src="./images/HELP_BUTT.png" onmouseover="this.src=`./images/HELP_BUTT_Hover.png`"
-      onmouseout="this.src=`./images/HELP_BUTT.png`" style="object-fit: contain;" />
+    <!-- <img id="helpBtn" src="./images/HELP_BUTT.png" onmouseover="this.src=`./images/HELP_BUTT_Hover.png`"
+      onmouseout="this.src=`./images/HELP_BUTT.png`" style="object-fit: contain;" /> -->
     <div id="bottombar">
-      <img id="locationbtn" class="bottombtn" src="./images/2024.01.29_ICON_MAP_BUTT.UNCLICKED-53.png"
-        onmouseover="this.src=`./images/MAP_BUTT.png`"
-        onmouseout="this.src=`./images/2024.01.29_ICON_MAP_BUTT.UNCLICKED-53.png`"
-        onclick="this.src=`./images/MAP_BUTT_SELECTED.png`" style="object-fit: contain;" />
+      <img id="locationbtn" class="bottombtn" src="./images/INFO_BUTT.png" style="object-fit: contain;" />
+
+
+
       <label class="switch">
         <input id="amenitySwitch" type="checkbox">
         <span class="slider round"></span>
@@ -70,43 +70,140 @@
         onmouseout="this.src=`./images/2024.01.29_ICON_AR_BUTT.UNCLICKED-52.png`"
         onclick="this.src=`./images/AR_BUTT_SELECTED.png`" style="object-fit: contain;" />
     </div>
+    <div id="info-Con">
+      <div>
+        <img id="clsB" src="./images/Close.png" />
+      </div>
+      <div class="tab">
+
+        <!-- <button  class="tablinks" style="color:#d4d4d0	;" >Overview</button>
+        <button class="tablinks" style="color:#d4d4d0;">Location</button>
+        <button class="tablinks" style="color:#d4d4d0 ; ">Buildings</button> -->
+        <img class="tablinks" id="Overview" src="./images/Overview.png" onmouseover="this.src=`./images/OverviewC.png`"
+          onmouseout="this.src=`./images/Overview.png`" onclick="this.src=`./images/OverviewC.png`" />
+
+        <img class="tablinks" id="location" src="./images/Location.png" onmouseover="this.src=`./images/LocationC.png`"
+          onmouseout="this.src=`./images/Location.png`" onclick="this.src=`./images/LocationC.png`" />
+
+        <img class="tablinks" id="building" src="./images/Buildings.png"
+          onmouseover="this.src=`./images/BuildingsC.png`" onmouseout="this.src=`./images/Buildings.png`"
+          onclick="this.src=`./images/BuildingsC.png`" />
+
+        <img class="tablinks" id="streetView" src="./images/StreetView.png"
+          onmouseover="this.src=`./images/StreetViewC.png`" onmouseout="this.src=`./images/StreetView.png`"
+          onclick="this.src=`./images/StreetViewC.png`" />
+        <img class="tablinks" id="help_B" src="./images/Help.png" />
+      </div>
+      <div id="street">
+        <div id="street1" class="streets">
+          <img id="s1" src="./images/StreetView-01.png" />
+          <img id="viewin3d1" src="./images/FULLSCREEN_BUTT.png" />
+        </div>
+        <div id="street2" class="streets">
+          <img id="s2" src="./images/StreetView-02.png" />
+          <img id="viewin3d2" src="./images/FULLSCREEN_BUTT.png" />
+
+        </div>
+        <div id="street3" class="streets">
+          <img id="s3" src="./images/StreetView-03.png" />
+          <img id="viewin3d3" src="./images/FULLSCREEN_BUTT.png" />
+
+        </div>
+      </div>
+      <div>
+        <img id="locationpre" src="./images/preLocation.png" />
+      </div>
+      <div>
+        <img id="buildingpre1" src="./images/preB100.png" />
+      </div>
+      
+    </div>
+    
+    <div>
+      <img id="viewin3dS" src="./images/FULLSCREEN_BUTT.png" />
+    </div>
+
+
+
+
+    <!-- <div>
+      <img id="closeB" src="./images/Close.png" />
+    </div> -->
     <div>
       <img id="cbtn" src="./images/Close.png" alt="Close Button" />
     </div>
+
+    <img id="prbtn" src="./images/PREVIOUS_BUTT.png" />
+    <img id="nxtbtn" src="./images/NEXT_BUTT.png" />
+
     <div id="dropdown" style="display: block;">
-      <img id="sidebar" alt="Dropdown Button" src="./images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png" />
-      <img id="streetview" alt="streetviewnum">
-      <div class="dropdown-content" id="dropdown-content">
-        <div>
-          <h4 id="bnmtitle">IndoSpace Industrial<br>Warehousing & Logistics Park</h4>
-          <p id="bname"></p>
+      <img id="sidebar" alt="Dropdown Button" src="./images/F_Chakan.png" />
+    </div>
+    <img id="streetview" alt="streetviewnum">
 
-        </div>
 
+    <div class="pop-dropdown-content" id="overview-con">
+      <div>
+        <h4 id="bnmtitle">IndoSpace Industrial <br> Warehousing & Logistics Park</h4>
+        <p id="bname"> </p>
+      </div>
+
+      <div id="infodivRoot">
         <div>
           <h4 id="fareatitle">Total Land Parcel</h4>
           <p id="farea"> 186 Acres</p>
         </div>
         <div>
           <h4 id="mareatitle">Plot 1 Land Area</h4>
-          <p id="marea">62 Acres</p>
+          <p id="marea"> 62 Acres</p>
         </div>
         <div>
           <h4 id="totbareatitle">Total Chargeable Area</h4>
-          <p id="totbarea">14,35,315 sq.ft.<br>(1,33,344 sq.m.)</p>
-
+          <p id="totbarea"> 14,35,315 sq.ft.(1,33,344 sq.m.)</p>
         </div>
         <div>
           <h4 id="Usage">Usage</h4>
-          <p id="Usage-P">Industrial, Warehousing & Logistics park</p>
+          <p id="Usage-P"> Industrial, Warehousing & Logistics park</p>
         </div>
-        <div>
-          <hr class="solid">
-        </div>
-
+      </div>
+      <div>
+        <!-- <hr class="solid"> -->
       </div>
 
     </div>
+    <div id="buildpre" >
+      <div>
+        <h4 class="Title" id="btitle">Building Name </h4>
+        <p class="content" id="Bname">B100 </p>
+      </div>
+      <div>
+
+        <h4 class="Title" id="ftitle">Total Land Parcel</h4>
+        <p class="content" id="Farea"> 186 Acres</p>
+      </div>
+      <div>
+        <h4 class="Title" id="mtitle">Plot 1 Land Area</h4>
+        <p class="content" id="Marea"> 62 Acres</p>
+      </div>
+      <div>
+        <h4 class="Title" id="totbtitle">Total Chargeable Area</h4>
+        <p class="content" id="Tbarea"> 14,35,315 sq.ft.(1,33,344 sq.m.)</p>
+      </div>
+      <div>
+        <h4 class="Title" id="usage">Total Built-up Area</h4>
+        <p class="content" id="Usage-p"> 3,28,902,sq ft (30,556 sq m)</p>
+      </div>
+    </div>
+
+
+
+
+<div >
+  <img id="overlay" src="./images/Tutorial_overlay.png" />
+</div>
+
+
+
 
     <div id="instructionOverlay">
       <img src="./images/TutorialImg.png" alt="">
@@ -140,7 +237,7 @@
 
       return /iPhone|iPad|iPod/i.test(navigator.userAgent || navigator.vendor || navigator.platform == "MacIntel") || navigator.platform === 'MacIntel';
     };
-    
+
     const isIos = iphone()
     navigator.platform = "MacIntel"
     console.log(navigator.platform)
@@ -166,6 +263,8 @@
     if (isIos || navigator.platform == 'MacIntel') {
       console.log('inside ios');
       document.getElementById('scrolltocon').classList.add('ios')
+      document.getElementById('buildingpre1').classList.add('ios')
+
       document.querySelector('body').classList.add('ios')
 
       // document.getElementById('bottombar').style='top:83%;' 
@@ -188,8 +287,8 @@
       window.addEventListener("scroll", (e) => {
         const viewportHeight = window.innerHeight
         const scroll = Math.floor(window.scrollY);
-        console.log('scrolling',scroll);
-        console.log('Viewport height',viewportHeight);
+        console.log('scrolling', scroll);
+        console.log('Viewport height', viewportHeight);
         if (scroll >= viewportHeight) {
           if (document.getElementById('LoaderSection').style.display === 'none') {
             document.getElementById('rootUI').style.top = '0vh'
