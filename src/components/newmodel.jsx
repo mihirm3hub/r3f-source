@@ -7,10 +7,11 @@ import * as THREE from 'three'
 let meshname = 'Default'
 let runOnce = false
 let isDragging = false;
+let isOverview = false
 let streetviewUI = false;
-let islocation=false;
-let isbuilding=false
-let isview=false
+let islocation = false;
+let isbuilding = false
+let isHelp = false
 let startX
 let startY
 let camTimeScale = 0
@@ -18,73 +19,130 @@ let lastXvalue = 0
 let lastYvalue = 0
 let xdrag = 1000
 let ydrag
-let isOverview=false
 let isOpen = false;
 let isClosed = true
 let scrollValue
 
 const overlay = document.getElementById('overlay')
-const viewin3dS=document.getElementById('viewin3dS')
+const viewin3dS = document.getElementById('viewin3dS')
 const dropdownContent = document.getElementById('overview-con');
 const sidebarImage = document.getElementById('sidebar');
-const streetView = document.getElementById('streetview')
- const locationbtn = document.getElementById('locationbtn')
-  const infoCon = document.getElementById('info-Con')
-  const closeB = document.getElementById('closeB')
-  const street = document.getElementById('street')
-  const locationPre = document.getElementById('locationpre')
-  const buildingpre1 = document.getElementById('buildingpre1')
-  const prBtn=document.getElementById('prbtn')
-  const nxtBtn=document.getElementById('nxtbtn')
-  const buildpre=document.getElementById('buildpre')
+const streetView = document.getElementById('StreetView')
+const locationbtn = document.getElementById('locationbtn')
+const infoCon = document.getElementById('info-Con')
+const closeB = document.getElementById('closeB')
+const street = document.getElementById('street')
+const locationPre = document.getElementById('locationpre')
+const buildingpre1 = document.getElementById('buildingpre1')
+const prBtn = document.getElementById('prbtn')
+const nxtBtn = document.getElementById('nxtbtn')
+const buildpre = document.getElementById('buildpre')
+const tablinks = document.querySelectorAll('.tablinks');
 
+// const b100 = document.getElementById('b100')
 
-  // const b100 = document.getElementById('b100')
+//  const intrusctrion=document.getElementById('instructionOverlay')
+buildpre.style.display = 'none'
+prBtn.style.display = 'none'
+nxtBtn.style.display = 'none'
+buildingpre1.style.display = 'none'
+street.style.display = 'none'
+infoCon.style.display = 'none';
+viewin3dS.style.display = 'none'
+overlay.style.display = 'none'
 
-  //  const intrusctrion=document.getElementById('instructionOverlay')
-  buildpre.style.display='none'
-  prBtn.style.display='none'
-  nxtBtn.style.display='none'
-   buildingpre1.style.display = 'none'
-  street.style.display='none'
-  infoCon.style.display = 'none';
-  viewin3dS.style.display='none'
-  overlay.style.display='none'
- 
-  // b100.style.display='none'
-  dropdownContent.style.display = 'none';
-  locationPre.style.display='none'
+// b100.style.display='none'
+dropdownContent.style.display = 'none';
+locationPre.style.display = 'none'
 
-  const tabnone=()=>{
-    dropdownContent.style.display='none'
-    street.style.display='none'
-    buildpre.style.display='none'
-  buildingpre1.style.display='none'
-  prBtn.style.display='none'
-  nxtBtn.style.display='none'
-  locationPre.style.display='none'
-  viewin3dS.style.display='none'
-  overlay.style.display='none'
+const tabSwitch = (tabId) => {
+  dropdownContent.style.display = 'none'
+  street.style.display = 'none'
+  buildpre.style.display = 'none'
+  buildingpre1.style.display = 'none'
+  prBtn.style.display = 'none'
+  nxtBtn.style.display = 'none'
+  locationPre.style.display = 'none'
+  viewin3dS.style.display = 'none'
+  overlay.style.display = 'none'
+
+  switch (tabId) {
+    case 'Overview':
+      isOverview = !isOverview
+      dropdownContent.style.display = isOverview ? 'flex' : 'none';
+      streetviewUI = false;
+      islocation = false;
+      isbuilding = false
+      isHelp = false
+      break;
+    case 'Location':
+      islocation = !islocation
+      locationPre.style.display = islocation ? 'block' : 'none';
+      isOverview = false
+      streetviewUI = false;
+      isbuilding = false
+      isHelp = false
+      break;
+    case 'StreetView':
+      streetviewUI = !streetviewUI
+      street.style.display = streetviewUI ? 'flex' : 'none';
+      isOverview = false;
+      islocation = false;
+      isbuilding = false
+      isHelp = false
+      break;
+    case 'Help':
+      isHelp = !isHelp
+      overlay.style.display = isHelp ? 'block' : 'none';
+      isOverview = false;
+      islocation = false;
+      isbuilding = false
+      streetviewUI = false
+      break;
+    case 'Buildings':
+      isbuilding = !isbuilding;
+      meshname = 'B100'
+      buildpre.style.display = isbuilding ? 'block' : 'none';
+      buildingpre1.style.display = 'block';
+      viewin3dS.style.display = 'block'
+      prBtn.style.display = 'block'
+      nxtBtn.style.display = 'block'
+
+      isOverview = false;
+      islocation = false;
+      streetviewUI = false
+      isHelp = false
+      break
+    default:
+      isOverview = false
+      streetviewUI = false;
+      islocation = false;
+      isbuilding = false
+      isHelp = false
+      break;
   }
+}
 
-document.getElementById('Overview').addEventListener('click', (e) => {
-  tabnone()
-  isOverview=!isOverview
-  dropdownContent.style.display = isOverview ? 'block' : 'none';
-  
-  console.log(isOverview);
-  
-  // closeB.style.display='block'
+const removetabLinksClass = () => {
+  tablinks.forEach(tab => {
+    const tabId = tab.getAttribute('id')
+    tab.classList.remove('active')
+    tab.classList.remove('active')
+    tab.setAttribute('src', `./images/${tabId}.png`)
+  })
+}
 
-  // sidebarImage.src = isOpen ? './images/sidebarU.png' : './images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png';
-  // if (streetviewUI == false) {
-  //   dropdownContent.style.display = isOpen ? 'block' : 'none';
-  // } else {
-  //   streetView.style.display = isOpen ? 'none' : 'block';
-   
-  // }
-  // isOpen = !isOpen;
+tablinks.forEach(tab => {
+  tab.addEventListener("click", () => {
+    removetabLinksClass()
+
+    const name = tab.getAttribute('id')
+    tab.setAttribute('src', `./images/${name}C.png`)
+    tab.classList.add('active')
+    tabSwitch(name)
+  });
 });
+
 // document.getElementById('closeB').addEventListener('click', (e) => {
 //   // document.getElementById('Overview').style.display='none'
 //   // street.style.display='none'
@@ -99,107 +157,39 @@ document.getElementById('Overview').addEventListener('click', (e) => {
 
 // })
 document.getElementById('clsB').addEventListener('click', (e) => {
-  infoCon.style.display = 'none';
-  prBtn.style.display='none'
-  nxtBtn.style.display='none'
-  isOpen=false
-  buildpre.style.display='none'
-  viewin3dS.style.display='none'
+  isOpen = false
   document.getElementById('bottombar').style.display = 'flex'
-  isbuilding=false
-  streetviewUI=false
-
-
-  tabnone()
-  
-
+  tabSwitch('Close')
 })
 
-
-
-
 document.getElementById('locationbtn').addEventListener('click', (e) => {
- 
-  dropdownContent.style.display='block'
+
+  dropdownContent.style.display = 'flex'
 
   infoCon.style.display = !isOpen ? 'block' : 'none';
   isOpen = !isOpen;
 })
 
-document.getElementById('streetView').addEventListener('click', (e) => {
-  // street.style.display= "flex"
-  tabnone()
-  streetviewUI = !streetviewUI;
-  street.style.display = streetviewUI ? 'flex' : 'none';
-  // viewin3dS.style.display='none'
-
- 
-  
-
-  
-})
-
-document.getElementById('help_B').addEventListener('click',(e)=>{
-  tabnone()
-  overlay.style.display='block'
-  
-})
 
 document.getElementById('viewin3d1').addEventListener('click', (e) => {
   document.getElementById('popupdarkbg').style.display = 'block',
-  document.getElementById('popup').style.display = 'block',
-  document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR1/'
-  
+    document.getElementById('popup').style.display = 'block',
+    document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR1/'
+
 })
 
 document.getElementById('viewin3d2').addEventListener('click', (e) => {
   document.getElementById('popupdarkbg').style.display = 'block',
-  document.getElementById('popup').style.display = 'block',
-  document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR2/'
-  
+    document.getElementById('popup').style.display = 'block',
+    document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR2/'
+
 })
 document.getElementById('viewin3d3').addEventListener('click', (e) => {
   document.getElementById('popupdarkbg').style.display = 'block',
-  document.getElementById('popup').style.display = 'block',
-  document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR3/'
-  
-})
-document.getElementById('location').addEventListener('click', (e) => {
-  tabnone()
-  islocation = !islocation;
-  locationPre.style.display = islocation ? 'block' : 'none';
-  viewin3dS.style.display='none'
-
- 
+    document.getElementById('popup').style.display = 'block',
+    document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR3/'
 
 })
-document.getElementById('building').addEventListener('click', (e) => {
-  tabnone()
-  meshname='B100'
-  
-  buildpre.style.display = !isbuilding ? 'block' : 'none';
-  isbuilding = !isbuilding;
-
-  buildingpre1.style.display = 'block';
-
-  viewin3dS.style.display='block'
-
-  prBtn.style.display='block'
-  nxtBtn.style.display='block'
-  // buildingpre1.style.display = 'block'
-  // dropdownContent.style.display='block'
-})
-
-
-
-
-
-
-
-// function opentab(e){
-
-
-// }
 
 export function Model(props) {
   const modelRef1 = useRef();
@@ -239,7 +229,7 @@ export function Model(props) {
   let cameraSpeed = 0.5
   document.getElementsByClassName('close')[0].addEventListener('click', (ev) => {
     document.getElementById('popup').style.display = 'none'
-    document.getElementById('streetview').style.display = 'none'
+    document.getElementById('StreetView').style.display = 'none'
     document.getElementById('popupdarkbg').style.display = 'none'
     // document.getElementById('helpBtn').style.display = 'block'
     document.getElementById('locationbtn').style.display = 'block'
@@ -325,16 +315,16 @@ export function Model(props) {
     isDragging = false
   }
 
-const btitle= document.getElementById('btitle')
-const Bname=document.getElementById('Bname')
-const ftitle=document.getElementById('ftitle')
-const Farea=document.getElementById('Farea')
-const mtitle =   document.getElementById('mtitle')
-const Marea = document.getElementById('Marea')
-const totbtitle = document.getElementById('totbtitle')
-const Tbarea = document.getElementById('Tbarea')
-const usage = document.getElementById('usage')
-const UsageP = document.getElementById('Usage-P')
+  const btitle = document.getElementById('btitle')
+  const Bname = document.getElementById('Bname')
+  const ftitle = document.getElementById('ftitle')
+  const Farea = document.getElementById('Farea')
+  const mtitle = document.getElementById('mtitle')
+  const Marea = document.getElementById('Marea')
+  const totbtitle = document.getElementById('totbtitle')
+  const Tbarea = document.getElementById('Tbarea')
+  const usage = document.getElementById('usage')
+  const UsageP = document.getElementById('Usage-P')
   let camPos = new THREE.Vector3()
   let camRot = new THREE.Vector3()
   let targetPosition = new THREE.Vector3();
@@ -510,40 +500,40 @@ const UsageP = document.getElementById('Usage-P')
       orbitcontrols.current.minAzimuthAngle = Math.PI / 2;
 
       orbitcontrols.current.update();
-      
+
     }
 
 
     document.getElementById('bottombar').style.display = 'none'
   }
- 
-  
-  let cno=1;
+
+
+  let cno = 1;
   const pBtn = document.querySelector('#prbtn');
-   pBtn.addEventListener("click", () => {
+  pBtn.addEventListener("click", () => {
     cno -= 1;
     if (cno == 0) {
       cno = 5;
     }
-    meshname=`B${cno}00`
+    meshname = `B${cno}00`
     setCameraPosRot(meshname)
 
   });
 
   const nBtn = document.querySelector('#nxtbtn');
- 
+
   nBtn.addEventListener("click", () => {
     cno += 1
-    if (cno == 6){
+    if (cno == 6) {
       cno = 1
     }
-    meshname=`B${cno}00`
+    meshname = `B${cno}00`
     setCameraPosRot(meshname)
   });
- 
- 
-      
- 
+
+
+
+
 
   document.getElementById('bottombar').style.display = 'flex'
 
@@ -558,7 +548,7 @@ const UsageP = document.getElementById('Usage-P')
       picno = 1;
     }
     popupIframe.src = `https://equanimoustech.com/Sagar/IndoSpace1/VR${picno}/`
-    document.getElementById('streetview').src = `./images/StreetView-0${picno}.png`
+    document.getElementById('StreetView').src = `./images/StreetView-0${picno}.png`
 
   });
 
@@ -568,7 +558,7 @@ const UsageP = document.getElementById('Usage-P')
       picno = 3;
     }
     popupIframe.src = `https://equanimoustech.com/Sagar/IndoSpace1/VR${picno}/`
-    document.getElementById('streetview').src = `./images/StreetView-0${picno}.png`
+    document.getElementById('StreetView').src = `./images/StreetView-0${picno}.png`
   });
 
   const perspectiveCam = useRef();
@@ -581,28 +571,28 @@ const UsageP = document.getElementById('Usage-P')
   document.getElementById('amenitySwitch').addEventListener('click', toggleVisibility)
 
 
-  document.getElementById('viewin3dS').addEventListener('click',(e) =>{
+  document.getElementById('viewin3dS').addEventListener('click', (e) => {
     setClicked(true)
     setVisibility(false)
     console.log(meshname);
-    infoCon.style.display='none'
-    viewin3dS.style.display='none'
-    buildpre.style.display='none'
-    
+    infoCon.style.display = 'none'
+    viewin3dS.style.display = 'none'
+    buildpre.style.display = 'none'
+
     document.getElementById('bottombar').style.display = 'none'
 
     // console.log('click');
-  
-  
+
+
   })
   let islocation = false
   // let isHelp = false
   closeBtn.addEventListener('click', () => {
     // document.getElementById('helpBtn').style.display = 'block'
     closeBtn.style.display = 'none'
-    infoCon.style.display='block'
-    viewin3dS.style.display='block'
-    buildpre.style.display='block'
+    infoCon.style.display = 'block'
+    viewin3dS.style.display = 'block'
+    buildpre.style.display = 'block'
     runOnce = false
     meshname = 'Default'
     setClicked(false)
@@ -614,9 +604,9 @@ const UsageP = document.getElementById('Usage-P')
     // document.getElementById('bottombar').style.display = 'flex'
 
     // locationbtn.style.display = 'block'
-    prBtn.style.display='block'
-    nxtBtn.style.display='block'
-    
+    prBtn.style.display = 'block'
+    nxtBtn.style.display = 'block'
+
 
   })
 
@@ -661,16 +651,16 @@ const UsageP = document.getElementById('Usage-P')
   // })
 
   useFrame(state => {
-        // console.log('RunOnce - ', runOnce, 'isClosed - ', isClosed, 'isClicked', clicked, 'isDragging', isDragging);
+    // console.log('RunOnce - ', runOnce, 'isClosed - ', isClosed, 'isClicked', clicked, 'isDragging', isDragging);
     if (runOnce == true && isClosed == false && clicked == false) {
       runOnce = false
       document.getElementById('overview-con').style.display = 'none'
       document.getElementById('bottombar').style.display = 'flex'
       closeBtn.style.display = 'none'
-      prBtn.style.display='none'
-      nxtBtn.style.display='none'
+      prBtn.style.display = 'none'
+      nxtBtn.style.display = 'none'
 
-          
+
     }
     if (clicked && !runOnce) {
       actions["MainCameraAltActionClip"].timeScale = 0
@@ -682,8 +672,8 @@ const UsageP = document.getElementById('Usage-P')
       isClosed = false
       closeBtn.style.display = 'block'
       isDragging = false
-      prBtn.style.display='block'
-      nxtBtn.style.display='block'
+      prBtn.style.display = 'block'
+      nxtBtn.style.display = 'block'
     }
 
     else if (!clicked) {
@@ -753,7 +743,7 @@ const UsageP = document.getElementById('Usage-P')
             setClicked(true);
             setVisibility(false);
             setHovered5(false)
-            cno=3
+            cno = 3
           }}
 
           onPointerOver={() => setHovered5(true)}
@@ -782,7 +772,7 @@ const UsageP = document.getElementById('Usage-P')
             setClicked(true)
             setVisibility(false)
             setHovered1(false)
-            cno=1
+            cno = 1
           }}
           onPointerOver={() =>
             setHovered1(true)}
@@ -817,7 +807,7 @@ const UsageP = document.getElementById('Usage-P')
             setClicked(true)
             setVisibility(false)
             setHovered4(false)
-            cno=4
+            cno = 4
           }}
           onPointerOver={() => setHovered4(true)}
           onPointerOut={() => setHovered4(false)}
@@ -849,7 +839,7 @@ const UsageP = document.getElementById('Usage-P')
             setClicked(true)
             setVisibility(false)
             setHovered3(false)
-            cno=5
+            cno = 5
           }}
           onPointerOver={() => setHovered3(true)}
           onPointerOut={() => setHovered3(false)}
@@ -884,7 +874,7 @@ const UsageP = document.getElementById('Usage-P')
             setClicked(true)
             setVisibility(false)
             setHovered2(false)
-            cno=2
+            cno = 2
           }}
           onPointerOver={() => setHovered2(true)}
           onPointerOut={() => setHovered2(false)}
@@ -920,11 +910,11 @@ const UsageP = document.getElementById('Usage-P')
             document.getElementById('popup').style.display = 'block',
             document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR1/',
             // document.getElementById('dropdown-content').style.display = 'none',
-            document.getElementById('streetview').src = './images/StreetView-01.png',
-            document.getElementById('streetview').style.display = 'block',
+            document.getElementById('StreetView').src = './images/StreetView-01.png',
+            document.getElementById('StreetView').style.display = 'block',
             locationbtn.style.display = 'none',
-            prBtn.style.direction='none',
-            nxtBtn.style.direction='none',
+            prBtn.style.direction = 'none',
+            nxtBtn.style.direction = 'none',
             streetviewUI = true,
             isOpen = true,
             picno = 1
@@ -960,12 +950,12 @@ const UsageP = document.getElementById('Usage-P')
             document.getElementById('popup').style.display = 'block',
             document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR2/',
             // document.getElementById('dropdown-content').style.display = 'none',
-            document.getElementById('streetview').style.display = 'block',
-            document.getElementById('streetview').src = './images/StreetView-02.png',
+            document.getElementById('StreetView').style.display = 'block',
+            document.getElementById('StreetView').src = './images/StreetView-02.png',
             // helpBtn.style.display = 'none',
             locationbtn.style.display = 'none',
-            prBtn.style.direction='none',
-            nxtBtn.style.direction='none',
+            prBtn.style.direction = 'none',
+            nxtBtn.style.direction = 'none',
             streetviewUI = true,
             isOpen = true,
             picno = 2
@@ -1003,12 +993,12 @@ const UsageP = document.getElementById('Usage-P')
             document.getElementById('popup').style.display = 'block',
             document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR3/',
             // document.getElementById('dropdown-content').style.display = 'none',
-            document.getElementById('streetview').style.display = 'block',
-            document.getElementById('streetview').src = './images/StreetView-03.png',
+            document.getElementById('StreetView').style.display = 'block',
+            document.getElementById('StreetView').src = './images/StreetView-03.png',
             // helpBtn.style.display = 'none',
             locationbtn.style.display = 'none',
-            prBtn.style.direction='none',
-            nxtBtn.style.direction='none',
+            prBtn.style.direction = 'none',
+            nxtBtn.style.direction = 'none',
             streetviewUI = true,
             isOpen = true,
             picno = 3

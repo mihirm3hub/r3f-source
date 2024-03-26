@@ -122,11 +122,13 @@ button:focus-visible {
   color: white;
   /* backdrop-filter: blur(2px); */
 }
+
 #clsB {
   position: absolute;
   right: 2vw;
   z-index: 9;
 }
+
 #info-Con {
   background: #80808029;
   backdrop-filter: blur(8px);
@@ -137,10 +139,11 @@ button:focus-visible {
   /* right: 13vw; */
   /* top: 15vh; */
 }
-.tablinks{
+
+.tablinks {
   /* height: 2vh; */
-    border: 1px solid #000;
-    margin-left: 1px;
+  border: 1px solid #000;
+  margin-left: 1px;
 
 }
 
@@ -155,6 +158,7 @@ button:focus-visible {
   height: 5vh;
   z-index: 9;
 }
+
 .tab img {
   background-color: inherit;
   float: left;
@@ -164,30 +168,37 @@ button:focus-visible {
   padding: 16px 20.9px;
   transition: 0.3s;
 }
-.tab img:hover {
+
+/* .tab img:hover {
   background-color: #ddd;
-}
+}*/
+
 .tab img.active {
   background-color: #ccc;
-}
+} 
+
 #viewin3d1 {
   position: absolute;
   left: 12vh;
   top: 38vh;
 }
+
 #viewin3d2 {
   position: absolute;
   left: 12vh;
   top: 38vh;
 }
+
 #viewin3d3 {
   position: absolute;
   left: 12vh;
   top: 38vh;
 }
-#b100{
+
+#b100 {
   position: absolute;
 }
+
 #street {
   top: 14vh;
   width: 100%;
@@ -200,12 +211,13 @@ button:focus-visible {
   align-items: flex-start;
 }
 
-.streets{
+.streets {
   background: #0e0d0d29;
   backdrop-filter: blur(20px);
   height: 38vh;
   border: 2px solid #000;
 }
+
 /* #street1 {
   background: #0e0d0d29;
   backdrop-filter: blur(20px);
@@ -238,23 +250,26 @@ button:focus-visible {
   width: 23vw;
   top: 1vh;
 }
+
 #s2 {
   /* background: #0e0d0d29; */
   /* backdrop-filter: blur(20px); */
   width: 23vw;
   top: 1vh;
 }
+
 #s3 {
   /* background: #0e0d0d29; */
   /* backdrop-filter: blur(20px); */
   width: 23vw;
   top: 1vh;
 }
-#buildingpre1 {
-    position: absolute;
-    width: 100%;
 
-    top: 0vh;
+#buildingpre1 {
+  position: absolute;
+  width: 100%;
+
+  top: 0vh;
 }
 
 
@@ -320,8 +335,8 @@ button:focus-visible {
   background: rgba(83, 81, 81, 0.574);
   -webkit-transition: .4s;
   transition: .4s;
-    height: 8vh;
-    width: 2.7vw;
+  height: 8vh;
+  width: 2.7vw;
 
 }
 
@@ -382,6 +397,7 @@ input:checked+.slider:before {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
+
 body.ios {
   overflow: hidden;
 }
@@ -458,7 +474,8 @@ body.ios {
   right: 5vw;
   top: 5%;
 }
-#prbtn{
+
+#prbtn {
   position: fixed;
   z-index: 12;
   right: 97vw;
@@ -482,6 +499,7 @@ body.ios {
   top: 45%;
   cursor: pointer;
 }
+
 #nxtbtn {
   position: fixed;
   z-index: 12;
@@ -542,23 +560,25 @@ hr.solid {
 .pop-dropdown-content div h4 {
   font-size: 18px;
   font-family: cairo-Bold;
- 
-  
+
+
 }
 
 .pop-dropdown-content div p {
   font-size: 15px;
   font-family: cairo-Regular;
- 
-  
+
+
 
 }
+
 .Title {
   font-size: 14px;
   font-family: cairo-Bold;
   margin: 0;
   line-height: 0%;
 }
+
 .content {
   font-size: 12px;
   font-family: cairo-Regular;
@@ -677,12 +697,20 @@ hr.solid {
     opacity: 0;
   }
 }
+
 #overview-con {
   position: absolute;
-  left: 18vw;
-  top: 26vh;
+  left: 2vw;
+  top: 5vh;
   color: white;
+  display: flex;
+  flex-direction: column-reverse;
+  align-content: center;
+  justify-content: center;
+  width: 40%;
+  height: 80%;
 }
+
 #buildpre {
   position: absolute;
   color: white;
@@ -690,6 +718,7 @@ hr.solid {
   /* line-height: 0%; */
   top: 44vh;
 }
+
 /* #btitle
 {
  
@@ -784,9 +813,21 @@ hr.solid {
   transform: translateX(-50%);
   z-index: 999;
 }
-#infodivRoot{
+
+#infodivRoot {
   top: 1vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-around;
+  align-items: center;
 }
+
+#infodivRoot div {
+  width: 50%;
+}
+
 @media all and (max-width: 1023px) {
   .scroll-control {
     display: none;
@@ -839,30 +880,36 @@ hr.solid {
     line-height: 20px;
     position: absolute;
   }
+
   #buildpre {
     position: absolute;
     color: white;
     left: 11vw;
     /* line-height: 0%; */
     top: 17vh;
-}
-.Title {
-  font-size: 14px;
-  font-family: cairo-Bold;
-  margin: 0;
-  line-height: 0%;
-}
-.content {
-  font-size: 12px;
-  font-family: cairo-Regular;
-}
-#btitle{
-  font-size: 18px;
-}
-#Bname {
-  font-size: 18px;
-  margin-top: 5px;
-}
+  }
+
+  .Title {
+    font-size: 14px;
+    font-family: cairo-Bold;
+    margin: 0;
+    line-height: 0%;
+  }
+
+  .content {
+    font-size: 12px;
+    font-family: cairo-Regular;
+  }
+
+  #btitle {
+    font-size: 18px;
+  }
+
+  #Bname {
+    font-size: 18px;
+    margin-top: 5px;
+  }
+
   #LoaderMainHeader {
     top: 12vh;
     width: 364px;
@@ -883,20 +930,23 @@ hr.solid {
     left: 20.5vw;
     margin-top: 1%;
   }
-  #viewin3dS{
-    
-      position: absolute;
-      left: 46vw;
-      top: 63vh;
-  
+
+  #viewin3dS {
+
+    position: absolute;
+    left: 46vw;
+    top: 63vh;
+
   }
+
   #overlay {
     position: absolute;
     object-fit: contain;
     width: 50vw;
     left: 24vw;
     top: 10vh;
-}
+  }
+
   #scrolltocon {
     content: url('../../images/swipeToContinue.png');
     left: 20.5vw;
@@ -928,6 +978,7 @@ hr.solid {
     width: 18vw;
     left: 2vw;
   }
+
   .tab {
     display: flex;
     width: 80vw;
@@ -940,95 +991,114 @@ hr.solid {
     align-content: center;
     justify-content: space-around;
     align-items: center;
-}
-.tab.ios {
-  display: flex;
-  width: 80vw;
-  left: 18vw;
-  top: 86%;
-  height: 13.5vh;
-  position: fixed;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-content: center;
-  justify-content: space-around;
-  align-items: center;
-}
+  }
 
-.tablinks{
-  
-  margin-left:1px;
-}
-#locationpre {
-  /* width: 44vw; */
-  height: 60vh;
-  top: 11.5vh;
-}
-#buildingpre1 {
-  width: 100%;
-  top: 7vh;
-  object-fit: contain;
-}
-#buildingpre1.ios {
-  width: 100%;
-  top: 11vh;
-  object-fit: contain;
-}
-#info-Con {
-  top: 1vh;
-  height: 117%;
-}
-#viewin3d1{
-  left: 3vw;
-}
-#viewin3d2{
-  left: 3vw;
-}
-#viewin3d3{
-  left: 3vw;
-}
-#street1 {
-  top: 1vh;
-  height: 59vh;
-}
-#street2 {
-  top: 1vh;
-  left: 20.5vw;
-  height: 59vh;
-}
-#street3 {
-  top: 1vh;
-  height: 59vh;
-  left: 47vw;
-}
-#s1 {
-  width: 24vw;
-}
-#s2 {
-  width: 24vw;
-}
-#s3 {
-  width: 24vw;
-}
-#closeB {
-  top: 3vh;
-  left: 81vw;
-}
-#dropdown {
-  /* width: 18vw; */
-  left: 1vw;
-  bottom: 3vh;
- 
-}
-#prbtn {
-  left: 0vw;
-}
+  .tab.ios {
+    display: flex;
+    width: 80vw;
+    left: 18vw;
+    top: 86%;
+    height: 13.5vh;
+    position: fixed;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .tablinks {
+
+    margin-left: 1px;
+  }
+
+  #locationpre {
+    /* width: 44vw; */
+    height: 60vh;
+    top: 11.5vh;
+  }
+
+  #buildingpre1 {
+    width: 100%;
+    top: 7vh;
+    object-fit: contain;
+  }
+
+  #buildingpre1.ios {
+    width: 100%;
+    top: 11vh;
+    object-fit: contain;
+  }
+
+  #info-Con {
+    top: 1vh;
+    height: 117%;
+  }
+
+  #viewin3d1 {
+    left: 3vw;
+  }
+
+  #viewin3d2 {
+    left: 3vw;
+  }
+
+  #viewin3d3 {
+    left: 3vw;
+  }
+
+  #street1 {
+    top: 1vh;
+    height: 59vh;
+  }
+
+  #street2 {
+    top: 1vh;
+    left: 20.5vw;
+    height: 59vh;
+  }
+
+  #street3 {
+    top: 1vh;
+    height: 59vh;
+    left: 47vw;
+  }
+
+  #s1 {
+    width: 24vw;
+  }
+
+  #s2 {
+    width: 24vw;
+  }
+
+  #s3 {
+    width: 24vw;
+  }
+
+  #closeB {
+    top: 3vh;
+    left: 81vw;
+  }
+
+  #dropdown {
+    /* width: 18vw; */
+    left: 1vw;
+    bottom: 3vh;
+
+  }
+
+  #prbtn {
+    left: 0vw;
+  }
+
   #bottombar {
     bottom: 1%;
     position: fixed;
     right: 3vw;
     height: 95%;
   }
+
   #instructionImg {
     content: url('../../images/tutorialOverlayMobile.png');
   }
@@ -1039,8 +1109,9 @@ hr.solid {
   } */
 
   .pop-dropdown-content div h4 {
-    font-size: 8px;
+    font-size: 11px;
     margin-top: -3%;
+    line-height: 15px;
   }
 
   #cbtn {
@@ -1048,9 +1119,17 @@ hr.solid {
   }
 
   .pop-dropdown-content div p {
-    font-size: 6px;
-    margin-top: -6%;
-    line-height: 16px;
+    font-size: 10px;
+    margin-top: -10%;
+    line-height: 15px;
+  }
+
+
+  #overviewBg {
+    position: absolute;
+    top: 8vh;
+    width: 100vw;
+    object-fit: contain;
   }
 
   #locationbtn {
@@ -1071,12 +1150,12 @@ hr.solid {
     width: 10vw;
     left: -2.5vw;
     bottom: 5.8vh;
-}
+  }
 
   .slider {
     width: 5vw;
     height: 17vh;
-}
+  }
 
   #helpBtn {
     width: 4vw;
@@ -1091,6 +1170,19 @@ hr.solid {
   .nextbtn {
     top: 67vh;
   }
+
+  #bnmtitle {
+    font-size: 19px;
+    margin: 0;
+    line-height: 25px;
+  }
+
+  #bname {
+    font-size: 13px;
+    margin: 0;
+    line-height: 18px;
+  }
+
 }
 
 /* Tablet Potrait */
