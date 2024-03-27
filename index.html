@@ -56,8 +56,8 @@
   <section id="rootUI" style="display: none;">
     <!-- <img id="helpBtn" src="./images/HELP_BUTT.png" onmouseover="this.src=`./images/HELP_BUTT_Hover.png`"
       onmouseout="this.src=`./images/HELP_BUTT.png`" style="object-fit: contain;" /> -->
-    <div id="bottombar">
-      <img id="locationbtn" class="bottombtn" src="./images/INFO_BUTT.png" style="object-fit: contain;" />
+    <div id="bottombar" style="display: none;">
+      <img id="locationbtn" class="bottombtn" src="./images/Info_Menu.png" style="object-fit: contain;" />
 
 
 
@@ -85,6 +85,7 @@
 
         <img class="tablinks" id="Location" src="./images/Location.png" />
 
+  
         <img class="tablinks" id="Buildings" src="./images/Buildings.png" />
 
         <img class="tablinks" id="StreetView" src="./images/StreetView.png" />
@@ -93,21 +94,43 @@
       <div id="street">
         <div id="street1" class="streets">
           <img id="s1" src="./images/StreetView-01.png" />
+          <img id="SPre1" class="sPre" src="./images/Street_Pre1.png"/>
           <img id="viewin3d1" src="./images/FULLSCREEN_BUTT.png" />
         </div>
         <div id="street2" class="streets">
           <img id="s2" src="./images/StreetView-02.png" />
+          <img id="SPre2" class="sPre" src="./images/Street_Pre2.png"/>
           <img id="viewin3d2" src="./images/FULLSCREEN_BUTT.png" />
 
         </div>
         <div id="street3" class="streets">
           <img id="s3" src="./images/StreetView-03.png" />
+          <img id="SPre3" class="sPre" src="./images/Street_Pre3.png"/>
+
           <img id="viewin3d3" src="./images/FULLSCREEN_BUTT.png" />
 
         </div>
       </div>
       <div>
         <img id="locationpre" src="./images/preLocation.png" />
+        <div id="locationpre_text">
+          <h2 id="accessibility">Accessibility</h2>
+            <p class="previewL"> The Chakan V park is 20 km away<br>
+              from Mumbai-Pune Expressway<br>
+              and offers good connectivity to <br>
+              NH4 Mumbai-Pune National<br>
+              Highway,Pune-Nashik Highway & <br>
+              Pune Ahmednagar Aurangabad<br>
+              Highway.it also has great Access<br>
+              to neighbouring industrial areas like<br>
+              Ranjangaon,Telegaon.
+            </p>
+            <p class="previewL" style="margin-top: 5%;"> It is also wll connected to Pune<br>
+              city,airport and railway station,<br>
+              Chinchwad railway station and<br>
+              JNPT via multi-model transport.
+            </p>
+        </div>
       </div>
       <div>
         <img id="buildingpre1" src="./images/preB100.png" />
@@ -118,15 +141,16 @@
     <div>
       <img id="viewin3dS" src="./images/FULLSCREEN_BUTT.png" />
     </div>
+  
 
 
 
 
-    <!-- <div>
-      <img id="closeB" src="./images/Close.png" />
-    </div> -->
     <div>
-      <img id="cbtn" src="./images/Close.png" alt="Close Button" />
+      <img id="hotspotClose" src="./images/Close.png" />
+    </div>
+    <div>
+      <img id="cbtn" src="./images/BACK_BUTT.png" alt="Close Button" />
     </div>
 
     <img id="prbtn" src="./images/PREVIOUS_BUTT.png" />
@@ -209,10 +233,10 @@
 
 
   <div id="popup">
-    <img class="close" src="./images/Close.png" />
-    <img class="prebtn" src="./images/PREVIOUS_BUTT.png" onclick="this.src=`./images/PreviousHoverBtn.png`"
+    <img class="close" src="./images/BACK_BUTT.png" />
+    <img class="prebtn" id="3dprebtn" src="./images/PREVIOUS_BUTT.png" onclick="this.src=`./images/PreviousHoverBtn.png`"
       style="object-fit: contain;" />
-    <img class="nextbtn" src="./images/NEXT_BUTT.png" onclick="this.src=`./images/NextHoverBtn.png`"
+    <img class="nextbtn" id="3dnextbtn" src="./images/NEXT_BUTT.png" onclick="this.src=`./images/NextHoverBtn.png`"
       style="object-fit: contain;" />
     <iframe id="popupiframe" allow="xr-spatial-tracking"></iframe>
   </div>
@@ -252,7 +276,6 @@
         document.getElementById("fixedChakanLogo").style.display = 'none'
 
         document.getElementById('InstructionSection').style.display = 'none'
-        document.getElementById('bottombar').style.display = 'flex'
         document.getElementById('dropdown').style.display = 'block'
         document.getElementById('rootUI').style.display = 'block'
         isInstructionCall = false
@@ -278,6 +301,9 @@
           document.getElementById('rootUI').style.top = '0vh'
           isInstructionCall = true
           instructionFade()
+          document.getElementById('bottombar').style.display = 'flex'
+
+
         }
       })
     }
@@ -292,6 +318,9 @@
             document.getElementById('rootUI').style.top = '0vh'
             isInstructionCall = true
             instructionFade()
+            document.getElementById('bottombar').style.display = 'flex'
+
+
             console.log('instructionSection None')
           } else {
             document.getElementById('LoaderSection').style.display = 'none'

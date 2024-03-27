@@ -129,6 +129,14 @@ button:focus-visible {
   z-index: 9;
 }
 
+#SPre1 {
+  position: absolute;
+  object-fit: cover;
+  left: 0vh;
+  width: 24vw;
+  height: 47vh;
+  top: 12vh;
+}
 #info-Con {
   background: #80808029;
   backdrop-filter: blur(8px);
@@ -148,16 +156,23 @@ button:focus-visible {
 }
 
 .tab {
+  display: flex;
+  width: 80vw;
+  left: 18vw;
+  top: 87%;
+  height: 13.5vh;
+  position: fixed;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-around;
+  align-items: center;
   overflow: hidden;
   background: #0606066b;
-  /* backdrop-filter: blur(20px); */
-  position: relative;
-  top: 95vh;
-  left: 45.25vw;
-  width: 34.9vw;
-  height: 5vh;
-  z-index: 9;
+  z-index: 10;
 }
+
+
 
 .tab img {
   background-color: inherit;
@@ -210,7 +225,15 @@ button:focus-visible {
   justify-content: space-evenly;
   align-items: flex-start;
 }
-
+#locationpre_text {
+  color: white;
+  position: absolute;
+  left: 3vw;
+  top: 6vh;
+}
+pre{
+  font-size: 3px;
+}
 .streets {
   background: #0e0d0d29;
   backdrop-filter: blur(20px);
@@ -280,10 +303,11 @@ button:focus-visible {
 } */
 #locationpre {
   position: absolute;
+  object-fit: contain;
   left: 0vw;
-  top: 0vh;
-  width: 100%;
-  height: 65vh;
+  top: 6vh;
+  /* width: 100vw; */
+  height: 80vh;
 }
 
 #bottombar {
@@ -467,6 +491,14 @@ body.ios {
   top: 5%;
   border-radius: 50%;
 }
+#hotspotClose{
+
+  right: 5%;
+  width: 3%;
+  position: absolute;
+  top: 5%;
+  border-radius: 50%;
+}
 
 .close {
   position: fixed;
@@ -479,7 +511,7 @@ body.ios {
   position: fixed;
   z-index: 12;
   right: 97vw;
-  top: 45%;
+  top: 37vh;
   cursor: pointer;
   display: none;
 }
@@ -701,7 +733,7 @@ hr.solid {
 #overview-con {
   position: absolute;
   left: 2vw;
-  top: 5vh;
+  top: 13vh;
   color: white;
   display: flex;
   flex-direction: column-reverse;
@@ -970,8 +1002,7 @@ hr.solid {
 
   #fixedChakanLogo {
     left: 1vw;
-    bottom: 4vh;
-
+    top: 85%;
   }
 
   #loaderChakanLogo {
@@ -983,7 +1014,7 @@ hr.solid {
     display: flex;
     width: 80vw;
     left: 18vw;
-    top: 86%;
+    top: 88%;
     height: 13.5vh;
     position: fixed;
     flex-direction: row;
@@ -997,9 +1028,9 @@ hr.solid {
     display: flex;
     width: 80vw;
     left: 18vw;
-    top: 86%;
+    top: 60%;
     height: 13.5vh;
-    position: fixed;
+    position: absolute;
     flex-direction: row;
     flex-wrap: nowrap;
     align-content: center;
@@ -1012,12 +1043,13 @@ hr.solid {
     margin-left: 1px;
   }
 
-  #locationpre {
-    /* width: 44vw; */
-    height: 60vh;
-    top: 11.5vh;
-  }
-
+  #prbtn {
+    left: 0vw;
+    top: 42vh;
+}
+#nxtbtn {
+  top: 42vh;
+}
   #buildingpre1 {
     width: 100%;
     top: 7vh;
@@ -1082,9 +1114,9 @@ hr.solid {
   }
 
   #dropdown {
-    /* width: 18vw; */
+    /* width: 16vw; */
     left: 1vw;
-    bottom: 3vh;
+   top: 85%;
 
   }
 
@@ -1092,6 +1124,113 @@ hr.solid {
     left: 0vw;
   }
 
+.tablinks{
+  
+  margin-left:1px;
+}
+#locationpre {
+  position: absolute;
+  object-fit: cover;
+  left: 0vw;
+  top: 6vh;
+  width: 100%;
+  /* height: 65vh; */
+}
+#buildingpre1 {
+  width: 100%;
+  top: 7vh;
+  object-fit: contain;
+}
+#buildingpre1.ios {
+  width: 100%;
+  top: 11vh;
+  object-fit: contain;
+}
+#info-Con {
+  top: 1vh;
+  height: 117%;
+}
+#viewin3d1{
+  left: 3vw;
+}
+#viewin3d2{
+  left: 3vw;
+}
+#viewin3d3{
+  left: 3vw;
+}
+#street1 {
+  top: 1vh;
+  height: 59vh;
+}
+#street2 {
+  top: 1vh;
+  left: 20.5vw;
+  height: 59vh;
+}
+#street3 {
+  top: 1vh;
+  height: 59vh;
+  left: 47vw;
+}
+#s1 {
+  width: 24vw;
+}
+#s2 {
+  width: 24vw;
+}
+#s3 {
+  width: 24vw;
+}
+.sPre {
+  position: absolute;
+  display: flex;
+  object-fit: cover;
+  width: 24vw;
+  height: 47vh;
+  top: 12vh;
+}
+   #locationpre_text {
+    /* color: white; */
+    /* position: absolute; */
+    left: 2vw;
+    top: 6vh;
+  }
+/* #SPre3{
+  position: absolute;
+  object-fit: cover;
+  width: 24vw;
+  height: 47vh;
+  top: 12vh;
+}  */
+.previewL {
+  font-size: 14px;
+  font-family: cairo-Regular;
+  line-height: 15px;
+  margin: 0;
+}
+#accessibility{
+  font-size: 19px;
+  font-family: cairo-Bold;
+  margin-top: 1%;
+  margin: 0;
+}
+
+#closeB {
+  top: 3vh;
+  left: 81vw;
+}
+
+
+#dropdown {
+  /* width: 18vw; */
+  left: 1vw;
+  bottom: 3vh;
+ 
+}
+#prbtn {
+  left: 0vw;
+}
   #bottombar {
     bottom: 1%;
     position: fixed;
@@ -1115,6 +1254,9 @@ hr.solid {
   }
 
   #cbtn {
+    width: 5vw;
+  }
+  #hotspotClose{
     width: 5vw;
   }
 
@@ -1162,9 +1304,9 @@ hr.solid {
     left: 91vw;
   }
 
-  .prebtn {
-    left: 0vw;
+  .prebtn{
     top: 67vh;
+    left: 0vw;
   }
 
   .nextbtn {

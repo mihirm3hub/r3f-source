@@ -21,7 +21,11 @@ let xdrag = 1000
 let ydrag
 let isOpen = false;
 let isClosed = true
+let isInfo=false
 let scrollValue
+let cno = 1;
+
+let isClickAdded = false
 
 const overlay = document.getElementById('overlay')
 const viewin3dS = document.getElementById('viewin3dS')
@@ -38,18 +42,29 @@ const prBtn = document.getElementById('prbtn')
 const nxtBtn = document.getElementById('nxtbtn')
 const buildpre = document.getElementById('buildpre')
 const tablinks = document.querySelectorAll('.tablinks');
+const overviewBg = document.getElementById('overviewBg')
+
+const prBtn3d = document.getElementById('3dprebtn')
+const nxtBtn3d = document.getElementById('3dnextbtn')
+const closeBtn = document.getElementById('cbtn')
+const hotspotClose = document.getElementById('hotspotClose')
+
+const popupIframe = document.getElementById("popupiframe");
+let picno = 1;
 
 // const b100 = document.getElementById('b100')
 
 //  const intrusctrion=document.getElementById('instructionOverlay')
 buildpre.style.display = 'none'
-prBtn.style.display = 'none'
-nxtBtn.style.display = 'none'
+// prBtn.style.display = 'none'
+// nxtBtn.style.display = 'none'
 buildingpre1.style.display = 'none'
 street.style.display = 'none'
 infoCon.style.display = 'none';
 viewin3dS.style.display = 'none'
 overlay.style.display = 'none'
+locationpre_text.style.display = 'none'
+hotspotClose.style.display='none'
 
 // b100.style.display='none'
 dropdownContent.style.display = 'none';
@@ -65,11 +80,14 @@ const tabSwitch = (tabId) => {
   locationPre.style.display = 'none'
   viewin3dS.style.display = 'none'
   overlay.style.display = 'none'
+  locationpre_text.style.display = 'none'
+  overviewBg.style.display = 'none'
 
   switch (tabId) {
     case 'Overview':
       isOverview = !isOverview
       dropdownContent.style.display = isOverview ? 'flex' : 'none';
+      overviewBg.style.display = isOverview ? 'block' : 'none';
       streetviewUI = false;
       islocation = false;
       isbuilding = false
@@ -77,7 +95,8 @@ const tabSwitch = (tabId) => {
       break;
     case 'Location':
       islocation = !islocation
-      locationPre.style.display = islocation ? 'block' : 'none';
+      locationPre.style.display = islocation ? 'block' : 'none'
+      locationpre_text.style.display = islocation ? 'block' : 'none'
       isOverview = false
       streetviewUI = false;
       isbuilding = false
@@ -103,10 +122,10 @@ const tabSwitch = (tabId) => {
       isbuilding = !isbuilding;
       meshname = 'B100'
       buildpre.style.display = isbuilding ? 'block' : 'none';
-      buildingpre1.style.display = 'block';
-      viewin3dS.style.display = 'block'
-      prBtn.style.display = 'block'
-      nxtBtn.style.display = 'block'
+      buildingpre1.style.display = isbuilding ? 'block' : 'none';
+      viewin3dS.style.display = isbuilding ? 'block' : 'none';
+      prBtn.style.display = isbuilding ? 'block' : 'none';
+      nxtBtn.style.display = isbuilding ? 'block' : 'none';
 
       isOverview = false;
       islocation = false;
@@ -156,18 +175,24 @@ tablinks.forEach(tab => {
 //   // intrusctrion.style.display = 'none'
 
 // })
+
 document.getElementById('clsB').addEventListener('click', (e) => {
-  isOpen = false
+  isInfo = false
   document.getElementById('bottombar').style.display = 'flex'
   tabSwitch('Close')
+  infoCon.style.display = 'none'
 })
 
 document.getElementById('locationbtn').addEventListener('click', (e) => {
 
   dropdownContent.style.display = 'flex'
 
-  infoCon.style.display = !isOpen ? 'block' : 'none';
-  isOpen = !isOpen;
+  infoCon.style.display = !isInfo ? 'block' : 'none';
+  hotspotClose.style.display='none'
+  removetabLinksClass()
+document.getElementById('Overview').classList.add('active')  
+overviewBg.style.display = 'block'
+isInfo = !isInfo;
 })
 
 
@@ -206,6 +231,14 @@ export function Model(props) {
   const { actions, mixer } = useAnimations(animations, group);
   const scroll = useScroll();
 
+  const perspectiveCam = useRef();
+  const maincam1 = useRef()
+  const [clicked, setClicked] = useState(false)
+  const [ishotspotVisible, setVisibility] = useState(true)
+  const toggleVisibility = () => {
+    setVisibility(!ishotspotVisible);
+  };
+
   const hotspottex = useLoader(TextureLoader, './images/2024.01.29_ICON_HOTSPOT_BUTT.UNZOOM-43.png');
   const hotspottexHovered = useLoader(TextureLoader, './images/B100.png');
   const hotspottexHovered1 = useLoader(TextureLoader, './images/B200.png');
@@ -229,11 +262,9 @@ export function Model(props) {
   let cameraSpeed = 0.5
   document.getElementsByClassName('close')[0].addEventListener('click', (ev) => {
     document.getElementById('popup').style.display = 'none'
-    document.getElementById('StreetView').style.display = 'none'
     document.getElementById('popupdarkbg').style.display = 'none'
     // document.getElementById('helpBtn').style.display = 'block'
     document.getElementById('locationbtn').style.display = 'block'
-    streetviewUI = false
     isOpen = false
   })
 
@@ -504,70 +535,87 @@ export function Model(props) {
     }
 
 
-    document.getElementById('bottombar').style.display = 'none'
+    // document.getElementById('bottombar').style.display = 'none'
+  }
+
+  if (!isClickAdded) {
+    isClickAdded = true
+    prBtn.addEventListener("click", () => {
+      cno -= 1;
+      if (cno == 0) {
+        cno = 5;
+      }
+      meshname = `B${cno}00`
+      setCameraPosRot(meshname)
+
+    });
+
+    nxtBtn.addEventListener("click", () => {
+      cno += 1
+      console.log(cno);
+      if (cno == 6) {
+        cno = 1
+      }
+      meshname = `B${cno}00`
+      setCameraPosRot(meshname)
+    });
+    closeBtn.addEventListener('click', () => {
+      // document.getElementById('helpBtn').style.display = 'block'
+      prBtn.style.display='block'
+      nxtBtn.style.display='block'
+      hotspotClose.style.display='none'
+      closeBtn.style.display = 'none'
+      infoCon.style.display = 'block'
+      viewin3dS.style.display = 'block'
+      buildpre.style.display = 'block'
+      runOnce = false
+      meshname = 'Default'
+      setClicked(false)
+      isClosed = true
+      setVisibility(true)
+      setCameraPosRot(meshname)
+      // document.getElementById('dropdown-content').style.display = 'none'
+      // document.getElementById('sidebar').src = './images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png'
+      // document.getElementById('bottombar').style.display = 'flex'
+  
+      // locationbtn.style.display = 'block'
+   
+    })
+    hotspotClose.addEventListener( 'click',(e)=>{  
+      hotspotClose.style.display = 'none'
+      document.getElementById('bottombar').style.display = 'flex'
+      runOnce = false
+      meshname = 'Default'
+      setClicked(false)
+      isClosed = true
+      setVisibility(true)
+      setCameraPosRot(meshname)
+    
+    })
   }
 
 
-  let cno = 1;
-  const pBtn = document.querySelector('#prbtn');
-  pBtn.addEventListener("click", () => {
-    cno -= 1;
-    if (cno == 0) {
-      cno = 5;
-    }
-    meshname = `B${cno}00`
-    setCameraPosRot(meshname)
 
-  });
-
-  const nBtn = document.querySelector('#nxtbtn');
-
-  nBtn.addEventListener("click", () => {
-    cno += 1
-    if (cno == 6) {
-      cno = 1
-    }
-    meshname = `B${cno}00`
-    setCameraPosRot(meshname)
-  });
-
-
-
-
-
-  document.getElementById('bottombar').style.display = 'flex'
-
-  const closeBtn = document.getElementById('cbtn')
-  const preBtn = document.querySelector('.prebtn')
-  const popupIframe = document.getElementById("popupiframe");
-  let picno = 1;
-  const nextBtn = document.querySelector('.nextbtn');
-  nextBtn.addEventListener("click", event => {
+  nxtBtn3d.addEventListener("click", event => {
     picno += 1;
     if (picno == 4) {
       picno = 1;
     }
     popupIframe.src = `https://equanimoustech.com/Sagar/IndoSpace1/VR${picno}/`
-    document.getElementById('StreetView').src = `./images/StreetView-0${picno}.png`
+    // document.getElementById('StreetView').src = `./images/StreetView-0${picno}.png`
 
   });
 
-  preBtn.addEventListener("click", event => {
+  prBtn3d.addEventListener("click", event => {
     picno -= 1;
     if (picno == 0) {
       picno = 3;
     }
     popupIframe.src = `https://equanimoustech.com/Sagar/IndoSpace1/VR${picno}/`
-    document.getElementById('StreetView').src = `./images/StreetView-0${picno}.png`
+    // document.getElementById('StreetView').src = `./images/StreetView-0${picno}.png`
   });
 
-  const perspectiveCam = useRef();
-  const maincam1 = useRef()
-  const [clicked, setClicked] = useState(false)
-  const [ishotspotVisible, setVisibility] = useState(true)
-  const toggleVisibility = () => {
-    setVisibility(!ishotspotVisible);
-  };
+
   document.getElementById('amenitySwitch').addEventListener('click', toggleVisibility)
 
 
@@ -578,77 +626,17 @@ export function Model(props) {
     infoCon.style.display = 'none'
     viewin3dS.style.display = 'none'
     buildpre.style.display = 'none'
+    closeBtn.style.display='block'
+    hotspotClose.style.display='none'
+    
 
     document.getElementById('bottombar').style.display = 'none'
 
-    // console.log('click');
+    console.log('3d click');
 
 
   })
-  let islocation = false
-  // let isHelp = false
-  closeBtn.addEventListener('click', () => {
-    // document.getElementById('helpBtn').style.display = 'block'
-    closeBtn.style.display = 'none'
-    infoCon.style.display = 'block'
-    viewin3dS.style.display = 'block'
-    buildpre.style.display = 'block'
-    runOnce = false
-    meshname = 'Default'
-    setClicked(false)
-    isClosed = true
-    setVisibility(true)
-    setCameraPosRot(meshname)
-    // document.getElementById('dropdown-content').style.display = 'none'
-    // document.getElementById('sidebar').src = './images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png'
-    // document.getElementById('bottombar').style.display = 'flex'
-
-    // locationbtn.style.display = 'block'
-    prBtn.style.display = 'block'
-    nxtBtn.style.display = 'block'
-
-
-  })
-
-  // helpBtn.addEventListener('click', () => {
-  //   if (!isHelp) {
-  //     helpBtn.style.zIndex = '100';
-  //     helpBtn.src = './images/Close.png';
-  //     helpBtn.setAttribute('onmouseover', '')
-  //     helpBtn.setAttribute('onmouseout', '')
-  //     document.getElementById('instructionOverlay').style.display = 'flex'
-  //     isHelp = true
-  //   }
-  //   else {
-  //     isHelp = false
-  //     helpBtn.style.zIndex = '100';
-  //     helpBtn.src = './images/HELP_BUTT.png'
-  //     helpBtn.setAttribute('onmouseover', 'this.src=`./images/HELP_BUTT_Hover.png`')
-  //     helpBtn.setAttribute('onmouseout', 'this.src=`./images/HELP_BUTT.png`')
-  //     document.getElementById('instructionOverlay').style.display = 'none'
-  //   }
-  // })
-
-  // const locationbtn = document.getElementById('locationbtn')
-  // const infoCon = document.getElementById('info-Con')
-  // locationbtn.addEventListener('click', () => {
-  //   if (!islocation) {
-  //     infoCon.style.zIndex = '9';
-  //     // locationbtn.src = './images/Close.png';
-  //     // locationbtn.setAttribute('onmouseover', '')
-  //     // locationbtn.setAttribute('onmouseout', '')
-  //     document.getElementById('instructionOverlay').style.display = 'flex'
-  //     islocation = true
-  //   }
-  //   else {
-  //     islocation = false
-  //     bottombar.style.zIndex = '3';
-  //     // locationbtn.src = '/images/HELP_BUTT.png'
-  //     // locationbtn.setAttribute('onmouseover', 'this.src=`./images/HELP_BUTT_Hover.png`')
-  //     // locationbtn.setAttribute('onmouseout', 'this.src=`./images/HELP_BUTT.png`')
-  //     document.getElementById('instructionOverlay').style.display = 'none'
-  //   }
-  // })
+ 
 
   useFrame(state => {
     // console.log('RunOnce - ', runOnce, 'isClosed - ', isClosed, 'isClicked', clicked, 'isDragging', isDragging);
@@ -656,11 +644,9 @@ export function Model(props) {
       runOnce = false
       document.getElementById('overview-con').style.display = 'none'
       document.getElementById('bottombar').style.display = 'flex'
-      closeBtn.style.display = 'none'
-      prBtn.style.display = 'none'
-      nxtBtn.style.display = 'none'
-
-
+      hotspotClose.style.display = 'none'
+      // prBtn3d.style.display = 'none'
+      // nxtBtn3d.style.display = 'none'
     }
     if (clicked && !runOnce) {
       actions["MainCameraAltActionClip"].timeScale = 0
@@ -670,10 +656,10 @@ export function Model(props) {
       state.camera.updateProjectionMatrix()
       runOnce = true
       isClosed = false
-      closeBtn.style.display = 'block'
+      hotspotClose.style.display = 'block'
       isDragging = false
-      prBtn.style.display = 'block'
-      nxtBtn.style.display = 'block'
+      // prBtn.style.display = 'block'
+      // nxtBtn.style.display = 'block'
     }
 
     else if (!clicked) {
@@ -744,6 +730,9 @@ export function Model(props) {
             setVisibility(false);
             setHovered5(false)
             cno = 3
+            document.getElementById('bottombar').style.display = 'none'
+
+            
           }}
 
           onPointerOver={() => setHovered5(true)}
@@ -772,6 +761,7 @@ export function Model(props) {
             setClicked(true)
             setVisibility(false)
             setHovered1(false)
+                document.getElementById('bottombar').style.display = 'none'
             cno = 1
           }}
           onPointerOver={() =>
@@ -808,6 +798,8 @@ export function Model(props) {
             setVisibility(false)
             setHovered4(false)
             cno = 4
+            document.getElementById('bottombar').style.display = 'none'
+
           }}
           onPointerOver={() => setHovered4(true)}
           onPointerOut={() => setHovered4(false)}
@@ -840,6 +832,8 @@ export function Model(props) {
             setVisibility(false)
             setHovered3(false)
             cno = 5
+            document.getElementById('bottombar').style.display = 'none'
+
           }}
           onPointerOver={() => setHovered3(true)}
           onPointerOut={() => setHovered3(false)}
@@ -875,6 +869,8 @@ export function Model(props) {
             setVisibility(false)
             setHovered2(false)
             cno = 2
+            document.getElementById('bottombar').style.display = 'none'
+
           }}
           onPointerOver={() => setHovered2(true)}
           onPointerOut={() => setHovered2(false)}
@@ -913,8 +909,11 @@ export function Model(props) {
             document.getElementById('StreetView').src = './images/StreetView-01.png',
             document.getElementById('StreetView').style.display = 'block',
             locationbtn.style.display = 'none',
-            prBtn.style.direction = 'none',
-            nxtBtn.style.direction = 'none',
+            nxtBtn.style.display = 'none',            
+            prBtn.style.display = 'none',           
+            
+            prBtn3d.style.display = 'block',
+            nxtBtn3d.style.display = 'block',
             streetviewUI = true,
             isOpen = true,
             picno = 1
@@ -954,8 +953,11 @@ export function Model(props) {
             document.getElementById('StreetView').src = './images/StreetView-02.png',
             // helpBtn.style.display = 'none',
             locationbtn.style.display = 'none',
-            prBtn.style.direction = 'none',
-            nxtBtn.style.direction = 'none',
+            nxtBtn.style.display = 'none',            
+            prBtn.style.display = 'none',           
+            
+            prBtn3d.style.display = 'block',
+            nxtBtn3d.style.display = 'block',
             streetviewUI = true,
             isOpen = true,
             picno = 2
@@ -997,8 +999,11 @@ export function Model(props) {
             document.getElementById('StreetView').src = './images/StreetView-03.png',
             // helpBtn.style.display = 'none',
             locationbtn.style.display = 'none',
-            prBtn.style.direction = 'none',
-            nxtBtn.style.direction = 'none',
+            nxtBtn.style.display = 'none',            
+            prBtn.style.display = 'none',           
+            
+            prBtn3d.style.display = 'block',
+            nxtBtn3d.style.display = 'block',
             streetviewUI = true,
             isOpen = true,
             picno = 3
