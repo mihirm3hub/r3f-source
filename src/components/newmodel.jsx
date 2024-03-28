@@ -643,7 +643,7 @@ export function Model(props) {
     if (runOnce == true && isClosed == false && clicked == false) {
       runOnce = false
       document.getElementById('overview-con').style.display = 'none'
-      document.getElementById('bottombar').style.display = 'flex'
+      // document.getElementById('bottombar').style.display = 'flex'
       hotspotClose.style.display = 'none'
       // prBtn3d.style.display = 'none'
       // nxtBtn3d.style.display = 'none'

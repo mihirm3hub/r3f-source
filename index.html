@@ -85,7 +85,7 @@
 
         <img class="tablinks" id="Location" src="./images/Location.png" />
 
-  
+
         <img class="tablinks" id="Buildings" src="./images/Buildings.png" />
 
         <img class="tablinks" id="StreetView" src="./images/StreetView.png" />
@@ -93,21 +93,20 @@
       </div>
       <div id="street">
         <div id="street1" class="streets">
-          <img id="s1" src="./images/StreetView-01.png" />
-          <img id="SPre1" class="sPre" src="./images/Street_Pre1.png"/>
-          <img id="viewin3d1" src="./images/FULLSCREEN_BUTT.png" />
+          <img class="streetTitle" id="s1" src="./images/StreetView-01.png" />
+          <img id="SPre1" class="sPre" src="./images/Street_Pre1.png" />
+          <img class="viewin3dBtn" id="viewin3d1" src="./images/FULLSCREEN_BUTT.png" />
         </div>
         <div id="street2" class="streets">
-          <img id="s2" src="./images/StreetView-02.png" />
-          <img id="SPre2" class="sPre" src="./images/Street_Pre2.png"/>
-          <img id="viewin3d2" src="./images/FULLSCREEN_BUTT.png" />
+          <img class="streetTitle" id="s2" src="./images/StreetView-02.png" />
+          <img id="SPre2" class="sPre" src="./images/Street_Pre2.png" />
+          <img class="viewin3dBtn" id="viewin3d2" src="./images/FULLSCREEN_BUTT.png" />
 
         </div>
         <div id="street3" class="streets">
-          <img id="s3" src="./images/StreetView-03.png" />
-          <img id="SPre3" class="sPre" src="./images/Street_Pre3.png"/>
-
-          <img id="viewin3d3" src="./images/FULLSCREEN_BUTT.png" />
+          <img class="streetTitle" id="s3" src="./images/StreetView-03.png" />
+          <img id="SPre3" class="sPre" src="./images/Street_Pre3.png" />
+          <img class="viewin3dBtn" id="viewin3d3" src="./images/FULLSCREEN_BUTT.png" />
 
         </div>
       </div>
@@ -115,21 +114,21 @@
         <img id="locationpre" src="./images/preLocation.png" />
         <div id="locationpre_text">
           <h2 id="accessibility">Accessibility</h2>
-            <p class="previewL"> The Chakan V park is 20 km away<br>
-              from Mumbai-Pune Expressway<br>
-              and offers good connectivity to <br>
-              NH4 Mumbai-Pune National<br>
-              Highway,Pune-Nashik Highway & <br>
-              Pune Ahmednagar Aurangabad<br>
-              Highway.it also has great Access<br>
-              to neighbouring industrial areas like<br>
-              Ranjangaon,Telegaon.
-            </p>
-            <p class="previewL" style="margin-top: 5%;"> It is also wll connected to Pune<br>
-              city,airport and railway station,<br>
-              Chinchwad railway station and<br>
-              JNPT via multi-model transport.
-            </p>
+          <p class="previewL"> The Chakan V park is 20 km away<br>
+            from Mumbai-Pune Expressway<br>
+            and offers good connectivity to <br>
+            NH4 Mumbai-Pune National<br>
+            Highway,Pune-Nashik Highway & <br>
+            Pune Ahmednagar Aurangabad<br>
+            Highway.it also has great Access<br>
+            to neighbouring industrial areas like<br>
+            Ranjangaon,Telegaon.
+          </p>
+          <p class="previewL" style="margin-top: 5%;"> It is also wll connected to Pune<br>
+            city,airport and railway station,<br>
+            Chinchwad railway station and<br>
+            JNPT via multi-model transport.
+          </p>
         </div>
       </div>
       <div>
@@ -141,7 +140,7 @@
     <div>
       <img id="viewin3dS" src="./images/FULLSCREEN_BUTT.png" />
     </div>
-  
+
 
 
 
@@ -234,8 +233,8 @@
 
   <div id="popup">
     <img class="close" src="./images/BACK_BUTT.png" />
-    <img class="prebtn" id="3dprebtn" src="./images/PREVIOUS_BUTT.png" onclick="this.src=`./images/PreviousHoverBtn.png`"
-      style="object-fit: contain;" />
+    <img class="prebtn" id="3dprebtn" src="./images/PREVIOUS_BUTT.png"
+      onclick="this.src=`./images/PreviousHoverBtn.png`" style="object-fit: contain;" />
     <img class="nextbtn" id="3dnextbtn" src="./images/NEXT_BUTT.png" onclick="this.src=`./images/NextHoverBtn.png`"
       style="object-fit: contain;" />
     <iframe id="popupiframe" allow="xr-spatial-tracking"></iframe>
@@ -246,7 +245,7 @@
 
 
   <script>
-
+   
     document.getElementById('arbtn').addEventListener('click', (e) => {
       window.open('https://archiverseai.8thwall.app/indospace-afr/', '_blank')
     })
@@ -278,6 +277,8 @@
         document.getElementById('InstructionSection').style.display = 'none'
         document.getElementById('dropdown').style.display = 'block'
         document.getElementById('rootUI').style.display = 'block'
+        document.getElementById('bottombar').style.display = 'flex'
+
         isInstructionCall = false
       }
     }
@@ -285,11 +286,21 @@
       console.log('inside ios');
       document.getElementById('scrolltocon').classList.add('ios')
       document.getElementById('buildingpre1').classList.add('ios')
+      document.getElementById('locationpre_text').classList.add('ios')
+      document.getElementById('buildpre').classList.add('ios')
+      document.querySelectorAll('.sPre').forEach(e => {
+        e.classList.add('ios')
+      });
+      document.querySelectorAll('.tab').forEach(e => {
+        e.classList.add('ios')
+      });
+
 
       document.querySelector('body').classList.add('ios')
 
       // document.getElementById('bottombar').style='top:83%;' 
       document.addEventListener('click', () => {
+       
         if (!isInstruction) {
           document.getElementById('LoaderSection').style.display = 'none'
           document.getElementById('instructionMain').style.top = '0%'
@@ -298,12 +309,11 @@
           isInstruction = true;
         }
         else {
+
           document.getElementById('rootUI').style.top = '0vh'
           isInstructionCall = true
           instructionFade()
-          document.getElementById('bottombar').style.display = 'flex'
-
-
+          // alert('flex')
         }
       })
     }
@@ -318,7 +328,7 @@
             document.getElementById('rootUI').style.top = '0vh'
             isInstructionCall = true
             instructionFade()
-            document.getElementById('bottombar').style.display = 'flex'
+            // document.getElementById('bottombar').style.display = 'flex'
 
 
             console.log('instructionSection None')
