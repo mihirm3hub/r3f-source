@@ -245,7 +245,8 @@
 
 
   <script>
-   
+    let isRun = false
+
     document.getElementById('arbtn').addEventListener('click', (e) => {
       window.open('https://archiverseai.8thwall.app/indospace-afr/', '_blank')
     })
@@ -277,8 +278,10 @@
         document.getElementById('InstructionSection').style.display = 'none'
         document.getElementById('dropdown').style.display = 'block'
         document.getElementById('rootUI').style.display = 'block'
-        document.getElementById('bottombar').style.display = 'flex'
-
+        if (!isRun) {
+          document.getElementById('bottombar').style.display = 'flex'
+          isRun = true
+        }
         isInstructionCall = false
       }
     }
@@ -300,7 +303,7 @@
 
       // document.getElementById('bottombar').style='top:83%;' 
       document.addEventListener('click', () => {
-       
+
         if (!isInstruction) {
           document.getElementById('LoaderSection').style.display = 'none'
           document.getElementById('instructionMain').style.top = '0%'
@@ -321,8 +324,8 @@
       window.addEventListener("scroll", (e) => {
         const viewportHeight = window.innerHeight
         const scroll = Math.floor(window.scrollY);
-        console.log('scrolling', scroll);
-        console.log('Viewport height', viewportHeight);
+        // console.log('scrolling', scroll);
+        // console.log('Viewport height', viewportHeight);
         if (scroll >= viewportHeight) {
           if (document.getElementById('LoaderSection').style.display === 'none') {
             document.getElementById('rootUI').style.top = '0vh'
