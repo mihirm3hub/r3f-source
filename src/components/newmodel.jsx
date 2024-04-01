@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import { useGLTF, PerspectiveCamera, useAnimations, OrbitControls, useScroll } from "@react-three/drei";
+import { useGLTF, PerspectiveCamera, useAnimations, OrbitControls, useScroll, MeshTransmissionMaterial } from "@react-three/drei";
 import { useLoader, useFrame, useThree } from "@react-three/fiber";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import * as THREE from 'three'
@@ -24,6 +24,7 @@ let isClosed = true
 let isInfo=false
 let scrollValue
 let cno = 1;
+
 
 let isClickAdded = false
 
@@ -546,6 +547,8 @@ export function Model(props) {
         cno = 5;
       }
       meshname = `B${cno}00`
+      document.querySelector('.buildings').innerText=meshname
+
       setCameraPosRot(meshname)
 
     });
@@ -557,6 +560,8 @@ export function Model(props) {
         cno = 1
       }
       meshname = `B${cno}00`
+      document.querySelector('.buildings').innerText=meshname
+
       setCameraPosRot(meshname)
     });
     closeBtn.addEventListener('click', () => {
@@ -568,6 +573,7 @@ export function Model(props) {
       infoCon.style.display = 'block'
       viewin3dS.style.display = 'block'
       buildpre.style.display = 'block'
+      document.querySelector('.buildings').style.display='none'
       runOnce = false
       meshname = 'Default'
       setClicked(false)
@@ -583,6 +589,8 @@ export function Model(props) {
     })
     hotspotClose.addEventListener( 'click',(e)=>{  
       hotspotClose.style.display = 'none'
+      document.querySelector('.buildings').style.display='none'
+
       document.getElementById('bottombar').style.display = 'flex'
       runOnce = false
       meshname = 'Default'
@@ -628,7 +636,8 @@ export function Model(props) {
     buildpre.style.display = 'none'
     closeBtn.style.display='block'
     hotspotClose.style.display='none'
-    
+    document.querySelector('.buildings').style.display='block'
+    document.querySelector('.buildings').innerText=meshname
 
     document.getElementById('bottombar').style.display = 'none'
 
@@ -731,6 +740,9 @@ export function Model(props) {
             setHovered5(false)
             cno = 3
             document.getElementById('bottombar').style.display = 'none'
+            document.querySelector('.buildings').innerText = meshname
+            document.querySelector('.buildings').style.display='block'
+
 
             
           }}
@@ -762,6 +774,9 @@ export function Model(props) {
             setVisibility(false)
             setHovered1(false)
                 document.getElementById('bottombar').style.display = 'none'
+                document.querySelector('.buildings').innerText = meshname
+                document.querySelector('.buildings').style.display='block'
+
             cno = 1
           }}
           onPointerOver={() =>
@@ -799,6 +814,9 @@ export function Model(props) {
             setHovered4(false)
             cno = 4
             document.getElementById('bottombar').style.display = 'none'
+            document.querySelector('.buildings').innerText = meshname
+            document.querySelector('.buildings').style.display='block'
+
 
           }}
           onPointerOver={() => setHovered4(true)}
@@ -833,6 +851,8 @@ export function Model(props) {
             setHovered3(false)
             cno = 5
             document.getElementById('bottombar').style.display = 'none'
+            document.querySelector('.buildings').innerText = meshname
+            document.querySelector('.buildings').style.display='block'
 
           }}
           onPointerOver={() => setHovered3(true)}
@@ -870,6 +890,8 @@ export function Model(props) {
             setHovered2(false)
             cno = 2
             document.getElementById('bottombar').style.display = 'none'
+            document.querySelector('.buildings').innerText = meshname
+            document.querySelector('.buildings').style.display='block'
 
           }}
           onPointerOver={() => setHovered2(true)}
@@ -911,7 +933,6 @@ export function Model(props) {
             locationbtn.style.display = 'none',
             nxtBtn.style.display = 'none',            
             prBtn.style.display = 'none',           
-            
             prBtn3d.style.display = 'block',
             nxtBtn3d.style.display = 'block',
             streetviewUI = true,
@@ -955,7 +976,6 @@ export function Model(props) {
             locationbtn.style.display = 'none',
             nxtBtn.style.display = 'none',            
             prBtn.style.display = 'none',           
-            
             prBtn3d.style.display = 'block',
             nxtBtn3d.style.display = 'block',
             streetviewUI = true,
@@ -1001,7 +1021,7 @@ export function Model(props) {
             locationbtn.style.display = 'none',
             nxtBtn.style.display = 'none',            
             prBtn.style.display = 'none',           
-            
+          
             prBtn3d.style.display = 'block',
             nxtBtn3d.style.display = 'block',
             streetviewUI = true,

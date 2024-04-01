@@ -94,8 +94,8 @@ button:focus-visible {
 #Logo {
   z-index: 100;
   position: fixed;
-  top: 5vh;
-  left: 3.4vw;
+  top: 2vh;
+  left: 1vw;
   cursor: pointer;
   width: 2vw;
   height: 2vh;
@@ -127,6 +127,7 @@ button:focus-visible {
   position: absolute;
   right: 2vw;
   z-index: 9;
+  top: 6vh;
 }
 
 /* #SPre1 {
@@ -188,9 +189,36 @@ button:focus-visible {
   background-color: #ddd;
 }*/
 
-.tab img.active {
-  background-color: #ccc;
+#overviewBg{
+  width: 100vw;
+  position: absolute;
+  top: 6vh;
+  height: 80vh;
 }
+.previewL {
+  font-size: 26px;
+  font-family: cairo-Regular;
+  line-height: 41px;
+  margin: 0;
+}
+#accessibility {
+  font-size: 39px;
+  font-family: cairo-Bold;
+  margin-top: 1%;
+  margin: 0;
+}
+#overlay {
+  position: absolute;
+  object-fit: contain;
+  width: 54vw;
+  left: 24vw;
+  top: 22vh;
+}
+.view3d{
+  position: absolute;
+  z-index: 9;
+}
+
 
 
 #b100 {
@@ -213,7 +241,7 @@ button:focus-visible {
   color: white;
   position: absolute;
   left: 3vw;
-  top: 6vh;
+  top: 11vh;
 }
 
 pre {
@@ -224,9 +252,16 @@ pre {
   background: #0e0d0d29;
   backdrop-filter: blur(20px);
   height: 40vh;
+  width: 100vw;
   border: 2px solid #000;
 }
-
+.viewin3dBtn {
+  position: relative;
+  width: 15vw;
+  object-fit: contain;
+  bottom: 14vh;
+  left: 8vh;
+}
 /* #street1 {
   background: #0e0d0d29;
   backdrop-filter: blur(20px);
@@ -255,11 +290,21 @@ pre {
 } */
 
 
-#buildingpre1 {
+.buildings {
   position: absolute;
-  width: 100%;
+  font-size: 22px;
+  z-index: 9;
+  bottom: 2vh;
+  left: 50vw;
+  color: white;
+  font-weight: 400;
+}
+#viewin3dS {
 
-  top: 0vh;
+  position: absolute;
+  left: 46vw;
+  top: 64vh;
+
 }
 
 
@@ -271,10 +316,10 @@ pre {
 #locationpre {
   position: absolute;
   /* object-fit: contain; */
-  left: 0vw;
+  /* left: 0vw; */
   top: 6vh;
-  /* width: 100vw; */
-  height: 77vh;
+  width: 100vw;
+  height: 80vh;
 }
 
 #bottombar {
@@ -327,7 +372,7 @@ pre {
   -webkit-transition: .4s;
   transition: .4s;
   height: 8vh;
-  width: 2.7vw;
+  width: 3.5vw;
 
 }
 
@@ -573,14 +618,14 @@ hr.solid {
 }
 
 .Title {
-  font-size: 14px;
+  font-size: 30px;
   font-family: cairo-Bold;
   margin: 0;
   line-height: 0%;
 }
 
 .content {
-  font-size: 12px;
+  font-size: 28px;
   font-family: cairo-Regular;
 }
 
@@ -701,7 +746,7 @@ hr.solid {
 #overview-con {
   position: absolute;
   left: 2vw;
-  top: 13vh;
+  top: 0vh;
   color: white;
   display: flex;
   flex-direction: column-reverse;
@@ -716,7 +761,7 @@ hr.solid {
   color: white;
   left: 11vw;
   /* line-height: 0%; */
-  top: 44vh;
+  top: 24vh;
 }
 
 /* #btitle
@@ -955,7 +1000,9 @@ hr.solid {
     top: 64vh;
 
   }
-  
+  .view3d{
+    top: 10vh;
+  }
  
 
   #overlay {
@@ -1033,6 +1080,10 @@ hr.solid {
     margin-left: 1px;
   } */
 
+  #clsb{
+    right: 2vw;
+    top: 0;
+  }
   #prbtn {
     left: 0vw;
     top: 42vh;
@@ -1046,6 +1097,7 @@ hr.solid {
     width: 100vw;
     height: 77vh;
     top: 7vh;
+    position: absolute;
     /* object-fit: contain; */
   }
 
@@ -1059,7 +1111,18 @@ hr.solid {
     top: 1vh;
     height: 117%;
   }
-
+  #overview-con {
+    position: absolute;
+    left: 2vw;
+    top: 13vh;
+    color: white;
+    display: flex;
+    flex-direction: column-reverse;
+    align-content: center;
+    justify-content: center;
+    width: 40%;
+    height: 80%;
+  }
   /* 
   #s1 {
     width: 24vw;
@@ -1081,6 +1144,7 @@ hr.solid {
   .streets {
     height: 60vh;
     width: 24vw;
+    left: 0;
   }
 
   #closeB {
@@ -1093,6 +1157,13 @@ hr.solid {
     left: 1vw;
     top: 85%;
 
+  }
+  .buildings{
+    position: absolute;
+    font-size: 10px;
+    font-family: cairo-Regular ;
+    bottom: -13vh;
+    z-index: 9;
   }
 
   #prbtn {
