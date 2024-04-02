@@ -11,9 +11,13 @@ function progressChecker(num) {
   document.getElementById('loader').style.width = num + '%'
   if (num == 100) {
     setTimeout(() => {
-      document.getElementById('InstructionSection').style.display = 'block'
+      // document.getElementById('InstructionSection').style.display = 'block'
       document.getElementById('rootUI').style.display = 'block'
-      document.getElementById('instructionMain').style.display = 'grid'
+      document.getElementById('loadingTxt1').style.display='none'
+      document.getElementById('LoaderMainHeader').style.display='none'
+      document.getElementById('instructionMain').style.display='flex'
+      // document.getElementById('instructionMain').style.display = 'grid'
+      
       document.getElementById('loaderInfo').innerHTML = "Your <b>IndoSpace Interactive Park Tour</b> is ready!"
       document.getElementById('loaderRoot').style.display = 'none'
       document.getElementById('swipetocon').style.display = 'none'

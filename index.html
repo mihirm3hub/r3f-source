@@ -29,6 +29,10 @@
         IndoSpace Interactive <br>
         Park Tour
       </p>
+      <div id="instructionMain">
+        <img id="instructionImg" src="./images/TutorialImg.png" alt="">
+      </div>
+      <!-- <img id="instructionMobileImg" src="./images/tutorialOverlayMobile.png" alt=""> -->
       <div id="loaderBottomBar">
         <img id="loaderChakanLogo" src="./images/chakanLogo.png" alt="">
         <p id="loaderInfo">Loading your <b>IndoSpace Interactive Park Tour</b> experience.</p>
@@ -43,13 +47,13 @@
     </div>
   </section>
 
-  <section id="InstructionSection" style="display: none;">
+  <!-- <section id="InstructionSection" style="display: none;">
     <img id="fixedChakanLogo" src="./images/F_Chakan.png" alt="">
     <div id="instructionMain" style="background: linear-gradient(180deg, #000000cf 20%, #ffffff00 80%);">
       <img id="instructionImg" src="./images/TutorialImg.png" alt="">
       <img id="instructionMobileImg" src="./images/tutorialOverlayMobile.png" alt="">
     </div>
-  </section>
+  </section> -->
 
   <div id="root"></div>
 
@@ -222,7 +226,7 @@
     <div>
       <img id="overlay" src="./images/Tutorial_overlay.png" />
     </div>
-   
+
 
 
 
@@ -231,11 +235,8 @@
       <img src="./images/TutorialImg.png" alt="" />
   </section>
   <div class="buildings"></div>
-  <div class="view3d">
-    <img id="view01" src="./images/3dview01.png"/>
-    <img id="view02" src="./images/3dview02.png"/>
-    <img id="view03" src="./images/3dview03.png"/>
-  </div>
+  <img id="views" />
+
 
 
   <div id="popup">
@@ -275,14 +276,15 @@
     let isInstructionCall = false
     const instructionFade = () => {
       if (isInstructionCall) {
-        document.getElementById('instructionMain').style.animation = 'opacityAnim .7s ease forwards'
+        // document.getElementById('instructionMain').style.animation = 'opacityAnim .7s ease forwards'
+        document.getElementById('LoaderSection').style.display = 'none'
         window.removeEventListener('wheel', () => { });
         window.removeEventListener('touchmove', () => { });
         window.removeEventListener('scroll', () => { });
-        document.getElementById("fixedChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
-        document.getElementById("fixedChakanLogo").style.display = 'none'
+        // document.getElementById("fixedChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
+        // document.getElementById("fixedChakanLogo").style.display = 'none'
 
-        document.getElementById('InstructionSection').style.display = 'none'
+        // document.getElementById('InstructionSection').style.display = 'none'
         document.getElementById('dropdown').style.display = 'block'
         document.getElementById('rootUI').style.display = 'block'
         if (!isRun) {
@@ -311,20 +313,20 @@
       // document.getElementById('bottombar').style='top:83%;' 
       document.addEventListener('click', () => {
 
-        if (!isInstruction) {
-          document.getElementById('LoaderSection').style.display = 'none'
-          document.getElementById('instructionMain').style.top = '0%'
-          document.getElementById("loaderChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
-          document.getElementById("fixedChakanLogo").style.animation = 'opacityAnim .5s ease forwards'
-          isInstruction = true;
-        }
-        else {
-
-          document.getElementById('rootUI').style.top = '0vh'
-          isInstructionCall = true
-          instructionFade()
-          // alert('flex')
-        }
+        // if 
+        // (!isInstruction) {
+        //   document.getElementById('LoaderSection').style.display = 'none'
+        //   // document.getElementById('instructionMain').style.top = '0%'
+        //   document.getElementById("loaderChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
+        //   document.getElementById("fixedChakanLogo").style.animation = 'opacityAnim .5s ease forwards'
+        //   isInstruction = true;
+        // }
+        // else {
+        document.getElementById('rootUI').style.top = '0vh'
+        isInstructionCall = true
+        instructionFade()
+        // alert('flex')
+        // }
       })
     }
     else {
@@ -332,23 +334,24 @@
         const viewportHeight = window.innerHeight
         const scroll = Math.floor(window.scrollY);
         // console.log('scrolling', scroll);
-        // console.log('Viewport height', viewportHeight);
+        console.log('Viewport height', viewportHeight);
         if (scroll >= viewportHeight) {
-          if (document.getElementById('LoaderSection').style.display === 'none') {
-            document.getElementById('rootUI').style.top = '0vh'
-            isInstructionCall = true
-            instructionFade()
-            // document.getElementById('bottombar').style.display = 'flex'
+          // if (document.getElementById('LoaderSection').style.display === 'none') {
+          document.getElementById('rootUI').style.top = '0vh'
+          isInstructionCall = true
+          instructionFade()
+          // document.getElementById('bottombar').style.display = 'flex'
 
 
-            console.log('instructionSection None')
-          } else {
-            document.getElementById('LoaderSection').style.display = 'none'
-            document.getElementById('instructionMain').style.top = '0%'
-            document.getElementById("loaderChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
-            document.getElementById("fixedChakanLogo").style.animation = 'opacityAnim .5s ease forwards'
-            console.log('LoaderSection None')
-          }
+          //   console.log('instructionSection None')
+          // }
+          // else {
+          //   document.getElementById('LoaderSection').style.display = 'none'
+          //   document.getElementById('instructionMain').style.top = '0%'
+          //   document.getElementById("loaderChakanLogo").style.animation = 'RevOpacityAnim .5s ease forwards'
+          //   document.getElementById("fixedChakanLogo").style.animation = 'opacityAnim .5s ease forwards'
+          //   console.log('LoaderSection None')
+          // }
 
         }
         else {

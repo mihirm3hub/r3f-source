@@ -45,6 +45,7 @@ const buildpre = document.getElementById('buildpre')
 const tablinks = document.querySelectorAll('.tablinks');
 const overviewBg = document.getElementById('overviewBg')
 
+
 const prBtn3d = document.getElementById('3dprebtn')
 const nxtBtn3d = document.getElementById('3dnextbtn')
 const closeBtn = document.getElementById('cbtn')
@@ -200,6 +201,8 @@ isInfo = !isInfo;
 document.getElementById('viewin3d1').addEventListener('click', (e) => {
   document.getElementById('popupdarkbg').style.display = 'block',
     document.getElementById('popup').style.display = 'block',
+    document.getElementById('views').src = './images/3dView01.png',
+    document.getElementById('views').style.display = 'block',
     document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR1/'
 
 })
@@ -207,12 +210,16 @@ document.getElementById('viewin3d1').addEventListener('click', (e) => {
 document.getElementById('viewin3d2').addEventListener('click', (e) => {
   document.getElementById('popupdarkbg').style.display = 'block',
     document.getElementById('popup').style.display = 'block',
+    document.getElementById('views').src = './images/3dView02.png',
+    document.getElementById('views').style.display = 'block',
     document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR2/'
 
 })
 document.getElementById('viewin3d3').addEventListener('click', (e) => {
   document.getElementById('popupdarkbg').style.display = 'block',
     document.getElementById('popup').style.display = 'block',
+    document.getElementById('views').src = './images/3dView03.png',
+    document.getElementById('views').style.display = 'block',
     document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR3/'
 
 })
@@ -264,7 +271,7 @@ export function Model(props) {
   document.getElementsByClassName('close')[0].addEventListener('click', (ev) => {
     document.getElementById('popup').style.display = 'none'
     document.getElementById('popupdarkbg').style.display = 'none'
-    // document.getElementById('helpBtn').style.display = 'block'
+    document.getElementById('views').style.display = 'none'
     document.getElementById('locationbtn').style.display = 'block'
     isOpen = false
   })
@@ -611,7 +618,7 @@ export function Model(props) {
     }
     popupIframe.src = `https://equanimoustech.com/Sagar/IndoSpace1/VR${picno}/`
     // document.getElementById('StreetView').src = `./images/StreetView-0${picno}.png`
-
+    document.getElementById('views').src = `./images/3dView0${picno}.png`
   });
 
   prBtn3d.addEventListener("click", event => {
@@ -621,6 +628,8 @@ export function Model(props) {
     }
     popupIframe.src = `https://equanimoustech.com/Sagar/IndoSpace1/VR${picno}/`
     // document.getElementById('StreetView').src = `./images/StreetView-0${picno}.png`
+        document.getElementById('views').src = `./images/3dView0${picno}.png`
+
   });
 
 
@@ -930,6 +939,8 @@ export function Model(props) {
             // document.getElementById('dropdown-content').style.display = 'none',
             document.getElementById('StreetView').src = './images/StreetView-01.png',
             document.getElementById('StreetView').style.display = 'block',
+            document.getElementById('views').src = './images/3dView01.png',
+            document.getElementById('views').style.display = 'block',
             locationbtn.style.display = 'none',
             nxtBtn.style.display = 'none',            
             prBtn.style.display = 'none',           
@@ -972,10 +983,13 @@ export function Model(props) {
             // document.getElementById('dropdown-content').style.display = 'none',
             document.getElementById('StreetView').style.display = 'block',
             document.getElementById('StreetView').src = './images/StreetView-02.png',
+            document.getElementById('views').style.display = 'block',
+            document.getElementById('views').src = './images/3dView02.png',
             // helpBtn.style.display = 'none',
             locationbtn.style.display = 'none',
             nxtBtn.style.display = 'none',            
             prBtn.style.display = 'none',           
+            
             prBtn3d.style.display = 'block',
             nxtBtn3d.style.display = 'block',
             streetviewUI = true,
@@ -1017,11 +1031,13 @@ export function Model(props) {
             // document.getElementById('dropdown-content').style.display = 'none',
             document.getElementById('StreetView').style.display = 'block',
             document.getElementById('StreetView').src = './images/StreetView-03.png',
+            document.getElementById('views').style.display = 'block',
+            document.getElementById('views').src = './images/3dView03.png',
             // helpBtn.style.display = 'none',
             locationbtn.style.display = 'none',
             nxtBtn.style.display = 'none',            
             prBtn.style.display = 'none',           
-          
+            
             prBtn3d.style.display = 'block',
             nxtBtn3d.style.display = 'block',
             streetviewUI = true,
