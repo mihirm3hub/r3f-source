@@ -21,7 +21,7 @@ let xdrag = 1000
 let ydrag
 let isOpen = false;
 let isClosed = true
-let isInfo=false
+let isInfo = false
 let scrollValue
 let cno = 1;
 
@@ -55,6 +55,7 @@ const popupIframe = document.getElementById("popupiframe");
 let picno = 1;
 
 // const b100 = document.getElementById('b100')
+document.getElementById('views').style.display = 'none'
 
 //  const intrusctrion=document.getElementById('instructionOverlay')
 buildpre.style.display = 'none'
@@ -66,7 +67,7 @@ infoCon.style.display = 'none';
 viewin3dS.style.display = 'none'
 overlay.style.display = 'none'
 locationpre_text.style.display = 'none'
-hotspotClose.style.display='none'
+hotspotClose.style.display = 'none'
 
 // b100.style.display='none'
 dropdownContent.style.display = 'none';
@@ -88,8 +89,8 @@ const tabSwitch = (tabId) => {
   switch (tabId) {
     case 'Overview':
       isOverview = !isOverview
-      dropdownContent.style.display = isOverview ? 'flex' : 'none';
-      overviewBg.style.display = isOverview ? 'block' : 'none';
+      dropdownContent.style.display = 'flex'
+      overviewBg.style.display = 'block'
       streetviewUI = false;
       islocation = false;
       isbuilding = false
@@ -97,8 +98,8 @@ const tabSwitch = (tabId) => {
       break;
     case 'Location':
       islocation = !islocation
-      locationPre.style.display = islocation ? 'block' : 'none'
-      locationpre_text.style.display = islocation ? 'block' : 'none'
+      locationPre.style.display = 'block'
+      locationpre_text.style.display = 'block'
       isOverview = false
       streetviewUI = false;
       isbuilding = false
@@ -106,7 +107,7 @@ const tabSwitch = (tabId) => {
       break;
     case 'StreetView':
       streetviewUI = !streetviewUI
-      street.style.display = streetviewUI ? 'flex' : 'none';
+      street.style.display = 'flex';
       isOverview = false;
       islocation = false;
       isbuilding = false
@@ -114,7 +115,7 @@ const tabSwitch = (tabId) => {
       break;
     case 'Help':
       isHelp = !isHelp
-      overlay.style.display = isHelp ? 'block' : 'none';
+      overlay.style.display = 'block'
       isOverview = false;
       islocation = false;
       isbuilding = false
@@ -123,11 +124,11 @@ const tabSwitch = (tabId) => {
     case 'Buildings':
       isbuilding = !isbuilding;
       meshname = 'B100'
-      buildpre.style.display = isbuilding ? 'block' : 'none';
-      buildingpre1.style.display = isbuilding ? 'block' : 'none';
-      viewin3dS.style.display = isbuilding ? 'block' : 'none';
-      prBtn.style.display = isbuilding ? 'block' : 'none';
-      nxtBtn.style.display = isbuilding ? 'block' : 'none';
+      buildpre.style.display = 'block'
+      buildingpre1.style.display = 'block'
+      viewin3dS.style.display = 'block'
+      prBtn.style.display = 'block'
+      nxtBtn.style.display = 'block'
 
       isOverview = false;
       islocation = false;
@@ -143,11 +144,24 @@ const tabSwitch = (tabId) => {
       break;
   }
 }
+const hotspotclickfunc=()=>{
+  infoCon.style.display = 'block'
+  buildpre.style.display = 'block'
+  buildingpre1.style.display = 'block'
+  viewin3dS.style.display = 'block'
+  prBtn.style.display = 'block'
+  nxtBtn.style.display = 'block'
+  document.getElementById('bottombar').style.display = 'none'
+  document.getElementById('Buildings').classList.add('active')
+    document.getElementById('Buildings').setAttribute('src', `./images/BuildingsC.png`)
+    removetabLinksClass()
+
+}
+
 
 const removetabLinksClass = () => {
   tablinks.forEach(tab => {
     const tabId = tab.getAttribute('id')
-    tab.classList.remove('active')
     tab.classList.remove('active')
     tab.setAttribute('src', `./images/${tabId}.png`)
   })
@@ -183,6 +197,11 @@ document.getElementById('clsB').addEventListener('click', (e) => {
   document.getElementById('bottombar').style.display = 'flex'
   tabSwitch('Close')
   infoCon.style.display = 'none'
+  meshname = 'Default'
+  setClicked(false)
+  isClosed = true
+  setVisibility(true)
+  setCameraPosRot(meshname)
 })
 
 document.getElementById('locationbtn').addEventListener('click', (e) => {
@@ -190,29 +209,33 @@ document.getElementById('locationbtn').addEventListener('click', (e) => {
   dropdownContent.style.display = 'flex'
 
   infoCon.style.display = !isInfo ? 'block' : 'none';
-  hotspotClose.style.display='none'
-  removetabLinksClass()
-document.getElementById('Overview').classList.add('active')  
-overviewBg.style.display = 'block'
-isInfo = !isInfo;
+  hotspotClose.style.display = 'none'
+  // removetabLinksClass()
+  document.getElementById('Overview').classList.add('active')
+  overviewBg.style.display = 'block'
+  isInfo = !isInfo;
 })
 
 
 document.getElementById('viewin3d1').addEventListener('click', (e) => {
   document.getElementById('popupdarkbg').style.display = 'block',
     document.getElementById('popup').style.display = 'block',
-    document.getElementById('views').src = './images/3dView01.png',
+    document.getElementById('views').src = './images/3dView02.png',
     document.getElementById('views').style.display = 'block',
-    document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR1/'
+    prBtn3d.style.display = 'none',
+    nxtBtn3d.style.display = 'none',
+    document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR2/'
 
 })
 
 document.getElementById('viewin3d2').addEventListener('click', (e) => {
   document.getElementById('popupdarkbg').style.display = 'block',
     document.getElementById('popup').style.display = 'block',
-    document.getElementById('views').src = './images/3dView02.png',
+    document.getElementById('views').src = './images/3dView01.png',
     document.getElementById('views').style.display = 'block',
-    document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR2/'
+    prBtn3d.style.display = 'none',
+    nxtBtn3d.style.display = 'none',
+    document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR1/'
 
 })
 document.getElementById('viewin3d3').addEventListener('click', (e) => {
@@ -220,6 +243,8 @@ document.getElementById('viewin3d3').addEventListener('click', (e) => {
     document.getElementById('popup').style.display = 'block',
     document.getElementById('views').src = './images/3dView03.png',
     document.getElementById('views').style.display = 'block',
+    prBtn3d.style.display = 'none',
+    nxtBtn3d.style.display = 'none',
     document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR3/'
 
 })
@@ -267,12 +292,14 @@ export function Model(props) {
 
 
 
+
   let cameraSpeed = 0.5
   document.getElementsByClassName('close')[0].addEventListener('click', (ev) => {
     document.getElementById('popup').style.display = 'none'
     document.getElementById('popupdarkbg').style.display = 'none'
     document.getElementById('views').style.display = 'none'
     document.getElementById('locationbtn').style.display = 'block'
+    
     isOpen = false
   })
 
@@ -554,7 +581,7 @@ export function Model(props) {
         cno = 5;
       }
       meshname = `B${cno}00`
-      document.querySelector('.buildings').innerText=meshname
+      document.querySelector('.buildings').innerText = meshname
 
       setCameraPosRot(meshname)
 
@@ -567,20 +594,20 @@ export function Model(props) {
         cno = 1
       }
       meshname = `B${cno}00`
-      document.querySelector('.buildings').innerText=meshname
+      document.querySelector('.buildings').innerText = meshname
 
       setCameraPosRot(meshname)
     });
     closeBtn.addEventListener('click', () => {
       // document.getElementById('helpBtn').style.display = 'block'
-      prBtn.style.display='block'
-      nxtBtn.style.display='block'
-      hotspotClose.style.display='none'
+      prBtn.style.display = 'block'
+      nxtBtn.style.display = 'block'
+      hotspotClose.style.display = 'none'
       closeBtn.style.display = 'none'
       infoCon.style.display = 'block'
       viewin3dS.style.display = 'block'
       buildpre.style.display = 'block'
-      document.querySelector('.buildings').style.display='none'
+      document.querySelector('.buildings').style.display = 'none'
       runOnce = false
       meshname = 'Default'
       setClicked(false)
@@ -590,13 +617,13 @@ export function Model(props) {
       // document.getElementById('dropdown-content').style.display = 'none'
       // document.getElementById('sidebar').src = './images/2024.01.29_SURF_PROJECT.NAME_WINDOW.CLOSED-41.png'
       // document.getElementById('bottombar').style.display = 'flex'
-  
+
       // locationbtn.style.display = 'block'
-   
+
     })
-    hotspotClose.addEventListener( 'click',(e)=>{  
+    hotspotClose.addEventListener('click', (e) => {
       hotspotClose.style.display = 'none'
-      document.querySelector('.buildings').style.display='none'
+      document.querySelector('.buildings').style.display = 'none'
 
       document.getElementById('bottombar').style.display = 'flex'
       runOnce = false
@@ -605,7 +632,7 @@ export function Model(props) {
       isClosed = true
       setVisibility(true)
       setCameraPosRot(meshname)
-    
+
     })
   }
 
@@ -628,7 +655,7 @@ export function Model(props) {
     }
     popupIframe.src = `https://equanimoustech.com/Sagar/IndoSpace1/VR${picno}/`
     // document.getElementById('StreetView').src = `./images/StreetView-0${picno}.png`
-        document.getElementById('views').src = `./images/3dView0${picno}.png`
+    document.getElementById('views').src = `./images/3dView0${picno}.png`
 
   });
 
@@ -643,10 +670,15 @@ export function Model(props) {
     infoCon.style.display = 'none'
     viewin3dS.style.display = 'none'
     buildpre.style.display = 'none'
-    closeBtn.style.display='block'
-    hotspotClose.style.display='none'
-    document.querySelector('.buildings').style.display='block'
-    document.querySelector('.buildings').innerText=meshname
+    closeBtn.style.display = 'block'
+    hotspotClose.style.display = 'none'
+    prBtn.style.display = 'none'
+    nxtBtn.style.display = 'none'
+
+
+
+    document.querySelector('.buildings').style.display = 'block'
+    document.querySelector('.buildings').innerText = meshname
 
     document.getElementById('bottombar').style.display = 'none'
 
@@ -654,7 +686,7 @@ export function Model(props) {
 
 
   })
- 
+
 
   useFrame(state => {
     // console.log('RunOnce - ', runOnce, 'isClosed - ', isClosed, 'isClicked', clicked, 'isDragging', isDragging);
@@ -674,7 +706,7 @@ export function Model(props) {
       state.camera.updateProjectionMatrix()
       runOnce = true
       isClosed = false
-      hotspotClose.style.display = 'block'
+      hotspotClose.style.display = 'none'
       isDragging = false
       // prBtn.style.display = 'block'
       // nxtBtn.style.display = 'block'
@@ -743,17 +775,14 @@ export function Model(props) {
           ref={modelRef1}
 
           onClick={() => {
+           
             meshname = 'B300'
             setClicked(true);
             setVisibility(false);
             setHovered5(false)
             cno = 3
-            document.getElementById('bottombar').style.display = 'none'
-            document.querySelector('.buildings').innerText = meshname
-            document.querySelector('.buildings').style.display='block'
-
-
-            
+            hotspotclickfunc()
+        
           }}
 
           onPointerOver={() => setHovered5(true)}
@@ -782,10 +811,7 @@ export function Model(props) {
             setClicked(true)
             setVisibility(false)
             setHovered1(false)
-                document.getElementById('bottombar').style.display = 'none'
-                document.querySelector('.buildings').innerText = meshname
-                document.querySelector('.buildings').style.display='block'
-
+            hotspotclickfunc()
             cno = 1
           }}
           onPointerOver={() =>
@@ -822,9 +848,8 @@ export function Model(props) {
             setVisibility(false)
             setHovered4(false)
             cno = 4
-            document.getElementById('bottombar').style.display = 'none'
-            document.querySelector('.buildings').innerText = meshname
-            document.querySelector('.buildings').style.display='block'
+            hotspotclickfunc()
+
 
 
           }}
@@ -856,12 +881,11 @@ export function Model(props) {
           onClick={() => {
             meshname = 'B500'
             setClicked(true)
-            setVisibility(false)
+            setVisibility(true)
             setHovered3(false)
             cno = 5
-            document.getElementById('bottombar').style.display = 'none'
-            document.querySelector('.buildings').innerText = meshname
-            document.querySelector('.buildings').style.display='block'
+            hotspotclickfunc()
+
 
           }}
           onPointerOver={() => setHovered3(true)}
@@ -898,9 +922,8 @@ export function Model(props) {
             setVisibility(false)
             setHovered2(false)
             cno = 2
-            document.getElementById('bottombar').style.display = 'none'
-            document.querySelector('.buildings').innerText = meshname
-            document.querySelector('.buildings').style.display='block'
+            hotspotclickfunc()
+
 
           }}
           onPointerOver={() => setHovered2(true)}
@@ -937,15 +960,15 @@ export function Model(props) {
             document.getElementById('popup').style.display = 'block',
             document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR1/',
             // document.getElementById('dropdown-content').style.display = 'none',
-            document.getElementById('StreetView').src = './images/StreetView-01.png',
+            // document.getElementById('StreetView').src = './images/StreetView-01.png',
             document.getElementById('StreetView').style.display = 'block',
             document.getElementById('views').src = './images/3dView01.png',
             document.getElementById('views').style.display = 'block',
             locationbtn.style.display = 'none',
-            nxtBtn.style.display = 'none',            
-            prBtn.style.display = 'none',           
-            prBtn3d.style.display = 'block',
-            nxtBtn3d.style.display = 'block',
+            nxtBtn.style.display = 'none',
+            prBtn.style.display = 'none',
+            prBtn3d.style.display = 'none',
+            nxtBtn3d.style.display = 'none',
             streetviewUI = true,
             isOpen = true,
             picno = 1
@@ -975,23 +998,22 @@ export function Model(props) {
           onPointerOut={() => setHovered7(false)}
           onClick={() => (
             meshname = '360View-2',
-
             setHovered7(false),
             document.getElementById('popupdarkbg').style.display = 'block',
             document.getElementById('popup').style.display = 'block',
             document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR2/',
             // document.getElementById('dropdown-content').style.display = 'none',
             document.getElementById('StreetView').style.display = 'block',
-            document.getElementById('StreetView').src = './images/StreetView-02.png',
+            // document.getElementById('StreetView').src = './images/StreetView-02.png',
             document.getElementById('views').style.display = 'block',
             document.getElementById('views').src = './images/3dView02.png',
             // helpBtn.style.display = 'none',
             locationbtn.style.display = 'none',
-            nxtBtn.style.display = 'none',            
-            prBtn.style.display = 'none',           
-            
-            prBtn3d.style.display = 'block',
-            nxtBtn3d.style.display = 'block',
+            nxtBtn.style.display = 'none',
+            prBtn.style.display = 'none',
+
+            prBtn3d.style.display = 'none',
+            nxtBtn3d.style.display = 'none',
             streetviewUI = true,
             isOpen = true,
             picno = 2
@@ -1030,16 +1052,16 @@ export function Model(props) {
             document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR3/',
             // document.getElementById('dropdown-content').style.display = 'none',
             document.getElementById('StreetView').style.display = 'block',
-            document.getElementById('StreetView').src = './images/StreetView-03.png',
+            // document.getElementById('StreetView').src = './images/StreetView-03.png',
             document.getElementById('views').style.display = 'block',
             document.getElementById('views').src = './images/3dView03.png',
             // helpBtn.style.display = 'none',
             locationbtn.style.display = 'none',
-            nxtBtn.style.display = 'none',            
-            prBtn.style.display = 'none',           
-            
-            prBtn3d.style.display = 'block',
-            nxtBtn3d.style.display = 'block',
+            nxtBtn.style.display = 'none',
+            prBtn.style.display = 'none',
+
+            prBtn3d.style.display = 'none',
+            nxtBtn3d.style.display = 'none',
             streetviewUI = true,
             isOpen = true,
             picno = 3

@@ -97,12 +97,12 @@
       </div>
       <div id="street">
         <div id="street1" class="streets">
-          <img class="streetTitle" id="s1" src="./images/StreetView-01.png" />
+          <img class="streetTitle" id="s1" src="./images/StreetView-02.png" />
           <img id="SPre1" class="sPre" src="./images/Street_Pre1.png" />
           <img class="viewin3dBtn" id="viewin3d1" src="./images/FULLSCREEN_BUTT.png" />
         </div>
         <div id="street2" class="streets">
-          <img class="streetTitle" id="s2" src="./images/StreetView-02.png" />
+          <img class="streetTitle" id="s2" src="./images/StreetView-01.png" />
           <img id="SPre2" class="sPre" src="./images/Street_Pre2.png" />
           <img class="viewin3dBtn" id="viewin3d2" src="./images/FULLSCREEN_BUTT.png" />
 
@@ -235,7 +235,7 @@
       <img src="./images/TutorialImg.png" alt="" />
   </section>
   <div class="buildings"></div>
-  <img id="views" />
+  <img id="views"/>
 
 
 
@@ -300,13 +300,22 @@
       document.getElementById('buildingpre1').classList.add('ios')
       document.getElementById('locationpre_text').classList.add('ios')
       document.getElementById('buildpre').classList.add('ios')
+      document.getElementById('overviewBg').classList.add('ios')
+      document.getElementById('overview-con').classList.add('ios')
+      document.getElementById('viewin3dS').classList.add('ios')
+      document.getElementById('street').classList.add('ios')
+      document.getElementById('views').classList.add('ios')
+      document.getElementById('locationpre').classList.add('ios')
+
+
       document.querySelectorAll('.sPre').forEach(e => {
         e.classList.add('ios')
       });
       document.querySelectorAll('.tab').forEach(e => {
         e.classList.add('ios')
       });
-
+      
+      document.querySelector('.buildings').classList.add('ios')
 
       document.querySelector('body').classList.add('ios')
 
