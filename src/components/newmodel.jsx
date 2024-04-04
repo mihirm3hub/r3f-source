@@ -151,10 +151,10 @@ const hotspotclickfunc=()=>{
   viewin3dS.style.display = 'block'
   prBtn.style.display = 'block'
   nxtBtn.style.display = 'block'
+  removetabLinksClass()
   document.getElementById('bottombar').style.display = 'none'
   document.getElementById('Buildings').classList.add('active')
     document.getElementById('Buildings').setAttribute('src', `./images/BuildingsC.png`)
-    removetabLinksClass()
 
 }
 
@@ -192,17 +192,6 @@ tablinks.forEach(tab => {
 
 // })
 
-document.getElementById('clsB').addEventListener('click', (e) => {
-  isInfo = false
-  document.getElementById('bottombar').style.display = 'flex'
-  tabSwitch('Close')
-  infoCon.style.display = 'none'
-  meshname = 'Default'
-  setClicked(false)
-  isClosed = true
-  setVisibility(true)
-  setCameraPosRot(meshname)
-})
 
 document.getElementById('locationbtn').addEventListener('click', (e) => {
 
@@ -211,6 +200,7 @@ document.getElementById('locationbtn').addEventListener('click', (e) => {
   infoCon.style.display = !isInfo ? 'block' : 'none';
   hotspotClose.style.display = 'none'
   // removetabLinksClass()
+  document.getElementById('Overview').setAttribute('src', `./images/OverviewC.png`)
   document.getElementById('Overview').classList.add('active')
   overviewBg.style.display = 'block'
   isInfo = !isInfo;
@@ -634,6 +624,21 @@ export function Model(props) {
       setCameraPosRot(meshname)
 
     })
+    document.getElementById('clsB').addEventListener('click', (e) => {
+      isInfo = false
+      document.getElementById('bottombar').style.display = 'flex'
+      tabSwitch('Close')
+      infoCon.style.display = 'none'
+      runOnce=false
+      meshname = 'Default'
+      setClicked(false)
+      console.log('close click');
+      isClosed = true
+      setVisibility(true)
+      setCameraPosRot(meshname)
+      removetabLinksClass()
+    })
+    
   }
 
 

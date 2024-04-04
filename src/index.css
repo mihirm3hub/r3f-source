@@ -810,6 +810,8 @@ hr.solid {
 
 #instructionImg {
   height: 45%;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
 
 #instructionChakanLogo {
@@ -1326,6 +1328,8 @@ hr.solid {
   #instructionImg {
     content: url('../../images/tutorialOverlayMobile.png');
     height: 100%;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
   }
 
   /* #instructionOverlay img {
