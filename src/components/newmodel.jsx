@@ -571,7 +571,7 @@ export function Model(props) {
         cno = 5;
       }
       meshname = `B${cno}00`
-      document.querySelector('.buildings').innerText = meshname
+      document.querySelector('.buildings').innerText = `B${cno}00`
 
       setCameraPosRot(meshname)
 
@@ -584,7 +584,7 @@ export function Model(props) {
         cno = 1
       }
       meshname = `B${cno}00`
-      document.querySelector('.buildings').innerText = meshname
+      document.querySelector('.buildings').innerText = `B${cno}00`
 
       setCameraPosRot(meshname)
     });
@@ -680,10 +680,9 @@ export function Model(props) {
     prBtn.style.display = 'none'
     nxtBtn.style.display = 'none'
 
-
-
+    meshname = `B${cno}00`
     document.querySelector('.buildings').style.display = 'block'
-    document.querySelector('.buildings').innerText = meshname
+    document.querySelector('.buildings').innerText = `B${cno}00`
 
     document.getElementById('bottombar').style.display = 'none'
 
