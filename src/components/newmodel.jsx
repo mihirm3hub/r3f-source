@@ -99,7 +99,7 @@ const tabSwitch = (tabId) => {
     case 'Location':
       islocation = !islocation
       locationPre.style.display = 'block'
-      locationpre_text.style.display = 'block'
+      locationpre_text.style.display = 'flex'
       isOverview = false
       streetviewUI = false;
       isbuilding = false
@@ -124,7 +124,7 @@ const tabSwitch = (tabId) => {
     case 'Buildings':
       isbuilding = !isbuilding;
       meshname = 'B100'
-      buildpre.style.display = 'block'
+      buildpre.style.display = 'flex'
       buildingpre1.style.display = 'block'
       viewin3dS.style.display = 'block'
       prBtn.style.display = 'block'
@@ -146,7 +146,7 @@ const tabSwitch = (tabId) => {
 }
 const hotspotclickfunc=()=>{
   infoCon.style.display = 'block'
-  buildpre.style.display = 'block'
+  buildpre.style.display = 'flex'
   buildingpre1.style.display = 'block'
   viewin3dS.style.display = 'block'
   prBtn.style.display = 'block'
@@ -596,7 +596,7 @@ export function Model(props) {
       closeBtn.style.display = 'none'
       infoCon.style.display = 'block'
       viewin3dS.style.display = 'block'
-      buildpre.style.display = 'block'
+      buildpre.style.display = 'flex'
       document.querySelector('.buildings').style.display = 'none'
       runOnce = false
       meshname = 'Default'

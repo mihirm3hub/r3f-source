@@ -4,6 +4,7 @@ import Ammenities from './Ammenities'
 import { Model } from './newmodel'
 import { Suspense, useRef, useState } from 'react'
 import { Html, useProgress, ContactShadows } from '@react-three/drei'
+import Standalone from './Standalon'
 
 
 let isAmenties = false
@@ -48,6 +49,7 @@ export default function Experience() {
       <Ammenities />
 
     </Suspense>
+    {/* <Standalone/> */}
 
 
   </>

@@ -158,7 +158,7 @@ button:focus-visible {
 
 .tab {
   display: flex;
-  width: 80%;
+  width: max-content;
   right: 0;
   top: 93%;
   height: 7.5vh;
@@ -189,10 +189,11 @@ button:focus-visible {
 }
 
 #overviewBg{
+  content: url('../../images/BuildingRenderImage.png');
   width: 100vw;
   position: absolute;
-  top: 6vh;
-  height: 80vh;
+  top: 25vh;
+  height: 75vh;
 }
 .previewL {
   font-size: 26px;
@@ -207,6 +208,7 @@ button:focus-visible {
   margin: 0;
 }
 #overlay {
+  content: url('../../images/Frame72.png');
   position: absolute;
   object-fit: contain;
   width: 54vw;
@@ -226,8 +228,9 @@ button:focus-visible {
 }
 
 #street {
-  top: 14vh;
-  width: 100%;
+  top: 22vh;
+  width: 86%;
+  margin-left: 5vw;
   position: absolute;
   display: flex;
   flex-direction: row;
@@ -241,7 +244,7 @@ button:focus-visible {
   color: white;
   position: absolute;
   left: 3vw;
-  top: 11vh;
+  top: 9vh;
 }
 
 pre {
@@ -249,18 +252,17 @@ pre {
 }
 
 .streets {
-  background: #0e0d0d29;
-  backdrop-filter: blur(20px);
-  height: 50vh;
+  height: 55vh;
   width: 100vw;
   /* border: 2px solid #000; */
 }
 .viewin3dBtn {
+  content: url('../../images/viewin3d(1).png');
   position: relative;
-  width: 15vw;
+  width: 6vw;
   object-fit: contain;
-  bottom: 14vh;
-  left: 8vh;
+  bottom: 7vh;
+  left: 38vh;
 }
 /* #street1 {
   background: #0e0d0d29;
@@ -308,7 +310,7 @@ pre {
   width: 17vw;
 }
 #viewin3dS {
-
+  content: url('../../images/viewin3d(1).png');
   position: absolute;
   left: 50vw;
   top: 69vh;
@@ -316,8 +318,8 @@ pre {
 }
 #buildingpre1 {
   width: 100vw;
-  height: 77vh;
-  top: 7vh;
+  height: 75vh;
+  top: 25vh;
   position: absolute;
   /* object-fit: contain; */
 }
@@ -343,10 +345,11 @@ pre {
 #locationpre {
   position: absolute;
   /* object-fit: contain; */
+  content: url('../../images/Location1.png');
   /* left: 0vw; */
-  top: 6vh;
+  top: 25vh;
   width: 100vw;
-  height: 80vh;
+  height: 75vh;
 }
 
 #bottombar {
@@ -399,7 +402,7 @@ pre {
   -webkit-transition: .4s;
   transition: .4s;
   height: 8vh;
-  width: 3.5vw;
+  width: 2.7vw;
 
 }
 
@@ -567,16 +570,16 @@ body.ios {
 #prbtn {
   position: fixed;
   z-index: 12;
-  right: 97vw;
-  top: 37vh;
+  left: 0vw;
+  top: 45vh;
   cursor: pointer;
   display: none;
 }
 #nxtbtn {
   position: fixed;
   z-index: 12;
-  right: 1vw;
-  top: 37vh;
+  right: 0vw;
+  top: 45vh;
   cursor: pointer;
   display: none;
 }
@@ -645,15 +648,21 @@ hr.solid {
 }
 
 .Title {
-  font-size: 30px;
+  font-size: 25px;
   font-family: cairo-Bold;
-  margin: 0;
-  line-height: 0%;
+  /* margin-right: 20px; */
+  line-height: 100%;
+  margin-top: 23px;
+
 }
 
 .content {
-  font-size: 28px;
+  font-size: 22px;
   font-family: cairo-Regular;
+  line-height: 100%;
+  /* margin: 0; */
+
+
 }
 
 #LoaderMain {
@@ -769,26 +778,47 @@ hr.solid {
     opacity: 0;
   }
 }
-
+#bnmtitle{
+  font-size: 53px;
+  line-height: 100%;
+  margin: -20px;
+}
+#bname{
+  margin-left: 61vw;
+  margin-bottom: -8vh;
+  line-height: 100%;
+}
 #overview-con {
   position: absolute;
   left: 2vw;
-  top: 0vh;
+  top: -54vh;
+  line-height: 13px;
   color: white;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   align-content: center;
-  justify-content: center;
-  width: 40%;
+  justify-content: end;
+  width: 100%;
   height: 80%;
 }
 
 #buildpre {
   position: absolute;
   color: white;
-  left: 11vw;
+  left: 9vw;
   /* line-height: 0%; */
-  top: 24vh;
+  top: 12vh;
+  gap: 25px;
+}
+#btitle {
+  font-size: 40px;
+  margin-top: -16px;
+}
+
+#Bname {
+  font-size: 35px;
+  margin-top: -35px;
+  font-family: cairo-Bold;
 }
 
 /* #btitle
@@ -888,11 +918,23 @@ hr.solid {
   z-index: 999;
 }
 
+/* #bname{
+  position: relative;
+  left: 54vw;
+  top: 12vh;
+  font-size: 22px;
+  line-height: 100%;
+}
+#bnmtitle{
+  font-size: 45px;
+  line-height: 100%;
+} */
+
 #infodivRoot {
   top: 1vh;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-content: center;
   justify-content: space-around;
   align-items: center;
@@ -966,9 +1008,11 @@ hr.solid {
   #buildpre {
     position: absolute;
     color: white;
+    flex-direction: column;
     left: 11vw;
     /* line-height: 0%; */
     top: 15vh;
+    gap: 0;
   }
 
   #buildpre.ios {
@@ -976,16 +1020,18 @@ hr.solid {
   }
 
   .Title {
-    font-size: 14px;
+    font-size: 12px;
     font-family: cairo-Bold;
     margin: 0;
-    line-height: 0%;
+    /* line-height: 100%; */
   }
 
   .content {
-    font-size: 12px;
+    font-size: 10px;
     font-family: cairo-Regular;
     margin-top: 5%;
+    /* line-height: 100%; */
+
   }
 
   #btitle {
@@ -1019,7 +1065,7 @@ hr.solid {
   }
 
   #viewin3dS {
-
+    content: url('../../images/FULLSCREEN_BUTT.png');
     position: absolute;
     left: 58vw;
     top: 68vh;
@@ -1033,6 +1079,7 @@ hr.solid {
  
 
   #overlay {
+      content: url('../../images/Tutorial_overlay.png');
     position: absolute;
     object-fit: contain;
     width: 50vw;
@@ -1085,6 +1132,18 @@ hr.solid {
     align-items: center;
 }
 
+#infodivRoot {
+  top: 1vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-around;
+  align-items: center;
+}
+#infodivRoot div {
+  width: 50%;
+}
   .tab.ios {
     display: flex;
     width: max-content;
@@ -1175,6 +1234,14 @@ hr.solid {
   } */
 
   #street {
+    width: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-evenly;
+  align-items: flex-start;
     top: 17vh;
   }
   #street.ios{
@@ -1223,6 +1290,7 @@ hr.solid {
   #locationpre {
     /* position: absolute; */
     /* object-fit: cover; */
+    content: url('../../images/preLocation.png');
     left: 0vw;
     top: 8vh;
     width: 100vw;
@@ -1238,6 +1306,8 @@ hr.solid {
     object-fit: contain;
     bottom: 14vh;
     left: 8vh;
+    content: url('../../images/FULLSCREEN_BUTT.png');
+
   }
 
 
@@ -1264,6 +1334,7 @@ hr.solid {
   #locationpre_text {
     /* color: white; */
     /* position: absolute; */
+    flex-direction: column;
     left: 2vw;
     top: 6vh;
   }
@@ -1360,6 +1431,7 @@ hr.solid {
 
 
   #overviewBg {
+    content: url('../../images/buildingpre1.png');
     position: absolute;
     top: 8vh;
     width: 100vw;
@@ -1409,6 +1481,7 @@ hr.solid {
   }
 
   #bnmtitle {
+   
     font-size: 19px;
     margin: 0;
     line-height: 25px;

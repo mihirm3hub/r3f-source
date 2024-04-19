@@ -12,11 +12,14 @@
   "dependencies": {
     "@react-three/drei": "^9.96.1",
     "@react-three/fiber": "^8.15.14",
+    "@react-three/gltfjsx": "^4.3.4",
     "@react-three/postprocessing": "^2.15.11",
     "@theatre/core": "^0.5.1",
     "@theatre/r3f": "^0.5.1",
     "@theatre/studio": "^0.5.1",
+    "gltfjsx": "^6.2.16",
     "leva": "^0.9.35",
+    "parse": "^5.0.0",
     "postprocessing": "^6.34.1",
     "r3f": "^1.0.0",
     "react": "^18.2.0",
@@ -24,6 +27,7 @@
     "react-use-gesture": "^9.1.3",
     "realism-effects": "^1.1.2",
     "three": "^0.160.0",
+    "three-stdlib": "^2.8.12",
     "valtio": "^1.13.0"
   },
   "devDependencies": {
