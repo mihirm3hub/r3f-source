@@ -76,7 +76,8 @@
     </div>
     <div id="info-Con">
       <div>
-        <img id="clsB" src="./images/Close.png" />
+        <img id="clsB" src="./images/Close.png" onmouseover="this.src=`./images/CLOSE_BUTT_HOV.png`"
+          onmouseout="this.src=`./images/Close.png`" />
       </div>
       <img id="overviewBg" src="./images/OverviewBg.png" alt="">
 
@@ -98,17 +99,20 @@
       <div id="street">
         <div id="street1" class="streets">
           <img class="streetTitle" id="s1" src="./images/StreetView-02.png" />
+          <div class="text">1.Entrance View</div>
           <img id="SPre1" class="sPre" src="./images/Street_Pre1.png" />
           <img class="viewin3dBtn" id="viewin3d1" src="./images/FULLSCREEN_BUTT.png" />
         </div>
         <div id="street2" class="streets">
           <img class="streetTitle" id="s2" src="./images/StreetView-01.png" />
+          <div class="text">2.Office Entrance </div>
           <img id="SPre2" class="sPre" src="./images/Street_Pre2.png" />
           <img class="viewin3dBtn" id="viewin3d2" src="./images/FULLSCREEN_BUTT.png" />
 
         </div>
         <div id="street3" class="streets">
           <img class="streetTitle" id="s3" src="./images/StreetView-03.png" />
+          <div class="text">3.Loading Bays</div>
           <img id="SPre3" class="sPre" src="./images/Street_Pre3.png" />
           <img class="viewin3dBtn" id="viewin3d3" src="./images/FULLSCREEN_BUTT.png" />
 
@@ -203,41 +207,31 @@
       </div>
       <div>
 
-        <h4 class="Title" id="ftitle">Total Land Parcel</h4>
-        <p class="content" id="Farea"> 186 Acres</p>
+        <h4 class="Title" id="ftitle">Floor Area</h4>
+        <p class="content" id="Farea">3,23,520 sq ft (30,056 sq m)</p>
       </div>
       <div>
-        <h4 class="Title" id="mtitle">Plot 1 Land Area</h4>
-        <p class="content" id="Marea"> 62 Acres</p>
+        <h4 class="Title" id="mtitle">Mezzanine Area</h4>
+        <p class="content" id="Marea"> 5,382 sq ft(500 sq m)</p>
       </div>
       <div>
-        <h4 class="Title" id="totbtitle">Total Chargeable Area</h4>
-        <p class="content" id="Tbarea"> 14,35,315 sq.ft.(1,33,344 sq.m.)</p>
+        <h4 class="Title" id="totbtitle">Clear Height</h4>
+        <p class="content" id="Tbarea"> 12 meters minimum</p>
       </div>
       <div>
         <h4 class="Title" id="usage">Total Built-up Area</h4>
-        <p class="content" id="Usage-p"> 3,28,902,sq ft (30,556 sq m)</p>
+        <p class="content" id="Usage-p">3,28,902 sq ft(30,556 sq m)</p>
       </div>
     </div>
-
-
-
 
     <div>
       <img id="overlay" src="./images/Tutorial_overlay.png" />
     </div>
-
-
-
-
-
     <div id="instructionOverlay">
       <img src="./images/TutorialImg.png" alt="" />
   </section>
   <div class="buildings"></div>
-  <img id="views"/>
-
-
+  <img id="views" />
 
   <div id="popup">
     <img class="close" src="./images/BACK_BUTT.png" />
@@ -314,7 +308,7 @@
       document.querySelectorAll('.tab').forEach(e => {
         e.classList.add('ios')
       });
-      
+
       document.querySelector('.buildings').classList.add('ios')
 
       document.querySelector('body').classList.add('ios')

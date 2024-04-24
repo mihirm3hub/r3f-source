@@ -95,7 +95,7 @@ button:focus-visible {
   z-index: 100;
   position: fixed;
   top: 2vh;
-  left: 1vw;
+  left: 3vw;
   cursor: pointer;
   width: 2vw;
   height: 2vh;
@@ -127,7 +127,7 @@ button:focus-visible {
   position: absolute;
   right: 2vw;
   z-index: 9;
-  top: 6vh;
+  top: 2vh;
 }
 
 /* #SPre1 {
@@ -139,7 +139,7 @@ button:focus-visible {
   top: 12vh;
 } */
 #info-Con {
-  background: #80808029;
+  background: #000000a1;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   width: 100%;
@@ -188,36 +188,44 @@ button:focus-visible {
   background-color: #ddd;
 }
 
-#overviewBg{
+#overviewBg {
   content: url('../../images/BuildingRenderImage.png');
   width: 100vw;
   position: absolute;
   top: 25vh;
   height: 75vh;
 }
+
 .previewL {
-  font-size: 26px;
+  font-size: 16px;
   font-family: cairo-Regular;
-  line-height: 41px;
-  margin: 0;
+  line-height: 100%;
+  /* margin: 0; */
+  letter-spacing: 2px;
+  margin-left: 28vw;
+  margin-right: -21vw;
+  /* margin-bottom: -87vh; */
+  margin-top: 0.7vh;
 }
+
 #accessibility {
   font-size: 39px;
   font-family: cairo-Bold;
   margin-top: 1%;
-  margin: 0;
+  margin-left: 38px;
 }
+
 #overlay {
   content: url('../../images/Frame72.png');
   position: absolute;
   object-fit: contain;
   width: 54vw;
   left: 24vw;
-  top: 22vh;
+  top: 37vh;
 }
 
 
-#view01{
+#view01 {
   position: absolute;
   z-index: 9;
   top: 0;
@@ -229,7 +237,7 @@ button:focus-visible {
 
 #street {
   top: 22vh;
-  width: 86%;
+  width: 90%;
   margin-left: 5vw;
   position: absolute;
   display: flex;
@@ -244,7 +252,7 @@ button:focus-visible {
   color: white;
   position: absolute;
   left: 3vw;
-  top: 9vh;
+  top: 8vh;
 }
 
 pre {
@@ -256,14 +264,16 @@ pre {
   width: 100vw;
   /* border: 2px solid #000; */
 }
+
 .viewin3dBtn {
   content: url('../../images/viewin3d(1).png');
   position: relative;
   width: 6vw;
   object-fit: contain;
-  bottom: 7vh;
-  left: 38vh;
+  bottom: -3vh;
+  left: 26vh;
 }
+
 /* #street1 {
   background: #0e0d0d29;
   backdrop-filter: blur(20px);
@@ -293,6 +303,7 @@ pre {
 
 
 .buildings {
+  display: none;
   position: absolute;
   font-size: 22px;
   z-index: 9;
@@ -300,7 +311,9 @@ pre {
   left: 50vw;
   color: white;
   font-weight: 400;
+  font-family: cairo-Regular;
 }
+
 #views {
   display: none;
   position: absolute;
@@ -309,13 +322,15 @@ pre {
   left: 42vw;
   width: 17vw;
 }
+
 #viewin3dS {
   content: url('../../images/viewin3d(1).png');
   position: absolute;
-  left: 50vw;
-  top: 69vh;
+  left: 55vw;
+  top: 80vh;
 
 }
+
 #buildingpre1 {
   width: 100vw;
   height: 75vh;
@@ -323,18 +338,33 @@ pre {
   position: absolute;
   /* object-fit: contain; */
 }
+
 .sPre {
-      /* position: absolute; */
-    /* display: flex; */
-    /* object-fit: contain; */
-    width: 96%;
-    height: 85%;
-    /* top: 12vh; */
-    margin-top: -3%;
+  /* position: absolute; */
+  /* display: flex; */
+  /* object-fit: contain; */
+  width: 25vw;
+  height: 46vh;
+  /* top: 12vh; */
+  margin-top: 4%;
 }
+
 .streetTitle {
+  display: none;
   width: 96%;
   object-fit: contain;
+}
+
+.text {
+  background: #000000a1;
+  backdrop-filter: blur(8px);
+  width: 25vw;
+  position: absolute;
+  height: 8vh;
+  top: 47.5vh;
+  font-size: 36px;
+  color: #ffffff;
+  font-family: cairo-Regular;
 }
 
 /* #closeB {
@@ -348,7 +378,7 @@ pre {
   content: url('../../images/Location1.png');
   /* left: 0vw; */
   top: 25vh;
-  width: 100vw;
+  width: 100%;
   height: 75vh;
 }
 
@@ -358,7 +388,7 @@ pre {
   position: absolute;
   background: none;
   width: 7vw;
-  height: 97vh;
+  height: 96vh;
   bottom: 1%;
   right: 0vw;
   flex-direction: column;
@@ -567,6 +597,7 @@ body.ios {
   top: 45%;
   cursor: pointer;
 }
+
 #prbtn {
   position: fixed;
   z-index: 12;
@@ -575,6 +606,7 @@ body.ios {
   cursor: pointer;
   display: none;
 }
+
 #nxtbtn {
   position: fixed;
   z-index: 12;
@@ -634,21 +666,20 @@ hr.solid {
 
 .pop-dropdown-content div h4 {
   font-size: 18px;
+  line-height: 18px;
   font-family: cairo-Bold;
-
-
+  letter-spacing: 1px;
 }
 
 .pop-dropdown-content div p {
   font-size: 15px;
+  line-height: 17px;
+  letter-spacing: 1px;
   font-family: cairo-Regular;
-
-
-
 }
 
 .Title {
-  font-size: 25px;
+  font-size: 20px;
   font-family: cairo-Bold;
   /* margin-right: 20px; */
   line-height: 100%;
@@ -657,7 +688,7 @@ hr.solid {
 }
 
 .content {
-  font-size: 22px;
+  font-size: 18px;
   font-family: cairo-Regular;
   line-height: 100%;
   /* margin: 0; */
@@ -702,7 +733,7 @@ hr.solid {
 #LoaderMainHeader {
   position: absolute;
   top: 10.5vh;
-  left: 3.4vw;
+  left: 3vw;
   font-size: 412%;
   width: 59vw;
   letter-spacing: 2%;
@@ -778,19 +809,23 @@ hr.solid {
     opacity: 0;
   }
 }
-#bnmtitle{
-  font-size: 53px;
+
+#bnmtitle {
+  font-size: 38px;
   line-height: 100%;
   margin: -20px;
 }
-#bname{
-  margin-left: 61vw;
-  margin-bottom: -8vh;
-  line-height: 100%;
+
+#bname {
+  margin-left: 53vw;
+  margin-bottom: -7vh;
+  line-height: 17px;
+  letter-spacing: 1px;
 }
+
 #overview-con {
   position: absolute;
-  left: 2vw;
+  left: 7vw;
   top: -54vh;
   line-height: 13px;
   color: white;
@@ -798,26 +833,27 @@ hr.solid {
   flex-direction: column;
   align-content: center;
   justify-content: end;
-  width: 100%;
+  width: 88%;
   height: 80%;
 }
 
 #buildpre {
   position: absolute;
   color: white;
-  left: 9vw;
+  left: 8vw;
   /* line-height: 0%; */
-  top: 12vh;
-  gap: 25px;
+  top: 13vh;
+  gap: 4.5vw;
 }
+
 #btitle {
-  font-size: 40px;
-  margin-top: -16px;
+  font-size: 41px;
+  margin-top: 1px;
 }
 
 #Bname {
-  font-size: 35px;
-  margin-top: -35px;
+  font-size: 41px;
+  margin-top: -45px;
   font-family: cairo-Bold;
 }
 
@@ -938,6 +974,7 @@ hr.solid {
   align-content: center;
   justify-content: space-around;
   align-items: center;
+  width: 100vw;
 }
 
 #infodivRoot div {
@@ -1070,16 +1107,21 @@ hr.solid {
     left: 58vw;
     top: 68vh;
   }
-  #viewin3dS.ios{
+
+  #viewin3dS.ios {
     top: 60vh;
   }
-  #view01{
+
+  #view01 {
     top: 0;
   }
- 
+
+  .text {
+    display: none;
+  }
 
   #overlay {
-      content: url('../../images/Tutorial_overlay.png');
+    content: url('../../images/Tutorial_overlay.png');
     position: absolute;
     object-fit: contain;
     width: 50vw;
@@ -1130,20 +1172,22 @@ hr.solid {
     align-content: center;
     justify-content: end;
     align-items: center;
-}
+  }
 
-#infodivRoot {
-  top: 1vh;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: space-around;
-  align-items: center;
-}
-#infodivRoot div {
-  width: 50%;
-}
+  #infodivRoot {
+    top: 1vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  #infodivRoot div {
+    width: 50%;
+  }
+
   .tab.ios {
     display: flex;
     width: max-content;
@@ -1158,13 +1202,16 @@ hr.solid {
     justify-content: end;
     align-items: center;
   }
-  #overviewBg.ios{
+
+  #overviewBg.ios {
     height: 66vh;
   }
-  #overview-con.ios{
+
+  #overview-con.ios {
     top: 8vh;
   }
-/* 
+
+  /* 
   .tablinks {
 
     margin-left: 1px;
@@ -1174,6 +1221,7 @@ hr.solid {
     right: 2vw;
     top: 0;
   }
+
   #prbtn {
     left: 0vw;
     top: 42vh;
@@ -1192,13 +1240,25 @@ hr.solid {
   }
 
   #buildingpre1.ios {
-   height: 66vh;
+    height: 66vh;
   }
 
-  #info-Con {
+  /* #info-Con {
     top: 0vh;
     height: 120%;
+  } */
+  #info-Con {
+    background: #80808029;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    width: 100%;
+    top: 0vh;
+    height: 120%;
+    position: absolute;
+    /* right: 13vw; */
+    /* top: 15vh; */
   }
+
   #overview-con {
     position: absolute;
     left: 2vw;
@@ -1211,15 +1271,18 @@ hr.solid {
     width: 40%;
     height: 80%;
   }
+
   #views {
-   
+
     top: 90vh;
     left: 42vw;
     width: 17vw;
-}
-#views.ios{
-  top: 80vh;
-}
+  }
+
+  #views.ios {
+    top: 80vh;
+  }
+
   /* 
   #s1 {
     width: 24vw;
@@ -1235,19 +1298,22 @@ hr.solid {
 
   #street {
     width: 100%;
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-content: center;
-  justify-content: space-evenly;
-  align-items: flex-start;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: flex-start;
     top: 17vh;
   }
-  #street.ios{
+
+  #street.ios {
     top: 14vh;
   }
+
   .streetTitle {
+    display: block;
     width: 100%;
     object-fit: contain;
   }
@@ -1258,7 +1324,7 @@ hr.solid {
     left: 0;
   }
 
-  
+
 
   #dropdown {
     /* width: 16vw; */
@@ -1266,15 +1332,17 @@ hr.solid {
     top: 85%;
 
   }
-  .buildings{
+
+  .buildings {
     display: none;
     position: absolute;
     font-size: 10px;
-    font-family: cairo-Regular ;
+    font-family: cairo-Regular;
     bottom: -13vh;
     z-index: 9;
   }
-  .buildings.ios{
+
+  .buildings.ios {
     top: 80vh;
   }
 
@@ -1296,9 +1364,10 @@ hr.solid {
     width: 100vw;
     height: 77vh;
   }
-#locationpre.ios{
-  height: 66vh;
-}
+
+  #locationpre.ios {
+    height: 66vh;
+  }
 
   .viewin3dBtn {
     position: relative;
@@ -1359,6 +1428,7 @@ hr.solid {
     font-family: cairo-Regular;
     line-height: 15px;
     margin: 0;
+    letter-spacing: 0;
   }
 
   #accessibility {
@@ -1481,7 +1551,7 @@ hr.solid {
   }
 
   #bnmtitle {
-   
+
     font-size: 19px;
     margin: 0;
     line-height: 25px;
