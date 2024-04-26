@@ -1480,8 +1480,9 @@ hr.solid {
 
   .pop-dropdown-content div h4 {
     font-size: 11px;
-    margin-top: -3%;
-    line-height: 15px;
+    margin-top: 2%;
+    line-height: 12px;
+    letter-spacing: 0px;
   }
 
   #cbtn {
@@ -1495,8 +1496,9 @@ hr.solid {
 
   .pop-dropdown-content div p {
     font-size: 10px;
-    margin-top: -10%;
-    line-height: 15px;
+    margin-top: -2%;
+    line-height: 11px;
+    letter-spacing: 0px;
   }
 
 
@@ -1560,7 +1562,8 @@ hr.solid {
   #bname {
     font-size: 13px;
     margin: 0;
-    line-height: 18px;
+    line-height: 16px;
+    letter-spacing: 0;
   }
 
 }
