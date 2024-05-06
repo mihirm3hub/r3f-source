@@ -183,6 +183,9 @@ button:focus-visible {
   padding: 17px 21px;
   transition: 0.3s;
 }
+.tab :hover{
+  background: #A8A8A8;
+}
 
 .tablinks.active {
   background-color: #ddd;
@@ -406,6 +409,13 @@ pre {
   cursor: pointer;
   /* z-index: 99; */
 }
+#locationbtn:hover{
+  content: url(../../images/INFO_B_HOVER.png);
+  width: 12vw;
+  margin-left: -10vw;
+  /* left: auto; */
+
+}
 
 .switch {
   margin-top: 2%;
@@ -522,6 +532,11 @@ body.ios {
   cursor: pointer;
 
 }
+#arbtn:hover{
+  content: url(../../images/AR_BUTT_HOVER.png);
+  width: 12vw;
+  margin-left: -10vw;
+}
 
 #popup {
   display: none;
@@ -558,10 +573,15 @@ body.ios {
 
   display: none;
   right: 5%;
-  width: 3%;
+  width: 3vw;
   position: absolute;
   top: 5%;
-  border-radius: 50%;
+  /* border-radius: 100%; */
+}
+#cbtn:hover{
+  content: url(../../images/BACK_BTN_HOV.png);
+  width: 12vw;
+  /* margin-left: -1vw; */
 }
 
 #hotspotClose {
@@ -578,6 +598,12 @@ body.ios {
   z-index: 12;
   right: 5vw;
   top: 5%;
+  width: 3vw;
+
+}
+.close:hover{
+  content: url(../../images/BACK_BTN_HOV.png) ;
+  width: 10vw;
 }
 
 
@@ -616,12 +642,12 @@ body.ios {
   display: none;
 }
 
-.close:hover,
+/* .close:hover,
 .close:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
-}
+} */
 
 #sidebar {
   object-fit: contain;
@@ -811,14 +837,15 @@ hr.solid {
 }
 
 #bnmtitle {
-  font-size: 38px;
+  font-size: 42px;
   line-height: 100%;
-  margin: -20px;
+  /* margin: -2px; */
+  margin-top: -10vh;
 }
 
 #bname {
   margin-left: 53vw;
-  margin-bottom: -7vh;
+  margin-bottom: -12vh;
   line-height: 17px;
   letter-spacing: 1px;
 }

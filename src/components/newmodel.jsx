@@ -1164,9 +1164,9 @@ const extractedCamera = useRef();
 
      
       <primitive object={model.scene} />
-      <primitive object={model.cameras[0] } name="MainCameraAlt" makeDefault='true'  position= {[31.401, 13.534, 42.827]}
-        rotation= {[-0.32, 0.604, 0.186]}
-/>
+     
+
+
       
       </>
 
