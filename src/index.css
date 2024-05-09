@@ -94,7 +94,7 @@ button:focus-visible {
 #Logo {
   z-index: 100;
   position: fixed;
-  top: 2vh;
+  top: 1.5vh;
   left: 3vw;
   cursor: pointer;
   width: 2vw;
@@ -208,7 +208,7 @@ button:focus-visible {
   margin-left: 28vw;
   margin-right: -21vw;
   /* margin-bottom: -87vh; */
-  margin-top: -3.6vh;
+  margin-top: -4.6vh;
 }
 
 #accessibility {
@@ -274,7 +274,7 @@ pre {
   width: 6vw;
   object-fit: contain;
   bottom: -3vh;
-  left: 37vh;
+  left: 38vh;
 }
 
 /* #street1 {
@@ -443,7 +443,7 @@ pre {
   -webkit-transition: .4s;
   transition: .4s;
   height: 8vh;
-  width: 2.4em;
+  width: 2.6vw;
 
 }
 
@@ -693,14 +693,14 @@ hr.solid {
 
 .pop-dropdown-content div h4 {
   font-size: 14px;
-  line-height: 18px;
+  line-height: 12px;
   font-family: cairo-Bold;
   letter-spacing: 1px;
 }
 
 .pop-dropdown-content div p {
   font-size: 15px;
-  line-height: 17px;
+  line-height: 15px;
   letter-spacing: 1px;
   font-family: cairo-Regular;
 }
@@ -838,23 +838,23 @@ hr.solid {
 }
 
 #bnmtitle {
-  font-size: 33px;
+  font-size: 28px;
   line-height: 100%;
-  margin: -27px;
+  margin: -18px;
   /* margin-top: -10vh; */
 }
 
 #bname {
   margin-left: 53vw;
   margin-bottom: -6vh;
-  line-height: 17px;
+  line-height: 18px;
   letter-spacing: 1px;
 }
 
 #overview-con {
   position: absolute;
   left: 7vw;
-  top: -53vh;
+  top: -54vh;
   line-height: 13px;
   color: white;
   display: flex;
@@ -870,7 +870,7 @@ hr.solid {
   color: white;
   left: 8vw;
   /* line-height: 0%; */
-  top: 11vh;
+  top: 10vh;
   gap: 4.5vw;
 }
 
@@ -1003,6 +1003,7 @@ hr.solid {
   justify-content: space-around;
   align-items: center;
   width: 100vw;
+  /* height: 17vh; */
 }
 
 #infodivRoot div {
@@ -1204,6 +1205,7 @@ hr.solid {
 
   #infodivRoot {
     top: 1vh;
+    /* height: 35vh; */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -1696,4 +1698,29 @@ hr.solid {
     content: url('../../images/Tablet-Portrait.png');
 
   }
+}
+
+@media only screen and (min-width: 1100px) and (max-width: 1422px) and (orientation:landscape) {
+ .slider{
+  width: 3.4vw;
+ }
+ .viewin3dBtn {
+  left: 32vh;
+ }
+ .previewL {
+  margin-left: 23vw;
+  margin-top: -3vh;
+ }
+ #bnmtitle {
+  margin: -3px;
+ }
+ #btitle{
+  font-size: 35px;
+ }
+ #Bname {
+  font-size: 33px;
+ }
+ .content {
+  font-size: 17px;
+ }
 }
