@@ -1,11 +1,15 @@
 @font-face {
   font-family: cairo-Bold;
-  src: url('/cairo-2-cufonfonts/Cairo-SemiBold.ttf');
+  src: url('/font/Cairo-Bold.ttf');
 }
 
 @font-face {
   font-family: cairo-Regular;
-  src: url('/cairo-2-cufonfonts/Cairo-Regular.ttf')
+  src: url('/font/Cairo-Regular.ttf')
+}
+@font-face {
+  font-family: cairo-Medium;
+  src: url('/font/Cairo-Medium.ttf')
 }
 
 ::-webkit-scrollbar {
@@ -137,15 +141,16 @@ button:focus-visible {
 
 #clsB {
   position: absolute;
-  right: 1vw;
+  right: 0vw;
   z-index: 9;
-  width: 10vw;
-  top: 1vh;
+  width: 4vw;
+  top: 0vh;
 }
-
-#clsB:hover {
+#clsB:hover{
   content: url('../../images/CLOSE_BUTT_H.png');
-
+  right: 0vw;
+  width: 13vw;
+  top: 0.2vh;
 }
 
 /* #SPre1 {
@@ -224,26 +229,26 @@ bottom: 0.5vw;
   content: url('../../images/BuildingRenderImage.png');
   width: 98vw;
   position: absolute;
-  top: 27.1vh;
-  height: 69.9vh;
+  top: 28.1vh;
+  height: 68.9vh;
 }
 
 .previewL {
   font-size: 13px;
-  font-family: cairo-Regular;
-  line-height: 17px;
+  font-family: cairo-Medium;
+  line-height: 21px;
   /* margin: 0; */
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   margin-left: 26vw;
   margin-right: -20vw;
   /* margin-bottom: -128vh; */
   margin-top: 5%;
-  text-align: justify;
+  text-align: left;
   width: 19vw;
 }
 
 #accessibility {
-  font-size: 45px;
+  font-size: 3.5rem;
   font-family: cairo-Bold;
   margin-top: 3%;
   margin-left: 38px;
@@ -253,7 +258,7 @@ bottom: 0.5vw;
 .streetname {
   color: white;
   position: absolute;
-  font-size: 45px;
+  font-size: 3.5rem;
   line-height: 13px;
   font-family: 'cairo-Bold';
   bottom: 62vh;
@@ -291,8 +296,9 @@ bottom: 0.5vw;
   top: 8vh;
   color: white;
   font-family: cairo-Bold;
-  font-size: 40px;
+  font-size: 3rem;
   left: 5vw;
+  width: 60vw;
 }
 
 #view01 {
@@ -393,8 +399,8 @@ pre {
 
 #buildingpre1 {
   width: 100%;
-  height: 70vh;
-  top: 27.1vh;
+  height: 69vh;
+  top: 28.1vh;
   position: absolute;
   object-fit: cover;
 }
@@ -438,9 +444,9 @@ pre {
   object-fit: cover;
   content: url('../../images/Location1.png');
   /* left: 0vw; */
-  top: 27.1vh;
+  top: 28.1vh;
   width: 100%;
-  height: 69.9vh;
+  height: 68.9vh;
 }
 
 #bottombar {
@@ -1022,8 +1028,8 @@ hr.solid {
 
 .vl2 {
   border-left: 1px solid white;
-  height: 6vh;
-  margin-top: 7.5vh;
+  height: 9vh;
+  margin-top: 8.5vh;
   margin-left: -3vw;
   display: block;
   /* margin: -25px; */
@@ -1079,19 +1085,20 @@ hr.solid {
 
 .Title {
   font-size: 13px;
-  font-family: cairo-Bold;
+  font-family: 'cairo-Bold';
   /* margin-right: 20px; */
   line-height: 13px;
   margin-top: 23px;
+  letter-spacing: 2%;
+  letter-spacing: 1px;
 
 }
 
 .content {
   font-size: 13px;
-  font-family: cairo-Regular;
+  font-family: 'cairo-Regular';
   line-height: 13px;
-  /* margin: 0; */
-
+  /* letter-spacing: 1px; */
 
 }
 
@@ -1234,7 +1241,7 @@ hr.solid {
 #bnmtitle {
   text-align: start;
   position: relative;
-  top: 3vh;
+  top: 2vh;
   font-size: 3.5rem;
   letter-spacing: 2px;
   /* line-height: 4vh; */
@@ -1244,9 +1251,9 @@ hr.solid {
 #bnmdetials {
   font-size: 1.5rem;
   position: relative;
-  bottom: 4vh;
+  bottom: 3vh;
   /* bottom: -41%; */
-  font-family: 'cairo-Regular';
+  font-family: 'cairo-Bold';
   letter-spacing: 1px;
 }
 
@@ -1256,10 +1263,11 @@ hr.solid {
 #bname {
   font-size: 13px;
   /* margin-left: 53vw; */
-  margin-bottom: 3vh;
+  /* margin-bottom: 2vh; */
   /* line-height: 17px; */
   letter-spacing: 1px;
   text-align: start;
+  font-family: 'cairo-Regular';
 }
 
 
@@ -1278,8 +1286,8 @@ hr.solid {
   flex-direction: column;
   align-content: center;
   justify-content: end;
-  width: 83%;
-  height: 80%;
+  width: 88%;
+  height: 85%;
 }
 
 #buildpre {
@@ -1287,12 +1295,12 @@ hr.solid {
   color: white;
   left: 7vw;
   /* line-height: 0%; */
-  top: 14vh;
-  gap: 5vw;
+  top: 15vh;
+  gap: 4.5vw;
 }
 
 #btitle {
-  font-size: 45px;
+  font-size: 3.5rem;
   margin-top: 1px;
   line-height: 13px;
   font-family: cairo-Regular;
@@ -1300,7 +1308,7 @@ hr.solid {
 }
 
 #Bname {
-  font-size: 45px;
+  font-size: 3.5rem;
   margin-top: -38px;
   line-height: 30px;
   /* font-family: cairo-Bold; */
@@ -1421,16 +1429,13 @@ hr.solid {
   flex-direction: row;
   flex-wrap: nowrap;
   align-content: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
-  width: 84vw;
-  height: 14vh;
+  width: 89vw;
+  height: 21vh;
 }
 
-#infodivRoot div {
-  width: 50%;
-  /* text-align: center; */
-}
+
 
 @media all and (max-width: 1023px) {
   .scroll-control {
@@ -1570,6 +1575,7 @@ hr.solid {
     position: absolute;
     left: 58vw;
     top: 68vh;
+    width: 20vw;
   }
 
   #viewin3dS.ios {
@@ -1698,8 +1704,8 @@ hr.solid {
 
   #clsB {
     right: 2vw;
-    top: 8px;
-    width: 16vw;
+    top: 0px;
+    width: 7vw;
   }
   #clsB:hover{
     content: initial; /* Removes the hover content */
@@ -2234,7 +2240,7 @@ hr.solid {
     bottom: 3vh;
   }
 #buildpre{
-  gap: 2vw;
+  gap: 3vw;
 }
 .sPre{
   width: 26vw;
