@@ -24,10 +24,13 @@ let isClosed = true
 let isInfo = false
 let scrollValue
 let cno = 1;
-
+let url1
+let url2
+let url3
 
 let isClickAdded = false
 
+const overlaycon=document.getElementById('overlaycon')
 const overlay = document.getElementById('overlay')
 const viewin3dS = document.getElementById('viewin3dS')
 const dropdownContent = document.getElementById('overview-con');
@@ -45,11 +48,54 @@ const buildpre = document.getElementById('buildpre')
 const tablinks = document.querySelectorAll('.tablinks');
 const overviewBg = document.getElementById('overviewBg')
 
-
+const instructionname=document.getElementById('instructionname')
 const prBtn3d = document.getElementById('3dprebtn')
 const nxtBtn3d = document.getElementById('3dnextbtn')
 const closeBtn = document.getElementById('cbtn')
 const hotspotClose = document.getElementById('hotspotClose')
+
+
+
+//SWitchCloseButtons
+const amenitymode = document.getElementById('amenitymode')
+const defaultmode = document.getElementById('defaultmode')
+const switchEl = document.querySelector('.toggle')
+
+switchEl.addEventListener("change", function () {
+  // console.log('change');
+  // Hide both images when the checkbox state changes
+  amenitymode.style.display = "none";
+  defaultmode.style.display = "none";
+});
+
+switchEl.addEventListener("mouseover", function () {
+  // console.log('over', amenitySwitch.checked);
+
+  if (btn.checked) {
+
+    // If the checkbox is checked, display amenitymode image
+    amenitymode.style.display = "block";
+    // defaultmode.style.display = "none";
+  } else {
+    // If the checkbox is not checked, display defaultmode image
+    // amenitymode.style.display = "none";
+    defaultmode.style.display = "block";
+  }
+});
+
+// Add event listener for checkbox hover out
+switchEl.addEventListener("mouseout", function () {
+  // console.log('out', amenitySwitch.checked);
+  // Hide both images when the mouse moves out
+  amenitymode.style.display = "none";
+  defaultmode.style.display = "none";
+});
+
+
+
+
+
+
 
 const popupIframe = document.getElementById("popupiframe");
 let picno = 1;
@@ -65,7 +111,8 @@ buildingpre1.style.display = 'none'
 street.style.display = 'none'
 infoCon.style.display = 'none';
 viewin3dS.style.display = 'none'
-overlay.style.display = 'none'
+overlaycon.style.display = 'none'
+// overlaytitle.style.display='none'
 locationpre_text.style.display = 'none'
 hotspotClose.style.display = 'none'
 
@@ -82,7 +129,8 @@ const tabSwitch = (tabId) => {
   nxtBtn.style.display = 'none'
   locationPre.style.display = 'none'
   viewin3dS.style.display = 'none'
-  overlay.style.display = 'none'
+  overlaycon.style.display = 'none'
+  // overlaytitle.style.display='none'
   locationpre_text.style.display = 'none'
   overviewBg.style.display = 'none'
 
@@ -115,11 +163,13 @@ const tabSwitch = (tabId) => {
       break;
     case 'Help':
       isHelp = !isHelp
-      overlay.style.display = 'block'
+      overlaycon.style.display = 'block'
+      // overlaytitle.style.display='block'
       isOverview = false;
       islocation = false;
       isbuilding = false
       streetviewUI = false
+      
       break;
     case 'Buildings':
       isbuilding = !isbuilding;
@@ -144,7 +194,7 @@ const tabSwitch = (tabId) => {
       break;
   }
 }
-const hotspotclickfunc=()=>{
+const hotspotclickfunc = () => {
   infoCon.style.display = 'block'
   buildpre.style.display = 'flex'
   buildingpre1.style.display = 'block'
@@ -154,7 +204,7 @@ const hotspotclickfunc=()=>{
   removetabLinksClass()
   document.getElementById('bottombar').style.display = 'none'
   document.getElementById('Buildings').classList.add('active')
-    document.getElementById('Buildings').setAttribute('src', `./images/BuildingsC.png`)
+  document.getElementById('Buildings').setAttribute('src', `./images/BuildingsC.png`)
 
 }
 
@@ -172,7 +222,7 @@ tablinks.forEach(tab => {
     removetabLinksClass()
 
     const name = tab.getAttribute('id')
-    tab.setAttribute('src', `./images/${name}C.png`)
+    // tab.setAttribute('src', `./images/${name}C.png`)
     tab.classList.add('active')
     tabSwitch(name)
   });
@@ -214,7 +264,7 @@ document.getElementById('viewin3d1').addEventListener('click', (e) => {
     document.getElementById('views').style.display = 'block',
     prBtn3d.style.display = 'none',
     nxtBtn3d.style.display = 'none',
-    document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR2/'
+    document.getElementById('popupiframe').src = url2
 
 })
 
@@ -225,7 +275,7 @@ document.getElementById('viewin3d2').addEventListener('click', (e) => {
     document.getElementById('views').style.display = 'block',
     prBtn3d.style.display = 'none',
     nxtBtn3d.style.display = 'none',
-    document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR1/'
+    document.getElementById('popupiframe').src = url1
 
 })
 document.getElementById('viewin3d3').addEventListener('click', (e) => {
@@ -235,16 +285,16 @@ document.getElementById('viewin3d3').addEventListener('click', (e) => {
     document.getElementById('views').style.display = 'block',
     prBtn3d.style.display = 'none',
     nxtBtn3d.style.display = 'none',
-    document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR3/'
+    document.getElementById('popupiframe').src = url3
 
 })
 
- 
+
 export function Model() {
   const model = useGLTF("/00_Chakan_V_Combined_For_IOS.glb")
   const { nodes, materials, animations } = useGLTF('/cameras.glb')
 
-const extractedCamera = useRef();
+  const extractedCamera = useRef();
   const modelRef1 = useRef();
   const modelRef2 = useRef();
   const modelRef3 = useRef();
@@ -259,7 +309,7 @@ const extractedCamera = useRef();
 
   const scroll = useScroll();
 
-  
+
   const perspectiveCam = useRef();
   const maincam1 = useRef()
   const [clicked, setClicked] = useState(false)
@@ -295,7 +345,7 @@ const extractedCamera = useRef();
     document.getElementById('popupdarkbg').style.display = 'none'
     document.getElementById('views').style.display = 'none'
     document.getElementById('locationbtn').style.display = 'block'
-    
+
     isOpen = false
   })
 
@@ -386,7 +436,7 @@ const extractedCamera = useRef();
   const totbtitle = document.getElementById('totbtitle')
   const Tbarea = document.getElementById('Tbarea')
   const usage = document.getElementById('usage')
-  const UsageP = document.getElementById('Usage-P')
+  const Usageper = document.getElementById('Usageper')
   let camPos = new THREE.Vector3()
   let camRot = new THREE.Vector3()
   let targetPosition = new THREE.Vector3();
@@ -409,13 +459,13 @@ const extractedCamera = useRef();
         btitle.innerText = "Building name"
         Bname.innerText = "B100"
         ftitle.innerText = "Floor Area"
-        Farea.innerText = "3,23,520 sq.ft (30,056 sq.m.)"
+        Farea.innerText = "3,23,520 sq ft (30,056 sq m)"
         mtitle.innerText = "Mezzanine Area"
-        Marea.innerText = "5,382 sq.ft (500 sq.m)"
+        Marea.innerText = "5,382 sq ft (500 sq m)"
         totbtitle.innerText = "Clear Height"
-        Tbarea.innerText ="12 meters minimum" 
+        Tbarea.innerText = "12 meters minimum"
         usage.innerText = "Total Built-up Area"
-        UsageP.innerText = " 3,28,902 sq.ft (30,556 sq.m.)"
+        Usageper.innerText = " 3,28,902 sq ft (30,556 sq m)"
         // document.getElementById('popup-sidebar').style.display = 'block'
         document.getElementById('buildingpre1').src = './images/preB100.png'
         isOpen = true
@@ -435,13 +485,13 @@ const extractedCamera = useRef();
         btitle.innerText = "Building name"
         Bname.innerText = "B200"
         ftitle.innerText = "Floor Area"
-        Farea.innerText = "3,05,157 sq.ft (28,350 sq.m.)"
+        Farea.innerText = "3,05,157 sq ft (28,350 sq m)"
         mtitle.innerText = "Mezzanine Area"
-        Marea.innerText = " 5,382 sq.ft (500 sq.m)"
+        Marea.innerText = " 5,382 sq ft (500 sq m)"
         totbtitle.innerText = "Clear Height"
-        Tbarea.innerText = "12 meters minimum" 
+        Tbarea.innerText = "12 meters minimum"
         usage.innerText = "Total Built-up Area"
-        UsageP.innerText ="3,10,539 sq.ft (28,850 sq.m.)"
+        Usageper.innerText = "3,10,539 sq ft (28,850 sq m )"
         // document.getElementById('popup-sidebar').style.display = 'block'
         document.getElementById('buildingpre1').src = './images/preB200.png'
         isOpen = true
@@ -462,13 +512,13 @@ const extractedCamera = useRef();
         btitle.innerText = "Building name"
         Bname.innerText = "B300"
         ftitle.innerText = "Floor Area"
-        Farea.innerText = "4,07,995 sq.ft (37,904 sq.m.)"
+        Farea.innerText = "4,07,995 sq ft (37,904 sq m)"
         mtitle.innerText = "Mezzanine Area"
-        Marea.innerText = "5,382 sq.ft (500 sq.m)"
+        Marea.innerText = "5,382 sq ft (500 sq m)"
         totbtitle.innerText = "Clear Height"
         Tbarea.innerText = "12 meters minimum"
         usage.innerText = "Total Built-up Area"
-        UsageP.innerText = "4,13,377 sq.ft (38,404 sq.m.)"
+        Usageper.innerText = "4,13,377 sq ft (38,404 sq m)"
         // document.getElementById('popup-sidebar').style.display = 'block'
         document.getElementById('buildingpre1').src = './images/preB300.png'
         isOpen = true
@@ -489,13 +539,13 @@ const extractedCamera = useRef();
         btitle.innerText = "Building name"
         Bname.innerText = "B400"
         ftitle.innerText = "Floor Area"
-        Farea.innerText = "2,60,982 sq.ft (24,246 sq.m.)"
+        Farea.innerText = "2,60,982 sq ft (24,246 sq m)"
         mtitle.innerText = "Mezzanine Area"
-        Marea.innerText = "5,382 sq.ft (500 sq.m)"
+        Marea.innerText = "5,382 sq ft (500 sq m)"
         totbtitle.innerText = "Clear Height"
         Tbarea.innerText = "12 meters minimum"
         usage.innerText = "Total Built-up Area"
-        UsageP.innerText = "2,66,363 sq.ft (24,746 sq.m.)"
+        Usageper.innerText = "2,66,363 sq ft (24,746 sq m)"
         // document.getElementById('popup-sidebar').style.display = 'block'
         document.getElementById('buildingpre1').src = './images/preB400.png'
         isOpen = true
@@ -517,13 +567,13 @@ const extractedCamera = useRef();
         btitle.innerText = "Building name"
         Bname.innerText = "B500"
         ftitle.innerText = "Floor Area"
-        Farea.innerText = "1,41,804 sq.ft (13,174 sq.m.)"
+        Farea.innerText = "1,41,804 sq ft (13,174 sq m)"
         mtitle.innerText = "Mezzanine Area"
-        Marea.innerText = "5,382 sq.ft (500 sq.m)"
+        Marea.innerText = "5,382 sq ft (500 sq m)"
         totbtitle.innerText = "Clear Height"
-        Tbarea.innerText ="12 meters minimum"
+        Tbarea.innerText = "12 meters minimum"
         usage.innerText = "Total Built-up Area"
-        UsageP.innerText =  "1,47,186 sq.ft (13,674 sq.m.)"
+        Usageper.innerText = "1,47,186 sq ft (13,674 sq m)"
         // document.getElementById('popup-sidebar').style.display = 'block'
         document.getElementById('buildingpre1').src = './images/preB500.png'
         isOpen = true
@@ -635,7 +685,7 @@ const extractedCamera = useRef();
       document.getElementById('bottombar').style.display = 'flex'
       tabSwitch('Close')
       infoCon.style.display = 'none'
-      runOnce=false
+      runOnce = false
       meshname = 'Default'
       setClicked(false)
       console.log('close click');
@@ -644,17 +694,47 @@ const extractedCamera = useRef();
       setCameraPosRot(meshname)
       removetabLinksClass()
     })
-    
+
   }
 
 
+
+
+  const viewportWidth = window.innerWidth
+  console.log('viewport width',viewportWidth);
+  if(viewportWidth>1023){
+   
+    url1='https://equanimoustech.com/Sagar/indospacePC/VR1/'
+    url2='https://equanimoustech.com/Sagar/indospacePC/VR2/'
+    url3='https://equanimoustech.com/Sagar/indospacePC/VR3/'
+    }
+    else{
+      url1=`https://equanimoustech.com/Sagar/IndoSpace1/VR1/`
+      url2=`https://equanimoustech.com/Sagar/IndoSpace1/VR2/`
+      url3=`https://equanimoustech.com/Sagar/IndoSpace1/VR3/`
+    }
+  function linkchnage (pco){
+  if(pco==1){
+    return url1
+    
+  }else if(pco==2){
+    return url2
+
+  }else if(pco==3){
+    return url3
+
+  }else{
+    return url1
+  }
+}
+ 
 
   nxtBtn3d.addEventListener("click", event => {
     picno += 1;
     if (picno == 4) {
       picno = 1;
     }
-    popupIframe.src = `https://equanimoustech.com/Sagar/IndoSpace1/VR${picno}/`
+    popupIframe.src = linkchnage(picno)
     // document.getElementById('StreetView').src = `./images/StreetView-0${picno}.png`
     document.getElementById('views').src = `./images/3dView0${picno}.png`
   });
@@ -664,14 +744,14 @@ const extractedCamera = useRef();
     if (picno == 0) {
       picno = 3;
     }
-    popupIframe.src = `https://equanimoustech.com/Sagar/IndoSpace1/VR${picno}/`
+    popupIframe.src = linkchnage(picno)
     // document.getElementById('StreetView').src = `./images/StreetView-0${picno}.png`
     document.getElementById('views').src = `./images/3dView0${picno}.png`
 
   });
 
 
-  document.getElementById('amenitySwitch').addEventListener('click', toggleVisibility)
+  document.getElementById('btn').addEventListener('click', toggleVisibility)
 
 
   document.getElementById('viewin3dS').addEventListener('click', (e) => {
@@ -776,7 +856,7 @@ const extractedCamera = useRef();
 
   })
 
-  return(
+  return (
     <>
   //     {/* b300 */}
       {ishotspotVisible && (
@@ -787,14 +867,14 @@ const extractedCamera = useRef();
           ref={modelRef1}
 
           onClick={() => {
-           
+
             meshname = 'B300'
             setClicked(true);
             setVisibility(false);
             setHovered5(false)
             cno = 3
             hotspotclickfunc()
-        
+
           }}
 
           onPointerOver={() => setHovered5(true)}
@@ -970,7 +1050,7 @@ const extractedCamera = useRef();
             setHovered6(false),
             document.getElementById('popupdarkbg').style.display = 'block',
             document.getElementById('popup').style.display = 'block',
-            document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR1/',
+            document.getElementById('popupiframe').src = url1,
             // document.getElementById('dropdown-content').style.display = 'none',
             // document.getElementById('StreetView').src = './images/StreetView-01.png',
             document.getElementById('StreetView').style.display = 'block',
@@ -1013,7 +1093,7 @@ const extractedCamera = useRef();
             setHovered7(false),
             document.getElementById('popupdarkbg').style.display = 'block',
             document.getElementById('popup').style.display = 'block',
-            document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR2/',
+            document.getElementById('popupiframe').src = url2,
             // document.getElementById('dropdown-content').style.display = 'none',
             document.getElementById('StreetView').style.display = 'block',
             // document.getElementById('StreetView').src = './images/StreetView-02.png',
@@ -1050,50 +1130,50 @@ const extractedCamera = useRef();
 
   //     {/* 360view 3*/}
       {ishotspotVisible && (
-       <mesh
-         ref={modelRef8}
-         position={[0.9, 1.9, -2]}
-         rotation={[0, 0, 0]}
-         onPointerOver={() => setHovered8(true)}
-         onPointerOut={() => setHovered8(false)}
-         onClick={() => (
-           meshname = '360View-3',
-           setHovered8(false),
-           document.getElementById('popupdarkbg').style.display = 'block',
-           document.getElementById('popup').style.display = 'block',
-           document.getElementById('popupiframe').src = 'https://equanimoustech.com/Sagar/IndoSpace1/VR3/',
-           // document.getElementById('dropdown-content').style.display = 'none',
-           document.getElementById('StreetView').style.display = 'block',
-           // document.getElementById('StreetView').src = './images/StreetView-03.png',
-           document.getElementById('views').style.display = 'block',
-           document.getElementById('views').src = './images/3dView03.png',
-           // helpBtn.style.display = 'none',
-           locationbtn.style.display = 'none',
-           nxtBtn.style.display = 'none',
-           prBtn.style.display = 'none',
+        <mesh
+          ref={modelRef8}
+          position={[0.9, 1.9, -2]}
+          rotation={[0, 0, 0]}
+          onPointerOver={() => setHovered8(true)}
+          onPointerOut={() => setHovered8(false)}
+          onClick={() => (
+            meshname = '360View-3',
+            setHovered8(false),
+            document.getElementById('popupdarkbg').style.display = 'block',
+            document.getElementById('popup').style.display = 'block',
+            document.getElementById('popupiframe').src = url3,
+            // document.getElementById('dropdown-content').style.display = 'none',
+            document.getElementById('StreetView').style.display = 'block',
+            // document.getElementById('StreetView').src = './images/StreetView-03.png',
+            document.getElementById('views').style.display = 'block',
+            document.getElementById('views').src = './images/3dView03.png',
+            // helpBtn.style.display = 'none',
+            locationbtn.style.display = 'none',
+            nxtBtn.style.display = 'none',
+            prBtn.style.display = 'none',
 
-           prBtn3d.style.display = 'none',
-           nxtBtn3d.style.display = 'none',
-           streetviewUI = true,
-           isOpen = true,
-           picno = 3
+            prBtn3d.style.display = 'none',
+            nxtBtn3d.style.display = 'none',
+            streetviewUI = true,
+            isOpen = true,
+            picno = 3
 
-           )}
-           scale={7.5}
-         >
-           <circleGeometry args={[0.07, 32]} />
-           <meshBasicMaterial
-             map={hovered8 ? howeverdviewtex : viewtex}
-             toneMapped={false}
-             transparent={true}
-             side={THREE.DoubleSide}
+          )}
+          scale={7.5}
+        >
+          <circleGeometry args={[0.07, 32]} />
+          <meshBasicMaterial
+            map={hovered8 ? howeverdviewtex : viewtex}
+            toneMapped={false}
+            transparent={true}
+            side={THREE.DoubleSide}
 
-           />
-         </mesh>
-       )}
+          />
+        </mesh>
+      )}
 
 
-       <OrbitControls
+      <OrbitControls
         enabled={!ishotspotVisible}
         ref={orbitcontrols}
         minAzimuthAngle={-Math.PI / 4}
@@ -1103,72 +1183,72 @@ const extractedCamera = useRef();
         maxDistance={7}
         minDistance={3} />
 
-<group ref={group}  dispose={null}>
-      <group name="Scene">
-        <PerspectiveCamera
-          name="MainCameraAlt"
-          makeDefault={true}
-          far={1000}
-          near={0.1}
-          fov={22.895}
-          position={[31.401, 13.534, 42.827]}
-          rotation={[-0.32, 0.604, 0.186]}
-        />
-        <PerspectiveCamera
-          name="Cam_B100"
-          makeDefault={false}
-          far={1000}
-          near={0.1}
-          fov={22.895}
-          position={[10.187, 5.448, 18.031]}
-          rotation={[-0.353, 0.376, 0.134]}
-        />
-        <PerspectiveCamera
-          name="Cam_B200"
-          makeDefault={false}
-          far={1000}
-          near={0.1}
-          fov={22.895}
-          position={[5.421, 3.904, 13.476]}
-          rotation={[-0.449, -0.966, -0.377]}
-        />
-        <PerspectiveCamera
-          name="Cam_B300"
-          makeDefault={false}
-          far={1000}
-          near={0.1}
-          fov={22.895}
-          position={[-0.207, 4.597, -8.699]}
-          rotation={[-2.691, 0.751, 2.823]}
-        />
-        <PerspectiveCamera
-          name="Cam_B400"
-          makeDefault={false}
-          far={1000}
-          near={0.1}
-          fov={22.895}
-          position={[-8.113, 3.994, -6.434]}
-          rotation={[-2.771, -0.715, -2.892]}
-        />
-        <PerspectiveCamera
-          name="Cam_B500"
-          makeDefault={false}
-          far={1000}
-          near={0.1}
-          fov={22.895}
-          position={[-4.867, 5.936, 2.598]}
-          rotation={[-0.508, -0.264, -0.144]}
-        />
+      <group ref={group} dispose={null}>
+        <group name="Scene">
+          <PerspectiveCamera
+            name="MainCameraAlt"
+            makeDefault={true}
+            far={1000}
+            near={0.1}
+            fov={22.895}
+            position={[31.401, 13.534, 42.827]}
+            rotation={[-0.32, 0.604, 0.186]}
+          />
+          <PerspectiveCamera
+            name="Cam_B100"
+            makeDefault={false}
+            far={1000}
+            near={0.1}
+            fov={22.895}
+            position={[10.187, 5.448, 18.031]}
+            rotation={[-0.353, 0.376, 0.134]}
+          />
+          <PerspectiveCamera
+            name="Cam_B200"
+            makeDefault={false}
+            far={1000}
+            near={0.1}
+            fov={22.895}
+            position={[5.421, 3.904, 13.476]}
+            rotation={[-0.449, -0.966, -0.377]}
+          />
+          <PerspectiveCamera
+            name="Cam_B300"
+            makeDefault={false}
+            far={1000}
+            near={0.1}
+            fov={22.895}
+            position={[-0.207, 4.597, -8.699]}
+            rotation={[-2.691, 0.751, 2.823]}
+          />
+          <PerspectiveCamera
+            name="Cam_B400"
+            makeDefault={false}
+            far={1000}
+            near={0.1}
+            fov={22.895}
+            position={[-8.113, 3.994, -6.434]}
+            rotation={[-2.771, -0.715, -2.892]}
+          />
+          <PerspectiveCamera
+            name="Cam_B500"
+            makeDefault={false}
+            far={1000}
+            near={0.1}
+            fov={22.895}
+            position={[-4.867, 5.936, 2.598]}
+            rotation={[-0.508, -0.264, -0.144]}
+          />
+        </group>
       </group>
-    </group>
 
-     
+
       <primitive object={model.scene} />
-     
 
 
-      
-      </>
+
+
+    </>
 
   );
 }

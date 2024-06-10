@@ -32,7 +32,7 @@ export default function Ammenities(props) {
     setIsVisible(!isVisible);
     
   };
-  const amenitySwitch = document.getElementById('amenitySwitch')
+  const amenitySwitch = document.getElementById('btn')
   amenitySwitch.addEventListener('click', toggleVisibility)
   return <>
     <directionalLight castShadow intensity={isVisible ? 0 : 1} color={'#fffaed'} position={[3, 45, 5]} shadow-mapSize={[1024, 1024]} shadow-normalBias={-0.95} shadow-bias={-0.00050}>
