@@ -2277,7 +2277,9 @@ hr.solid {
 
   }
  
-
+  .tablinks {
+    margin-top: 0vh;
+  }
   .viewin3dBtn {
     left: 14vw;
   }
