@@ -178,7 +178,7 @@ button:focus-visible {
 .tablinks {
   /* height: 2vh; */
   /* position: absolute; */
-  margin-top: -1vh;
+  margin-top: -0.5vh;
 font-size: 20px;
 font-family: 'cairo-Regular';
 }
@@ -347,7 +347,7 @@ pre {
   content: url('../../images/FULLSCREEN_BUTT_NN.png');
   position: relative;
   width: 12vw;
-  top: 3vh;
+  top: 2vh;
   left: 12vw;
   object-fit: contain;
 
@@ -355,7 +355,7 @@ pre {
 
 .viewin3dBtn:hover {
   content: url('../../images/FULLSCREEN_BUTT_HOVER_NN.png');
-  top: 3.9vh;
+  top: 2.9vh;
   left: 11.5vw;
 }
 
@@ -422,12 +422,13 @@ pre {
 }
 
 .text {
-  padding-left: 1vw;
-  width: 23vw;
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+  width: 23.5vw;
   position: absolute;
-  height: 8vh;
+  height: 3.5rem;
   top: 47.5vh;
-  font-size: 34px;
+  font-size: 2em;
   color: #ffffff;
   font-family: cairo-Regular;
   background: #000000a1;
@@ -1218,7 +1219,7 @@ hr.solid {
 
 .titleContent {
   position: absolute;
-  width: 95%;
+  width: 90%;
   top: 57vh;
   height: 12vh;
   display: flex;
@@ -2073,8 +2074,8 @@ hr.solid {
     margin-left: -15.3vw;
   }
   #locationbtn.ios{
-    width: 30vw;
-    margin-left: -20.5vw;
+    width: 32.6em;
+    margin-left: -40vw;
 
   }
   #arbtn {
@@ -2090,8 +2091,8 @@ hr.solid {
     margin-left: -15.3vw;
   }
   #arbtn.ios {
-    width: 30vw;
-    margin-left: -20.5vw;
+    width: 32.6em;
+    margin-left: -39.9vw;
 
 
   }
@@ -2296,7 +2297,27 @@ hr.solid {
   #loaderBottomBar {
     top: 80vh;
   }
-
- 
+#locationbtn{
+  width: 26vw;
+  height: 5vh;
+  margin-left: -16.5vw;
+}
+#locationbtn :hover{
+  content: initial;
+  width: 26vw;
+  height: 5vh;
+  margin-left: -16.5vw;
+}
+ #arbtn{
+  width: 26vw;
+  height: 5vh;
+  margin-left: -16.5vw;
+ }
+ #arbtn{
+  content: initial;
+  width: 26vw;
+  height: 5vh;
+  margin-left: -16.5vw;
+ }
 
 }
