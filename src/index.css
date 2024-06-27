@@ -251,7 +251,7 @@ bottom: 0.5vw;
   font-size: 3.5rem;
   font-family: cairo-Bold;
   margin-top: 3%;
-  margin-left: 38px;
+  margin-left: -6px;
   line-height: 13vh;
 }
 
@@ -2301,6 +2301,7 @@ hr.solid {
   width: 26vw;
   height: 5vh;
   margin-left: -16.5vw;
+  padding: 6%;
 }
 #locationbtn :hover{
   content: initial;
